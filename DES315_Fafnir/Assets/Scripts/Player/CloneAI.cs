@@ -1,16 +1,17 @@
-using System.Net.Http.Headers;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 public class CloneAI : PlayerAI
 {
-    protected int ComInd;       //Index into command list
-    protected float ComTimer;   //Timer duration for current command
-
+    private PCom[] ComList;             //List of commands
+    protected float ComTimer;           //Timer duration for current command
+    private int ComPos;
     void Start()
     {
-        transform.position = StartPos;
+        ComPos = 0;
         Vel = Vector2.zero;
+        SetComList();
+        Rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -21,7 +22,11 @@ public class CloneAI : PlayerAI
     protected override void HandleMovement()
     {
         ComTimer -= Time.deltaTime;
-        switch (PCList[ComInd].type)
+        if (ComTimer <= 0f)
+        {
+            ReadCom();
+        }
+        switch (ComList[ComPos].type)
         {
             case PCom_t.P_NULL:
                 Vel.x = 0;
@@ -41,14 +46,27 @@ public class CloneAI : PlayerAI
             case PCom_t.P_ACTION:
                 break;
             case PCom_t.P_END:
+                Vel.x = 0;
+                ComTimer = float.MaxValue;
                 break;
         }
     }
 
     protected void ReadCom()
     {
-        ComInd++;
-        ComInd %= 0x07FF;
-        ComTimer = PCList[ComInd].dur;
+        ComPos++;
+        ComPos &= 0x07FF;
+        ComTimer = ComList[ComPos].dur;
+    }
+
+    public void SetComList()
+    {        
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Array.Resize(ref ComList, player.GetComponent<PlayerAI>().PCList.Length+1);
+        for (int i = 0; i < player.GetComponent<PlayerAI>().PCList.Length; i++)
+        {
+            ComList[i] = player.GetComponent<PlayerAI>().PCList[i];
+        }
+        ClearList = true;
     }
 }

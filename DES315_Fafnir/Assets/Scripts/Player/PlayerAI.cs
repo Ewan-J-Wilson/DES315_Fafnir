@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 public enum PCom_t
 {
@@ -19,6 +19,7 @@ public struct PCom
 
 public class PlayerAI : MonoBehaviour
 {
+    public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
     public GameObject Clone;                    //Clone gameobject reference
     string[] ComIdent =                         //List of commands, set up in corresponding order to PCom_t
     {
@@ -31,22 +32,23 @@ public class PlayerAI : MonoBehaviour
     protected const int MaxClones = 4;          //Maximum numver of clones on screen at once
     protected const float MoveSpeed = 5.0f;     //Constant movement speed
     protected const float JumpForce = 20.0f;    //Constant jump force
-    protected List<PCom> PCList;                //List of commands for a clone to follow, recorded by player actions
+    public PCom[] PCList;                       //List of commands for a clone to follow, recorded by player actions
     private PCom CurrentCom;                    //Current command being input by player
     private PCom LastCom;                       //Previous command being input by player
     private int CloneNo;                        //Count of currently spawned clones
+    private int ComInd;                         //Index into written commands
 
     protected Rigidbody2D Rb;
     protected Vector2 Vel;
-    protected Vector2 StartPos = Vector2.zero;
+    protected Vector3 LastPos;
 
     void Start()
     {
         CloneNo = 0;
-        transform.position = StartPos;
         Rb = GetComponent<Rigidbody2D>();
-        PCList = new List<PCom>();
-        PCList.Capacity = MaxComSize;
+        Array.Resize(ref PCList, 1);
+        ComInd = 0;
+        LastPos = transform.position;
     }
 
     void Update()
@@ -57,6 +59,15 @@ public class PlayerAI : MonoBehaviour
 
     protected virtual void HandleMovement()
     {
+        if (ClearList)
+        {
+            Array.Resize(ref PCList, 1);
+            PCList[0].type = PCom_t.P_NULL;
+            PCList[0].dur = 0;
+            ComInd = 0;
+
+            ClearList = false;
+        }
         LastCom = CurrentCom;
         bool isnull = true;
         for (int x = 0; x < 3; x++)
@@ -87,7 +98,9 @@ public class PlayerAI : MonoBehaviour
 
         if (CurrentCom.type != LastCom.type)
         {
-            PCList.Add(LastCom);
+            PCList[ComInd] = LastCom;
+            ComInd++;
+            Array.Resize(ref PCList, ComInd+1);
             CurrentCom.dur = 0;
         }
 
@@ -98,9 +111,10 @@ public class PlayerAI : MonoBehaviour
             PCom end;
             end.type = PCom_t.P_END;
             end.dur = 0;
-            PCList.Add(end);
+            PCList[ComInd] = end;
+            ComInd++;
+            Array.Resize(ref PCList, ComInd+1);
             AddClone();
-            transform.position = Vector2.zero;
         }
         Vel.x = Input.GetAxisRaw("Horizontal");
 
@@ -118,9 +132,7 @@ public class PlayerAI : MonoBehaviour
             return;
         }
         CloneNo++;
-        GameObject spawn = Clone;
-        spawn.GetComponent<CloneAI>().PCList = PCList;
-        Instantiate(spawn);
-        PCList.Clear();
+        Instantiate(Clone, LastPos, Quaternion.identity);
+        LastPos = transform.position;
     }
 }
