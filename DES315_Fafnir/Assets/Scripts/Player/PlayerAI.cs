@@ -11,6 +11,7 @@ public enum PCom_t
     P_END,                                      //End command to stop AI from doing other actions
 }
 
+[System.Serializable]
 public struct PCom
 {
     public PCom_t type;                         //Type of command
@@ -44,6 +45,7 @@ public class PlayerAI : MonoBehaviour
 
     void Start()
     {
+        PCList = new PCom[MaxComSize];
         CloneNo = 0;                            //Reset clone amount
         Rb = GetComponent<Rigidbody2D>();
         Array.Resize(ref PCList, 1);            //Resize array to have one element
@@ -75,13 +77,16 @@ public class PlayerAI : MonoBehaviour
         //Create clone entity
         if (Input.GetKeyDown("q"))
         {
+            //Load in last command into stream
+            PCList[ComInd] = LastCom;
+            ComInd++;
+            Array.Resize(ref PCList, ComInd + 1);
             //Append END flag into command stream to make sure the clone stops
             PCom end;
             end.type = PCom_t.P_END;
             end.dur = 0;
             PCList[ComInd] = end;
             ComInd++;
-            Array.Resize(ref PCList, ComInd+1);
             AddClone();
         }
         //L/R input
@@ -127,18 +132,21 @@ public class PlayerAI : MonoBehaviour
                     case 2:
                         CurrentCom.type = PCom_t.P_JUMP;
                         break;
-                    default:
-                        CurrentCom.type = PCom_t.P_NULL;
-                        break;
                 }
-                CurrentCom.dur += Time.deltaTime;           //Add duration onto the current command
             }
         }
-        if (isnull)                                         //Add duration if the current key is not a player command
+        if (isnull)
         {
-            CurrentCom.dur += Time.deltaTime;
+            CurrentCom.type = PCom_t.P_NULL;
+            isnull = true;
+            //CurrentCom.dur += Time.deltaTime;
+        }
+        if (!isnull)                                         //Add duration if the current key is not a player command
+        {
+            //CurrentCom.dur += Time.deltaTime;
         }
 
+        CurrentCom.dur += Time.deltaTime;
         if (CurrentCom.type != LastCom.type)                //Check for command change
         {
             PCList[ComInd] = LastCom;                       //If a new command is found then we add to the command array

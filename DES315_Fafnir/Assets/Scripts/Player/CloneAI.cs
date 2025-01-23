@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CloneAI : PlayerAI
 {
-    private PCom[] ComList;                 //Array of commands
+    public PCom[] ComList;                  //Array of commands
     protected float ComTimer;               //Timer duration for current command
     private int ComPos;                     //Position into command array
     private bool EndCom;                    //Flag to end command reading
@@ -24,10 +24,7 @@ public class CloneAI : PlayerAI
     protected override void HandleMovement()
     {
         ComTimer -= Time.deltaTime;         //Decrement command duration
-        if (ComTimer <= 0f && !EndCom)      //If we've hit < 0 AND the END command has NOT been recieved then we read the next command in
-        {
-            ReadCom();
-        }
+
         switch (ComList[ComPos].type)       //Actions based on player commands
         {
             case PCom_t.P_NULL:
@@ -40,10 +37,7 @@ public class CloneAI : PlayerAI
                 Vel.x = 1;
                 break;
             case PCom_t.P_JUMP:
-                if (Rb.velocity.y == 0.0f)
-                {
-                    Rb.velocityY += JumpForce;
-                }
+                if (Rb.velocity.y == 0.0f) Rb.velocityY += JumpForce;
                 break;
             case PCom_t.P_ACTION:
                 break;
@@ -54,21 +48,28 @@ public class CloneAI : PlayerAI
             default:
                 break;
         }
+
+
+        if (ComTimer <= 0f && !EndCom)      //If we've hit < 0 AND the END command has NOT been recieved then we read the next command in
+        {
+            ReadCom();
+        }
     }
 
     //Grab next command and set duration timer
     protected void ReadCom()
     {
-        ComPos++;
+        Debug.Log("ComPos: " + ComPos);
         ComPos %= MaxComSize;               //Modulo to max com size to prevent OOB errors
         ComTimer = ComList[ComPos].dur;
+        ComPos++;
     }
 
     //Grabs current commands from player and transfers them to the clone's command list
     public void SetComList()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Array.Resize(ref ComList, player.GetComponent<PlayerAI>().PCList.Length+1);
+        Array.Resize(ref ComList, player.GetComponent<PlayerAI>().PCList.Length);
         for (int i = 0; i < player.GetComponent<PlayerAI>().PCList.Length; i++)
         {
             ComList[i] = player.GetComponent<PlayerAI>().PCList[i];
