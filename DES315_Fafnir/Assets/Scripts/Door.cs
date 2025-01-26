@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+
+    
     public Material closedMaterial;
     public Material openMaterial;
-    bool isActive = false;
+    public bool isActive = false;
     private Vector2 mouseOver;
     private void UpdateMouse()
     {
@@ -33,7 +35,8 @@ public class Door : MonoBehaviour
         {
             var spriteRen = GetComponent<SpriteRenderer>();
             spriteRen.material = openMaterial;
-            isActive = true;
+           isActive = true;
+        
             // Start is called before the first frame update
         }
     }
