@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public Material closedMaterial;
+    public Material openMaterial;
+    bool isActive = false;
     private Vector2 mouseOver;
     private void UpdateMouse()
     {
@@ -24,10 +27,15 @@ public class Door : MonoBehaviour
         }
 
     }
-    // Start is called before the first frame update
-    void Start()
+    public void OnMouseDown()
     {
-        
+        if (isActive == false)
+        {
+            var spriteRen = GetComponent<SpriteRenderer>();
+            spriteRen.material = openMaterial;
+            isActive = true;
+            // Start is called before the first frame update
+        }
     }
 
     // Update is called once per frame
