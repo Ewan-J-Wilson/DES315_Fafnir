@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -45,9 +46,14 @@ public class Audiomanager : MonoBehaviour
             tracks[i].src.outputAudioMixerGroup = AudOut;
         }
     }
-    public void PlayAudio(string name)
+
+    public void PlayAudio(string name, float pitch = 0.0f, float pan = 0.5f, float vol = 0.0f)
     {
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
+        if (pitch != 0.0f) { aud.src.pitch = pitch; }
+        if (pan != 0.5f) { aud.src.panStereo = pan; }
+        if (vol != 0.0f) { aud.src.volume = vol; }
+
         aud.src.Play();
     }
 }
