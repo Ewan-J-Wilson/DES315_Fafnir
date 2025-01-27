@@ -59,7 +59,7 @@ public class CloneAI : PlayerAI
     //Grab next command and set duration timer
     protected void ReadCom()
     {
-        Debug.Log("ComPos: " + ComPos);
+        //Debug.Log("ComPos: " + ComPos);
         ComPos %= MaxComSize;               //Modulo to max com size to prevent OOB errors
         ComTimer = ComList[ComPos].dur;
         ComPos++;
