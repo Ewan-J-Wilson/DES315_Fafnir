@@ -1,14 +1,14 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class PlayingField : MonoBehaviour
 {
-    [SerializeReference] private GameObject door;
-    public Material closedMaterial;
-    public Material openMaterial;
-    public bool isActive = false;
     private Vector2 mouseOver;
     private void UpdateMouse()
     {
+
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Default")))
         {
@@ -25,14 +25,10 @@ public class Door : MonoBehaviour
         }
 
     }
-    public void OnMouseDown()
+    // Start is called before the first frame update
+    void Start()
     {
-        var spriteRen = GetComponent<SpriteRenderer>();
         
-        isActive = !isActive;
-        spriteRen.material = isActive ? openMaterial : closedMaterial;
-
-        door.SetActive(!door.activeSelf);
     }
 
     // Update is called once per frame

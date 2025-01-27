@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8902741600363959211}
   - component: {fileID: 8691159176873697415}
   - component: {fileID: 2547952477959519884}
-  - component: {fileID: 6939923215442358579}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -144,39 +143,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 992175141542049301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 685725be53e76d544b94b683fa9fd4bc, type: 3}
+  m_Script: {fileID: 11500000, guid: a42e90de62c762d46b213bd2f335e2ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 0}
   closedMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  openMaterial: {fileID: 2100000, guid: a38c00d6065583443bbc451f3a4e07b5, type: 2}
+  openMaterial: {fileID: 2100000, guid: 0d6a2d526601ca44d942617ac5420282, type: 2}
   isActive: 0
---- !u!114 &6939923215442358579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 992175141542049301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
