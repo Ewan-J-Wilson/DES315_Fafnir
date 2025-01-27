@@ -269,7 +269,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudOut: {fileID: 24300002, guid: d0eda980d4d284e42a55904063f1063a, type: 2}
-  tracks: []
+  tracks:
+  - Name: Kick
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: a6563c4d0a6d64c4bbac9914c364a87e, type: 3}
+    src: {fileID: 0}
+    type: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
