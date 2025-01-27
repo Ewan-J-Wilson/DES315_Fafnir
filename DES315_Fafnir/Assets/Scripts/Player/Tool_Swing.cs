@@ -22,7 +22,7 @@ public class Tool_Swing : MonoBehaviour
     private void Start() {
         
         // Initialise the tool as inactive
-        toolSprite = GameObject.Find("Sprite");
+        toolSprite = GameObject.Find("Tool Sprite");
         toolSprite.GetComponent<SpriteRenderer>().color = ogColour;
         toolSprite.GetComponent<BoxCollider2D>().size = Vector2.zero;
 
@@ -40,8 +40,7 @@ public class Tool_Swing : MonoBehaviour
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         // If the user is using the tool
-        // TODO: Update the input settings to use a more reasonable button that left ctrl
-        if (Input.GetButtonDown("Fire1") && cooldownTimer <= 0f) {
+        if (Input.GetButtonDown("Activate") && cooldownTimer <= 0f) {
 
             // Set the tool hitbox to be active
             toolSprite.GetComponent<SpriteRenderer>().color = hitColour;

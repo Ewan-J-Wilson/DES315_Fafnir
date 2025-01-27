@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6250957430926633943}
   - component: {fileID: 8364867124712859394}
   m_Layer: 0
-  m_Name: Sprite
+  m_Name: Tool Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,6 +314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clone: {fileID: 0}
+  PCList: []
 --- !u!50 &1796299224185216547
 Rigidbody2D:
   serializedVersion: 4

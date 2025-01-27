@@ -18,9 +18,8 @@ public class WinTrigger : MonoBehaviour
     void Update()
     {
 
-        // If the player is on the exit and W is pressed#
-        // TODO: Use button not axis
-        if (playerOverlap && Input.GetAxis("Vertical") > 0) {
+        // If the player is on the exit and W is pressed
+        if (playerOverlap && Input.GetButtonDown("Up")) {
 
             //Debug.Log("Game Won");
             // Set the win flag
