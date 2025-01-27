@@ -222,7 +222,6 @@ GameObject:
   - component: {fileID: 1891658026}
   - component: {fileID: 1891658025}
   - component: {fileID: 1891658027}
-  - component: {fileID: 1891658028}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -345,19 +344,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1891658028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1891658024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93d511a2d6dcf246a2692bfd642f3a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  testDoor: {fileID: 0}
 --- !u!1 &2075718329
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,8 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685725be53e76d544b94b683fa9fd4bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opener: {fileID: 0}
-  closedMaterial: {fileID: 0}
+  door: {fileID: 1891658024}
+  closedMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   openMaterial: {fileID: 2100000, guid: a38c00d6065583443bbc451f3a4e07b5, type: 2}
   isActive: 0
 --- !u!61 &2075718331
@@ -526,10 +512,10 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1891658028}
-          m_TargetAssemblyTypeName: OpenClose, Assembly-CSharp
-          m_MethodName: OpenDoor
-          m_Mode: 1
+        - m_Target: {fileID: 1891658024}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -796,5 +782,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 8382643984986957928}
   - {fileID: 2075718333}
-  - {fileID: 2132425214}
   - {fileID: 1891658026}
+  - {fileID: 2132425214}

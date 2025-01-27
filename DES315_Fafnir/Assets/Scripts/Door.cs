@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-
-    
+    [SerializeReference] private GameObject door;
     public Material closedMaterial;
     public Material openMaterial;
     public bool isActive = false;
@@ -31,14 +30,12 @@ public class Door : MonoBehaviour
     }
     public void OnMouseDown()
     {
-        if (isActive == false)
-        {
-            var spriteRen = GetComponent<SpriteRenderer>();
-            spriteRen.material = openMaterial;
-           isActive = true;
+        var spriteRen = GetComponent<SpriteRenderer>();
         
-            // Start is called before the first frame update
-        }
+        isActive = !isActive;
+        spriteRen.material = isActive ? openMaterial : closedMaterial;
+
+        door.SetActive(!door.activeSelf);
     }
 
     // Update is called once per frame
