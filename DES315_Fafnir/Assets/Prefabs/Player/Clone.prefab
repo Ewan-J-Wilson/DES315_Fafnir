@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1768152631044281254}
   m_Layer: 7
   m_Name: Clone
-  m_TagString: Untagged
+  m_TagString: Clone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,6 +121,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clone: {fileID: 0}
+  TrailPart: {fileID: 0}
+  PCList: []
+  ComList: []
 --- !u!1 &8676656009448351387
 GameObject:
   m_ObjectHideFlags: 0

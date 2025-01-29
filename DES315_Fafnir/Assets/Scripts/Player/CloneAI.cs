@@ -19,12 +19,13 @@ public class CloneAI : PlayerAI
     void Update()
     {
         HandleMovement();
+    }
+    private void FixedUpdate()
+    {
         transform.Translate(Vel * Time.deltaTime * MoveSpeed);
     }
     protected override void HandleMovement()
     {
-        ComTimer -= Time.deltaTime;         //Decrement command duration
-
         switch (ComList[ComPos].type)       //Actions based on player commands
         {
             case PCom_t.P_NULL:
@@ -45,11 +46,9 @@ public class CloneAI : PlayerAI
                 Vel.x = 0;
                 EndCom = true;
                 break;
-            default:
-                break;
         }
-
-
+        
+        ComTimer -= Time.deltaTime;         //Decrement command duration
         if (ComTimer <= 0f && !EndCom)      //If we've hit < 0 AND the END command has NOT been recieved then we read the next command in
         {
             ReadCom();
@@ -60,9 +59,9 @@ public class CloneAI : PlayerAI
     protected void ReadCom()
     {
         //Debug.Log("ComPos: " + ComPos);
+        ComPos++;
         ComPos %= MaxComSize;               //Modulo to max com size to prevent OOB errors
         ComTimer = ComList[ComPos].dur;
-        ComPos++;
     }
 
     //Grabs current commands from player and transfers them to the clone's command list
