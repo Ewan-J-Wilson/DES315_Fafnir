@@ -80,5 +80,4 @@ public class Tool_Swing : MonoBehaviour
         { cooldownTimer -= Time.deltaTime; }
 
     }
-
 }
