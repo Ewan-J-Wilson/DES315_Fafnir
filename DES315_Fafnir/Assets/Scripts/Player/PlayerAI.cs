@@ -22,15 +22,10 @@ public class PlayerAI : MonoBehaviour
 {
     public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
     public GameObject Clone;                    //Clone gameobject reference
-    string[] ComIdent =                         //List of commands, set up in corresponding order to PCom_t
-    {
-        "left",
-        "right",
-        "space",
-    };
-
+    
     protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
     protected const int MaxClones = 4;          //Maximum number of clones on screen at once
+    [SerializeField]
     protected const float MoveSpeed = 5.0f;     //Constant movement speed
     protected const float JumpForce = 20.0f;    //Constant jump force
     public PCom[] PCList;                       //List of commands for a clone to follow, recorded by player actions
@@ -42,7 +37,13 @@ public class PlayerAI : MonoBehaviour
     protected Rigidbody2D Rb;                   //Rigidbody for player physics
     protected Vector2 Vel;                      //Movement vector
     protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
-
+    
+    KeyCode[] ComIdent =                         //List of commands, set up in corresponding order to PCom_t
+    {
+        KeyCode.LeftArrow,
+        KeyCode.RightArrow,
+        KeyCode.Space,
+    };
     void Start()
     {
         PCList = new PCom[MaxComSize];
@@ -56,7 +57,6 @@ public class PlayerAI : MonoBehaviour
     void Update()
     {
         HandleMovement();
-        transform.Translate(Vel * Time.deltaTime * MoveSpeed);
     }
 
     protected virtual void HandleMovement()
@@ -98,6 +98,10 @@ public class PlayerAI : MonoBehaviour
             Rb.velocityY += JumpForce;
         }
     }
+    private void FixedUpdate()
+    {
+        transform.Translate(Vel * Time.deltaTime * MoveSpeed);
+    }
 
     //Create clone
     void AddClone()
@@ -111,12 +115,12 @@ public class PlayerAI : MonoBehaviour
         LastPos = transform.position;                       //Then grab the current position for the next future clone
     }
 
-    void HandleCommandInput()
+    private void HandleCommandInput()
     {
         //Grab the last command for future testing
         LastCom = CurrentCom;
         bool isnull = true;                                 //Flag for if the current key pressed is NOT one of the player's controls
-        for (int x = 0; x < 3; x++)
+        for (int x = 0; x < ComIdent.Length; x++)
         {
             if (Input.GetKey(ComIdent[x]))
             {
@@ -135,15 +139,10 @@ public class PlayerAI : MonoBehaviour
                 }
             }
         }
+
         if (isnull)
         {
             CurrentCom.type = PCom_t.P_NULL;
-            isnull = true;
-            //CurrentCom.dur += Time.deltaTime;
-        }
-        if (!isnull)                                         //Add duration if the current key is not a player command
-        {
-            //CurrentCom.dur += Time.deltaTime;
         }
 
         CurrentCom.dur += Time.deltaTime;

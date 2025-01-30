@@ -387,7 +387,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2132425210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 869e4fc5dab33794e9c4fba7edc99f45, type: 3}
+  m_Script: {fileID: 11500000, guid: 747a9e7a45723e24b97668306e4ee013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3106666648056168865
@@ -446,7 +446,7 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1891658024}
-    - target: {fileID: 6939923215442358579, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
+    - target: {fileID: 0}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1891658024}
@@ -540,10 +540,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
-      propertyPath: Clone
-      value: 
-      objectReference: {fileID: 4064460576545659443, guid: 038f10f9afc22b74ea9d7db4625cabb3, type: 3}
     - target: {fileID: 7276185251107824176, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
