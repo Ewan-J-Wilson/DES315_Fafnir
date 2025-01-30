@@ -143,7 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3741771740661534282}
   - component: {fileID: 3198915148095817229}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,9 +231,9 @@ GameObject:
   - component: {fileID: 7826964413852175755}
   - component: {fileID: 6960429248404074951}
   - component: {fileID: 1796299224185216547}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7d1835ad8373544b629e38f487aa18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clone: {fileID: 0}
+  Clone: {fileID: 4064460576545659443, guid: 038f10f9afc22b74ea9d7db4625cabb3, type: 3}
   PCList: []
 --- !u!50 &1796299224185216547
 Rigidbody2D:
@@ -337,7 +337,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7735046149780845930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1df55b0732bcce44bbd5df2e28922995, type: 3}
+  m_Script: {fileID: 11500000, guid: 0499d7e094a76da4bb34e67b5881797e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ogColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
