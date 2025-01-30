@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5072271279038742090}
   - component: {fileID: 1646562863020197869}
-  - component: {fileID: 5923702877708364547}
+  - component: {fileID: 6175492258637234425}
   m_Layer: 0
   m_Name: PhysicsCollider
   m_TagString: Untagged
@@ -87,8 +87,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &5923702877708364547
-BoxCollider2D:
+--- !u!60 &6175492258637234425
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,8 +131,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.0058492934, y: 0.50316405}
+      - {x: -0.5000341, y: 0.0041761696}
+      - {x: -0.5, y: -0.5}
+      - {x: 0.5, y: -0.5}
+      - {x: 0.50004387, y: 0.0024028125}
+  m_UseDelaunayMesh: 0
 --- !u!1 &8058259237667217365
 GameObject:
   m_ObjectHideFlags: 0
