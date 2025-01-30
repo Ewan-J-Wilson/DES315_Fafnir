@@ -524,6 +524,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3198915148095817229, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6497945057761427947, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
       propertyPath: m_Name
       value: Player
@@ -540,6 +544,46 @@ PrefabInstance:
       propertyPath: TrailPart
       value: 
       objectReference: {fileID: 6529556881714479319, guid: e4ccb08a8b89df741999ccb2b79a3855, type: 3}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[0].time
+      value: 0.012498982
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[0].value
+      value: 0.49764094
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[0].inSlope
+      value: 0.10839249
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[0].outSlope
+      value: 0.10839249
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: SpeedCurve.m_Curve.Array.data[0].outWeight
+      value: 0.19831304
+      objectReference: {fileID: 0}
     - target: {fileID: 7276185251107824176, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

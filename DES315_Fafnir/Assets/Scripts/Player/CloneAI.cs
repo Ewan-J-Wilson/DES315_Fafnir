@@ -5,7 +5,7 @@ public class CloneAI : PlayerAI
 {
     public PCom[] ComList;                  //Array of commands
     protected float ComTimer;               //Timer duration for current command
-    private int ComPos;                     //Position into command array
+    public int ComPos;                   //Position into command array
     private bool EndCom;                    //Flag to end command reading
     void Start()
     {
@@ -22,20 +22,17 @@ public class CloneAI : PlayerAI
     }
     private void FixedUpdate()
     {
-        transform.Translate(Vel * Time.deltaTime * MoveSpeed);
+        transform.Translate(Vel * Time.deltaTime);
     }
     protected override void HandleMovement()
     {
         switch (ComList[ComPos].type)       //Actions based on player commands
         {
-            case PCom_t.P_NULL:
-                Vel.x = 0;
+            case PCom_t.P_NULL:             //Keep around for potential future case
                 break;
             case PCom_t.P_LEFT:
-                Vel.x = -1;
                 break;
             case PCom_t.P_RIGHT:
-                Vel.x = 1;
                 break;
             case PCom_t.P_JUMP:
                 if (Rb.velocity.y == 0.0f) Rb.velocityY += JumpForce;
@@ -43,7 +40,6 @@ public class CloneAI : PlayerAI
             case PCom_t.P_ACTION:
                 break;
             case PCom_t.P_END:
-                Vel.x = 0;
                 EndCom = true;
                 break;
         }
@@ -53,6 +49,8 @@ public class CloneAI : PlayerAI
         {
             ReadCom();
         }
+
+        Vel.x = Mathf.MoveTowards(Vel.x, ComList[ComPos].val, Time.fixedDeltaTime);
     }
 
     //Grab next command and set duration timer

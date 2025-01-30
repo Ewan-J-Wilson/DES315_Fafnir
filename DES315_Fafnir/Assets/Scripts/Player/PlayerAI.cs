@@ -1,6 +1,4 @@
 using System;
-using System.Runtime.CompilerServices;
-using JetBrains.Annotations;
 using UnityEngine;
 public enum PCom_t
 {
@@ -18,6 +16,8 @@ public struct PCom
 {
     public PCom_t type;                         //Type of command
     public float dur;                           //How long to hold button down
+    public float val;                           //Generic input value for commands
+    public float angl;                          //Angle input for the player tool
 }
 
 public class PlayerAI : MonoBehaviour
@@ -25,6 +25,7 @@ public class PlayerAI : MonoBehaviour
     public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
     public GameObject Clone;                    //Clone gameobject reference
     public GameObject TrailPart;                //Trail particle reference
+    public GameObject Tool;                     //Trail particle reference
     
     protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
     protected const int MaxClones = 4;          //Maximum number of clones on screen at once
@@ -44,8 +45,10 @@ public class PlayerAI : MonoBehaviour
     protected Rigidbody2D Rb;                   //Rigidbody for player physics
     protected Vector2 Vel;                      //Movement vector
     protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
-    
-    KeyCode[] ComIdent =                         //List of commands, set up in corresponding order to PCom_t
+
+    private bool DEBUG_MovementSwitch;          //Switch between different movement types
+
+    KeyCode[] ComIdent =                        //List of commands, set up in corresponding order to PCom_t
     {
         KeyCode.LeftArrow,
         KeyCode.RightArrow,
@@ -84,7 +87,7 @@ public class PlayerAI : MonoBehaviour
         }
 
         //Debug for command type and duration
-        Debug.Log("Type: " + CurrentCom.type + "\nDur: " + CurrentCom.dur);
+        Debug.Log("Type: " + CurrentCom.type + "\nDur: " + CurrentCom.dur + "\nVal: " + CurrentCom.val);
 
         //Create clone entity
         if (Input.GetKeyDown("q"))
@@ -103,6 +106,8 @@ public class PlayerAI : MonoBehaviour
                 PCom end;
                 end.type = PCom_t.P_END;
                 end.dur = 0;
+                end.val = 0;
+                end.angl = 0;
                 PCList[ComInd] = end;
                 ComInd++;
                 AddClone();
@@ -115,9 +120,17 @@ public class PlayerAI : MonoBehaviour
                 IsRecording = true;
             }
         }
+        if (Input.GetKeyDown("w")) DEBUG_MovementSwitch = !DEBUG_MovementSwitch;
         //L/R input
-        Vel.x = Input.GetAxisRaw("Horizontal");
-        
+        if (DEBUG_MovementSwitch)
+        {
+            Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * Input.GetAxis("Horizontal"), MoveSpeed * Time.fixedDeltaTime);
+        }
+        else
+        {
+            Vel.x = MoveSpeed * Input.GetAxis("Horizontal");
+        }
+
         //Check if the player is on still ground and the spacebar is pressed to jump
         if (Input.GetKeyDown("space") && Rb.velocity.y == 0.0f)
         {
@@ -126,7 +139,7 @@ public class PlayerAI : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.Translate(Vel * Time.deltaTime * MoveSpeed);
+        transform.Translate(Vel * Time.deltaTime);
     }
 
     //Create clone
@@ -151,9 +164,11 @@ public class PlayerAI : MonoBehaviour
                 {
                     case 0:
                         CurrentCom.type = PCom_t.P_LEFT;
+                        CurrentCom.val = Vel.x;
                         break;
                     case 1:
                         CurrentCom.type = PCom_t.P_RIGHT;
+                        CurrentCom.val = Vel.x;
                         break;
                     case 2:
                         CurrentCom.type = PCom_t.P_JUMP;
@@ -165,11 +180,13 @@ public class PlayerAI : MonoBehaviour
         if (isnull)
         {
             CurrentCom.type = PCom_t.P_NULL;
+            CurrentCom.val = 0;
         }
 
         CurrentCom.dur += Time.deltaTime;
         if (CurrentCom.type != LastCom.type)                //Check for command change
         {
+            LastCom.angl = Tool.transform.eulerAngles.z;
             PCList[ComInd] = LastCom;                       //If a new command is found then we add to the command array
             ComInd++;
             Array.Resize(ref PCList, ComInd + 1);
