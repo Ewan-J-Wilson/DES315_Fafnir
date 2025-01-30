@@ -9,11 +9,13 @@ public class MoveableWall : MonoBehaviour
     private enum Direction{Left, Right, Up, Down}
 
     [SerializeField] private float moveDistance = 1;
+    [Tooltip("NOTE: Currently affects the Hold Duration, so adjust that accordingly")]
     [SerializeField] private float moveSpeed = 1;
     [SerializeField] private Direction destination = Direction.Right;
     [SerializeField] private bool keepCollision = false;
     [SerializeField] private bool oneShot = true;
     [SerializeField] private bool moveBack = false;
+    [Tooltip("NOTE: Currently affected by the Move Speed")]
     [SerializeField] private float holdDuration = 3f;
     private float holdTimer = 0f;
     private bool moved = false;
@@ -104,6 +106,7 @@ public class MoveableWall : MonoBehaviour
         if (_timer > 0) {
             
             transform.Translate(moveSpeed * Time.deltaTime * _dir);
+            // NOTE: moveSpeed currently affects holdTimer
             _timer -= Time.deltaTime * moveSpeed;
 
         }
