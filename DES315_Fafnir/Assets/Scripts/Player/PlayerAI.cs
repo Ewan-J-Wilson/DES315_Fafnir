@@ -1,4 +1,6 @@
 using System;
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 using UnityEngine;
 public enum PCom_t
 {
@@ -22,17 +24,22 @@ public class PlayerAI : MonoBehaviour
 {
     public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
     public GameObject Clone;                    //Clone gameobject reference
+    public GameObject TrailPart;                //Trail particle reference
     
     protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
     protected const int MaxClones = 4;          //Maximum number of clones on screen at once
     [SerializeField]
     protected const float MoveSpeed = 5.0f;     //Constant movement speed
     protected const float JumpForce = 20.0f;    //Constant jump force
+    protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
+
     public PCom[] PCList;                       //List of commands for a clone to follow, recorded by player actions
     private PCom CurrentCom;                    //Current command being input by player
     private PCom LastCom;                       //Previous command being input by player
     private int CloneNo;                        //Count of currently spawned clones
     private int ComInd;                         //Index into written commands
+    private bool IsRecording;                   //Flag to enable movement recording with the player
+    private float TrailTimer;                   //Timer to wait for instantiating a trail when the player is recording
 
     protected Rigidbody2D Rb;                   //Rigidbody for player physics
     protected Vector2 Vel;                      //Movement vector
@@ -69,7 +76,12 @@ public class PlayerAI : MonoBehaviour
             ComInd = 0;
             ClearList = false;
         }
-        HandleCommandInput();
+
+        if (IsRecording)
+        {
+            HandleCommandInput();
+            HandleTrail();
+        }
 
         //Debug for command type and duration
         Debug.Log("Type: " + CurrentCom.type + "\nDur: " + CurrentCom.dur);
@@ -77,17 +89,31 @@ public class PlayerAI : MonoBehaviour
         //Create clone entity
         if (Input.GetKeyDown("q"))
         {
-            //Load in last command into stream
-            PCList[ComInd] = LastCom;
-            ComInd++;
-            Array.Resize(ref PCList, ComInd + 1);
-            //Append END flag into command stream to make sure the clone stops
-            PCom end;
-            end.type = PCom_t.P_END;
-            end.dur = 0;
-            PCList[ComInd] = end;
-            ComInd++;
-            AddClone();
+            if (IsRecording)
+            {
+                if (CloneNo >= MaxClones)
+                {
+                    return;                                         //Break out of function if the clone limit has been reached
+                }
+                //Load in last command into stream
+                PCList[ComInd] = LastCom;
+                ComInd++;
+                Array.Resize(ref PCList, ComInd + 1);
+                //Append END flag into command stream to make sure the clone stops
+                PCom end;
+                end.type = PCom_t.P_END;
+                end.dur = 0;
+                PCList[ComInd] = end;
+                ComInd++;
+                AddClone();
+                KillTrail();
+                IsRecording = false;
+            }
+            else
+            {
+                LastPos = transform.position;
+                IsRecording = true;
+            }
         }
         //L/R input
         Vel.x = Input.GetAxisRaw("Horizontal");
@@ -106,13 +132,9 @@ public class PlayerAI : MonoBehaviour
     //Create clone
     void AddClone()
     {
-        if (CloneNo >= MaxClones)
-        {
-            return;                                         //Break out of function if the clone limit has been reached
-        }
         CloneNo++;
         Instantiate(Clone, LastPos, Quaternion.identity);   //Otherwise we create a clone at the player's last position
-        LastPos = transform.position;                       //Then grab the current position for the next future clone
+        transform.position = LastPos;                       //Reset player back to original position before recording
     }
 
     private void HandleCommandInput()
@@ -152,6 +174,38 @@ public class PlayerAI : MonoBehaviour
             ComInd++;
             Array.Resize(ref PCList, ComInd + 1);
             CurrentCom.dur = 0;
+        }
+    }
+
+    public void KillClone(GameObject clone)
+    {
+        if (CloneNo <= 0)
+        {
+            return;
+        }
+        Destroy(clone);
+        CloneNo--;
+    }
+
+    private void HandleTrail()
+    {
+        if (CloneNo >= MaxClones)
+        {
+            return;                                         //Break out of function if the clone limit has been reached
+        }
+        TrailTimer += Time.deltaTime;
+        if (TrailTimer > MaxTrailTime)
+        {
+            Instantiate(TrailPart, transform.position, Quaternion.identity);
+            TrailTimer = 0;
+        }
+    }
+
+    private void KillTrail()
+    {
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("TrailEnt"))
+        {
+            GameObject.Destroy(obj);
         }
     }
 }
