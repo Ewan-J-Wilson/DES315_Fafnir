@@ -97,14 +97,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7328414718626904205}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef07978a0802d484ba774f91622b7fb1, type: 3}
+  m_Script: {fileID: 11500000, guid: 3824d0044d1f43646abecc05fb3c31b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDistance: 5.76
-  moveSpeed: 4
-  destination: 0
-  keepCollision: 1
+  moveDistance: 1
+  moveSpeed: 1
+  destination: 1
+  keepCollision: 0
   oneShot: 1
+  holdDuration: 3
 --- !u!61 &2588391558773853251
 BoxCollider2D:
   m_ObjectHideFlags: 0
