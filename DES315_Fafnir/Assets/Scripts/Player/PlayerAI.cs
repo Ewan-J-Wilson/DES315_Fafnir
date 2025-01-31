@@ -6,7 +6,7 @@ public enum PCom_t
     P_LEFT,                                     //Move left
     P_RIGHT,                                    //Move right
     P_JUMP,                                     //Jump
-    P_ACTION,                                   //One button action (lever flips)
+    P_ACTION,                                   //Clone using tool [button activation]
 
     P_END,                                      //End command to stop AI from doing other actions
 }
@@ -50,8 +50,8 @@ public class PlayerAI : MonoBehaviour
 
     KeyCode[] ComIdent =                        //List of commands, set up in corresponding order to PCom_t
     {
-        KeyCode.LeftArrow,
-        KeyCode.RightArrow,
+        KeyCode.A,
+        KeyCode.D,
         KeyCode.Space,
     };
     void Start()
@@ -157,6 +157,12 @@ public class PlayerAI : MonoBehaviour
         bool isnull = true;                                 //Flag for if the current key pressed is NOT one of the player's controls
         for (int x = 0; x < ComIdent.Length; x++)
         {
+            if (Input.GetMouseButtonDown(0))
+            {
+                CurrentCom.type = PCom_t.P_ACTION;
+                isnull = false;
+                continue;
+            }
             if (Input.GetKey(ComIdent[x]))
             {
                 isnull = false;
@@ -186,7 +192,7 @@ public class PlayerAI : MonoBehaviour
         CurrentCom.dur += Time.deltaTime;
         if (CurrentCom.type != LastCom.type)                //Check for command change
         {
-            LastCom.angl = Tool.transform.eulerAngles.z;
+            LastCom.angl = Tool.transform.eulerAngles.z % 360;
             PCList[ComInd] = LastCom;                       //If a new command is found then we add to the command array
             ComInd++;
             Array.Resize(ref PCList, ComInd + 1);

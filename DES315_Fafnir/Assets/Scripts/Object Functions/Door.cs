@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -27,8 +28,13 @@ public class Door : MonoBehaviour
     }
     public void OnMouseDown()
     {
+        InvertDoorState();
+    }
+
+    public void InvertDoorState()
+    {
         var spriteRen = GetComponent<SpriteRenderer>();
-        
+
         isActive = !isActive;
         spriteRen.material = isActive ? openMaterial : closedMaterial;
 

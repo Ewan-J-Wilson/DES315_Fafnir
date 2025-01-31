@@ -17,13 +17,12 @@ public class Tool_Swing : MonoBehaviour
     protected GameObject toolSprite;
 
 
-    private void Start() {
-        
+    private void Start() 
+    {       
         // Initialise the tool as inactive
-        toolSprite = GameObject.Find("Tool Sprite");
+        toolSprite = gameObject.GetComponentInChildren<SpriteRenderer>().gameObject;
         toolSprite.GetComponent<SpriteRenderer>().color = ogColour;
         toolSprite.GetComponent<BoxCollider2D>().size = Vector2.zero;
-
     }
 
     // Update is called once per frame
