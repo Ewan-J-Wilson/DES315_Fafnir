@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CloneAI : PlayerAI
 {
-    public PCom[] ComList;                  //Array of commands
+    public PComs[] ComList;                  //Array of commands
     protected float ComTimer;               //Timer duration for current command
     private int ComPos;                     //Position into command array
     private bool EndCom;                    //Flag to end command reading
@@ -16,38 +16,9 @@ public class CloneAI : PlayerAI
         EndCom = false;
     }
 
-    void Update()
-    {
-        HandleMovement();
-    }
-    private void FixedUpdate()
-    {
-        transform.Translate(Vel * Time.deltaTime * MoveSpeed);
-    }
     protected override void HandleMovement()
     {
-        switch (ComList[ComPos].type)       //Actions based on player commands
-        {
-            case PCom_t.P_NULL:
-                Vel.x = 0;
-                break;
-            case PCom_t.P_LEFT:
-                Vel.x = -1;
-                break;
-            case PCom_t.P_RIGHT:
-                Vel.x = 1;
-                break;
-            case PCom_t.P_JUMP:
-                if (Rb.velocity.y == 0.0f) Rb.velocityY += JumpForce;
-                break;
-            case PCom_t.P_ACTION:
-                break;
-            case PCom_t.P_END:
-                Vel.x = 0;
-                EndCom = true;
-                break;
-        }
-        
+       
         ComTimer -= Time.deltaTime;         //Decrement command duration
         if (ComTimer <= 0f && !EndCom)      //If we've hit < 0 AND the END command has NOT been recieved then we read the next command in
         {

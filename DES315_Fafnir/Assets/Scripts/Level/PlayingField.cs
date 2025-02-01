@@ -15,13 +15,13 @@ public class PlayingField : MonoBehaviour
             mouseOver.x = (int)(hit.point.x);
             mouseOver.y = (int)(hit.point.y);
 
-            Debug.Log(Input.mousePosition);
+            //Debug.Log(Input.mousePosition);
         }
         else
         {
             mouseOver.x = -1;
             mouseOver.y = -1;
-            Debug.Log(Input.mousePosition);
+            //Debug.Log(Input.mousePosition);
         }
 
     }
