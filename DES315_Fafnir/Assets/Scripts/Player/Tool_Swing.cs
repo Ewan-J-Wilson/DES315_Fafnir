@@ -7,19 +7,19 @@ public class Tool_Swing : MonoBehaviour
 {
     
     // Sprite colours for the inactive and active tool respectively
-    [SerializeField] private Color ogColour = Color.yellow;
-    [SerializeField] private Color hitColour = Color.red;
+    [SerializeField] protected Color ogColour = Color.yellow;
+    [SerializeField] protected Color hitColour = Color.red;
     // Designer-controlled hit frame and cooldown times for the tool
-    [Range(0.1f, 1f)][SerializeField] private float hitActive = 0.2f;
-    [Range(0.1f, 5f)][SerializeField] private float hitCooldown = 0.5f;
+    [Range(0.1f, 1f)][SerializeField] protected float hitActive = 0.2f;
+    [Range(0.1f, 5f)][SerializeField] protected float hitCooldown = 0.5f;
     // Timers for the hit frames and cooldown
-    private float hitTimer = 0f;
-    private float cooldownTimer = 0f;
+    protected float hitTimer = 0f;
+    protected float cooldownTimer = 0f;
     // The tool's sprite
-    private GameObject toolSprite;
+    protected GameObject toolSprite;
 
 
-    private void Start() {
+    protected void Start() {
         
         // Initialise the tool as inactive
         toolSprite = GameObject.Find("Tool Sprite");

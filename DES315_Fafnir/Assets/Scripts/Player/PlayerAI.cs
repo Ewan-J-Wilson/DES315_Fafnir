@@ -33,7 +33,7 @@ public class PlayerAI : MonoBehaviour
     
     // Commands
     public PComs[] PCList;                      //List of commands for a clone to follow, recorded by player actions
-    private PComs CurrentCom;                   //Current command being input by player
+    protected PComs CurrentCom;                   //Current command being input by player
     private PComs LastCom;                      //Previous command being input by player
     public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
     protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
@@ -83,7 +83,7 @@ public class PlayerAI : MonoBehaviour
         //L/R input
         CurrentCom.hAxis = Input.GetAxisRaw("Horizontal");
 
-        Debug.Log(CurrentCom.hAxis);
+        //Debug.Log(CurrentCom.hAxis);
 
         //Check if the player is on still ground and the spacebar is pressed to jump
         if (CurrentCom.jump = Input.GetButton("Jump"))
@@ -111,7 +111,7 @@ public class PlayerAI : MonoBehaviour
             }
         }
 
-        CurrentCom.dur += Time.fixedDeltaTime;
+        CurrentCom.dur += Time.deltaTime;
 
         //Create clone entity
         if (Input.GetButtonDown("Clone"))
@@ -122,10 +122,10 @@ public class PlayerAI : MonoBehaviour
                 if (CloneNo >= MaxClones)
                 { return; }
 
-                //Load in last command into stream
+                //Load in the end command into stream
                 ComInd++;
                 Array.Resize(ref PCList, ComInd + 1);
-                PCList[ComInd] = LastCom;
+                PCList[ComInd] = new PComs(){ hAxis = 0f, jump = false, useTool = false, toolRotation = 0f, dur = 0f};
                 
                 ComInd++;
                 AddClone();
@@ -142,12 +142,13 @@ public class PlayerAI : MonoBehaviour
         
 
     }
+
+    protected void Update() 
+    { HandleMovement(); }
+
     protected void FixedUpdate()
     {
-        HandleMovement();
-
         Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, MoveSpeed);
-        Debug.Log(Vel.x);
         transform.Translate(Vel * Time.fixedDeltaTime);
     }
 

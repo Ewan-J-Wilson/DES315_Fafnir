@@ -16,13 +16,24 @@ public class CloneAI : PlayerAI
         EndCom = false;
     }
 
+
     protected override void HandleMovement()
     {
        
         ComTimer -= Time.deltaTime;         //Decrement command duration
         if (ComTimer <= 0f && !EndCom)      //If we've hit < 0 AND the END command has NOT been recieved then we read the next command in
-        {
-            ReadCom();
+        { ReadCom(); }
+        else if (!EndCom) {
+
+            if (CurrentCom.jump)
+            { Jump(); }
+
+            if (CurrentCom.useTool)
+            { CurrentCom.toolRotation = GameObject.Find("Tool").transform.eulerAngles.z; }
+
+            if (ComPos == ComList.Length)
+            { EndCom = true; }
+
         }
     }
 
@@ -32,7 +43,9 @@ public class CloneAI : PlayerAI
         //Debug.Log("ComPos: " + ComPos);
         ComPos++;
         ComPos %= MaxComSize;               //Modulo to max com size to prevent OOB errors
-        ComTimer = ComList[ComPos].dur;
+        CurrentCom = ComList[ComPos];
+        ComTimer = CurrentCom.dur;
+        
     }
 
     //Grabs current commands from player and transfers them to the clone's command list
