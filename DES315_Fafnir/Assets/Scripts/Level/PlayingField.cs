@@ -21,7 +21,7 @@ public class PlayingField : MonoBehaviour
         {
             mouseOver.x = -1;
             mouseOver.y = -1;
-            Debug.Log(Input.mousePosition);
+            //Debug.Log(Input.mousePosition);
         }
 
     }

@@ -127,7 +127,6 @@ public class CloneTool : Tool_Swing
                 return buttoncheck[x];
 			}
 		}
-
         return null;
 	}
 }
