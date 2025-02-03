@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -82,6 +83,7 @@ public class PlayerAI : MonoBehaviour
        
         //L/R input
         CurrentCom.hAxis = Input.GetAxisRaw("Horizontal");
+        Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, MoveSpeed / 4);
 
         //Check if the player is on still ground and the spacebar is pressed to jump
         if (CurrentCom.jump = Input.GetButton("Jump"))
@@ -135,6 +137,7 @@ public class PlayerAI : MonoBehaviour
                 IsRecording = true;
             }
         }
+
         
     }
 
@@ -143,8 +146,11 @@ public class PlayerAI : MonoBehaviour
 
     protected void FixedUpdate()
     {
-        Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, MoveSpeed);
+
+        
         transform.Translate(Vel * Time.fixedDeltaTime);
+        //transform.position += (Vector3)(Vel * Time.fixedDeltaTime);
+
     }
 
 

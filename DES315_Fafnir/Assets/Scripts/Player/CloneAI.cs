@@ -21,6 +21,7 @@ public class CloneAI : PlayerAI
     {
        
         ComTimer -= Time.deltaTime;         //Decrement command duration
+        
         if (ComTimer <= 0f && !EndCom)      //If we've hit < 0 AND the END command has NOT been recieved then we read the next command in
         { ReadCom(); }
         else if (!EndCom) {
@@ -28,13 +29,24 @@ public class CloneAI : PlayerAI
             if (CurrentCom.jump)
             { Jump(); }
 
-            //if (CurrentCom.useTool)
-            //{  }
+            Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, MoveSpeed / 4);
 
-            if (ComPos == PCList.Length - 1)
+
+            // Minus 2 because ComPos starts at 0
+            // and we're looking for the Command before the last one
+            if (ComPos == PCList.Length - 2)
             { EndCom = true; }
 
+
         }
+        else if (ComTimer <= 0f) {
+            CurrentCom.hAxis = 0;
+            CurrentCom.jump = false;
+            CurrentCom.useTool = false;
+        }
+
+        
+
     }
 
     //Grab next command and set duration timer
