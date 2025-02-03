@@ -27,13 +27,13 @@ public class PlayerAI : MonoBehaviour
 {
     
     // Clones
-    public GameObject Clone;                    //Clone gameobject reference
+    [SerializeField] private GameObject Clone;                    //Clone gameobject reference
     protected const int MaxClones = 4;          //Maximum number of clones on screen at once
     private int CloneNo;                        //Count of currently spawned clones
     
     // Commands
     public PComs[] PCList;                      //List of commands for a clone to follow, recorded by player actions
-    protected PComs CurrentCom;                   //Current command being input by player
+    [NonSerialized] public PComs CurrentCom;                   //Current command being input by player
     private PComs LastCom;                      //Previous command being input by player
     public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
     protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
@@ -83,15 +83,12 @@ public class PlayerAI : MonoBehaviour
         //L/R input
         CurrentCom.hAxis = Input.GetAxisRaw("Horizontal");
 
-        //Debug.Log(CurrentCom.hAxis);
-
         //Check if the player is on still ground and the spacebar is pressed to jump
         if (CurrentCom.jump = Input.GetButton("Jump"))
         { Jump(); }
 
         if (CurrentCom.useTool = Input.GetButtonDown("Activate"))
         { CurrentCom.toolRotation = GameObject.Find("Tool").transform.eulerAngles.z; }
-
 
 
         if (IsRecording)
@@ -139,8 +136,6 @@ public class PlayerAI : MonoBehaviour
             }
         }
         
-        
-
     }
 
     protected void Update() 
@@ -197,4 +192,8 @@ public class PlayerAI : MonoBehaviour
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("TrailEnt"))
         { GameObject.Destroy(obj); }
     }
+
+    public virtual float ToolRotation() 
+    { return CurrentCom.toolRotation; }
+
 }

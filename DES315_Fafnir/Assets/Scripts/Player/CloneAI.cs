@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CloneAI : PlayerAI
 {
-    public PComs[] ComList;                  //Array of commands
+    //public PComs[] PCList;                  //Array of commands
     protected float ComTimer;               //Timer duration for current command
     private int ComPos;                     //Position into command array
     private bool EndCom;                    //Flag to end command reading
@@ -11,7 +11,7 @@ public class CloneAI : PlayerAI
     {
         ComPos = 0;                         //Reset command position
         Vel = Vector2.zero;                 //Reset velocity
-        SetComList();                       //Grab player commands
+        SetPCList();                       //Grab player commands
         Rb = GetComponent<Rigidbody2D>();
         EndCom = false;
     }
@@ -28,10 +28,10 @@ public class CloneAI : PlayerAI
             if (CurrentCom.jump)
             { Jump(); }
 
-            if (CurrentCom.useTool)
-            { CurrentCom.toolRotation = GameObject.Find("Tool").transform.eulerAngles.z; }
+            //if (CurrentCom.useTool)
+            //{  }
 
-            if (ComPos == ComList.Length)
+            if (ComPos == PCList.Length - 1)
             { EndCom = true; }
 
         }
@@ -43,20 +43,24 @@ public class CloneAI : PlayerAI
         //Debug.Log("ComPos: " + ComPos);
         ComPos++;
         ComPos %= MaxComSize;               //Modulo to max com size to prevent OOB errors
-        CurrentCom = ComList[ComPos];
+        CurrentCom = PCList[ComPos];
         ComTimer = CurrentCom.dur;
         
     }
 
     //Grabs current commands from player and transfers them to the clone's command list
-    public void SetComList()
+    public void SetPCList()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Array.Resize(ref ComList, player.GetComponent<PlayerAI>().PCList.Length);
+        Array.Resize(ref PCList, player.GetComponent<PlayerAI>().PCList.Length);
         for (int i = 0; i < player.GetComponent<PlayerAI>().PCList.Length; i++)
         {
-            ComList[i] = player.GetComponent<PlayerAI>().PCList[i];
+            PCList[i] = player.GetComponent<PlayerAI>().PCList[i];
         }
         ClearList = true;
     }
+
+    public override float ToolRotation() 
+    { return Mathf.LerpAngle(CurrentCom.toolRotation, PCList[ComPos+1].toolRotation, 1 - (ComTimer / CurrentCom.dur)); }
+
 }

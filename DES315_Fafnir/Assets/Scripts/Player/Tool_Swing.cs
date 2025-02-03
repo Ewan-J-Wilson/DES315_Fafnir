@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class Tool_Swing : MonoBehaviour
@@ -17,14 +18,20 @@ public class Tool_Swing : MonoBehaviour
     protected float cooldownTimer = 0f;
     // The tool's sprite
     protected GameObject toolSprite;
+    private PlayerAI parent;
+    private bool isClone = false;
 
 
     protected void Start() {
         
         // Initialise the tool as inactive
-        toolSprite = GameObject.Find("Tool Sprite");
+        toolSprite = GetComponentInChildren<SpriteRenderer>().gameObject;
         toolSprite.GetComponent<SpriteRenderer>().color = ogColour;
         toolSprite.GetComponent<BoxCollider2D>().size = Vector2.zero;
+
+        parent = (isClone = GetComponentInParent<Rigidbody2D>().CompareTag("Clone"))
+                ? GetComponentInParent<CloneAI>()
+                : GetComponentInParent<PlayerAI>();
 
     }
 
@@ -32,15 +39,27 @@ public class Tool_Swing : MonoBehaviour
     void Update()
     {
 
-        // Grabs the line between the player centre and the mouse position
-        Vector2 mouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        // Calculates the angle of that line
-        float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
-        // Update the tool's z rotation to the angle
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (isClone) {
+
+            //Mathf.LerpAngle(parent.CurrentCom.toolRotation, parent.NextCom.toolRotation, parent.CurrentCom.dur - parent.ComTimer);
+            transform.rotation = Quaternion.AngleAxis(parent.ToolRotation(), Vector3.forward);
+            //transform.rotation = Quaternion.AngleAxis(parent.CurrentCom.toolRotation, Vector3.forward);
+            Debug.Log(parent.CurrentCom.toolRotation);
+
+        } 
+        else {
+
+            // Grabs the line between the player centre and the mouse position
+            Vector2 mouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            // Calculates the angle of that line
+            float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
+            // Update the tool's z rotation to the angle
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        }
 
         // If the user is using the tool
-        if (Input.GetButtonDown("Activate") && cooldownTimer <= 0f) {
+        if (parent.CurrentCom.useTool && cooldownTimer <= 0f) {
 
             // Set the tool hitbox to be active
             toolSprite.GetComponent<SpriteRenderer>().color = hitColour;
@@ -80,4 +99,5 @@ public class Tool_Swing : MonoBehaviour
         { cooldownTimer -= Time.deltaTime; }
 
     }
+
 }
