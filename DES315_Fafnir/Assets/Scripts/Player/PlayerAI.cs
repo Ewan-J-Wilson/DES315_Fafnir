@@ -55,7 +55,8 @@ public class PlayerAI : MonoBehaviour
 		KeyCode.D,
 		KeyCode.Space,
 	};
-	void Start()
+
+    void Start()
 	{
 		PCList = new PCom[MaxComSize];
 		CloneNo = 0;                            //Reset clone amount

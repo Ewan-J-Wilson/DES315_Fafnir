@@ -47,12 +47,25 @@ public class Tool_Swing : MonoBehaviour
         // If the user is using the tool
         if (Input.GetButtonDown("Activate") && cooldownTimer <= 0f)
         {
-            // Set the tool hitbox to be active
-            toolSprite.GetComponent<SpriteRenderer>().color = hitColour;
-            toolSprite.GetComponent<BoxCollider2D>().size = Vector2.one;
-            // Start the hit frame timer
-            hitTimer = hitActive;
+            SetToolActive();
         }
+    }
+    protected void SetToolActive()
+    {
+        // Set the tool hitbox to be active
+        toolSprite.GetComponent<SpriteRenderer>().color = hitColour;
+        toolSprite.GetComponent<BoxCollider2D>().size = Vector2.one;
+        // Start the hit frame timer
+        hitTimer = hitActive;
+    }
+
+    protected void SetToolInactive()
+    {
+        // Reset the tool to inactive
+        toolSprite.GetComponent<SpriteRenderer>().color = ogColour;
+        toolSprite.GetComponent<BoxCollider2D>().size = Vector2.zero;
+        // Start the cooldown timer
+        cooldownTimer = hitCooldown;
     }
 
     protected void RunTimer() {
@@ -64,12 +77,8 @@ public class Tool_Swing : MonoBehaviour
 
             // If the timer ran out
             if (hitTimer <= 0)
-            { 
-                // Reset the tool to inactive
-                toolSprite.GetComponent<SpriteRenderer>().color = ogColour;
-                toolSprite.GetComponent<BoxCollider2D>().size = Vector2.zero;
-                // Start the cooldown timer
-                cooldownTimer = hitCooldown;   
+            {
+                SetToolInactive();
             }
         }
         // Tick down an active cooldown timer
