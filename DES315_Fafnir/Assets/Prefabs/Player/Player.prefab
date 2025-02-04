@@ -314,6 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clone: {fileID: 4064460576545659443, guid: 038f10f9afc22b74ea9d7db4625cabb3, type: 3}
+  TrailPart: {fileID: 0}
+  Tool: {fileID: 7735046149780845930}
   PCList: []
 --- !u!50 &1796299224185216547
 Rigidbody2D:
