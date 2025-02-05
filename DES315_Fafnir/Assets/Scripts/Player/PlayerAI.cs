@@ -1,5 +1,7 @@
 using System;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
 public enum PCom_t
 {
 	P_NULL,                                     //Null command [Keep as otherwise clones will keep moving left]
@@ -18,6 +20,15 @@ public struct PCom
 	public float dur;                           //How long to hold button down
 	public float val;                           //Generic input value for commands
 	public float angl;                          //Angle input for the player tool
+}
+
+public struct ActionList {
+
+	// horizontal movement
+	public float hAxis;
+	public bool jump;
+	public bool tool;
+
 }
 
 public class PlayerAI : MonoBehaviour
@@ -47,26 +58,76 @@ public class PlayerAI : MonoBehaviour
 	protected Vector2 Vel;                      //Movement vector
 	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
 
-	private bool DEBUG_MovementSwitch;          //Switch between different movement types
+	[NonSerialized]
+	public ActionList actions;
+	
 
-	KeyCode[] ComIdent =                        //List of commands, set up in corresponding order to PCom_t
-	{
-		KeyCode.A,
-		KeyCode.D,
-		KeyCode.Space,
-	};
+	[SerializeField]
+	private PlayerInput pInput;
+
 
     void Start()
 	{
+
+		// Gets the player input
+		pInput = GetComponent<PlayerInput>();
+
 		PCList = new PCom[MaxComSize];
 		CloneNo = 0;                            //Reset clone amount
 		Rb = GetComponent<Rigidbody2D>();
 		Array.Resize(ref PCList, 1);            //Resize array to have one element
 		ComInd = 0;                             //Reset command index
 		LastPos = transform.position;           //Grab current position for future clone position
+
 	}
 
-	protected void Update()
+    public void JumpAction(InputAction.CallbackContext obj) {
+        
+		if ((actions.jump = obj.performed) && Rb.velocityY == 0f) 
+		{ Rb.velocityY += JumpForce; }
+
+    }
+
+	public void MoveAction(InputAction.CallbackContext obj) 
+	{ actions.hAxis = Mathf.Ceil(obj.ReadValue<float>()); }
+
+	public void CloneAction(InputAction.CallbackContext obj) {
+
+		if (!obj.started)
+		{ return; }
+
+		if (IsRecording)
+		{
+			if (CloneNo >= MaxClones)
+			{
+				return;                                         //Break out of function if the clone limit has been reached
+			}
+			//Load in last command into stream
+			PCList[ComInd] = LastCom;
+			ComInd++;
+			Array.Resize(ref PCList, ComInd + 1);
+			//Append END flag into command stream to make sure the clone stops
+			PCom end;
+			end.type = PCom_t.P_END;
+			end.dur = 0;
+			end.val = 0;
+			end.angl = 0;
+			PCList[ComInd] = end;
+			ComInd++;
+			AddClone();
+			KillTrail();
+			IsRecording = false;
+		}
+		else
+		{
+			LastPos = transform.position;
+			IsRecording = true;
+		}
+
+	}
+
+
+    protected void Update()
 	{
 		HandleMovement();
 	}
@@ -89,58 +150,13 @@ public class PlayerAI : MonoBehaviour
 		}
 
 		//Debug for command type and duration
-		//qDebug.Log("Type: " + CurrentCom.type + "\nDur: " + CurrentCom.dur + "\nVal: " + CurrentCom.val);
+		//Debug.Log("Type: " + CurrentCom.type + "\nDur: " + CurrentCom.dur + "\nVal: " + CurrentCom.val);
 
-		//Create clone entity
-		if (Input.GetKeyDown("q"))
-		{
-			if (IsRecording)
-			{
-				if (CloneNo >= MaxClones)
-				{
-					return;                                         //Break out of function if the clone limit has been reached
-				}
-				//Load in last command into stream
-				PCList[ComInd] = LastCom;
-				ComInd++;
-				Array.Resize(ref PCList, ComInd + 1);
-				//Append END flag into command stream to make sure the clone stops
-				PCom end;
-				end.type = PCom_t.P_END;
-				end.dur = 0;
-				end.val = 0;
-				end.angl = 0;
-				PCList[ComInd] = end;
-				ComInd++;
-				AddClone();
-				KillTrail();
-				IsRecording = false;
-			}
-			else
-			{
-				LastPos = transform.position;
-				IsRecording = true;
-			}
-		}
-		if (Input.GetKeyDown("w")) DEBUG_MovementSwitch = !DEBUG_MovementSwitch;
-        //L/R input
-        Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * Input.GetAxis("Horizontal"), XAccel);
+        ////L/R input
+        Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * actions.hAxis, XAccel);
 
-        //if (DEBUG_MovementSwitch)
-        //{
-        //	Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * Input.GetAxis("Horizontal"), MoveSpeed * Time.deltaTime);
-        //}
-        //else
-        //{
-        //	Vel.x = MoveSpeed * Input.GetAxis("Horizontal");
-        //}
-
-        //Check if the player is on still ground and the spacebar is pressed to jump
-        if (Input.GetKeyDown("space") && Rb.velocity.y == 0.0f)
-		{
-			Rb.velocityY += JumpForce;
-		}
 	}
+
 	protected void FixedUpdate()
 	{
 		transform.Translate(Vel * Time.deltaTime);
@@ -149,7 +165,7 @@ public class PlayerAI : MonoBehaviour
 	//Create clone
 	void AddClone()
 	{
-		Debug.Log("Player pos: " + transform.position);
+		//Debug.Log("Player pos: " + transform.position);
 		CloneNo++;
 		Instantiate(Clone, LastPos, Quaternion.identity);   //Otherwise we create a clone at the player's last position
 		transform.position = LastPos;                       //Reset player back to original position before recording
@@ -157,42 +173,32 @@ public class PlayerAI : MonoBehaviour
 
 	private void HandleCommandInput()
 	{
+
 		//Grab the last command for future testing
 		LastCom = CurrentCom;
-		bool isnull = true;                                 //Flag for if the current key pressed is NOT one of the player's controls
-		for (int x = 0; x < ComIdent.Length; x++)
-		{
-			if (Input.GetMouseButtonDown(0))
-			{
-				CurrentCom.type = PCom_t.P_ACTION;
-				isnull = false;
-                CurrentCom.val = Vel.x;
-                continue;
-			}
-			if (Input.GetKey(ComIdent[x]))
-            {
-                CurrentCom.val = Vel.x;
-                isnull = false;
-				switch (x)                                  //Command type decider
-				{
-					case 0:
-						CurrentCom.type = PCom_t.P_LEFT;
-						break;
-					case 1:
-						CurrentCom.type = PCom_t.P_RIGHT;
-						break;
-					case 2:
-						CurrentCom.type = PCom_t.P_JUMP;
-                        break;
-				}
-			}
-		}
 
-		if (isnull)
-		{
-			CurrentCom.type = PCom_t.P_NULL;
-			CurrentCom.val = 0;
+		// Grab the current movement
+		Debug.Log(actions.hAxis);
+		CurrentCom.val = actions.hAxis;
+		if (actions.hAxis != 0) {
+
+			if (actions.hAxis > 0)
+			{ CurrentCom.type = PCom_t.P_RIGHT; }
+			else if (actions.hAxis < 0)
+			{ CurrentCom.type = PCom_t.P_LEFT; }
+
 		}
+		else
+		{ CurrentCom.type = PCom_t.P_NULL; }
+		
+		// Sets whether the player is using an action or not
+		if (actions.tool)
+		{ CurrentCom.type = PCom_t.P_ACTION; }
+
+		// Sets whether the player is jumping or not
+		if (actions.jump)
+		{ CurrentCom.type = PCom_t.P_JUMP; }
+
 
 		if (CurrentCom.type != LastCom.type)                //Check for command change
 		{
@@ -204,16 +210,6 @@ public class PlayerAI : MonoBehaviour
 		}
 		CurrentCom.dur += Time.deltaTime;
 	}
-
-	//public void KillClone(GameObject clone)
-	//{
-	//	if (CloneNo <= 0)
-	//	{
-	//		return;
-	//	}
-	//	Destroy(clone);
-	//	CloneNo--;
-	//}
 
 	private void HandleTrail()
 	{
@@ -236,4 +232,8 @@ public class PlayerAI : MonoBehaviour
 			GameObject.Destroy(obj);
 		}
 	}
+
+	public virtual float ToolRotation()
+	{ return CurrentCom.angl; }
+
 }
