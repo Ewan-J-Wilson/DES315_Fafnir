@@ -4,38 +4,26 @@ using UnityEngine;
 public class CloneAI : PlayerAI
 {
 	protected float ComTimer;               //Timer duration for current command
-	public int ComPos;                   //Position into command array
+	public int ComPos;						//Position into command array
 	private bool EndCom;                    //Flag to end command reading
 
 	void Start()
 	{
+		Vel = Vector2.zero;					//Reset velocity
 		ComPos = 0;                         //Reset command position
-		SetPCList();                       //Grab player commands
+		SetPCList();						//Grab player commands
 		Rb = GetComponent<Rigidbody2D>();
 		EndCom = false;
-		Vel.x = PCList[ComPos].val;                 //Reset velocity
 	}
 
 	protected override void HandleMovement()
 	{
 		
-		switch (PCList[ComPos].type)       //Actions based on player commands
-		{
-			
-			case PCom_t.P_JUMP:
-				if (Rb.velocityY == 0f) 
-				{ Rb.velocityY += JumpForce; }
-				break;
+		if (PCList[ComPos].jump && Rb.velocityY == 0f)
+		{ Rb.velocityY += JumpForce; }
 
-			case PCom_t.P_END:
-				EndCom = true;
-				break;
-
-			// Catch every other case
-			default:
-				break;
-
-		}
+		if (ComPos == PCList.Length - 1)
+		{ EndCom = true; }
 
 		if (ComTimer <= 0f && !EndCom)      //If we've hit < 0 AND the END command has NOT been recieved then we read the next command in
 		{
@@ -43,7 +31,7 @@ public class CloneAI : PlayerAI
 		}
 		ComTimer -= Time.deltaTime;         //Decrement command duration
 
-		Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * PCList[ComPos].val, XAccel);
+		Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * PCList[ComPos].hAxis, XAccel);
 
 	}
 
@@ -70,6 +58,6 @@ public class CloneAI : PlayerAI
 
 	// NOTE: on end command the tool rotation goes back to the start position
 	public override float ToolRotation() 
-    { return Mathf.LerpAngle(PCList[ComPos].angl, PCList[(ComPos+1) % PCList.Length].angl, 1 - (ComTimer / PCList[ComPos].dur)); }
+    { return Mathf.LerpAngle(PCList[ComPos].toolRotation, PCList[(ComPos+1) % PCList.Length].toolRotation, 1 - (ComTimer / PCList[ComPos].dur)); }
 
 }

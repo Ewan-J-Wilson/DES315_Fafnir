@@ -49,7 +49,7 @@ public class Tool_Swing : MonoBehaviour
 
     public void ToolAction(InputAction.CallbackContext obj) {
 
-        if (parent.actions.tool = obj.performed)
+        if (parent.CurrentCom.tool = obj.performed)
         { SetToolActive(true); }
 
     }
