@@ -31,6 +31,7 @@ public class CloneAI : PlayerAI
 				EndCom = true;
 				break;
 
+			// Catch every other case
 			default:
 				break;
 

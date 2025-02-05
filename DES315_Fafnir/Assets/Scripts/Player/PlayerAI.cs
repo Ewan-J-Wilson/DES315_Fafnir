@@ -33,44 +33,40 @@ public struct ActionList {
 
 public class PlayerAI : MonoBehaviour
 {
-	public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
-	public GameObject Clone;                    //Clone gameobject reference
-	public GameObject TrailPart;                //Trail particle reference
-	public GameObject Tool;                     //Trail particle reference
 	
-	protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
+	// Clones
+	[SerializeField] private GameObject Clone;  //Clone gameobject reference
+	private int CloneNo;                        //Count of currently spawned clones
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
-	[SerializeField]
-	protected const float MoveSpeed = 5.0f;     //Constant movement speed
-	protected const float JumpForce = 20.0f;    //Constant jump force
-	protected const float XAccel = 3.33f;		//Constant aceleration
+
+	// Trails
+	public GameObject TrailPart;                //Trail particle reference
+	private float TrailTimer;                   //Timer to wait for instantiating a trail when the player is recording
 	protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
 
+	// Commands
 	public PCom[] PCList;                       //List of commands for a clone to follow, recorded by player actions
 	private PCom CurrentCom;                    //Current command being input by player
 	private PCom LastCom;                       //Previous command being input by player
-	private int CloneNo;                        //Count of currently spawned clones
 	private int ComInd;                         //Index into written commands
+	protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
+	public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
 	private bool IsRecording;                   //Flag to enable movement recording with the player
-	private float TrailTimer;                   //Timer to wait for instantiating a trail when the player is recording
+	[NonSerialized]
+	public ActionList actions;
 
+	// Player
 	protected Rigidbody2D Rb;                   //Rigidbody for player physics
 	protected Vector2 Vel;                      //Movement vector
 	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
-
-	[NonSerialized]
-	public ActionList actions;
+	[SerializeField] [Range(1f, 10f)]
+	protected const float MoveSpeed = 5.0f;     //Constant movement speed
+	protected const float JumpForce = 20.0f;    //Constant jump force
+	protected const float XAccel = 3.33f;		//Constant aceleration
 	
-
-	[SerializeField]
-	private PlayerInput pInput;
-
 
     void Start()
 	{
-
-		// Gets the player input
-		pInput = GetComponent<PlayerInput>();
 
 		PCList = new PCom[MaxComSize];
 		CloneNo = 0;                            //Reset clone amount
@@ -81,6 +77,7 @@ public class PlayerAI : MonoBehaviour
 
 	}
 
+	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
         
 		if ((actions.jump = obj.performed) && Rb.velocityY == 0f) 
@@ -88,11 +85,14 @@ public class PlayerAI : MonoBehaviour
 
     }
 
+	// Rounded to ceiling to prevent action being recorded halfway through a stick movement
 	public void MoveAction(InputAction.CallbackContext obj) 
 	{ actions.hAxis = Mathf.Ceil(obj.ReadValue<float>()); }
 
+	// Records the clone action
 	public void CloneAction(InputAction.CallbackContext obj) {
 
+		// Returns if this is anything but the start of the button press
 		if (!obj.started)
 		{ return; }
 
@@ -118,6 +118,7 @@ public class PlayerAI : MonoBehaviour
 			KillTrail();
 			IsRecording = false;
 		}
+		// Enable the recording
 		else
 		{
 			LastPos = transform.position;
@@ -149,10 +150,10 @@ public class PlayerAI : MonoBehaviour
 			HandleTrail();
 		}
 
-		//Debug for command type and duration
+		// Debug for command type and duration
 		//Debug.Log("Type: " + CurrentCom.type + "\nDur: " + CurrentCom.dur + "\nVal: " + CurrentCom.val);
 
-        ////L/R input
+        // L/R input
         Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * actions.hAxis, XAccel);
 
 	}
@@ -162,7 +163,7 @@ public class PlayerAI : MonoBehaviour
 		transform.Translate(Vel * Time.deltaTime);
 	}
 
-	//Create clone
+	// Create clone
 	void AddClone()
 	{
 		//Debug.Log("Player pos: " + transform.position);
@@ -174,7 +175,7 @@ public class PlayerAI : MonoBehaviour
 	private void HandleCommandInput()
 	{
 
-		//Grab the last command for future testing
+		// Grab the last command for future testing
 		LastCom = CurrentCom;
 
 		// Grab the current movement
@@ -191,18 +192,19 @@ public class PlayerAI : MonoBehaviour
 		else
 		{ CurrentCom.type = PCom_t.P_NULL; }
 		
-		// Sets whether the player is using an action or not
+		// Sets whether the player is using the tool or not
 		if (actions.tool)
 		{ CurrentCom.type = PCom_t.P_ACTION; }
 
 		// Sets whether the player is jumping or not
+		// Prioritised over both movement and the tool
 		if (actions.jump)
 		{ CurrentCom.type = PCom_t.P_JUMP; }
 
 
 		if (CurrentCom.type != LastCom.type)                //Check for command change
 		{
-			LastCom.angl = Tool.transform.eulerAngles.z % 360;
+			LastCom.angl = GetComponentInChildren<Tool_Swing>().transform.eulerAngles.z % 360;
 			PCList[ComInd] = LastCom;                       //If a new command is found then we add to the command array
 			ComInd++;
 			Array.Resize(ref PCList, ComInd + 1);
