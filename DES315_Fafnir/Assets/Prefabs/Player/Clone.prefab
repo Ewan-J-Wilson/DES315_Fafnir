@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5063324547857528653}
-  - component: {fileID: 7745122815445859391}
+  - component: {fileID: 1074906895303390853}
   m_Layer: 0
   m_Name: Tool
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 2621633127696823367}
   m_Father: {fileID: 3181043232371810286}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7745122815445859391
+--- !u!114 &1074906895303390853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 769013001509876232}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ab2c23aa322f8946ad4c637c4bbbf24, type: 3}
+  m_Script: {fileID: 11500000, guid: 0499d7e094a76da4bb34e67b5881797e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ogColour: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
@@ -305,8 +305,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clone: {fileID: 0}
   TrailPart: {fileID: 0}
+  Tool: {fileID: 0}
   PCList: []
+  pInput: {fileID: 0}
   ComList: []
+  ComPos: 0
 --- !u!1 &8676656009448351387
 GameObject:
   m_ObjectHideFlags: 0
