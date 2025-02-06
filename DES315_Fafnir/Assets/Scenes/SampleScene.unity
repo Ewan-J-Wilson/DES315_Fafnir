@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 819988507}
   - component: {fileID: 819988509}
   - component: {fileID: 819988510}
+  - component: {fileID: 819988511}
   m_Layer: 0
   m_Name: Camera FoV
   m_TagString: Untagged
@@ -293,8 +294,8 @@ Transform:
   m_GameObject: {fileID: 819988506}
   serializedVersion: 2
   m_LocalRotation: {x: 0.4170881, y: 0.9066222, z: 0.057984572, w: 0.026677154}
-  m_LocalPosition: {x: 10.73, y: -1.68, z: -0.06}
-  m_LocalScale: {x: 1.9491, y: 11.211, z: 1}
+  m_LocalPosition: {x: 10.3391, y: -1.3, z: -0.08}
+  m_LocalScale: {x: 3.0658169, y: 11.262171, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -346,8 +347,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 0, y: 0.5773587}
-      - {x: -0.5, y: -0.28866667}
-      - {x: 0.5, y: -0.28866667}
+      - {x: -0.009132057, y: -0.43532252}
+      - {x: 0.002193585, y: -0.43721887}
+      - {x: 0.3520114, y: -0.56414586}
+      - {x: 1.1127373, y: -0.8143223}
   m_UseDelaunayMesh: 0
 --- !u!114 &819988510
 MonoBehaviour:
@@ -361,6 +364,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa80c140edd0fe4c8704c77c21ebf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  security: {fileID: 0}
+  closedMaterial: {fileID: 0}
+  openMaterial: {fileID: 0}
+--- !u!114 &819988511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819988506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1711271091 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 992175141542049301, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
@@ -379,6 +398,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 1891658024}
+  defaultMaterial: {fileID: 0}
+  openMaterial: {fileID: 2100000, guid: a38c00d6065583443bbc451f3a4e07b5, type: 2}
+  isActive: 0
 --- !u!1 &1891658024 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4927845272756914148, guid: b18f65b34ee0e254197bc6ad6d4df90e, type: 3}
