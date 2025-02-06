@@ -151,6 +151,26 @@ public class PlayerAI : MonoBehaviour
 		transform.position = LastPos;                       //Reset player back to original position before recording
 	}
 
+	public void KillClone(GameObject clone)
+	{
+
+		if (CloneNo <= 0)
+		{
+			return;
+		}
+
+		Destroy(clone);
+		CloneNo--;
+
+	}
+
+	public void KillClone() {
+
+        for (; CloneNo > 0; CloneNo--) 
+		{ Destroy(GameObject.FindGameObjectWithTag("Clone")); }
+
+	}
+
 	private void HandleCommandInput()
 	{
 		//Check for command change
