@@ -7,7 +7,7 @@ using UnityEngine;
 public class SecurityCamera : MonoBehaviour
 {
     [SerializeReference] private GameObject security;
-
+    [SerializeReference] PlayerAI player;
     public Material closedMaterial;
     public Material openMaterial;
     private bool cameraOn = true;
@@ -18,11 +18,7 @@ public class SecurityCamera : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (cameraOn)
-        {
-            Debug.Log("You're'nt winner!");
-                   
-        }
+        player.KillClone();
     }
     // Update is called once per frame
     void Update()

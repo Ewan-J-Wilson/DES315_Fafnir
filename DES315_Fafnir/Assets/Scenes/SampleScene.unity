@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   security: {fileID: 0}
+  player: {fileID: 8382643984986957929}
   closedMaterial: {fileID: 0}
   openMaterial: {fileID: 0}
 --- !u!114 &819988511
@@ -913,6 +914,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+--- !u!114 &8382643984986957929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6960429248404074951, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+  m_PrefabInstance: {fileID: 8382643984986957928}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7d1835ad8373544b629e38f487aa18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
