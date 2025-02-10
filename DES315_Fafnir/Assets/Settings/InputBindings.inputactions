@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Double Jump ",
+                    "type": "Button",
+                    "id": "410dfd13-9a91-4d7b-ac7f-12dfcdbebdca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -238,6 +247,17 @@
                     "action": "Tool Angle",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a26ed55a-f39e-4c00-9b6f-b5c65d650a78",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Double Jump ",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

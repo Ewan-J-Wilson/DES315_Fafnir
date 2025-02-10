@@ -24,7 +24,9 @@ public class PlayerAI : MonoBehaviour
 	// Clones
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
 	private int CloneNo;                        //Count of currently spawned clones
+	private int JumpCount;
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
+	protected const int MaxJump = 2;			// Enables double jumping 
 	
 
 	// Trails
@@ -41,6 +43,7 @@ public class PlayerAI : MonoBehaviour
 	protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
 	public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
 	private bool IsRecording;                   //Flag to enable movement recording with the player
+	//private bool airborne = false;
 
 	// Player
 	protected Rigidbody2D Rb;                   //Rigidbody for player physics
@@ -67,8 +70,13 @@ public class PlayerAI : MonoBehaviour
 	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
         
-		if ((CurrentCom.jump = obj.performed) && Rb.velocityY == 0f) 
-		{ Rb.velocityY += JumpForce; }
+		if ((CurrentCom.jump = obj.performed) && JumpCount < MaxJump) 
+		{
+
+			JumpCount++;
+            Rb.velocityY = JumpForce;
+			
+		}
 
     }
 
@@ -118,6 +126,10 @@ public class PlayerAI : MonoBehaviour
 
 	protected virtual void HandleMovement()
 	{
+		if (Rb.velocityY == 0f)
+		{
+			JumpCount = 0;
+		}
 		//Clear command list for next clone once newly made clone has grabbed all current commands
 		if (ClearList)
 		{
