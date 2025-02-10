@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1692468915207572723}
   - component: {fileID: 2494878576279919897}
   - component: {fileID: 3545720820612849037}
+  - component: {fileID: 5262275434387853708}
   m_Layer: 5
   m_Name: ControllerRebindButton
   m_TagString: Untagged
@@ -133,6 +134,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5262275434387853708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480420952547331202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b65f47051c51be40b6a4a85035c40ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &723199622616807248
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +158,7 @@ GameObject:
   - component: {fileID: 7894754972980758727}
   - component: {fileID: 4997300647705143695}
   - component: {fileID: 5024266567257472466}
+  - component: {fileID: 9202937887469965100}
   m_Layer: 5
   m_Name: ResetToDefaultButton
   m_TagString: Untagged
@@ -266,6 +280,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &9202937887469965100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 723199622616807248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b65f47051c51be40b6a4a85035c40ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &731473608444823109
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,6 +595,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6680292650503350825}
+  - component: {fileID: 7205893513247225178}
   - component: {fileID: 6680292650503350827}
   - component: {fileID: 6680292650503350824}
   - component: {fileID: 6680292650503350826}
@@ -603,6 +630,20 @@ RectTransform:
   m_AnchoredPosition: {x: -232, y: 19}
   m_SizeDelta: {x: -1336.4, y: -691.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7205893513247225178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6680292650503350822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2628480dbaa3a84d80673e23bb97c91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridIndex: 0
+  scroll: {fileID: 0}
 --- !u!222 &6680292650503350827
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -843,6 +884,7 @@ GameObject:
   - component: {fileID: 3573462795036708828}
   - component: {fileID: 6562243507651565417}
   - component: {fileID: 4168522202458225171}
+  - component: {fileID: 8521590875559218471}
   m_Layer: 5
   m_Name: KeyboardRebindButton
   m_TagString: Untagged
@@ -964,3 +1006,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8521590875559218471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8384654220190448158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b65f47051c51be40b6a4a85035c40ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
