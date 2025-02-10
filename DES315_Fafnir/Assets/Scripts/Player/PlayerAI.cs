@@ -24,9 +24,9 @@ public class PlayerAI : MonoBehaviour
 	// Clones
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
 	private int CloneNo;                        //Count of currently spawned clones
-	private int JumpCount;
+	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
-	protected const int MaxJump = 2;			// Enables double jumping 
+	protected const int MaxJump = 2;			//Makes it so double jumping mechanic can't be exploited infinitely 
 	
 
 	// Trails

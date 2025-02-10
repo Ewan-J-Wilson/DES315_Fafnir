@@ -16,8 +16,13 @@ public class SecurityCamera : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag != "Player")
+        {
+            return;
+        }
         player.KillClone();
     }
     // Update is called once per frame
