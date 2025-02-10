@@ -57,10 +57,16 @@ public class FloorButton : MonoBehaviour
     { ButtonTrans.position = Vector3.MoveTowards(ButtonPos, PressedPos, ButtonTimer); }
 
     // Detects the player on the button
-    private void OnTriggerStay2D(Collider2D collision)
-    { if (collision.tag == "Player" || collision.tag == "Clone") IsPressed = true; }
+    private void OnTriggerStay2D(Collider2D collision) { 
+        if (!(collision.tag == "Player" || collision.tag == "Clone")) 
+        { return; }
+        IsPressed = true; 
+    }
 
     // Detects the player leaving the button
-    private void OnTriggerExit2D(Collider2D collision)
-    { if (collision.tag == "Player" || collision.tag == "Clone") IsPressed = false; }
+    private void OnTriggerExit2D(Collider2D collision) { 
+        if (!(collision.tag == "Player" || collision.tag == "Clone")) 
+        { return; }
+        IsPressed = false; 
+    }
 }
