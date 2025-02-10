@@ -25,6 +25,7 @@ public class PlayerAI : MonoBehaviour
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
 	private int CloneNo;                        //Count of currently spawned clones
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
+	
 
 	// Trails
 	public GameObject TrailPart;                //Trail particle reference
@@ -166,8 +167,8 @@ public class PlayerAI : MonoBehaviour
 
 	public void KillClone() {
 
-        for (; CloneNo > 0; CloneNo--) 
-		{ Destroy(GameObject.FindGameObjectWithTag("Clone")); }
+        for (; CloneNo > 0; CloneNo--)
+		{ Destroy(GameObject.FindGameObjectsWithTag("Clone")[CloneNo-1]); }
 
 	}
 
