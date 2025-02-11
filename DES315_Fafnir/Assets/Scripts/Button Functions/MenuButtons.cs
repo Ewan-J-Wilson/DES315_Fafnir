@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,9 +10,13 @@ public class MenuButtons : MonoBehaviour
 
     // If the menu only appears after a condition has been met
     [SerializeField] private bool conditional = false;
+    private EventSystem eventSys;
 
-    private void Awake()
-    { GetComponent<Canvas>().enabled = !conditional; }
+    private void Awake() { 
+        GetComponent<Canvas>().enabled = !conditional; 
+        eventSys = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystem>();
+        eventSys.enabled = !conditional;
+    }
 
     public static void SwitchToScene(System.String _scene) { 
         Time.timeScale = 1;
@@ -20,6 +25,7 @@ public class MenuButtons : MonoBehaviour
     
     public void Pause(bool _pause) {
         GetComponent<Canvas>().enabled = _pause;
+        eventSys.enabled = _pause;
         Time.timeScale = (_pause ? 0 : 1);
     }
 

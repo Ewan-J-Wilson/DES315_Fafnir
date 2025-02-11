@@ -187,7 +187,7 @@ GameObject:
   - component: {fileID: 298882625}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: EventSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,10 +320,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 2025430137}
-    - target: {fileID: 4168522202458225171, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 459127423}
     - target: {fileID: 4736651121292495153, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
       value: 'Use Tool:'
@@ -339,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 5024266567257472466, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_Navigation.m_SelectOnRight
       value: 
-      objectReference: {fileID: 2025430137}
+      objectReference: {fileID: 0}
     - target: {fileID: 6680292650503350822, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_Name
       value: Tool Key
@@ -476,6 +472,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 723847892}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: gridIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8126403752470294421, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -542,8 +546,8 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 2025430137}
     m_SelectOnDown: {fileID: 251408948}
-    m_SelectOnLeft: {fileID: 2025430137}
-    m_SelectOnRight: {fileID: 251408948}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1337,10 +1341,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1908271653}
-    - target: {fileID: 4168522202458225171, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 363970490}
     - target: {fileID: 4736651121292495153, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
       value: 'Move Left:'
@@ -1353,10 +1353,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 750519533}
-    - target: {fileID: 5024266567257472466, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 1908271653}
     - target: {fileID: 6680292650503350822, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_Name
       value: MoveL Key
@@ -1493,6 +1489,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 723847892}
     - target: {fileID: 8126403752470294421, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1752,10 +1752,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1728915586}
-    - target: {fileID: 4168522202458225171, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 750519533}
     - target: {fileID: 4736651121292495153, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
       value: 'Jump:'
@@ -1768,10 +1764,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 459127423}
-    - target: {fileID: 5024266567257472466, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 1728915586}
     - target: {fileID: 6680292650503350822, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_Name
       value: Jump Key
@@ -1907,6 +1899,14 @@ PrefabInstance:
     - target: {fileID: 6968172690644006903, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 723847892}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: gridIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8126403752470294421, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2072,10 +2072,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1844756335}
-    - target: {fileID: 4168522202458225171, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 253734513}
     - target: {fileID: 4736651121292495153, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
       value: 'Move Right:'
@@ -2088,10 +2084,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 885700352}
-    - target: {fileID: 5024266567257472466, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 1844756335}
     - target: {fileID: 6680292650503350822, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_Name
       value: MoveR Key
@@ -2227,6 +2219,14 @@ PrefabInstance:
     - target: {fileID: 6968172690644006903, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 723847892}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: gridIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8126403752470294421, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2763,10 +2763,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 526582967}
-    - target: {fileID: 4168522202458225171, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 885700352}
     - target: {fileID: 4736651121292495153, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
       value: 'Clone:'
@@ -2779,10 +2775,6 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1765678912}
-    - target: {fileID: 5024266567257472466, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 526582967}
     - target: {fileID: 6680292650503350822, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_Name
       value: Clone Key
@@ -2918,6 +2910,14 @@ PrefabInstance:
     - target: {fileID: 6968172690644006903, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: scroll
+      value: 
+      objectReference: {fileID: 723847892}
+    - target: {fileID: 7205893513247225178, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: gridIndex
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8126403752470294421, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchorMax.y

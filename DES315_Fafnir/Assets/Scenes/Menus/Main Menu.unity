@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 298882625}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: EventSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -233,8 +233,8 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 967726137}
     m_SelectOnDown: {fileID: 2035525051}
-    m_SelectOnLeft: {fileID: 967726137}
-    m_SelectOnRight: {fileID: 2035525051}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -615,8 +615,8 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 2035525051}
     m_SelectOnDown: {fileID: 363970490}
-    m_SelectOnLeft: {fileID: 2035525051}
-    m_SelectOnRight: {fileID: 363970490}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1139,8 +1139,8 @@ MonoBehaviour:
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 363970490}
     m_SelectOnDown: {fileID: 967726137}
-    m_SelectOnLeft: {fileID: 363970490}
-    m_SelectOnRight: {fileID: 967726137}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
