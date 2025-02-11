@@ -630,6 +630,7 @@ GameObject:
   - component: {fileID: 688744644}
   - component: {fileID: 688744643}
   - component: {fileID: 688744642}
+  - component: {fileID: 688744645}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -712,6 +713,18 @@ Transform:
   - {fileID: 1866310347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &688744645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688744641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a9d301b2bf3cd48bb100cc3ee38437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &805186852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,6 +1566,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166785458}
   m_CullTransparentMesh: 1
+--- !u!1 &1171769475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1171769477}
+  - component: {fileID: 1171769476}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1171769476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171769475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3113ede2fa0e60b4dbb5e488ee121548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudOut: {fileID: 24300002, guid: d0eda980d4d284e42a55904063f1063a, type: 2}
+  tracks:
+  - Name: Kick
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: a6563c4d0a6d64c4bbac9914c364a87e, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Minceraft
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 1
+    clip: {fileID: 8300000, guid: e30c466fe4d8cd640ac412890764e2ab, type: 3}
+    src: {fileID: 0}
+    type: 1
+--- !u!4 &1171769477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171769475}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215341006
 GameObject:
   m_ObjectHideFlags: 0
@@ -3296,3 +3371,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 688744644}
   - {fileID: 298882624}
+  - {fileID: 1171769477}

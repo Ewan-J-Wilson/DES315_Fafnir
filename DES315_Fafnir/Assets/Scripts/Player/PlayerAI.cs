@@ -46,8 +46,8 @@ public class PlayerAI : MonoBehaviour
 	protected Vector2 Vel;                      //Movement vector
 	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
 	[SerializeField] [Range(1f, 10f)]
-	protected const float MoveSpeed = 5.0f;     //Constant movement speed
-	protected const float JumpForce = 20.0f;    //Constant jump force
+	protected const float MoveSpeed = 7.5f;     //Constant movement speed
+	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
 	
 
@@ -149,6 +149,26 @@ public class PlayerAI : MonoBehaviour
 		CloneNo++;
 		Instantiate(Clone, LastPos, Quaternion.identity);   //Otherwise we create a clone at the player's last position
 		transform.position = LastPos;                       //Reset player back to original position before recording
+	}
+
+	public void KillClone(GameObject clone)
+	{
+
+		if (CloneNo <= 0)
+		{
+			return;
+		}
+
+		Destroy(clone);
+		CloneNo--;
+
+	}
+
+	public void KillClone() {
+
+        for (; CloneNo > 0; CloneNo--) 
+		{ Destroy(GameObject.FindGameObjectWithTag("Clone")); }
+
 	}
 
 	private void HandleCommandInput()

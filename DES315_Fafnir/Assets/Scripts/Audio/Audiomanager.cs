@@ -60,7 +60,19 @@ public class Audiomanager : MonoBehaviour
     }
 
     public static void ChangeVolume(float vol, AudioType type)
-    { volumeLevels[type] = vol; }
+    { 
+        volumeLevels[type] = vol; 
+        for (int i = 0; i < instance.tracks.Length; i++) {
+
+            if (instance.tracks[i].type == type) { 
+
+                instance.tracks[i].src.volume = vol;
+                if (instance.tracks[i].type != AudioType.MASTER) 
+                {instance.tracks[i].src.volume *= volumeLevels[AudioType.MASTER];}
+
+            }
+        }
+    }
 
     public void PlayAudio(string name, float vol = 1.0f, float pitch = 0.0f, float pan = 0.5f)
     {
