@@ -4,7 +4,7 @@ public class Door : MonoBehaviour
 {
     [SerializeReference] private GameObject door;
     public Material closedMaterial;
-
+    public Material openMaterial;
     public bool isActive = false;
     private Vector2 mouseOver;
     private void UpdateMouse()
@@ -25,7 +25,20 @@ public class Door : MonoBehaviour
         }
 
     }
+    public void OnMouseDown()
+    {
+        InvertDoorState();
+    }
 
+    public void InvertDoorState()
+    {
+        var spriteRen = GetComponent<SpriteRenderer>();
+
+        isActive = !isActive;
+        spriteRen.material = isActive ? openMaterial : closedMaterial;
+
+        door.SetActive(!door.activeSelf);
+    }
 
     // Update is called once per frame
     void Update()

@@ -35,7 +35,7 @@ public class WinTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         
         // If the collision is from the player, update the flag
-        if (collision.tag != "Player")
+        if (collision.gameObject.name != "Player")
         { return; }
         //Debug.Log("Collision Entered");
         playerOverlap = true;
@@ -45,7 +45,7 @@ public class WinTrigger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision) {
         
         // If the collision is from the player, update the flag
-         if (collision.tag != "Player")
+         if (collision.gameObject.name != "Player")
          { return; }
          //Debug.Log("Collision Left");
         playerOverlap = false;

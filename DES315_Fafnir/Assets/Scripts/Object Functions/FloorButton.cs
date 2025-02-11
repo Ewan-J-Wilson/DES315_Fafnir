@@ -9,6 +9,7 @@ public class FloorButton : MonoBehaviour
     private Vector3 ButtonPos;          //Original position of button
     [SerializeField]
     private Vector3 PressedPos;         //Position for button to go to when fully pressed
+    [Tooltip("[ALL Objects Must Have The OpenObject Class]\nList of objects to invert the state of.")]
     public GameObject[] Doors;          //Doors who's state we invert
     private bool[] DoorInitState;       //Initial active/deactive state of doors
     private float ButtonTimer;          //Time to wait for button to press down
@@ -58,16 +59,10 @@ public class FloorButton : MonoBehaviour
     { ButtonTrans.position = Vector3.MoveTowards(ButtonPos, PressedPos, ButtonTimer); }
 
     // Detects the player on the button
-    private void OnTriggerStay2D(Collider2D collision) { 
-        if (!(collision.tag == "Player" || collision.tag == "Clone")) 
-        { return; }
-        IsPressed = true; 
-    }
+    private void OnTriggerStay2D(Collider2D collision)
+    { if (collision.tag == "Player" || collision.tag == "Clone") IsPressed = true; }
 
     // Detects the player leaving the button
-    private void OnTriggerExit2D(Collider2D collision) { 
-        if (!(collision.tag == "Player" || collision.tag == "Clone")) 
-        { return; }
-        IsPressed = false; 
-    }
+    private void OnTriggerExit2D(Collider2D collision)
+    { if (collision.tag == "Player" || collision.tag == "Clone") IsPressed = false; }
 }

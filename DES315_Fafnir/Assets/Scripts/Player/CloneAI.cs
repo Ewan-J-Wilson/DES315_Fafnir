@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Build;
 using UnityEngine;
 
 public class CloneAI : PlayerAI
@@ -7,7 +6,6 @@ public class CloneAI : PlayerAI
 	protected float ComTimer;               //Timer duration for current command
 	public int ComPos;						//Position into command array
 	private bool EndCom;                    //Flag to end command reading
-	private bool canJump = true;
 
 	void Start()
 	{
@@ -20,27 +18,11 @@ public class CloneAI : PlayerAI
 
 	protected override void HandleMovement()
 	{
-
-        if (!PCList[ComPos].jump)
-        { canJump = true; }
-        else if (JumpCount < MaxJump && canJump)
-        {
-
-            JumpCount++;
-            Rb.velocityY = JumpForce;
-			canJump = false;
-
-        }
-
 		
-		
+		if (PCList[ComPos].jump && Rb.velocityY == 0f)
+		{ Rb.velocityY += JumpForce; }
 
-        if (Rb.velocityY == 0f)
-        {
-            JumpCount = 0;
-        }
-
-        if (ComPos == PCList.Length - 1)
+		if (ComPos == PCList.Length - 1)
 		{ EndCom = true; }
 
 		if (ComTimer <= 0f && !EndCom)      //If we've hit < 0 AND the END command has NOT been recieved then we read the next command in

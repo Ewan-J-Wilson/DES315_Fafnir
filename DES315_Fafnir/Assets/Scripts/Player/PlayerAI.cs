@@ -24,10 +24,7 @@ public class PlayerAI : MonoBehaviour
 	// Clones
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
 	private int CloneNo;                        //Count of currently spawned clones
-	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
-	protected const int MaxJump = 2;			//Makes it so double jumping mechanic can't be exploited infinitely 
-	
 
 	// Trails
 	public GameObject TrailPart;                //Trail particle reference
@@ -43,15 +40,14 @@ public class PlayerAI : MonoBehaviour
 	protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
 	public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
 	private bool IsRecording;                   //Flag to enable movement recording with the player
-	//private bool airborne = false;
 
 	// Player
 	protected Rigidbody2D Rb;                   //Rigidbody for player physics
 	protected Vector2 Vel;                      //Movement vector
 	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
 	[SerializeField] [Range(1f, 10f)]
-	protected const float MoveSpeed = 5.0f;     //Constant movement speed
-	protected const float JumpForce = 20.0f;    //Constant jump force
+	protected const float MoveSpeed = 7.5f;     //Constant movement speed
+	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
 	
 
@@ -70,13 +66,8 @@ public class PlayerAI : MonoBehaviour
 	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
         
-		if ((CurrentCom.jump = obj.performed) && JumpCount < MaxJump) 
-		{
-
-			JumpCount++;
-            Rb.velocityY = JumpForce;
-			
-		}
+		if ((CurrentCom.jump = obj.performed) && Rb.velocityY == 0f) 
+		{ Rb.velocityY += JumpForce; }
 
     }
 
@@ -126,10 +117,6 @@ public class PlayerAI : MonoBehaviour
 
 	protected virtual void HandleMovement()
 	{
-		if (Rb.velocityY == 0f)
-		{
-			JumpCount = 0;
-		}
 		//Clear command list for next clone once newly made clone has grabbed all current commands
 		if (ClearList)
 		{
@@ -179,8 +166,8 @@ public class PlayerAI : MonoBehaviour
 
 	public void KillClone() {
 
-        for (; CloneNo > 0; CloneNo--)
-		{ Destroy(GameObject.FindGameObjectsWithTag("Clone")[CloneNo-1]); }
+        for (; CloneNo > 0; CloneNo--) 
+		{ Destroy(GameObject.FindGameObjectWithTag("Clone")); }
 
 	}
 

@@ -86,7 +86,7 @@ public class MoveableWall : MonoBehaviour
         // Checks if the collision is with the Tool's sprite
         // as well as if the collision already occurred
         // and if the object is already currently moving
-        if (collision.tag != "Tool" || used || moveTimer > 0)
+        if (collision.gameObject.name != "Tool Sprite" || used || moveTimer > 0)
         { return; }
         used = true;
         
