@@ -12,7 +12,7 @@ public class AMTester : MonoBehaviour
         {
             ptime = 0.0f;
             //Audiomanager.instance.PlayAudio("Kick");
-            Audiomanager.instance.PlayAudio("Kick", 0.5f, 1, .25f);
+            Audiomanager.instance.PlayAudio("Kick", 0.25f, 1, 0.5f);
         }
     }
 }

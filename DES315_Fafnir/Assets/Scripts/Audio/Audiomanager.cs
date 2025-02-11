@@ -1,10 +1,12 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
 public enum AudioType
 {
+    MASTER,
     MUSIC,
     SFX,
 }
@@ -21,11 +23,21 @@ public struct AudioInstance
     [HideInInspector] public AudioSource src;   //Source to play from
     public AudioType type;                      //Whether it is Music or SFX
 }
+
 public class Audiomanager : MonoBehaviour
 {
     public AudioMixerGroup AudOut;
     public static Audiomanager instance;
     public AudioInstance[] tracks;
+
+    [HideInInspector] 
+    public static Dictionary<AudioType, float> volumeLevels = 
+        new Dictionary<AudioType, float>
+        { 
+            { AudioType.MASTER, 1.0f },
+            { AudioType.MUSIC, 1.0f },
+            { AudioType.SFX, 1.0f },
+        };
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,12 +59,31 @@ public class Audiomanager : MonoBehaviour
         }
     }
 
-    public void PlayAudio(string name, float pitch = 0.0f, float pan = 0.5f, float vol = 0.0f)
+    public static void ChangeVolume(float vol, AudioType type)
+    { 
+        volumeLevels[type] = vol; 
+        for (int i = 0; i < instance.tracks.Length; i++) {
+
+            if (instance.tracks[i].type == type) { 
+
+                instance.tracks[i].src.volume = vol;
+                if (instance.tracks[i].type != AudioType.MASTER) 
+                {instance.tracks[i].src.volume *= volumeLevels[AudioType.MASTER];}
+
+            }
+        }
+    }
+
+    public void PlayAudio(string name, float vol = 1.0f, float pitch = 0.0f, float pan = 0.5f)
     {
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
         if (pitch != 0.0f) { aud.src.pitch = pitch; }
         if (pan != 0.5f) { aud.src.panStereo = pan; }
-        if (vol != 0.0f) { aud.src.volume = vol; }
+        if (vol != 0.0f) { 
+            aud.src.volume = vol * volumeLevels[aud.type];
+            if (aud.type != AudioType.MASTER) 
+            {aud.src.volume *= volumeLevels[AudioType.MASTER];}
+        }
 
         aud.src.Play();
     }
