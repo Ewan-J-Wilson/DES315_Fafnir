@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class OpenObject : MonoBehaviour
 {
 
     // Flag for if the object is open
-    protected bool open = false;
+    public bool open = false;
     [HideInInspector] public int counter = 0;
     // Number of buttons to open object
     [Range(1,4)][SerializeField] protected int threshold = 1;
@@ -31,9 +29,5 @@ public class OpenObject : MonoBehaviour
 
         GetComponent<BoxCollider2D>().enabled = !_getOpen;
         GetComponent<SpriteRenderer>().color = _getOpen ? openColour : closedColour;
-
     }
-
-
-    
 }

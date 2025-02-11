@@ -10,8 +10,5 @@ public class TriggerChecker : MonoBehaviour
         DoAction();
     }
 
-    protected virtual void DoAction()
-    {
-
-    }
+    protected virtual void DoAction() { }
 }
