@@ -55,9 +55,9 @@ public class CloneAI : PlayerAI
 		}
 		ClearList = true;
 	}
-
-	// NOTE: on end command the tool rotation goes back to the start position
-	public override float ToolRotation() 
+    public override void KillClone() { }	//Keep this function around so clones don't die from walking into the anti-clone beam
+    // NOTE: on end command the tool rotation goes back to the start position
+    public override float ToolRotation() 
     { return Mathf.LerpAngle(PCList[ComPos].toolRotation, PCList[(ComPos+1) % PCList.Length].toolRotation, 1 - (ComTimer / PCList[ComPos].dur)); }
 
 }

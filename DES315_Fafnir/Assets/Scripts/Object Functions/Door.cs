@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     public Material openMaterial;
     public bool isActive = false;
     private Vector2 mouseOver;
+
     private void UpdateMouse()
     {
         RaycastHit hit;

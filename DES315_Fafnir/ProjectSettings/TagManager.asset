@@ -11,6 +11,8 @@ TagManager:
   - Clone
   - Tool
   - TrailEnt
+  - MovablePlatform
+  - AntiClone
   layers:
   - Default
   - TransparentFX

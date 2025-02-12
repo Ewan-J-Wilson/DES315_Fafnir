@@ -1,5 +1,4 @@
 using System;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +6,6 @@ using UnityEngine.InputSystem;
 // List of current clone relevant actions pressed
 // cause for some reason this doesn't exist within PlayerInput
 public struct ActionList {
-
 	// horizontal movement
 	public float hAxis;
 	public bool jump;
@@ -15,7 +13,6 @@ public struct ActionList {
 
 	public float toolRotation;
 	public float dur;
-
 }
 
 public class PlayerAI : MonoBehaviour
@@ -151,25 +148,14 @@ public class PlayerAI : MonoBehaviour
 		transform.position = LastPos;                       //Reset player back to original position before recording
 	}
 
-	public void KillClone(GameObject clone)
-	{
+	public virtual void KillClone() {
 
-		if (CloneNo <= 0)
-		{
-			return;
-		}
-
-		Destroy(clone);
-		CloneNo--;
-
-	}
-
-	public void KillClone() {
-
-        for (; CloneNo > 0; CloneNo--) 
-		{ Destroy(GameObject.FindGameObjectWithTag("Clone")); }
-
-	}
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Clone"))
+        {
+            Destroy(obj);
+        }
+		CloneNo = 0;
+    }
 
 	private void HandleCommandInput()
 	{
@@ -209,11 +195,25 @@ public class PlayerAI : MonoBehaviour
 	{
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("TrailEnt"))
 		{
-			GameObject.Destroy(obj);
+			Destroy(obj);
 		}
 	}
 
 	public virtual float ToolRotation()
 	{ return CurrentCom.toolRotation; }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "MovablePlatform") { transform.parent = collision.transform; }
+
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "MovablePlatform") { transform.parent = null; }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "AntiClone") { KillClone(); }
+    }
 }
