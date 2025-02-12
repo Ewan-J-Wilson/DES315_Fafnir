@@ -31,10 +31,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             if (string.IsNullOrEmpty(deviceLayoutName) || string.IsNullOrEmpty(controlPath))
                 return;
 
-            var icon = default(Sprite);
-            //if (InputSystem.IsFirstLayoutBasedOnSecond(deviceLayoutName, "Keyboard"))
-            Debug.Log(controlPath);
-                icon = keyboard.GetSprite(controlPath);
+            var icon = keyboard.GetSprite(controlPath);
 
             var textComponent = component.bindingText;
 
