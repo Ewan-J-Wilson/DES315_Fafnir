@@ -192,16 +192,16 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                     case "minus": return keyMinus;
                     case "asterisk": return keyAsterisk;
 
-                    case "leftControl": return keyCtrl;
+                    case "leftCtrl": return keyCtrl;
                     case "leftShift": return keyShift;
                     case "leftAlt": return keyAlt;
                     case "enter": return keyEnter;
                     case "space": return keySpace;
 
-                    case "up": return keyUp;
-                    case "down": return keyDown;
-                    case "left": return keyLeft;
-                    case "right": return keyRight;
+                    case "upArrow": return keyUp;
+                    case "downArrow": return keyDown;
+                    case "leftArrow": return keyLeft;
+                    case "rightArrow": return keyRight;
 
                     
                 }
