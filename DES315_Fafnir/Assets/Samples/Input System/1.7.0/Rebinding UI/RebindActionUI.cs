@@ -221,16 +221,16 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
             ResetBinding(action, bindingIndex);
 
-            //if (action.bindings[bindingIndex].isComposite)
-            //{
-            //    // It's a composite. Remove overrides from part bindings.
-            //    for (var i = bindingIndex + 1; i < action.bindings.Count && action.bindings[i].isPartOfComposite; ++i)
-            //        action.RemoveBindingOverride(i);
-            //}
-            //else
-            //{
-            //    action.RemoveBindingOverride(bindingIndex);
-            //}
+            if (action.bindings[bindingIndex].isComposite)
+            {
+                // It's a composite. Remove overrides from part bindings.
+                for (var i = bindingIndex + 1; i < action.bindings.Count && action.bindings[i].isPartOfComposite; ++i)
+                    action.RemoveBindingOverride(i);
+            }
+            else
+            {
+                action.RemoveBindingOverride(bindingIndex);
+            }
             UpdateBindingDisplay();
         }
 
@@ -295,7 +295,47 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
             // Configure the rebind.
             m_RebindOperation = action.PerformInteractiveRebinding(bindingIndex)
+                
+                // Exclude the standard function keys
+                // if someone wants to use F13-F24 good for them
+                .WithControlsExcluding("<Keyboard>/F1")
+                .WithControlsExcluding("<Keyboard>/F2")
+                .WithControlsExcluding("<Keyboard>/F3")
+                .WithControlsExcluding("<Keyboard>/F4")
+                .WithControlsExcluding("<Keyboard>/F5")
+                .WithControlsExcluding("<Keyboard>/F6")
+                .WithControlsExcluding("<Keyboard>/F7")
+                .WithControlsExcluding("<Keyboard>/F8")
+                .WithControlsExcluding("<Keyboard>/F9")
+                .WithControlsExcluding("<Keyboard>/F10")
+                .WithControlsExcluding("<Keyboard>/F11")
+                .WithControlsExcluding("<Keyboard>/F12")
+
+                .WithControlsExcluding("<Keyboard>/pageUp")
+                .WithControlsExcluding("<Keyboard>/pageDown")
+                .WithControlsExcluding("<Keyboard>/insert")
+                .WithControlsExcluding("<Keyboard>/scrollLock")
+                .WithControlsExcluding("<Keyboard>/printScreen")
+                .WithControlsExcluding("<Keyboard>/pause")
+                .WithControlsExcluding("<Keyboard>/home")
+                .WithControlsExcluding("<Keyboard>/delete")
+                .WithControlsExcluding("<Keyboard>/end")
+                .WithControlsExcluding("<Keyboard>/capsLock")
+                .WithControlsExcluding("<Keyboard>/numLock")
+                .WithControlsExcluding("<Keyboard>/leftMeta")
+                .WithControlsExcluding("<Keyboard>/rightMeta")
+                .WithControlsExcluding("<Keyboard>/contextMenu")
+                .WithControlsExcluding("<Keyboard>/rightControl")
+                .WithControlsExcluding("<Keyboard>/rightShift")
+                .WithControlsExcluding("<Keyboard>/rightAlt")
+                .WithControlsExcluding("<Keyboard>/backslash")
+                .WithControlsExcluding("<Keyboard>/backspace")
+                .WithControlsExcluding("<Keyboard>/leftBracket")
+                .WithControlsExcluding("<Keyboard>/rightBracket")
+                .WithControlsExcluding("<Keyboard>/anyKey")
+                                  
                 .WithCancelingThrough("<Keyboard>/escape")
+                .WithCancelingThrough("<Gamepad>/start")
                 .OnCancel(
                     operation =>
                     {
@@ -469,6 +509,13 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
         [SerializeField]
         private TMPro.TextMeshProUGUI m_RebindText;
 
+        [Tooltip("Whether to override the action text or not")]
+        public bool m_OverRideActionLabel;
+
+        [Tooltip("What text should be displayed for the action label?")]
+        [SerializeField]
+        private string m_ActionLabelString;
+
         [Tooltip("Event that is triggered when the way the binding is display should be updated. This allows displaying "
             + "bindings in custom ways, e.g. using images instead of text.")]
         [SerializeField]
@@ -504,7 +551,13 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
             if (m_ActionLabel != null)
             {
                 var action = m_Action?.action;
-                m_ActionLabel.text = action != null ? action.name : string.Empty;
+
+                if (m_OverRideActionLabel) 
+                { m_ActionLabel.text = m_ActionLabelString; }
+                else { 
+                    m_ActionLabel.text = action != null ? action.name : string.Empty; 
+                    m_ActionLabelString = string.Empty;
+                }
             }
         }
 
