@@ -167,7 +167,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PS4_Left_Stick_Click_0: 5443437925798797300
+      PS4_Left_Stick_Click_1: 7771323636750188654
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -167,7 +167,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Switch_Right_Stick_Click_0: 9202623847246851752
+      Switch_Right_Stick_Click_1: 4224365936321834872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

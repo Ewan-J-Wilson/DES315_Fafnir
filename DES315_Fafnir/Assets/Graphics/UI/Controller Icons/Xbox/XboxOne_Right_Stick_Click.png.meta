@@ -167,7 +167,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      XboxOne_Right_Stick_Click_0: 7131982416325995974
+      XboxOne_Right_Stick_Click_1: 6622388555096115333
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

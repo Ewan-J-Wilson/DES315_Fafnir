@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Switch_Dpad_Down_0: -8385793798519118401
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

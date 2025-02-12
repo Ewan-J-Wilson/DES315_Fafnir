@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PS4_Cross_0: -7187660158222144899
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

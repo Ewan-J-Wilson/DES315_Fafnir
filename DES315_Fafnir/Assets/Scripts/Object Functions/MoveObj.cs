@@ -19,7 +19,7 @@ public class MoveObj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsActive = !StateDeterminer.active;
+        IsActive = !StateDeterminer.activeSelf;
 
         if (IsActive)
         {

@@ -263,7 +263,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PS4_Options_0: 2061075626004963653
+      PS4_Options_1: 8151508514258208205
+      PS4_Options_2: -7956204625127760442
+      PS4_Options_3: -4867910800287538939
+      PS4_Options_4: 2887321246687651088
+      PS4_Options_5: 5441093600170145312
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
