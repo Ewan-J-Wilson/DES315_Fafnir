@@ -11,6 +11,7 @@ TagManager:
   - Clone
   - Tool
   - TrailEnt
+  - DeathZone
   layers:
   - Default
   - TransparentFX
