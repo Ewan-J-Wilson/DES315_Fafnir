@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < LevelList.Length; i++)
 		{
-			if (i == LevelInd) LevelList[i].active = true;
-            else LevelList[i].active = false;
+			// Changed from LevelList[i].active so the editor shuts up
+			LevelList[i].SetActive(i == LevelInd);
 		}
 	}
 }

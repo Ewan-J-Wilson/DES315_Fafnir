@@ -15,15 +15,29 @@ public class MenuButtons : MonoBehaviour
     [SerializeField] private bool conditional = false;
     private EventSystem eventSys;
 
-    private void Awake() { 
+    private void Start() { 
         GetComponent<Canvas>().enabled = !conditional; 
-        eventSys = GameObject.FindGameObjectWithTag("EventSystem").GetComponent<EventSystem>();
+        eventSys = FindFirstObjectByType<EventSystem>();
         eventSys.enabled = !conditional;
     }
 
     public static void SwitchToScene(System.String _scene) { 
         Time.timeScale = 1;
         SceneManager.LoadScene(_scene); 
+    }
+
+    public void SwitchToControlsScene(bool _condition) {
+
+        swapCondition = _condition;
+
+        //if (CompareTag("Keyboard"))
+        //{ conditional = false; }
+        //else if (CompareTag("Controller"))
+        //{ conditional = true; }
+
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Controls Menu"); 
+
     }
 
     public static void SwitchToScene(System.String _scene, bool _condition) { 
