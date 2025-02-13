@@ -163,8 +163,9 @@ public class PlayerAI : MonoBehaviour
 		CloneNo = 0;
     }
 
-	private void PlayerDeath()
+	public void PlayerDeath()
 	{
+		KillClone();
         transform.position = LastPos;
     }
 
