@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -46,6 +47,10 @@ public class PlayerAI : MonoBehaviour
 	protected const float MoveSpeed = 7.5f;     //Constant movement speed
 	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
+
+	// Pause Menu
+	[SerializeField]
+	MenuButtons pauseMenu;
 	
 
     void Start()
@@ -67,6 +72,7 @@ public class PlayerAI : MonoBehaviour
 		{ Rb.velocityY += JumpForce; }
 
     }
+
 
 	// Rounded to ceiling to prevent action being recorded halfway through a stick movement
 	public void MoveAction(InputAction.CallbackContext obj) 

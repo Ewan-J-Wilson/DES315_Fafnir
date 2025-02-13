@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -47,9 +48,20 @@ public class MenuButtons : MonoBehaviour
     }
     
     public void Pause(bool _pause) {
+
+        // Enable the pause
         GetComponent<Canvas>().enabled = _pause;
-        eventSys.enabled = _pause;
+
+        // Stops Time
         Time.timeScale = (_pause ? 0 : 1);
+
+        // Swaps to the UI action map if the game is paused
+        PlayerInput actions = GetComponentInParent<PlayerInput>();
+        if (_pause) 
+        { actions.SwitchCurrentActionMap("UI"); }
+        else 
+        { actions.SwitchCurrentActionMap("Player"); }
+
     }
 
     public static void ExitGame() 

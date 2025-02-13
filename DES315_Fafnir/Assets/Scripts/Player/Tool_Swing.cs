@@ -64,11 +64,17 @@ public class Tool_Swing : MonoBehaviour
     //Handles the direction of the tool and the activation routines
     protected virtual void HandleTool()
     {
+        
+        
+
         // If it's a clone, get the rotation from the current command
         if (isClone) 
         { transform.rotation = Quaternion.AngleAxis(parent.ToolRotation(), Vector3.forward); } 
         // Otherwise get the rotation from the inputs
         else {
+
+            if (GetComponentInParent<PlayerInput>().currentActionMap.name != "Player")
+            { return; }
 
             if (input.currentControlScheme == "Keyboard") {
 
