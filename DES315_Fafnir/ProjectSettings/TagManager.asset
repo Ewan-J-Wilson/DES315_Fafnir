@@ -13,6 +13,7 @@ TagManager:
   - TrailEnt
   - MovablePlatform
   - AntiClone
+  - DeathZone
   layers:
   - Default
   - TransparentFX

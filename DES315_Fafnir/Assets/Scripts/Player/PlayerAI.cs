@@ -163,6 +163,13 @@ public class PlayerAI : MonoBehaviour
 		CloneNo = 0;
     }
 
+	private void PlayerDeath()
+	{
+        transform.position = LastPos;
+    }
+
+	
+
 	private void HandleCommandInput()
 	{
 		//Check for command change
@@ -221,5 +228,7 @@ public class PlayerAI : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "AntiClone") { KillClone(); }
+
+        if (collision.CompareTag("DeathZone")) { PlayerDeath(); }
     }
 }
