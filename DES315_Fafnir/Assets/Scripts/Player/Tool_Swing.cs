@@ -100,7 +100,7 @@ public class Tool_Swing : MonoBehaviour
 
     }
 
-    protected void SetToolActive(bool _active)
+    public void SetToolActive(bool _active)
     {
         // Set the tool hitbox to be active
         // Or reset the tool to inactive

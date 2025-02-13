@@ -50,12 +50,14 @@ public class PlayerAI : MonoBehaviour
 
 	// Pause Menu
 	[SerializeField]
-	MenuButtons pauseMenu;
+	private MenuButtons pauseMenu;
 	
 
     void Start()
 	{
 
+		// Unpause the game on start
+		pauseMenu.Pause(false);
 		PCList = new ActionList[MaxComSize];
 		CloneNo = 0;                            //Reset clone amount
 		Rb = GetComponent<Rigidbody2D>();

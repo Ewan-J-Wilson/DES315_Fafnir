@@ -14,11 +14,11 @@ public class MenuButtons : MonoBehaviour
 
     // If the menu only appears after a condition has been met
     [SerializeField] private bool conditional = false;
-    private EventSystem eventSys;
+    [SerializeField] private EventSystem eventSys;
 
     private void Start() { 
         GetComponent<Canvas>().enabled = !conditional; 
-        eventSys = FindFirstObjectByType<EventSystem>();
+        //eventSys = FindFirstObjectByType<EventSystem>();
         eventSys.enabled = !conditional;
     }
 
@@ -51,7 +51,7 @@ public class MenuButtons : MonoBehaviour
 
         // Enable the pause
         GetComponent<Canvas>().enabled = _pause;
-
+        eventSys.enabled = _pause;
         // Stops Time
         Time.timeScale = (_pause ? 0 : 1);
 

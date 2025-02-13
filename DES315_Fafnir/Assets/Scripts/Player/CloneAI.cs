@@ -22,6 +22,9 @@ public class CloneAI : PlayerAI
 		if (PCList[ComPos].jump && Rb.velocityY == 0f)
 		{ Rb.velocityY += JumpForce; }
 
+		if (PCList[ComPos].tool)
+		{ GetComponentInChildren<Tool_Swing>().SetToolActive(true); }
+
 		if (ComPos == PCList.Length - 1)
 		{ EndCom = true; }
 
