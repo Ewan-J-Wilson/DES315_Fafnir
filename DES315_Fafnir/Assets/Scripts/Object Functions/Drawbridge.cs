@@ -9,7 +9,6 @@ public class Drawbridge : MonoBehaviour
     public Transform[] Trans;           //Array of elements to shift
     float[] AngleBase;                  //Starting angle of object
     public float[] AngleTarget;         //Angle offset target for maximum CurveTime
-    public bool IsUp = true;            //Flag for determining the state of the drawbridge
     float CurveTime = 0;                //Float time between 0 and 1 for Curve
     public float BridgeSpeed;           //How fast to inc/dec curve time
     // Start is called before the first frame update
@@ -25,20 +24,14 @@ public class Drawbridge : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsUp = !OnSwitch.open;
+
         CurveTime = Mathf.Clamp(CurveTime, 0, 1);
-        if (IsUp)
-        {
-            CurveTime += Time.deltaTime * BridgeSpeed;
-        }
-        else
-        {
-            CurveTime -= Time.deltaTime * BridgeSpeed;
-        }
+        CurveTime += Time.deltaTime * (!OnSwitch.open ? BridgeSpeed : -BridgeSpeed);
 
         for (int x = 0; x < Trans.Length; x++)
         {
-            Trans[x].rotation = Quaternion.Euler(Trans[x].rotation.eulerAngles.x, Trans[x].rotation.eulerAngles.y, AngleBase[x] + Curve.Evaluate(CurveTime) * AngleTarget[x]);
+            float angle = AngleBase[x] + Curve.Evaluate(CurveTime) * AngleTarget[x];
+            Trans[x].rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 }

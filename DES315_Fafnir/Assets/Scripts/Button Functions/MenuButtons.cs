@@ -31,11 +31,6 @@ public class MenuButtons : MonoBehaviour
 
         swapCondition = _condition;
 
-        //if (CompareTag("Keyboard"))
-        //{ conditional = false; }
-        //else if (CompareTag("Controller"))
-        //{ conditional = true; }
-
         Time.timeScale = 1;
         SceneManager.LoadScene("Controls Menu"); 
 

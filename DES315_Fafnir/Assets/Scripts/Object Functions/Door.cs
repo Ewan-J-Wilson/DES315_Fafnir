@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
     public Material closedMaterial;
     public Material openMaterial;
     public bool isActive = false;
-    private Vector2 mouseOver;
+    //private Vector2 mouseOver;
 
     // Legacy Implementation where the mouse was clicking the lever directly
     //private void UpdateMouse()
@@ -30,7 +30,7 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.tag == "Tool")
+        if (col.CompareTag("Tool"))
         {
             InvertDoorState();
         }
