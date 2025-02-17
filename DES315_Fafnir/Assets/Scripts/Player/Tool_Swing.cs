@@ -3,8 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Tool_Swing : MonoBehaviour
-{
-    
+{    
     // Sprite colours for the inactive and active tool respectively
     [SerializeField] protected Color ogColour = Color.yellow;
     [SerializeField] protected Color hitColour = Color.red;
@@ -22,7 +21,6 @@ public class Tool_Swing : MonoBehaviour
     private bool isClone = false;
 
     Vector2 joystickAxis;
-
 
     private void Start() 
     {       
@@ -66,12 +64,17 @@ public class Tool_Swing : MonoBehaviour
     //Handles the direction of the tool and the activation routines
     protected virtual void HandleTool()
     {
+        
+        
 
         // If it's a clone, get the rotation from the current command
         if (isClone) 
         { transform.rotation = Quaternion.AngleAxis(parent.ToolRotation(), Vector3.forward); } 
         // Otherwise get the rotation from the inputs
         else {
+
+            if (GetComponentInParent<PlayerInput>().currentActionMap.name != "Player")
+            { return; }
 
             if (input.currentControlScheme == "Keyboard") {
 
@@ -97,7 +100,7 @@ public class Tool_Swing : MonoBehaviour
 
     }
 
-    protected void SetToolActive(bool _active)
+    public void SetToolActive(bool _active)
     {
         // Set the tool hitbox to be active
         // Or reset the tool to inactive

@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 
 public class FloorButton : MonoBehaviour
@@ -8,6 +9,7 @@ public class FloorButton : MonoBehaviour
     private Vector3 ButtonPos;          //Original position of button
     [SerializeField]
     private Vector3 PressedPos;         //Position for button to go to when fully pressed
+    [Tooltip("[ALL Objects Must Have The OpenObject Class]\nList of objects to invert the state of.")]
     public GameObject[] Doors;          //Doors who's state we invert
     private bool[] DoorInitState;       //Initial active/deactive state of doors
     private float ButtonTimer;          //Time to wait for button to press down

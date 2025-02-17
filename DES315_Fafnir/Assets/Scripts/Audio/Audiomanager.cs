@@ -32,8 +32,7 @@ public class Audiomanager : MonoBehaviour
 
     [HideInInspector] 
     public static Dictionary<AudioType, float> volumeLevels = 
-        new Dictionary<AudioType, float>
-        { 
+        new() { 
             { AudioType.MASTER, 1.0f },
             { AudioType.MUSIC, 1.0f },
             { AudioType.SFX, 1.0f },

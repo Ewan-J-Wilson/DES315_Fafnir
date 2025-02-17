@@ -33,15 +33,19 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 return;
 
             var icon = default(Sprite);
+            
             if (InputSystem.IsFirstLayoutBasedOnSecond(deviceLayoutName, "DualShockGamepad"))
                 icon = ps4.GetSprite(controlPath);
             else if (InputSystem.IsFirstLayoutBasedOnSecond(deviceLayoutName, "Gamepad"))
                 icon = xbox.GetSprite(controlPath);
+            //icon.
+            //icon.rect.Set(GetComponentInParent<RectTransform>().rect.width / 2, GetComponentInParent<RectTransform>().rect.width / 2, 50, 50);
 
             var textComponent = component.bindingText;
 
             // Grab Image component.
             var imageGO = textComponent.transform.parent.Find("ActionBindingIcon");
+            var imageRect = imageGO.GetComponent<RectTransform>();
             var imageComponent = imageGO.GetComponent<Image>();
 
             if (icon != null)
@@ -55,6 +59,11 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 textComponent.gameObject.SetActive(true);
                 imageComponent.gameObject.SetActive(false);
             }
+
+            imageRect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 25, 0);
+            imageRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
+            imageRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
+
         }
 
         [Serializable]
@@ -109,5 +118,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
                 return null;
             }
         }
+
+
     }
 }

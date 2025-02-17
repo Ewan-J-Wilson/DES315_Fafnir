@@ -1,5 +1,5 @@
 using System;
-using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 // List of current clone relevant actions pressed
 // cause for some reason this doesn't exist within PlayerInput
 public struct ActionList {
-
 	// horizontal movement
 	public float hAxis;
 	public bool jump;
@@ -15,7 +14,6 @@ public struct ActionList {
 
 	public float toolRotation;
 	public float dur;
-
 }
 
 public class PlayerAI : MonoBehaviour
@@ -46,14 +44,20 @@ public class PlayerAI : MonoBehaviour
 	protected Vector2 Vel;                      //Movement vector
 	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
 	[SerializeField] [Range(1f, 10f)]
-	protected const float MoveSpeed = 5.0f;     //Constant movement speed
-	protected const float JumpForce = 20.0f;    //Constant jump force
+	protected const float MoveSpeed = 7.5f;     //Constant movement speed
+	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
+
+	// Pause Menu
+	[SerializeField]
+	private MenuButtons pauseMenu;
 	
 
     void Start()
 	{
 
+		// Unpause the game on start
+		pauseMenu.Pause(false);
 		PCList = new ActionList[MaxComSize];
 		CloneNo = 0;                            //Reset clone amount
 		Rb = GetComponent<Rigidbody2D>();
@@ -70,6 +74,7 @@ public class PlayerAI : MonoBehaviour
 		{ Rb.velocityY += JumpForce; }
 
     }
+
 
 	// Rounded to ceiling to prevent action being recorded halfway through a stick movement
 	public void MoveAction(InputAction.CallbackContext obj) 
@@ -151,6 +156,23 @@ public class PlayerAI : MonoBehaviour
 		transform.position = LastPos;                       //Reset player back to original position before recording
 	}
 
+	public virtual void KillClone() {
+
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Clone"))
+        {
+            Destroy(obj);
+        }
+		CloneNo = 0;
+    }
+
+	public void PlayerDeath()
+	{
+		KillClone();
+        transform.position = LastPos;
+    }
+
+	
+
 	private void HandleCommandInput()
 	{
 		//Check for command change
@@ -189,11 +211,27 @@ public class PlayerAI : MonoBehaviour
 	{
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("TrailEnt"))
 		{
-			GameObject.Destroy(obj);
+			Destroy(obj);
 		}
 	}
 
 	public virtual float ToolRotation()
 	{ return CurrentCom.toolRotation; }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "MovablePlatform") { transform.parent = collision.transform; }
+
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "MovablePlatform") { transform.parent = null; }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "AntiClone") { KillClone(); }
+
+        if (collision.CompareTag("DeathZone")) { PlayerDeath(); }
+    }
 }
