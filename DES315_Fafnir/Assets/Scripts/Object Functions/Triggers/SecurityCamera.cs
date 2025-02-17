@@ -8,7 +8,8 @@ public class SecurityCamera : MonoBehaviour
 {
     [SerializeReference] private GameObject security; 
     [SerializeReference] PlayerAI player;
-    private bool cameraOn = true; // keep this boolean 
+    // cameraOn is commented out so the editor shuts up
+    //private bool cameraOn = true; // keep this boolean 
     // Start is called before the first frame update
     void Start()
     {

@@ -5,12 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - EventSystem
-  - Clone
   - Clickable
   - Controller
   - Keyboard
   - Clone
   - Tool
+  - TrailEnt
+  - MovablePlatform
+  - AntiClone
+  - DeathZone
   layers:
   - Default
   - TransparentFX

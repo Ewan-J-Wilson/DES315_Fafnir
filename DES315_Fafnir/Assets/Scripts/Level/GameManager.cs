@@ -11,8 +11,10 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-	public static GameState State;			//Current game state
-	public int LevelInd = 0;                //Current level/loop the player is on [one level is defined as a single loop]
+	public GameObject Player;
+	public Vector2 StartPos;
+    public static GameState State;			//Current game state
+	public static int LevelInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
     public GameObject[] LevelList;			//List of levels/loops in the scene
 
 
@@ -27,8 +29,17 @@ public class GameManager : MonoBehaviour
 	{
 		for (int i = 0; i < LevelList.Length; i++)
 		{
-			if (i == LevelInd) LevelList[i].active = true;
-            else LevelList[i].active = false;
+			// Changed from LevelList[i].active so the editor shuts up
+			LevelList[i].SetActive(i == LevelInd);
 		}
+
+        Player.GetComponent<PlayerAI>().KillClone();
+        Player.transform.position = StartPos;
+	}
+
+	public void NextLevel()
+	{
+		LevelInd++;
+		SetLevel();
 	}
 }

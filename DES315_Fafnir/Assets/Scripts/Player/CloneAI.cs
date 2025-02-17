@@ -22,6 +22,9 @@ public class CloneAI : PlayerAI
 		if (PCList[ComPos].jump && Rb.velocityY == 0f)
 		{ Rb.velocityY += JumpForce; }
 
+		if (PCList[ComPos].tool)
+		{ GetComponentInChildren<Tool_Swing>().SetToolActive(true); }
+
 		if (ComPos == PCList.Length - 1)
 		{ EndCom = true; }
 
@@ -55,9 +58,9 @@ public class CloneAI : PlayerAI
 		}
 		ClearList = true;
 	}
-
-	// NOTE: on end command the tool rotation goes back to the start position
-	public override float ToolRotation() 
+    public override void KillClone() { }	//Keep this function around so clones don't die from walking into the anti-clone beam
+    // NOTE: on end command the tool rotation goes back to the start position
+    public override float ToolRotation() 
     { return Mathf.LerpAngle(PCList[ComPos].toolRotation, PCList[(ComPos+1) % PCList.Length].toolRotation, 1 - (ComTimer / PCList[ComPos].dur)); }
 
 }
