@@ -11,6 +11,7 @@ public class TriggerButton : TriggerGeneric
     private Vector3 PressedPos;         //Position for button to go to when fully pressed
     private float ButtonTimer;          //Time to wait for button to press down
     bool IsPressed = false;             //flag for if the button is pressed
+    bool trigger = false;
 
     private void Start()
     {
@@ -28,11 +29,15 @@ public class TriggerButton : TriggerGeneric
         { ButtonTimer = Mathf.Clamp(ButtonTimer -= Time.deltaTime * PressSpeed, 0, 1); }
 
         // The frame the button is pressed down
-        if (ButtonTrans.position == PressedPos && (IsPressed))
-        { OnTrigger(); }
+        if (ButtonTrans.position == PressedPos && (!trigger && IsPressed)) { 
+            OnTrigger();
+            trigger = true;
+        }
         // The frame the button is released
-        else if (!IsPressed)
-        { OnExit(); }
+        else if (trigger && !IsPressed) { 
+            OnExit(); 
+            trigger = false;
+        }
 
     }
 

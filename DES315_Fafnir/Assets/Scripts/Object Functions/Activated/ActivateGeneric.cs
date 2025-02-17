@@ -7,18 +7,26 @@ public class ActivateGeneric : MonoBehaviour {
     [SerializeField] [Range(1,5)]
     protected int threshold = 1;
 
-    
+    protected bool isHold = false;
     protected bool isActive = false;
 
-    public void Update() {
+    public virtual void Update() {
+
+        ThresholdTracker();
+
+    }
+
+    public void ThresholdTracker() {
 
         if (thresholdCount >= threshold && !isActive) { 
             isActive = true;
-            DoAction(); 
+            if (!isHold)
+            { DoAction(); } 
         }
         else if (thresholdCount < threshold && isActive) {
             isActive = false;
-            DoAction();
+            if (!isHold)
+            { DoAction(); }
         }
         else
         { return; }

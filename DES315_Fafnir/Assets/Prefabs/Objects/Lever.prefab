@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8691159176873697415}
   - component: {fileID: 5772797946650728184}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Lever
   m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 992175141542049301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0967f88182a1f464f91dc1689be5c1db, type: 3}
+  m_Script: {fileID: 11500000, guid: 50c3f89a9afcd1846be9061b5447c8cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   triggerList: []
