@@ -149,7 +149,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3775940913253859077}
   - component: {fileID: 3033480768919150846}
-  - component: {fileID: 4439116952201760580}
+  - component: {fileID: 149162135256178444}
   m_Layer: 0
   m_Name: FloorButton
   m_TagString: Untagged
@@ -219,7 +219,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4439116952201760580
+--- !u!114 &149162135256178444
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,9 +228,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8058259237667217365}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 657cc3816bbea07429f2dadd4b296c3f, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e4c59aa09aa924c8d3c2ac7b403645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerList: []
   ButtonTrans: {fileID: 5072271279038742090}
   PressedPos: {x: 0, y: -0.5, z: 0}
-  Doors: []
