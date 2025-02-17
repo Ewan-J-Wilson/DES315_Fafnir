@@ -27,7 +27,7 @@ public class UpdateControlPos : MonoBehaviour
 
     // Grab the number of button rows
     private static void GridInit(GridLayoutGroup _parent)
-    { gridNo = _parent.GetComponentsInChildren<UpdateControlPos>().GetLength(0) - 1; }
+    { gridNo = _parent.GetComponentsInChildren<UpdateControlPos>().GetLength(0); }
 
     // Update the scrollbar position, scrolling the keybinds menu
     public void ScrollMove() 

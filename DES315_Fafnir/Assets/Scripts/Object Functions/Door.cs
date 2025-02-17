@@ -8,24 +8,25 @@ public class Door : MonoBehaviour
     public bool isActive = false;
     private Vector2 mouseOver;
 
-    private void UpdateMouse()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Default")))
-        {
-            mouseOver.x = (int)(hit.point.x);
-            mouseOver.y = (int)(hit.point.y);
-
-            Debug.Log(Input.mousePosition);
-        }
-        else
-        {
-            mouseOver.x = -1;
-            mouseOver.y = -1;
-            Debug.Log(Input.mousePosition);
-        }
-
-    }
+    // Legacy Implementation where the mouse was clicking the lever directly
+    //private void UpdateMouse()
+    //{
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 25.0f, LayerMask.GetMask("Default")))
+    //    {
+    //        mouseOver.x = (int)(hit.point.x);
+    //        mouseOver.y = (int)(hit.point.y);
+    //
+    //        Debug.Log(Input.mousePosition);
+    //    }
+    //    else
+    //    {
+    //        mouseOver.x = -1;
+    //        mouseOver.y = -1;
+    //        Debug.Log(Input.mousePosition);
+    //    }
+    //
+    //}
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -34,10 +35,7 @@ public class Door : MonoBehaviour
             InvertDoorState();
         }
     }
-    public void OnMouseDown()
-    {
-        //InvertDoorState();
-    }
+    
 
     public void InvertDoorState()
     {
@@ -49,9 +47,9 @@ public class Door : MonoBehaviour
         door.SetActive(!door.activeSelf);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateMouse();
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    UpdateMouse();
+    //}
 }
