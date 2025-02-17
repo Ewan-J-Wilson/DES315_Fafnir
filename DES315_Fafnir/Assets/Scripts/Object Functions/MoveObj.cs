@@ -21,16 +21,8 @@ public class MoveObj : MonoBehaviour
     {
         IsActive = !StateDeterminer.activeSelf;
 
-        if (IsActive)
-        {
-            CurveTimer += Time.deltaTime * Speed;
-        }
-        else
-        {
-            CurveTimer -= Time.deltaTime * Speed;
-        }
-
-        CurveTimer = Mathf.Clamp01(CurveTimer);
+        CurveTimer += Time.deltaTime * (IsActive ? Speed : -Speed);
+        CurveTimer = Mathf.Clamp(CurveTimer, 0, 1);
 
         transform.position = Vector3.Lerp(OriginPos, TargetPos, Curve.Evaluate(CurveTimer));
     }

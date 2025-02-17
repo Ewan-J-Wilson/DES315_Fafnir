@@ -1679,7 +1679,6 @@ MonoBehaviour:
   AngleTarget:
   - -75
   - 75
-  IsUp: 1
   BridgeSpeed: 1.5
 --- !u!1 &887909949
 GameObject:

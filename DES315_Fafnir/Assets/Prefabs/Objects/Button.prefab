@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1228980617957527765}
   - component: {fileID: 8902741600363959211}
   - component: {fileID: 8691159176873697415}
-  - component: {fileID: 2547952477959519884}
+  - component: {fileID: 5772797946650728184}
   m_Layer: 0
   m_Name: Button
   m_TagString: Clickable
@@ -134,7 +134,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2547952477959519884
+--- !u!114 &5772797946650728184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,10 +143,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 992175141542049301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a42e90de62c762d46b213bd2f335e2ec, type: 3}
+  m_Script: {fileID: 11500000, guid: 0967f88182a1f464f91dc1689be5c1db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
-  closedMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  openMaterial: {fileID: 2100000, guid: 0d6a2d526601ca44d942617ac5420282, type: 2}
-  isActive: 0
+  triggerList: []
