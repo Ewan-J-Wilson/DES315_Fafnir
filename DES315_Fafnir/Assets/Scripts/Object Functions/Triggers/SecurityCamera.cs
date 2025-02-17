@@ -6,13 +6,6 @@ using UnityEngine;
 
 public class SecurityCamera : MonoBehaviour
 {
-    [SerializeReference] private GameObject security; 
-    [SerializeReference] PlayerAI player;
-
-    // cameraOn is commented out so the editor shuts up about a presently unused boolean
-    // but this boolean is planned to be used
-    //private bool cameraOn = true;
-
 
     private void OnTriggerEnter2D(Collider2D collision) // destroys clones when player enters camera trigger
     {
@@ -20,6 +13,7 @@ public class SecurityCamera : MonoBehaviour
         {
             return;
         }
+        PlayerAI player = collision.gameObject.GetComponent<PlayerAI>();
         player.KillClone(); // calls function from player script 
     }
 
