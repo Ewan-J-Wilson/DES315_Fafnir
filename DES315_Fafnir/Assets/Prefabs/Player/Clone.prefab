@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1074906895303390853}
   m_Layer: 0
   m_Name: Tool
-  m_TagString: Untagged
+  m_TagString: Tool
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -305,6 +305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clone: {fileID: 0}
   TrailPart: {fileID: 0}
+  pauseMenu: {fileID: 0}
   ComPos: 0
 --- !u!1 &8676656009448351387
 GameObject:

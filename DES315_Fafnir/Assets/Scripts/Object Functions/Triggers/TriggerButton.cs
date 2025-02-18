@@ -5,9 +5,8 @@ using UnityEngine;
 public class TriggerButton : TriggerGeneric
 {
     private const float PressSpeed = 2f;//Speed at which the button is pressed down
-    public Transform ButtonTrans;
+    private Transform ButtonTrans;
     private Vector3 ButtonPos;          //Original position of button
-    [SerializeField]
     private Vector3 PressedPos;         //Position for button to go to when fully pressed
     private float ButtonTimer;          //Time to wait for button to press down
     bool IsPressed = false;             //flag for if the button is pressed
@@ -15,8 +14,9 @@ public class TriggerButton : TriggerGeneric
 
     private void Start()
     {
+        ButtonTrans = GetComponentInChildren<Transform>();
         ButtonPos = transform.position;
-        PressedPos = ButtonPos + PressedPos;
+        PressedPos = ButtonPos + new Vector3(0, -0.5f, 0);
     }
 
     private void Update()
