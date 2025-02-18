@@ -220,17 +220,17 @@ public class PlayerAI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.tag == "MovablePlatform") { transform.parent = collision.transform; }
+        if (collision.transform.CompareTag("MovablePlatform")) { transform.parent = collision.transform; }
 
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.transform.tag == "MovablePlatform") { transform.parent = null; }
+        if (collision.transform.CompareTag("MovablePlatform")) { transform.parent = null; }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "AntiClone") { KillClone(); }
+        if (collision.transform.CompareTag("AntiClone")) { KillClone(); }
 
         if (collision.CompareTag("DeathZone")) { PlayerDeath(); }
     }
