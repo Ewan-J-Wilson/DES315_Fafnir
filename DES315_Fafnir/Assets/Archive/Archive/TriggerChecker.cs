@@ -5,7 +5,7 @@ public class TriggerChecker : MonoBehaviour
 {
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name != "Tool Sprite")
+        if (collision.CompareTag("Tool"))
         { return; }
         DoAction();
     }
