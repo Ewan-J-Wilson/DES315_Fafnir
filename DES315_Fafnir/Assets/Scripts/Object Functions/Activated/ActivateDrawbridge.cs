@@ -8,7 +8,7 @@ public class ActivateDrawbridge : ActivateGeneric
     public AnimationCurve Curve;        //Used to change speed of bridge over time
     private Transform[] Trans;           //Array of elements to shift
     float[] AngleBase;                  //Starting angle of object
-    private float[] AngleTarget = {0, 90, 0, -90, 0};         //Angle offset target for maximum CurveTime
+    private float[] AngleTarget = {0, -90, 0, 90, 0};         //Angle offset target for maximum CurveTime
     float CurveTime = 0;                //Float time between 0 and 1 for Curve
     public float BridgeSpeed;           //How fast to inc/dec curve time
     // Start is called before the first frame update
