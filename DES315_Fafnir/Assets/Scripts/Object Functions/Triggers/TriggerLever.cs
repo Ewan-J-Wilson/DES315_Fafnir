@@ -3,6 +3,10 @@
 public class TriggerLever : TriggerGeneric {
 
     private bool isActive = false;
+    [SerializeField]
+    private Color offColour;
+    [SerializeField]
+    private Color onColour;
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
@@ -10,6 +14,7 @@ public class TriggerLever : TriggerGeneric {
         { return; }
 
         isActive = !isActive;
+        GetComponent<SpriteRenderer>().color = isActive ? onColour : offColour;
 
         if (isActive)
         { OnTrigger(); }

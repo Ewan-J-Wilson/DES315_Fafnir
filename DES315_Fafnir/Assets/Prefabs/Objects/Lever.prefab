@@ -147,3 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerList: []
+  offColour: {r: 0.92549026, g: 0.050980397, b: 0.050980397, a: 1}
+  onColour: {r: 0.050980393, g: 0.9254902, b: 0.050980397, a: 1}
