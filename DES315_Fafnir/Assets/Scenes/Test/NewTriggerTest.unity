@@ -854,18 +854,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  Trans:
-  - {fileID: 257059766}
-  - {fileID: 1582611237}
-  AngleTarget:
-  - 90
-  - -90
   BridgeSpeed: 1.5
---- !u!4 &1266209433 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5072271279038742090, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
-  m_PrefabInstance: {fileID: 346285196}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1287789660
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,8 +1035,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerList:
   - {fileID: 1011856922}
-  ButtonTrans: {fileID: 1266209433}
-  PressedPos: {x: 0, y: -0.5, z: 0}
 --- !u!1 &1582611236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,6 +1127,10 @@ PrefabInstance:
       propertyPath: 'triggerList.Array.data[0]'
       value: 
       objectReference: {fileID: 875427225}
+    - target: {fileID: 8691159176873697415, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2547952477959519884, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
     m_RemovedGameObjects: []
