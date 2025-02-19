@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 	{
 
 		if (LevelInd >= LevelList.Length) { 
+			LevelInd = 0;
 			SceneManager.LoadSceneAsync(nextLevel.name); 
 			return;
 		}
