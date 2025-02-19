@@ -168,7 +168,7 @@ public class PlayerAI : MonoBehaviour
 	public void PlayerDeath()
 	{
 		KillClone();
-        transform.position = LastPos;
+        transform.position = FindFirstObjectByType<GameManager>().StartPos;
     }
 
 	
