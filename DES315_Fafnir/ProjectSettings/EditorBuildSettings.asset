@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menus/Controls Menu.unity
     guid: 140772272e4677141acd3ef493c3308c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Test/FloorButtonTest.unity
     guid: ce0fd4d53a631fb489489acc7e89505b
   - enabled: 1

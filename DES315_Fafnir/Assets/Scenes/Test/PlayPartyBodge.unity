@@ -193,6 +193,7 @@ MonoBehaviour:
   - {fileID: 934615082}
   - {fileID: 61919742}
   - {fileID: 1907240650}
+  nextLevel: {fileID: 102900000, guid: ce0fd4d53a631fb489489acc7e89505b, type: 3}
 --- !u!4 &90817609
 Transform:
   m_ObjectHideFlags: 0
