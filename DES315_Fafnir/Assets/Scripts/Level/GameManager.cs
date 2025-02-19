@@ -1,4 +1,6 @@
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Current state the game is in, used to update different sections of code
 public enum GameState
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour
     public static GameState State;			//Current game state
 	public static int LevelInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
     public GameObject[] LevelList;			//List of levels/loops in the scene
+	[SerializeField]
+	private SceneAsset nextLevel;
 
 
     private void Start()
@@ -27,6 +31,12 @@ public class GameManager : MonoBehaviour
 	//Enable currentl level and disable other levels
     public void SetLevel()
 	{
+
+		if (LevelInd >= LevelList.Length) { 
+			SceneManager.LoadSceneAsync(nextLevel.name); 
+			return;
+		}
+
 		for (int i = 0; i < LevelList.Length; i++)
 		{
 			// Changed from LevelList[i].active so the editor shuts up

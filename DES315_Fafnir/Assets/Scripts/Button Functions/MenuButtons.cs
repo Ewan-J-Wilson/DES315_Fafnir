@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -22,9 +20,9 @@ public class MenuButtons : MonoBehaviour
         eventSys.enabled = !conditional;
     }
 
-    public static void SwitchToScene(System.String _scene) { 
+    public static void SwitchToScene(SceneAsset _scene) { 
         Time.timeScale = 1;
-        SceneManager.LoadScene(_scene); 
+        SceneManager.LoadSceneAsync(_scene.name); 
     }
 
     public void SwitchToControlsScene(bool _condition) {
@@ -32,15 +30,10 @@ public class MenuButtons : MonoBehaviour
         swapCondition = _condition;
 
         Time.timeScale = 1;
-        SceneManager.LoadScene("Controls Menu"); 
+        SceneManager.LoadSceneAsync("Controls Menu"); 
 
     }
 
-    public static void SwitchToScene(System.String _scene, bool _condition) { 
-        Time.timeScale = 1;
-
-        SceneManager.LoadScene(_scene); 
-    }
     
     public void Pause(bool _pause) {
 
