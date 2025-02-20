@@ -33,6 +33,9 @@ public class ActivateGeneric : MonoBehaviour {
 
     }
 
+    public void SetActive(bool _isActive)
+    { isActive = _isActive; }
+
     protected virtual void DoAction() 
     { Debug.Log("You're not supposed to be in here"); }
 
