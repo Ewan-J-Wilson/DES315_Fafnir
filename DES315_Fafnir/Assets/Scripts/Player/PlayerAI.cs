@@ -1,150 +1,237 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
-public enum PCom_t
-{
-    P_NULL,                                     //Null command [Keep as otherwise clones will keep moving left]
-    P_LEFT,                                     //Move left
-    P_RIGHT,                                    //Move right
-    P_JUMP,                                     //Jump
-    P_ACTION,                                   //One button action (lever flips)
+using UnityEngine.InputSystem;
 
-    P_END,                                      //End command to stop AI from doing other actions
-}
 
-public struct PCom
-{
-    public PCom_t type;                         //Type of command
-    public float dur;                           //How long to hold button down
+// List of current clone relevant actions pressed
+// cause for some reason this doesn't exist within PlayerInput
+public struct ActionList {
+	// horizontal movement
+	public float hAxis;
+	public bool jump;
+	public bool tool;
+
+	public float toolRotation;
+	public float dur;
 }
 
 public class PlayerAI : MonoBehaviour
 {
-    public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
-    public GameObject Clone;                    //Clone gameobject reference
-    string[] ComIdent =                         //List of commands, set up in corresponding order to PCom_t
-    {
-        "left",
-        "right",
-        "space",
-    };
+	
+	// Clones
+	[SerializeField] private GameObject Clone;  //Clone gameobject reference
+	private int CloneNo;                        //Count of currently spawned clones
+	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
 
-    protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
-    protected const int MaxClones = 4;          //Maximum number of clones on screen at once
-    protected const float MoveSpeed = 5.0f;     //Constant movement speed
-    protected const float JumpForce = 20.0f;    //Constant jump force
-    public PCom[] PCList;                       //List of commands for a clone to follow, recorded by player actions
-    private PCom CurrentCom;                    //Current command being input by player
-    private PCom LastCom;                       //Previous command being input by player
-    private int CloneNo;                        //Count of currently spawned clones
-    private int ComInd;                         //Index into written commands
+	// Trails
+	public GameObject TrailPart;                //Trail particle reference
+	private float TrailTimer;                   //Timer to wait for instantiating a trail when the player is recording
+	protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
 
-    protected Rigidbody2D Rb;                   //Rigidbody for player physics
-    protected Vector2 Vel;                      //Movement vector
-    protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
+	// Commands
+	public ActionList[] PCList;                 //List of commands for a clone to follow, recorded by player actions
+	[NonSerialized] 
+	public ActionList CurrentCom;               //Current command being input by player
+	private ActionList LastCom;                 //Previous command being input by player
+	private int ComInd;                         //Index into written commands
+	protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
+	public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
+	private bool IsRecording;                   //Flag to enable movement recording with the player
+
+	// Player
+	protected Rigidbody2D Rb;                   //Rigidbody for player physics
+	protected Vector2 Vel;                      //Movement vector
+	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
+	[SerializeField] [Range(1f, 10f)]
+	protected const float MoveSpeed = 7.5f;     //Constant movement speed
+	protected const float JumpForce = 25.0f;    //Constant jump force
+	protected const float XAccel = 3.33f;		//Constant aceleration
+
+	// Pause Menu
+	[SerializeField]
+	private MenuButtons pauseMenu;
+	
 
     void Start()
-    {
-        CloneNo = 0;                            //Reset clone amount
-        Rb = GetComponent<Rigidbody2D>();
-        Array.Resize(ref PCList, 1);            //Resize array to have one element
-        ComInd = 0;                             //Reset command index
-        LastPos = transform.position;           //Grab current position for future clone position
-    }
+	{
 
-    void Update()
-    {
-        HandleMovement();
-        transform.Translate(Vel * Time.deltaTime * MoveSpeed);
-    }
+		// Unpause the game on start
+		pauseMenu.Pause(false);
+		PCList = new ActionList[MaxComSize];
+		CloneNo = 0;                            //Reset clone amount
+		Rb = GetComponent<Rigidbody2D>();
+		Array.Resize(ref PCList, 1);            //Resize array to have one element
+		ComInd = 0;                             //Reset command index
+		LastPos = transform.position;           //Grab current position for future clone position
 
-    protected virtual void HandleMovement()
-    {
-        //Clear command list for next clone once newly made clone has grabbed all current commands
-        if (ClearList)
-        {
-            Array.Resize(ref PCList, 1);
-            PCList[0].dur = 0;
-            ComInd = 0;
-            ClearList = false;
-        }
-        HandleCommandInput();
+	}
 
-        //Debug for command type and duration
-        Debug.Log("Type: " + CurrentCom.type + "\nDur: " + CurrentCom.dur);
-
-        //Create clone entity
-        if (Input.GetKeyDown("q"))
-        {
-            //Append END flag into command stream to make sure the clone stops
-            PCom end;
-            end.type = PCom_t.P_END;
-            end.dur = 0;
-            PCList[ComInd] = end;
-            ComInd++;
-            Array.Resize(ref PCList, ComInd+1);
-            AddClone();
-        }
-        //L/R input
-        Vel.x = Input.GetAxisRaw("Horizontal");
+	// Records the jump action
+    public void JumpAction(InputAction.CallbackContext obj) {
         
-        //Check if the player is on still ground and the spacebar is pressed to jump
-        if (Input.GetKeyDown("space") && Rb.velocity.y == 0.0f)
-        {
-            Rb.velocityY += JumpForce;
-        }
+		if ((CurrentCom.jump = obj.performed) && Rb.velocityY == 0f) 
+		{ Rb.velocityY += JumpForce; }
+
     }
 
-    //Create clone
-    void AddClone()
-    {
-        if (CloneNo >= MaxClones)
+
+	// Rounded to ceiling to prevent action being recorded halfway through a stick movement
+	public void MoveAction(InputAction.CallbackContext obj) 
+	{ CurrentCom.hAxis = Mathf.Ceil(obj.ReadValue<float>()); }
+
+	// Records the clone action
+	public void CloneAction(InputAction.CallbackContext obj) {
+
+		// Returns if this is anything but the start of the button press
+		if (!obj.started)
+		{ return; }
+
+		if (IsRecording)
+		{
+			if (CloneNo >= MaxClones)
+			{
+				return;                                         //Break out of function if the clone limit has been reached
+			}
+			//Load in last command into stream
+			PCList[ComInd] = LastCom;
+			ComInd++;
+			Array.Resize(ref PCList, ComInd + 1);
+			//Append END flag into command stream to make sure the clone stops
+			ActionList end = new(){ hAxis = 0f, jump = false, tool = false, toolRotation = CurrentCom.toolRotation, dur = 0f };
+			PCList[ComInd] = end;
+			ComInd++;
+			AddClone();
+			KillTrail();
+			IsRecording = false;
+		}
+		// Enable the recording
+		else
+		{
+			LastPos = transform.position;
+			IsRecording = true;
+		}
+
+	}
+
+
+    protected void Update()
+	{
+		HandleMovement();
+	}
+
+	protected virtual void HandleMovement()
+	{
+		//Clear command list for next clone once newly made clone has grabbed all current commands
+		if (ClearList)
+		{
+			Array.Resize(ref PCList, 1);
+			PCList[0].dur = 0;
+			ComInd = 0;
+			ClearList = false;
+		}
+
+		if (IsRecording)
+		{
+			HandleCommandInput();
+			HandleTrail();
+		}
+
+        // L/R input
+        Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, XAccel);
+
+	}
+
+	protected void FixedUpdate()
+	{
+		transform.Translate(Vel * Time.deltaTime);
+	}
+
+	// Create clone
+	void AddClone()
+	{
+		//Debug.Log("Player pos: " + transform.position);
+		CloneNo++;
+		Instantiate(Clone, LastPos, Quaternion.identity);   //Otherwise we create a clone at the player's last position
+		transform.position = LastPos;                       //Reset player back to original position before recording
+	}
+
+	public virtual void KillClone() {
+
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Clone"))
         {
-            return;                                         //Break out of function if the clone limit has been reached
+            Destroy(obj);
         }
-        CloneNo++;
-        Instantiate(Clone, LastPos, Quaternion.identity);   //Otherwise we create a clone at the player's last position
-        LastPos = transform.position;                       //Then grab the current position for the next future clone
+		CloneNo = 0;
     }
 
-    void HandleCommandInput()
-    {
-        //Grab the last command for future testing
-        LastCom = CurrentCom;
-        bool isnull = true;                                 //Flag for if the current key pressed is NOT one of the player's controls
-        for (int x = 0; x < 3; x++)
-        {
-            if (Input.GetKey(ComIdent[x]))
-            {
-                isnull = false;
-                switch (x)                                  //Command type decider
-                {
-                    case 0:
-                        CurrentCom.type = PCom_t.P_LEFT;
-                        break;
-                    case 1:
-                        CurrentCom.type = PCom_t.P_RIGHT;
-                        break;
-                    case 2:
-                        CurrentCom.type = PCom_t.P_JUMP;
-                        break;
-                    default:
-                        CurrentCom.type = PCom_t.P_NULL;
-                        break;
-                }
-                CurrentCom.dur += Time.deltaTime;           //Add duration onto the current command
-            }
-        }
-        if (isnull)                                         //Add duration if the current key is not a player command
-        {
-            CurrentCom.dur += Time.deltaTime;
-        }
+	public void PlayerDeath()
+	{
+		KillClone();
+        transform.position = FindFirstObjectByType<GameManager>().StartPos;
+    }
 
-        if (CurrentCom.type != LastCom.type)                //Check for command change
-        {
-            PCList[ComInd] = LastCom;                       //If a new command is found then we add to the command array
-            ComInd++;
-            Array.Resize(ref PCList, ComInd + 1);
-            CurrentCom.dur = 0;
-        }
+	
+
+	private void HandleCommandInput()
+	{
+		//Check for command change
+		if (CurrentCom.hAxis != LastCom.hAxis 
+			|| CurrentCom.jump != LastCom.jump 
+			|| CurrentCom.tool != LastCom.tool)
+		{
+			LastCom.toolRotation = GetComponentInChildren<Tool_Swing>().transform.eulerAngles.z % 360;
+			PCList[ComInd] = LastCom;                       //If a new command is found then we add to the command array
+			ComInd++;
+			Array.Resize(ref PCList, ComInd + 1);
+			CurrentCom.dur = 0;
+		}
+		CurrentCom.dur += Time.deltaTime;
+
+		// Grab the last command for future testing
+		LastCom = CurrentCom;
+
+	}
+
+	private void HandleTrail()
+	{
+		if (CloneNo >= MaxClones)
+		{
+			return;                                         //Break out of function if the clone limit has been reached
+		}
+		TrailTimer += Time.deltaTime;
+		if (TrailTimer > MaxTrailTime)
+		{
+			Instantiate(TrailPart, transform.position, Quaternion.identity);
+			TrailTimer = 0;
+		}
+	}
+
+	private void KillTrail()
+	{
+		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("TrailEnt"))
+		{
+			Destroy(obj);
+		}
+	}
+
+	public virtual float ToolRotation()
+	{ return CurrentCom.toolRotation; }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("MovablePlatform")) { transform.parent = collision.transform; }
+
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("MovablePlatform")) { transform.parent = null; }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.CompareTag("AntiClone")) { KillClone(); }
+
+        if (collision.CompareTag("DeathZone")) { PlayerDeath(); }
     }
 }
