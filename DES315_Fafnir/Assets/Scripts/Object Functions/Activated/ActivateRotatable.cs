@@ -19,7 +19,7 @@ public class ActivateRotatable : ActivateGeneric {
         AngleBase = transform.eulerAngles.z;
 
         if (transform.parent != null)
-        { isDrawbridge = transform.parent.TryGetComponent<NewActivateDrawbridge>(out _); }
+        { isDrawbridge = transform.parent.TryGetComponent<ActivateDrawbridge>(out _); }
     }
 
     public override void Update()
