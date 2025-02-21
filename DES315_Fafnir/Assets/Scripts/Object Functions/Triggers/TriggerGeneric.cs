@@ -5,6 +5,10 @@ public class TriggerGeneric : MonoBehaviour {
     [SerializeReference]
     protected ActivateGeneric[] triggerList;
 
+    protected bool canSelect = false;
+    [HideInInspector]
+    public bool selected = false;
+
     
     protected void OnTrigger() { 
         foreach (ActivateGeneric toActivate in triggerList)

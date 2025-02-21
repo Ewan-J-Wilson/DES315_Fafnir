@@ -85,16 +85,17 @@ public class Tool_Swing : MonoBehaviour
                 float angleRad = Mathf.Atan2(mouseDirection.y, mouseDirection.x);
                 // Update the tool's z rotation to the angle
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-                float circleRadius = parent.GetComponent<CircleCollider2D>().radius;
+                
+                GameObject cursor = GameObject.FindGameObjectWithTag("Cursor");
+                
+                float circleRadius = cursor.transform.parent.GetComponent<CircleCollider2D>().radius;
                 
                 float angleCos = Mathf.Cos(angleRad) * circleRadius;
                 float angleSin = Mathf.Sin(angleRad) * circleRadius;
                 bool range = (Mathf.Abs(mouseDirection.x) >= Mathf.Abs(angleCos)) || 
                     (Mathf.Abs(mouseDirection.y) >= Mathf.Abs(angleSin));
 
-                GameObject.FindGameObjectWithTag("Cursor").transform.SetLocalPositionAndRotation
-                    (range ? new Vector3(angleCos,angleSin) : mouseDirection, Quaternion.identity);
+                cursor.transform.localPosition = (range ? new Vector3(angleCos,angleSin) : mouseDirection);
 
             }
             // If using controller, get the angle of the right joystick
