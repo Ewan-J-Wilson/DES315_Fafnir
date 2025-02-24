@@ -1,34 +1,29 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class Tool_Swing : MonoBehaviour
 {    
-    // Sprite colours for the inactive and active tool respectively
-    [SerializeField] protected Color ogColour = Color.yellow;
-    [SerializeField] protected Color hitColour = Color.red;
     // Designer-controlled hit frame and cooldown times for the tool
     [Range(0.1f, 1f)][SerializeField] protected float hitActive = 0.2f;
     [Range(0.1f, 5f)][SerializeField] protected float hitCooldown = 0.5f;
     // Timers for the hit frames and cooldown
     protected float hitTimer = 0f;
     protected float cooldownTimer = 0f;
-    // The tool's sprite
-    protected GameObject toolSprite;
+
     protected PlayerInput input;
 
     private PlayerAI parent;
     private bool isClone = false;
 
+    float angle = 0;
+    Vector2 mouseDirection = new(0,0);
+
     Vector2 joystickAxis;
 
     private void Start() 
     {       
-
-        // Initialise the tool as inactive
-        toolSprite = gameObject.GetComponentInChildren<SpriteRenderer>().gameObject;
-        toolSprite.GetComponent<SpriteRenderer>().color = ogColour;
-        toolSprite.GetComponent<BoxCollider2D>().size = Vector2.zero;
 
         input = gameObject.GetComponentInParent<PlayerInput>();
         parent = (isClone = GetComponentInParent<Rigidbody2D>().CompareTag("Clone"))
@@ -76,37 +71,30 @@ public class Tool_Swing : MonoBehaviour
             if (GetComponentInParent<PlayerInput>().currentActionMap.name != "Player")
             { return; }
 
+            
             if (input.currentControlScheme == "Keyboard") {
 
                 // Grabs the line between the player centre and the mouse position
-                Vector2 mouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                mouseDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.parent.position;
                 // Calculates the angle of that line
-                float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
-                float angleRad = Mathf.Atan2(mouseDirection.y, mouseDirection.x);
-                // Update the tool's z rotation to the angle
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                
-                GameObject cursor = GameObject.FindGameObjectWithTag("Cursor");
-                
-                float circleRadius = cursor.transform.parent.GetComponent<CircleCollider2D>().radius;
-                
-                float angleCos = Mathf.Cos(angleRad) * circleRadius;
-                float angleSin = Mathf.Sin(angleRad) * circleRadius;
-                bool range = (Mathf.Abs(mouseDirection.x) >= Mathf.Abs(angleCos)) || 
-                    (Mathf.Abs(mouseDirection.y) >= Mathf.Abs(angleSin));
-
-                cursor.transform.localPosition = (range ? new Vector3(angleCos,angleSin) : mouseDirection);
+                angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x);
 
             }
             // If using controller, get the angle of the right joystick
-            else if (input.currentControlScheme == "Gamepad") {
-
-                float angle = Mathf.Atan2(joystickAxis.y, joystickAxis.x) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            }
+            else if (input.currentControlScheme == "Gamepad") 
+            { angle = Mathf.Atan2(joystickAxis.y, joystickAxis.x); }
             else
             { Debug.Log("No Input Type Detected"); }
+
+            float circleRadius = transform.parent.GetComponent<CircleCollider2D>().radius;
+            
+            float angleCos = Mathf.Cos(angle) * circleRadius;
+            float angleSin = Mathf.Sin(angle) * circleRadius;
+            bool range = (Mathf.Abs(mouseDirection.x) >= Mathf.Abs(angleCos)) || 
+                (Mathf.Abs(mouseDirection.y) >= Mathf.Abs(angleSin));
+
+            transform.localPosition = (range ? new Vector3(angleCos,angleSin) : mouseDirection);
+
 
         }
 
@@ -116,8 +104,8 @@ public class Tool_Swing : MonoBehaviour
     {
         // Set the tool hitbox to be active
         // Or reset the tool to inactive
-        toolSprite.GetComponent<SpriteRenderer>().color = _active ? hitColour : ogColour;
-        toolSprite.GetComponent<BoxCollider2D>().size = _active ? Vector2.one : Vector2.zero;
+        //TODO:
+
         // Start the hit frame or cooldown timer
         if (_active)
         { hitTimer = hitActive; }
