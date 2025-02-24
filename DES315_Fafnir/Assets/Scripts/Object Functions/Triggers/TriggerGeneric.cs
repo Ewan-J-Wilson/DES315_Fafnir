@@ -5,17 +5,20 @@ public class TriggerGeneric : MonoBehaviour {
     [SerializeReference]
     protected ActivateGeneric[] triggerList;
 
+
+    public bool isActive = false;
     protected bool canSelect = false;
     [HideInInspector]
     public bool selected = false;
 
-    
-    protected void OnTrigger() { 
+    public void OnTrigger() {
+        Debug.Log("pls");
         foreach (ActivateGeneric toActivate in triggerList)
         { toActivate.thresholdCount++; }
     }
 
-    protected void OnExit() { 
+    public void OnExit() {
+        Debug.Log("why");
         foreach (ActivateGeneric toActivate in triggerList)
         { toActivate.thresholdCount--; }
     }

@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 7099389759944379265}
   m_Layer: 6
   m_Name: Cursor Radius
-  m_TagString: Untagged
+  m_TagString: Cursor Radius
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitActive: 0.2
   hitCooldown: 0.5
+  interactables: []
 --- !u!1 &6497945057761427947
 GameObject:
   m_ObjectHideFlags: 0

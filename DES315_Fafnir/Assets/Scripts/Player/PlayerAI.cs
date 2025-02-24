@@ -232,6 +232,6 @@ public class PlayerAI : MonoBehaviour
     {
         if (collision.transform.CompareTag("AntiClone")) { KillClone(); }
 
-        if (collision.CompareTag("DeathZone")) { PlayerDeath(); }
+        if (collision.CompareTag("DeathZone") && collision.IsTouching(GetComponent<BoxCollider2D>())) { PlayerDeath(); }
     }
 }

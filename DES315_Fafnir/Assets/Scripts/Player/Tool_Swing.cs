@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class Tool_Swing : MonoBehaviour
 {    
     // Designer-controlled hit frame and cooldown times for the tool
     [Range(0.1f, 1f)][SerializeField] protected float hitActive = 0.2f;
     [Range(0.1f, 5f)][SerializeField] protected float hitCooldown = 0.5f;
+    public List<GameObject> interactables;
     // Timers for the hit frames and cooldown
     protected float hitTimer = 0f;
     protected float cooldownTimer = 0f;
@@ -32,6 +33,8 @@ public class Tool_Swing : MonoBehaviour
 
     }
 
+
+
     public void GetJoystickDir(InputAction.CallbackContext obj) {
 
         if (input.currentControlScheme != "Gamepad" || !obj.performed)
@@ -50,6 +53,34 @@ public class Tool_Swing : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+
+
+
+        float distance = transform.parent.GetComponent<CircleCollider2D>().radius;
+
+       foreach (GameObject interact in interactables)
+        {
+            float tempDistance = Vector2.Distance(transform.position, interact.transform.position);
+
+            ref bool isSelected = ref interact.GetComponent<TriggerGeneric>().selected;
+
+            if (distance >= tempDistance && !isSelected)
+            {
+
+                foreach (GameObject deselect in interactables)
+                {
+                    
+                    deselect.GetComponent<TriggerGeneric>().selected = false;
+                    
+                }
+
+                isSelected = true;
+                
+            }
+
+        }
+         
+
         //Update tool rotation and activation
         HandleTool();
         // Run any active timers
@@ -106,6 +137,27 @@ public class Tool_Swing : MonoBehaviour
         // Or reset the tool to inactive
         //TODO:
 
+        foreach (GameObject interact in interactables)
+        {
+
+            TriggerGeneric trigger = interact.GetComponent<TriggerGeneric>();
+
+            if (trigger.selected)
+            {
+
+                trigger.isActive = !trigger.isActive;
+                if (trigger.isActive)
+                { trigger.OnTrigger(); }
+                else
+                { trigger.OnExit(); }
+
+                break;
+
+            }
+
+        }
+
+
         // Start the hit frame or cooldown timer
         if (_active)
         { hitTimer = hitActive; }
@@ -123,7 +175,7 @@ public class Tool_Swing : MonoBehaviour
             // If the timer ran out
             if (hitTimer <= 0)
             {
-                SetToolActive(false);
+                //SetToolActive(false);
             }
         }
         // Tick down an active cooldown timer
