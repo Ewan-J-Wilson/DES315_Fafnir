@@ -1172,7 +1172,7 @@ MonoBehaviour:
         m_MethodName: SwitchToScene
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 102900000, guid: 7b6cb553c60f5c24f9eb82be8c327d4a, type: 3}
+          m_ObjectArgument: {fileID: 102900000, guid: 6eb5ced2658fb3545b17561571618441, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEditor.SceneAsset, UnityEditor.CoreModule
           m_IntArgument: 0
           m_FloatArgument: 0
