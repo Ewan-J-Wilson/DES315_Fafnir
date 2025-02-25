@@ -7,6 +7,11 @@ public class TriggerLever : TriggerGeneric {
     private Color offColour;
     [SerializeField]
     private Color onColour;
+
+    [SerializeField]
+    private Color offSelectColour;
+    [SerializeField]
+    private Color onSelectColour;
   
 
     public void Start() {
@@ -17,7 +22,9 @@ public class TriggerLever : TriggerGeneric {
 
     private void Update()
     {
-        GetComponent<SpriteRenderer>().color = selected ? onColour : offColour;
+        GetComponent<SpriteRenderer>().color = 
+            isActive ? (selected ? onSelectColour : onColour) :
+                (selected ? offSelectColour : offColour);
     }
 
 
