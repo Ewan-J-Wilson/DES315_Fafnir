@@ -2,7 +2,7 @@
 
 public class TriggerLever : TriggerGeneric {
 
-    private bool isActive = false;
+    
     [SerializeField]
     private Color offColour;
     [SerializeField]

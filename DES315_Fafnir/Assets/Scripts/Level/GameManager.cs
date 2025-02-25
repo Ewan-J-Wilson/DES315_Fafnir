@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
 
 	public void NextLevel()
 	{
+		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
+		{ trigger.Reset(); }
 		LevelInd++;
 		SetLevel();
 	}
