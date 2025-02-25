@@ -151,5 +151,5 @@ MonoBehaviour:
   selected: 0
   offColour: {r: 0.5999999, g: 0, b: 0.27878204, a: 1}
   onColour: {r: 0.5698112, g: 0.34128094, b: 0.05483088, a: 1}
-  offSelectColour: {r: 0.92549026, g: 0.050980397, b: 0.050980397, a: 1}
+  offSelectColour: {r: 0.94716984, g: 0.29129934, b: 0.29129934, a: 1}
   onSelectColour: {r: 0.93207544, g: 0.74888945, b: 0.23741534, a: 1}
