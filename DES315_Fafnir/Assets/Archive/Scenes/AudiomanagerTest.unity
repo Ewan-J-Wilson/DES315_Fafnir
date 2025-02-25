@@ -278,9 +278,87 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a6563c4d0a6d64c4bbac9914c364a87e, type: 3}
     src: {fileID: 0}
     type: 1
+  - Name: T5-1
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 1
+    clip: {fileID: 8300000, guid: 9ead94d4fca1aaf4ca0da144299e3f31, type: 3}
+    src: {fileID: 0}
+    type: 1
+  - Name: T5-2
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 1
+    clip: {fileID: 8300000, guid: 9194a6704b2a42a409c0fb3613901d43, type: 3}
+    src: {fileID: 0}
+    type: 1
+  - Name: T5-3
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 1
+    clip: {fileID: 8300000, guid: c19efb54c1d62404c88df75352b2dd75, type: 3}
+    src: {fileID: 0}
+    type: 1
+  LoopTrackList:
+  - Name:
+    - T5-1
+    - T5-2
+    - T5-3
+  - Name:
+    - T5-1
+    - T5-2
+    - T5-3
+--- !u!1 &1811028140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1811028141}
+  - component: {fileID: 1811028142}
+  m_Layer: 0
+  m_Name: AMtester
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1811028141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811028140}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1811028142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811028140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecd9baaf20759a48b3f101c8aa8f58c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1731048021}
   - {fileID: 1735170039}
+  - {fileID: 1811028141}
