@@ -46,7 +46,7 @@ public class Tool_Swing : MonoBehaviour
     public void ToolAction(InputAction.CallbackContext obj) {
 
         if (parent.CurrentCom.tool = obj.performed)
-        { SetToolActive(true); }
+        { SetToolActive(); }
 
     }
 
@@ -54,11 +54,9 @@ public class Tool_Swing : MonoBehaviour
     private void Update()
     {
 
-
-
         float distance = transform.parent.GetComponent<CircleCollider2D>().radius;
 
-       foreach (GameObject interact in interactables)
+        foreach (GameObject interact in interactables)
         {
             float tempDistance = Vector2.Distance(transform.position, interact.transform.position);
 
@@ -80,22 +78,23 @@ public class Tool_Swing : MonoBehaviour
 
         }
          
-
+        
+            
         //Update tool rotation and activation
         HandleTool();
+
         // Run any active timers
         RunTimer();
+        
     }
 
     //Handles the direction of the tool and the activation routines
     protected virtual void HandleTool()
     {
         
-        
-
         // If it's a clone, get the rotation from the current command
         if (isClone) 
-        { transform.rotation = Quaternion.AngleAxis(parent.ToolRotation(), Vector3.forward); } 
+        { transform.localPosition = parent.ToolPosition(); } 
         // Otherwise get the rotation from the inputs
         else {
 
@@ -131,38 +130,41 @@ public class Tool_Swing : MonoBehaviour
 
     }
 
-    public void SetToolActive(bool _active)
+    public void SetToolActive()
     {
         // Set the tool hitbox to be active
         // Or reset the tool to inactive
         //TODO:
 
-        foreach (GameObject interact in interactables)
-        {
+        if (hitTimer <= 0 && cooldownTimer <= 0) {
 
-            TriggerGeneric trigger = interact.GetComponent<TriggerGeneric>();
-
-            if (trigger.selected)
+            foreach (GameObject interact in interactables)
             {
 
-                trigger.isActive = !trigger.isActive;
-                if (trigger.isActive)
-                { trigger.OnTrigger(); }
-                else
-                { trigger.OnExit(); }
+                TriggerGeneric trigger = interact.GetComponent<TriggerGeneric>();
 
-                break;
+                if (trigger.selected)
+                {
+
+                    trigger.isActive = !trigger.isActive;
+                    if (trigger.isActive)
+                    { trigger.OnTrigger(); }
+                    else
+                    { trigger.OnExit(); }
+
+                    break;
+
+                }
 
             }
 
+            // Start the hit frame
+            hitTimer = hitActive;
+
         }
 
+        
 
-        // Start the hit frame or cooldown timer
-        if (_active)
-        { hitTimer = hitActive; }
-        else
-        { cooldownTimer = hitCooldown; }
     }
 
     protected void RunTimer() {
@@ -175,7 +177,7 @@ public class Tool_Swing : MonoBehaviour
             // If the timer ran out
             if (hitTimer <= 0)
             {
-                //SetToolActive(false);
+                cooldownTimer = hitCooldown;
             }
         }
         // Tick down an active cooldown timer

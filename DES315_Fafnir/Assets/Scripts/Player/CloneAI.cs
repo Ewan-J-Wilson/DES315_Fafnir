@@ -23,7 +23,8 @@ public class CloneAI : PlayerAI
 		{ Rb.velocityY += JumpForce; }
 
 		if (PCList[ComPos].tool)
-		{ GetComponentInChildren<Tool_Swing>().SetToolActive(true); }
+		{ 
+			GetComponentInChildren<Tool_Swing>().SetToolActive(); }
 
 		if (ComPos == PCList.Length - 1)
 		{ EndCom = true; }
@@ -57,9 +58,15 @@ public class CloneAI : PlayerAI
 		}
 		ClearList = true;
 	}
-    public override void KillClone() { }	//Keep this function around so clones don't die from walking into the anti-clone beam
-    // NOTE: on end command the tool rotation goes back to the start position
-    public override float ToolRotation() 
-    { return Mathf.LerpAngle(PCList[ComPos].toolRotation, PCList[(ComPos+1) % PCList.Length].toolRotation, 1 - (ComTimer / PCList[ComPos].dur)); }
+
+    public override Vector2 ToolPosition() {
+        float lerpX = Mathf.Lerp(PCList[ComPos].toolPosition.x, PCList[(ComPos+1) % PCList.Length].toolPosition.x, 1 - (ComTimer / PCList[ComPos].dur));
+        float lerpY = Mathf.Lerp(PCList[ComPos].toolPosition.y, PCList[(ComPos+1) % PCList.Length].toolPosition.y, 1 - (ComTimer / PCList[ComPos].dur));
+		
+		return new(lerpX,lerpY);
+    }
+
+    //public override float ToolRotation() 
+    //{ return Mathf.LerpAngle(PCList[ComPos].toolRotation, PCList[(ComPos+1) % PCList.Length].toolRotation, 1 - (ComTimer / PCList[ComPos].dur)); }
 
 }

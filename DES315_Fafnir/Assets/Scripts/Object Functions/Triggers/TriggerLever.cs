@@ -20,17 +20,21 @@ public class TriggerLever : TriggerGeneric {
         GetComponent<SpriteRenderer>().color = selected ? onColour : offColour;
     }
 
+
+    
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Cursor Radius")) 
         { return; }
 
-        if (canSelect && collision.CompareTag("Cursor Radius")) {
-            GameObject.FindGameObjectWithTag("Cursor").GetComponent<Tool_Swing>().interactables.Add(gameObject);
+        if (canSelect) {
+            foreach (GameObject cursor in GameObject.FindGameObjectsWithTag("Cursor"))
+            { 
+                if (!cursor.GetComponent<Tool_Swing>().interactables.Contains(gameObject))
+                { cursor.GetComponent<Tool_Swing>().interactables.Add(gameObject); }
+            }
             
         }
-        if (!collision.CompareTag("Tool"))
-        { return; }
 
         //isActive = !isActive;
         //GetComponent<SpriteRenderer>().color = isActive ? onColour : offColour;
