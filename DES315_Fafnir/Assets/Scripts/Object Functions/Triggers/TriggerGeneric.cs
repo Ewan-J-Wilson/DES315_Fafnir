@@ -1,17 +1,24 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class TriggerGeneric : MonoBehaviour {
 
     [SerializeReference]
     protected ActivateGeneric[] triggerList;
-    protected bool isActive = false;
-    
-    protected void OnTrigger() { 
+
+
+    public bool isActive = false;
+    protected bool canSelect = false;
+    [HideInInspector]
+    public bool selected = false;
+
+    public void OnTrigger() {
+        Debug.Log("pls");
         foreach (ActivateGeneric toActivate in triggerList)
         { toActivate.thresholdCount++; }
     }
 
-    protected void OnExit() { 
+    public void OnExit() {
+        Debug.Log("why");
         foreach (ActivateGeneric toActivate in triggerList)
         { toActivate.thresholdCount--; }
     }

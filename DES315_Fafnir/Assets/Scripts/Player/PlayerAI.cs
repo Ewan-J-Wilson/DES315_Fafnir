@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 
 // List of current clone relevant actions pressed
 // cause for some reason this doesn't exist within PlayerInput
+[Serializable]
 public struct ActionList {
 	// horizontal movement
 	public float hAxis;
 	public bool jump;
 	public bool tool;
 
-	public float toolRotation;
+	public Vector2 toolPosition;
 	public float dur;
 }
 
@@ -44,7 +45,7 @@ public class PlayerAI : MonoBehaviour
 	protected Vector2 Vel;                      //Movement vector
 	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
 	[SerializeField] [Range(1f, 10f)]
-	protected const float MoveSpeed = 7.5f;     //Constant movement speed
+	protected float MoveSpeed = 7.5f;     //Constant movement speed
 	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
 
@@ -98,7 +99,7 @@ public class PlayerAI : MonoBehaviour
 			ComInd++;
 			Array.Resize(ref PCList, ComInd + 1);
 			//Append END flag into command stream to make sure the clone stops
-			ActionList end = new(){ hAxis = 0f, jump = false, tool = false, toolRotation = CurrentCom.toolRotation, dur = 0f };
+			ActionList end = new(){ hAxis = 0f, jump = false, tool = false, toolPosition = CurrentCom.toolPosition, dur = 0f };
 			PCList[ComInd] = end;
 			ComInd++;
 			AddClone();
@@ -156,7 +157,10 @@ public class PlayerAI : MonoBehaviour
 		transform.position = LastPos;                       //Reset player back to original position before recording
 	}
 
-	public virtual void KillClone() {
+	public void KillClone() {
+
+		if (!CompareTag("Player"))
+		{ return; }
 
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Clone"))
         {
@@ -180,7 +184,7 @@ public class PlayerAI : MonoBehaviour
 			|| CurrentCom.jump != LastCom.jump 
 			|| CurrentCom.tool != LastCom.tool)
 		{
-			LastCom.toolRotation = GetComponentInChildren<Tool_Swing>().transform.eulerAngles.z % 360;
+			LastCom.toolPosition = GetComponentInChildren<Tool_Swing>().transform.localPosition;
 			PCList[ComInd] = LastCom;                       //If a new command is found then we add to the command array
 			ComInd++;
 			Array.Resize(ref PCList, ComInd + 1);
@@ -215,8 +219,10 @@ public class PlayerAI : MonoBehaviour
 		}
 	}
 
-	public virtual float ToolRotation()
-	{ return CurrentCom.toolRotation; }
+	//public virtual float ToolRotation()
+	//{ return CurrentCom.toolRotation; }
+	public virtual Vector2 ToolPosition()
+	{ return CurrentCom.toolPosition; }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -232,6 +238,6 @@ public class PlayerAI : MonoBehaviour
     {
         if (collision.transform.CompareTag("AntiClone")) { KillClone(); }
 
-        if (collision.CompareTag("DeathZone")) { PlayerDeath(); }
+        if (collision.CompareTag("DeathZone") && collision.IsTouching(GetComponent<BoxCollider2D>())) { PlayerDeath(); }
     }
 }
