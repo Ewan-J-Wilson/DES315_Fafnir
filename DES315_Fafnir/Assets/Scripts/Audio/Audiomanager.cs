@@ -128,11 +128,13 @@ public class Audiomanager : MonoBehaviour
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
         if (pitch != 0.0f) { aud.src.pitch = pitch; }
         if (pan != 0.5f) { aud.src.panStereo = pan; }
-        if (vol != 0.0f) { 
+        if (vol != 0.0f)
+        {
             aud.src.volume = vol * volumeLevels[aud.type];
-            if (aud.type != AudioType.MASTER) 
-            {aud.src.volume *= volumeLevels[AudioType.MASTER];}
+            if (aud.type != AudioType.MASTER)
+            { aud.src.volume *= volumeLevels[AudioType.MASTER]; }
         }
+        else aud.src.volume = 0.0f;
         aud.src.Play();
     }
 

@@ -13,6 +13,7 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
+	private Audiomanager am;
 	public GameObject Player;
 	public Vector2 StartPos;
     public static GameState State;			//Current game state
@@ -20,10 +21,12 @@ public class GameManager : MonoBehaviour
     public GameObject[] LevelList;			//List of levels/loops in the scene
 	[SerializeField]
 	private SceneAsset nextLevel;
+	public int StageInd;					//Current stage index
 
 
     private void Start()
     {
+		am = FindObjectOfType<Audiomanager>();
         State = GameState.Play;
         SetLevel();
     }
@@ -46,7 +49,8 @@ public class GameManager : MonoBehaviour
 
         Player.GetComponent<PlayerAI>().KillClone();
         Player.transform.position = StartPos;
-	}
+		am.FadeLoopTracks(LevelInd, StageInd);
+    }
 
 	public void NextLevel()
 	{
