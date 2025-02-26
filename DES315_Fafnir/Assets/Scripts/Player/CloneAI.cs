@@ -4,7 +4,7 @@ using UnityEngine;
 public class CloneAI : PlayerAI
 {
 	protected float ComTimer;               //Timer duration for current command
-	public int ComPos;						//Position into command array
+	private int ComPos;						//Position into command array
 	private bool EndCom;                    //Flag to end command reading
 
 	void Start()
@@ -65,8 +65,5 @@ public class CloneAI : PlayerAI
 		
 		return new(lerpX,lerpY);
     }
-
-    //public override float ToolRotation() 
-    //{ return Mathf.LerpAngle(PCList[ComPos].toolRotation, PCList[(ComPos+1) % PCList.Length].toolRotation, 1 - (ComTimer / PCList[ComPos].dur)); }
 
 }

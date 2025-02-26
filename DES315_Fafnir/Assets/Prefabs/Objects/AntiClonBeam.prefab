@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 4543394601129735359}
   - component: {fileID: 7229825953927003991}
   - component: {fileID: 1109040656065978822}
+  - component: {fileID: 1412936578953081445}
   m_Layer: 0
   m_Name: Beam
   m_TagString: AntiClone
@@ -252,3 +253,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1412936578953081445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640141884065225126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa80c140edd0fe4c8704c77c21ebf9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

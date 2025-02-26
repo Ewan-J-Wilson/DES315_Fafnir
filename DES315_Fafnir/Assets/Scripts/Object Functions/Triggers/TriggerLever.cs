@@ -4,13 +4,17 @@ using UnityEngine;
 public class TriggerLever : TriggerGeneric {
 
     [SerializeField]
+    [Tooltip("TEMP: Colour for when the lever is off and deselected")]
     private Color offColour;
     [SerializeField]
+    [Tooltip("TEMP: Colour for when the lever is on and deselected")]
     private Color onColour;
 
     [SerializeField]
+    [Tooltip("TEMP: Colour for when the lever is off and currently selected")]
     private Color offSelectColour;
     [SerializeField]
+    [Tooltip("TEMP: Colour for when the lever is on and currently deselected")]
     private Color onSelectColour;
   
 
@@ -43,14 +47,6 @@ public class TriggerLever : TriggerGeneric {
             
         }
 
-        //isActive = !isActive;
-        //GetComponent<SpriteRenderer>().color = isActive ? onColour : offColour;
-
-        //if (isActive)
-        //{ OnTrigger(); }
-        //else
-        //{ OnExit(); }
-
     }
 
     protected void OnTriggerExit2D(Collider2D collision)
@@ -60,8 +56,7 @@ public class TriggerLever : TriggerGeneric {
         { return; }
 
 
-        Debug.Log("exit");
-        if (canSelect && collision.CompareTag("Cursor Radius"))
+        if (canSelect)
         {
             
             GameObject.FindGameObjectWithTag("Cursor").GetComponent<Tool_Swing>().interactables.Remove(gameObject);

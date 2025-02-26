@@ -11,12 +11,14 @@ public class MenuButtons : MonoBehaviour
     public static bool swapCondition = false;
 
     // If the menu only appears after a condition has been met
+    [Tooltip("Does this only show up after certain conditions are met?")]
     [SerializeField] private bool conditional = false;
-    [SerializeField] private EventSystem eventSys;
+
+    private EventSystem eventSys;
 
     private void Start() { 
         GetComponent<Canvas>().enabled = !conditional; 
-        //eventSys = FindFirstObjectByType<EventSystem>();
+        eventSys = FindFirstObjectByType<EventSystem>();
         eventSys.enabled = !conditional;
     }
 

@@ -10,7 +10,7 @@ public class TriggerButton : TriggerGeneric
     private Vector3 PressedPos;         //Position for button to go to when fully pressed
     private float ButtonTimer;          //Time to wait for button to press down
     
-    bool trigger = false;
+    private bool trigger = false;
 
     private void Start()
     {

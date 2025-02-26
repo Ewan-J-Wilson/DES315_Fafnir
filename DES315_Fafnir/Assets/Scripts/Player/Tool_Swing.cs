@@ -6,8 +6,11 @@ using System.Collections.Generic;
 public class Tool_Swing : MonoBehaviour
 {    
     // Designer-controlled hit frame and cooldown times for the tool
+    [Tooltip("Time the cursor is active")]
     [Range(0.1f, 1f)][SerializeField] protected float hitActive = 0.2f;
+    [Tooltip("Cooldown until the cursor can next be used")]
     [Range(0.1f, 5f)][SerializeField] protected float hitCooldown = 0.5f;
+    [HideInInspector]
     public List<GameObject> interactables;
     // Timers for the hit frames and cooldown
     protected float hitTimer = 0f;
@@ -18,10 +21,10 @@ public class Tool_Swing : MonoBehaviour
     private PlayerAI parent;
     private bool isClone = false;
 
-    float angle = 0;
-    Vector2 mouseDirection = new(0,0);
+    private float angle = 0;
+    private Vector2 mouseDirection = new(0,0);
 
-    Vector2 joystickAxis;
+    private Vector2 joystickAxis;
 
     private void Start() 
     {       
@@ -32,8 +35,6 @@ public class Tool_Swing : MonoBehaviour
                 : GetComponentInParent<PlayerAI>();
 
     }
-
-
 
     public void GetJoystickDir(InputAction.CallbackContext obj) {
 
@@ -77,9 +78,7 @@ public class Tool_Swing : MonoBehaviour
             }
 
         }
-         
-        
-            
+          
         //Update tool rotation and activation
         HandleTool();
 
