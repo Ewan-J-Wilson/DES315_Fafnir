@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 public class VolumeSliders : MonoBehaviour
 {
+
+    [Tooltip("Which bus this slider affects")]
     [SerializeField] AudioType AudioBus;
     private const float soundCooldown = 0.3f;
     private float soundTimer = 0f;

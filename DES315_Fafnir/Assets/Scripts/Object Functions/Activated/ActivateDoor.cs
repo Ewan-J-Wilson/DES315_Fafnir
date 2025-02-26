@@ -3,8 +3,10 @@ using UnityEngine;
 public class ActivateDoor : ActivateGeneric
 {
 
+    [Tooltip("TEMP: Colour for when the door is closed")]
     [SerializeField]
     private Color closedColour;
+    [Tooltip("TEMP: Colour for when the door is open")]
     [SerializeField]
     private Color openColour;
 

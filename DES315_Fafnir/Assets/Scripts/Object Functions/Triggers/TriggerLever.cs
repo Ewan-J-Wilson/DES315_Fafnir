@@ -4,13 +4,17 @@ using UnityEngine;
 public class TriggerLever : TriggerGeneric {
 
     [SerializeField]
+    [Tooltip("TEMP: Colour for when the lever is off and deselected")]
     private Color offColour;
     [SerializeField]
+    [Tooltip("TEMP: Colour for when the lever is on and deselected")]
     private Color onColour;
 
     [SerializeField]
+    [Tooltip("TEMP: Colour for when the lever is off and currently selected")]
     private Color offSelectColour;
     [SerializeField]
+    [Tooltip("TEMP: Colour for when the lever is on and currently deselected")]
     private Color onSelectColour;
   
 

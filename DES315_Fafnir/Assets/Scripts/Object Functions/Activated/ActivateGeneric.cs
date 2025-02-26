@@ -4,6 +4,7 @@ public class ActivateGeneric : MonoBehaviour {
 
     [HideInInspector]
     public int thresholdCount = 0;
+    [Tooltip("The amount of triggers needed at once to activate this object")]
     [SerializeField] [Range(1,5)]
     protected int threshold = 1;
 

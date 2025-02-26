@@ -21,18 +21,21 @@ public class PlayerAI : MonoBehaviour
 {
 	
 	// Clones
+	[Tooltip("Reference to the Clone object")]
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
 	private int CloneNo;                        //Count of currently spawned clones
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
 
 	// Trails
+	[Tooltip("Reference to the Trail Particle object")]
 	public GameObject TrailPart;                //Trail particle reference
 	private float TrailTimer;                   //Timer to wait for instantiating a trail when the player is recording
 	protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
 
 	// Commands
+	[HideInInspector]
 	public ActionList[] PCList;                 //List of commands for a clone to follow, recorded by player actions
-	[NonSerialized] 
+	[HideInInspector] 
 	public ActionList CurrentCom;               //Current command being input by player
 	private ActionList LastCom;                 //Previous command being input by player
 	private int ComInd;                         //Index into written commands
@@ -44,6 +47,7 @@ public class PlayerAI : MonoBehaviour
 	protected Rigidbody2D Rb;                   //Rigidbody for player physics
 	protected Vector2 Vel;                      //Movement vector
 	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
+	[Tooltip("The Speed the Player moves at")]
 	[SerializeField] [Range(1f, 10f)]
 	protected float MoveSpeed = 7.5f;     //Constant movement speed
 	protected const float JumpForce = 25.0f;    //Constant jump force

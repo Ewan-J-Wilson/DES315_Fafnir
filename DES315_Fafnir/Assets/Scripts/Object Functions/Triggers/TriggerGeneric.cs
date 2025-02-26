@@ -3,9 +3,10 @@ using UnityEngine;
 public class TriggerGeneric : MonoBehaviour {
 
     [SerializeReference]
+    [Tooltip("List of items that this object triggers")]
     protected ActivateGeneric[] triggerList;
 
-
+    [HideInInspector]
     public bool isActive = false;
     protected bool canSelect = false;
     [HideInInspector]
