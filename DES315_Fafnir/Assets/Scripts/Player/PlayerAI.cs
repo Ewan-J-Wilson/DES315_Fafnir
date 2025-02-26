@@ -240,8 +240,6 @@ public class PlayerAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("AntiClone")) { KillClone(); }
-
         if (collision.CompareTag("DeathZone") && collision.IsTouching(GetComponent<BoxCollider2D>())) { PlayerDeath(); }
     }
 }

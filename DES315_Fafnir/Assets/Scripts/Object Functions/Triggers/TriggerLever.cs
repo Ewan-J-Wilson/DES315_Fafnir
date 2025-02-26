@@ -47,14 +47,6 @@ public class TriggerLever : TriggerGeneric {
             
         }
 
-        //isActive = !isActive;
-        //GetComponent<SpriteRenderer>().color = isActive ? onColour : offColour;
-
-        //if (isActive)
-        //{ OnTrigger(); }
-        //else
-        //{ OnExit(); }
-
     }
 
     protected void OnTriggerExit2D(Collider2D collision)
@@ -64,8 +56,7 @@ public class TriggerLever : TriggerGeneric {
         { return; }
 
 
-        Debug.Log("exit");
-        if (canSelect && collision.CompareTag("Cursor Radius"))
+        if (canSelect)
         {
             
             GameObject.FindGameObjectWithTag("Cursor").GetComponent<Tool_Swing>().interactables.Remove(gameObject);

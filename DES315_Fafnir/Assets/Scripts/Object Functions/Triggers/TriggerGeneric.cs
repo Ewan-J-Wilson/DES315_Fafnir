@@ -13,13 +13,11 @@ public class TriggerGeneric : MonoBehaviour {
     public bool selected = false;
 
     public void OnTrigger() {
-        Debug.Log("pls");
         foreach (ActivateGeneric toActivate in triggerList)
         { toActivate.thresholdCount++; }
     }
 
     public void OnExit() {
-        Debug.Log("why");
         foreach (ActivateGeneric toActivate in triggerList)
         { toActivate.thresholdCount--; }
     }
