@@ -4,18 +4,18 @@ using UnityEngine;
 public class TriggerLever : TriggerGeneric {
 
     [SerializeField]
-    [Tooltip("TEMP: Colour for when the lever is off and deselected")]
-    private Color offColour;
+    [Tooltip("Sprite for when the lever is off and deselected")]
+    private Sprite offSprite;
     [SerializeField]
-    [Tooltip("TEMP: Colour for when the lever is on and deselected")]
-    private Color onColour;
+    [Tooltip("Sprite for when the lever is on and deselected")]
+    private Sprite onSprite;
 
     [SerializeField]
-    [Tooltip("TEMP: Colour for when the lever is off and currently selected")]
-    private Color offSelectColour;
+    [Tooltip("Sprite for when the lever is off and currently selected")]
+    private Sprite offSelectSprite;
     [SerializeField]
-    [Tooltip("TEMP: Colour for when the lever is on and currently deselected")]
-    private Color onSelectColour;
+    [Tooltip("Sprite for when the lever is on and currently deselected")]
+    private Sprite onSelectSprite;
   
 
     public void Start() {
@@ -26,9 +26,9 @@ public class TriggerLever : TriggerGeneric {
 
     private void Update()
     {
-        GetComponent<SpriteRenderer>().color = 
-            isActive ? (selected ? onSelectColour : onColour) :
-                (selected ? offSelectColour : offColour);
+        GetComponent<SpriteRenderer>().sprite = 
+            isActive ? (selected ? onSelectSprite : onSprite) :
+                (selected ? offSelectSprite : offSprite);
     }
 
 

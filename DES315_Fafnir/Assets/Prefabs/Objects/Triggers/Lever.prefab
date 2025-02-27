@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.0026966345, z: -0, w: 0.99999636}
   m_LocalPosition: {x: 5.7250876, y: -3.92, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9245283, g: 0.047098536, b: 0.047098536, a: 1}
+  m_Sprite: {fileID: -7120334407250035298, guid: 243d9f4353779ac4fb4e39b22db7c8ec, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -126,13 +126,13 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.58, y: 0.56}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!114 &5772797946650728184
 MonoBehaviour:
@@ -149,7 +149,7 @@ MonoBehaviour:
   triggerList: []
   isActive: 0
   selected: 0
-  offColour: {r: 0.5999999, g: 0, b: 0.27878204, a: 1}
-  onColour: {r: 0.5698112, g: 0.34128094, b: 0.05483088, a: 1}
-  offSelectColour: {r: 0.94716984, g: 0.29129934, b: 0.29129934, a: 1}
-  onSelectColour: {r: 0.93207544, g: 0.74888945, b: 0.23741534, a: 1}
+  offSprite: {fileID: -7120334407250035298, guid: 243d9f4353779ac4fb4e39b22db7c8ec, type: 3}
+  onSprite: {fileID: 430220818999101362, guid: 3935a2aac9011c44b906c804cbfc08c1, type: 3}
+  offSelectSprite: {fileID: 2393720649883825802, guid: f9706dcbd4978f14b9e858beff08b202, type: 3}
+  onSelectSprite: {fileID: 8237638519030473556, guid: a9eebc33c9d74ce44aefe04b752fd3f6, type: 3}
