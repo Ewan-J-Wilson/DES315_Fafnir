@@ -281,10 +281,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Tool
       objectReference: {fileID: 0}
-    - target: {fileID: 3198915148095817229, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -5533604969148588175, guid: 06b82062836d2714684c93992c5ded88, type: 3}
     - target: {fileID: 3741771740661534282, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.6

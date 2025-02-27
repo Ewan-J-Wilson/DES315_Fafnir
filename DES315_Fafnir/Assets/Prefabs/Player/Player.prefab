@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -5533604969148588175, guid: 06b82062836d2714684c93992c5ded88, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -338,6 +338,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clone: {fileID: 4064460576545659443, guid: 038f10f9afc22b74ea9d7db4625cabb3, type: 3}
   TrailPart: {fileID: 6529556881714479319, guid: e4ccb08a8b89df741999ccb2b79a3855, type: 3}
+  PCList: []
+  CurrentCom:
+    hAxis: 0
+    jump: 0
+    tool: 0
+    toolPosition: {x: 0, y: 0}
+    dur: 0
+  MoveSpeed: 7.5
   pauseMenu: {fileID: 2588191603609945841}
 --- !u!50 &1796299224185216547
 Rigidbody2D:
