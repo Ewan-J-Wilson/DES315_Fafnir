@@ -4210,6 +4210,14 @@ PrefabInstance:
       propertyPath: 'triggerList.Array.data[0]'
       value: 
       objectReference: {fileID: 839145697}
+    - target: {fileID: 3033480768919150846, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3033480768919150846, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
+      propertyPath: m_Offset.x
+      value: 1.089744
+      objectReference: {fileID: 0}
     - target: {fileID: 3775940913253859077, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.38
