@@ -645,10 +645,10 @@ MonoBehaviour:
       - m_Target: {fileID: 1866310351}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SwitchToScene
-        m_Mode: 2
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 102900000, guid: fc53c7577d528654aaacf68ce63af2f2, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEditor.SceneAsset, UnityEditor.CoreModule
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Settings Menu
@@ -1083,7 +1083,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditional: 0
-  eventSys: {fileID: 298882623}
 --- !u!1 &2035525049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,13 +1169,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1866310351}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SwitchToScene
-        m_Mode: 2
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 102900000, guid: 6eb5ced2658fb3545b17561571618441, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEditor.SceneAsset, UnityEditor.CoreModule
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: PlayPartyBodge
+          m_StringArgument: Level 1
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &2035525052

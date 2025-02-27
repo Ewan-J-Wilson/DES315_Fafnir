@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -22,9 +23,11 @@ public class MenuButtons : MonoBehaviour
         eventSys.enabled = !conditional;
     }
 
-    public static void SwitchToScene(SceneAsset _scene) { 
+    // String for now because AssetReference does not seem to be serialisable as
+    // a parameter in an editor function
+    public static void SwitchToScene(string _scene) { 
         Time.timeScale = 1;
-        SceneManager.LoadSceneAsync(_scene.name); 
+        SceneManager.LoadSceneAsync(_scene);
     }
 
     public void SwitchToControlsScene(bool _condition) {

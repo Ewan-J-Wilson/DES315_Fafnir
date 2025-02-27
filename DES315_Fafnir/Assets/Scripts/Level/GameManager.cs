@@ -1,6 +1,7 @@
-using UnityEditor;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.AddressableAssets;
 
 //Current state the game is in, used to update different sections of code
 public enum GameState
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
 	public static int LevelInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
     public GameObject[] LevelList;			//List of levels/loops in the scene
 	[SerializeField]
-	private SceneAsset nextLevel;
+	private AssetReference nextLevel;
 	public int StageInd;					//Current stage index
 
 
@@ -37,7 +38,7 @@ public class GameManager : MonoBehaviour
 
 		if (LevelInd >= LevelList.Length) { 
 			LevelInd = 0;
-			SceneManager.LoadSceneAsync(nextLevel.name); 
+			nextLevel.LoadSceneAsync();
 			return;
 		}
 
