@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-		am = FindObjectOfType<Audiomanager>();
+		am = FindFirstObjectByType<Audiomanager>();
         State = GameState.Play;
         SetLevel();
     }
