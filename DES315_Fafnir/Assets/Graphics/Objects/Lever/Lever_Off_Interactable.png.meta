@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Lever_Off_Interactable_0: 2393720649883825802
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
