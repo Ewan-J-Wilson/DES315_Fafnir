@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
+using System.Linq.Expressions;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class MenuButtons : MonoBehaviour
 
     private EventSystem eventSys;
 
-    private void Start() { 
+    private void Awake() { 
         GetComponent<Canvas>().enabled = !conditional; 
         eventSys = FindFirstObjectByType<EventSystem>();
         eventSys.enabled = !conditional;
@@ -33,7 +34,7 @@ public class MenuButtons : MonoBehaviour
     public void SwitchToControlsScene(bool _condition) {
 
         swapCondition = _condition;
-
+        
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync("Controls Menu"); 
 
@@ -49,6 +50,7 @@ public class MenuButtons : MonoBehaviour
         Time.timeScale = (_pause ? 0 : 1);
 
         // Swaps to the UI action map if the game is paused
+ 
         PlayerInput actions = GetComponentInParent<PlayerInput>();
         if (_pause) 
         { actions.SwitchCurrentActionMap("UI"); }

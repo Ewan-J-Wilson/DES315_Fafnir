@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -58,8 +59,12 @@ public class TriggerLever : TriggerGeneric {
 
         if (canSelect)
         {
-            
-            GameObject.FindGameObjectWithTag("Cursor").GetComponent<Tool_Swing>().interactables.Remove(gameObject);
+            GameObject cursor = GameObject.FindGameObjectWithTag("Cursor");
+            if (cursor != null) {
+                if (GameObject.FindGameObjectWithTag("Cursor").TryGetComponent(out Tool_Swing tool)) 
+                { tool.interactables.Remove(gameObject); }
+            }
+
             selected = false;
 
         }
