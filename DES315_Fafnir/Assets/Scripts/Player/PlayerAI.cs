@@ -100,12 +100,12 @@ public class PlayerAI : MonoBehaviour
 		if (!obj.started)
 		{ return; }
 
-		if (IsRecording)
-		{
+		if (IsRecording)  {
+
+			//Break out of function if the clone limit has been reached
 			if (CloneNo >= MaxClones)
-			{
-				return;                                         //Break out of function if the clone limit has been reached
-			}
+			{ return; }
+
 			//Load in last command into stream
 			PCList[ComInd] = LastCom;
 			ComInd++;
@@ -159,9 +159,7 @@ public class PlayerAI : MonoBehaviour
 	}
 
 	protected void FixedUpdate()
-	{
-		transform.Translate(Vel * Time.deltaTime);
-	}
+	{ transform.Translate(Vel * Time.deltaTime); }
 
 	// Create clone
 	void AddClone()
@@ -176,11 +174,13 @@ public class PlayerAI : MonoBehaviour
     {
         if (collision.CompareTag("DeathZone"))
         { PlayerDeath(); }
-    }
-
+    
 		if (!CompareTag("Player"))
 		{ return; }
 
+	}
+
+	public void KillClone() {
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Clone"))
         { Destroy(obj); }
 		CloneNo = 0;
@@ -240,16 +240,19 @@ public class PlayerAI : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("MovablePlatform")) { transform.parent = collision.transform; }
-
+        if (collision.transform.CompareTag("MovablePlatform")) 
+		{ transform.parent = collision.transform; }
     }
+
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("MovablePlatform")) { transform.parent = null; }
+        if (collision.transform.CompareTag("MovablePlatform")) 
+		{ transform.parent = null; }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("DeathZone") && collision.IsTouching(GetComponent<BoxCollider2D>())) { PlayerDeath(); }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.CompareTag("DeathZone") && collision.IsTouching(GetComponent<BoxCollider2D>())) 
+	//	{ PlayerDeath(); }
+    //}
 }
