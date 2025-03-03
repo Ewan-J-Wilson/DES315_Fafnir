@@ -172,11 +172,14 @@ public class PlayerAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+		
+		if (!CompareTag("Player"))
+		{ return; }
+
         if (collision.CompareTag("DeathZone"))
         { PlayerDeath(); }
     
-		if (!CompareTag("Player"))
-		{ return; }
+		
 
 	}
 
@@ -215,10 +218,10 @@ public class PlayerAI : MonoBehaviour
 
 	private void HandleTrail()
 	{
+		//Break out of function if the clone limit has been reached
 		if (CloneNo >= MaxClones)
-		{
-			return;                                         //Break out of function if the clone limit has been reached
-		}
+		{ return; }
+
 		TrailTimer += Time.deltaTime;
 		if (TrailTimer > MaxTrailTime)
 		{
@@ -230,29 +233,30 @@ public class PlayerAI : MonoBehaviour
 	private void KillTrail()
 	{
 		foreach (GameObject obj in GameObject.FindGameObjectsWithTag("TrailEnt"))
-		{
-			Destroy(obj);
-		}
+		{ Destroy(obj); }
 	}
 
 	public virtual Vector2 ToolPosition()
 	{ return CurrentCom.toolPosition; }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
+		if (!CompareTag("Player"))
+		{ return; }
+
         if (collision.transform.CompareTag("MovablePlatform")) 
 		{ transform.parent = collision.transform; }
+		
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+		if (!CompareTag("Player"))
+		{ return; }
+
         if (collision.transform.CompareTag("MovablePlatform")) 
 		{ transform.parent = null; }
+		
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.CompareTag("DeathZone") && collision.IsTouching(GetComponent<BoxCollider2D>())) 
-	//	{ PlayerDeath(); }
-    //}
 }
