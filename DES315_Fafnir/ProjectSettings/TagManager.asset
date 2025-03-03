@@ -16,6 +16,7 @@ TagManager:
   - DeathZone
   - Cursor
   - Cursor Radius
+  - DeathZone
   layers:
   - Default
   - TransparentFX

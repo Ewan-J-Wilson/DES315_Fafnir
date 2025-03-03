@@ -24,7 +24,10 @@ public class PlayerAI : MonoBehaviour
 	[Tooltip("Reference to the Clone object")]
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
 	private int CloneNo;                        //Count of currently spawned clones
+	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
+	protected const int MaxJump = 2;			//Makes it so double jumping mechanic can't be exploited infinitely 
+	
 
 	// Trails
 	[Tooltip("Reference to the Trail Particle object")]
@@ -75,8 +78,13 @@ public class PlayerAI : MonoBehaviour
 	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
         
-		if ((CurrentCom.jump = obj.performed) && Rb.velocityY == 0f) 
-		{ Rb.velocityY += JumpForce; }
+		if ((CurrentCom.jump = obj.performed) && JumpCount < MaxJump) 
+		{
+
+			JumpCount++;
+            Rb.velocityY = JumpForce;
+			
+		}
 
     }
 
@@ -127,6 +135,9 @@ public class PlayerAI : MonoBehaviour
 
 	protected virtual void HandleMovement()
 	{
+		if (Rb.velocityY == 0f)
+		{ JumpCount = 0; }
+        
 		//Clear command list for next clone once newly made clone has grabbed all current commands
 		if (ClearList)
 		{
@@ -161,15 +172,17 @@ public class PlayerAI : MonoBehaviour
 		transform.position = LastPos;                       //Reset player back to original position before recording
 	}
 
-	public void KillClone() {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("DeathZone"))
+        { PlayerDeath(); }
+    }
 
 		if (!CompareTag("Player"))
 		{ return; }
 
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Clone"))
-        {
-            Destroy(obj);
-        }
+        { Destroy(obj); }
 		CloneNo = 0;
     }
 
@@ -180,7 +193,6 @@ public class PlayerAI : MonoBehaviour
     }
 
 	
-
 	private void HandleCommandInput()
 	{
 		//Check for command change
@@ -223,8 +235,6 @@ public class PlayerAI : MonoBehaviour
 		}
 	}
 
-	//public virtual float ToolRotation()
-	//{ return CurrentCom.toolRotation; }
 	public virtual Vector2 ToolPosition()
 	{ return CurrentCom.toolPosition; }
 
