@@ -27,7 +27,7 @@ public class PlayerAI : MonoBehaviour
 	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
 	[SerializeField] [Range(1,5)]
-	protected const int MaxJump = 1;			//Makes it so double jumping mechanic can't be exploited infinitely 
+	protected int MaxJump = 1;			//Makes it so double jumping mechanic can't be exploited infinitely 
 	
 
 	// Trails
