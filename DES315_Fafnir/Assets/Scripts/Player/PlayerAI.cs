@@ -172,15 +172,13 @@ public class PlayerAI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-		
-		if (!CompareTag("Player"))
+	
+		if (!collision.CompareTag("Player"))
 		{ return; }
 
         if (collision.CompareTag("DeathZone"))
         { PlayerDeath(); }
     
-		
-
 	}
 
 	public void KillClone() {
@@ -253,7 +251,7 @@ public class PlayerAI : MonoBehaviour
     {
 		if (!CompareTag("Player"))
 		{ return; }
-
+		
         if (collision.transform.CompareTag("MovablePlatform")) 
 		{ transform.parent = null; }
 		
