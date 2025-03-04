@@ -15,18 +15,19 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
 	private Audiomanager am;
-	public GameObject Player;
+	public PlayerAI Player;
 	public Vector2 StartPos;
     public static GameState State;			//Current game state
-	public static int LevelInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
+	public static int LoopInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
     public GameObject[] LevelList;			//List of levels/loops in the scene
 	[SerializeField]
 	private AssetReference nextLevel;
-	public int StageInd;					//Current stage index
+	public int LevelInd;					//Current stage index
 
 
     private void Start()
     {
+		Player = FindFirstObjectByType<PlayerAI>();
 		am = FindFirstObjectByType<Audiomanager>();
         State = GameState.Play;
         SetLevel();
@@ -36,28 +37,38 @@ public class GameManager : MonoBehaviour
     public void SetLevel()
 	{
 
-		if (LevelInd >= LevelList.Length) { 
-			LevelInd = 0;
+		//Debug.Log(LoopInd + "-" + LevelInd);
+		
+
+		if (LoopInd >= LevelList.Length) { 
+			LoopInd = 0;
 			nextLevel.LoadSceneAsync();
-			return;
+			return; 
 		}
+		else 
+		{ am.FadeLoopTracks(LoopInd, LevelInd); }
+
+		
 
 		for (int i = 0; i < LevelList.Length; i++)
 		{
 			// Changed from LevelList[i].active so the editor shuts up
-			LevelList[i].SetActive(i == LevelInd);
+			LevelList[i].SetActive(i == LoopInd);
 		}
 
-        Player.GetComponent<PlayerAI>().KillClone();
-        Player.transform.position = StartPos;
-		am.FadeLoopTracks(LevelInd, StageInd);
+		Player.PlayerDeath();
+		
     }
 
 	public void NextLevel()
 	{
 		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
 		{ trigger.Reset(); }
-		LevelInd++;
+
+		if (LoopInd < LevelList.Length) { 
+			LoopInd++;
+		}
+
 		SetLevel();
 	}
 }
