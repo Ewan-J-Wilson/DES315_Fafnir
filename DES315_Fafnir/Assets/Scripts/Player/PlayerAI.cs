@@ -26,7 +26,8 @@ public class PlayerAI : MonoBehaviour
 	private int CloneNo;                        //Count of currently spawned clones
 	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
-	protected const int MaxJump = 2;			//Makes it so double jumping mechanic can't be exploited infinitely 
+	[SerializeField] [Range(1,5)]
+	protected const int MaxJump = 1;			//Makes it so double jumping mechanic can't be exploited infinitely 
 	
 
 	// Trails
@@ -36,7 +37,7 @@ public class PlayerAI : MonoBehaviour
 	protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
 
 	// Commands
-	[HideInInspector]
+	//[HideInInspector]
 	public ActionList[] PCList;                 //List of commands for a clone to follow, recorded by player actions
 	[HideInInspector] 
 	public ActionList CurrentCom;               //Current command being input by player

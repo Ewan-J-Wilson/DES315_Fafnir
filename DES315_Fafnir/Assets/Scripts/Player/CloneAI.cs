@@ -6,6 +6,7 @@ public class CloneAI : PlayerAI
 	protected float ComTimer;               //Timer duration for current command
 	private int ComPos;						//Position into command array
 	private bool EndCom;                    //Flag to end command reading
+	private bool JumpCheck = false;
 
 	void Start()
 	{
@@ -19,12 +20,19 @@ public class CloneAI : PlayerAI
 	protected override void HandleMovement()
 	{
 		
-		if (PCList[ComPos].jump && Rb.velocityY == 0f)
-		{ Rb.velocityY += JumpForce; }
+		if (!PCList[ComPos].jump)
+        { JumpCheck = true; }
+        else if (JumpCount < MaxJump && JumpCheck)
+        {
+
+            JumpCount++;
+            Rb.velocityY = JumpForce;
+			JumpCheck = false;
+
+        }
 
 		if (PCList[ComPos].tool)
-		{ 
-			GetComponentInChildren<Tool_Swing>().SetToolActive(); }
+		{ GetComponentInChildren<Tool_Swing>().SetToolActive(); }
 
 		if (ComPos == PCList.Length - 1)
 		{ EndCom = true; }
