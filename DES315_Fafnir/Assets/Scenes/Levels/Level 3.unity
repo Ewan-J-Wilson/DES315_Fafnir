@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 792721303}
   m_Layer: 0
   m_Name: DeathZone
-  m_TagString: DeathZone
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1082,7 +1082,7 @@ GameObject:
   - component: {fileID: 901315963}
   m_Layer: 0
   m_Name: Persistent
-  m_TagString: Untagged
+  m_TagString: DeathZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

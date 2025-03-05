@@ -13,9 +13,9 @@ TagManager:
   - TrailEnt
   - MovablePlatform
   - AntiClone
-  - DeathZone
   - Cursor
   - Cursor Radius
+  - FadeOut
   - DeathZone
   layers:
   - Default

@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField]
 	private AssetReference nextLevel;
 	public int LevelInd;					//Current stage index
+	private SpriteRenderer FadeOut;
+	private bool doNextLevel = false;
 
 
     private void Start()
@@ -31,9 +33,25 @@ public class GameManager : MonoBehaviour
 		am = FindFirstObjectByType<Audiomanager>();
         State = GameState.Play;
         SetLevel();
+
+		Camera _camera = FindFirstObjectByType<Camera>();		
+		FadeOut = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<SpriteRenderer>();
+		FadeOut.transform.localScale = new(_camera.orthographicSize * _camera.aspect * 2, _camera.orthographicSize * 2);
+
+		if (FadeOut.enabled)
+		{ FadeOut.GetComponent<Fade>().FadeIn(); }
+		else 
+		{ FadeOut.enabled = false; }
+
     }
 
-	//Enable currentl level and disable other levels
+    //public void Awake() {
+    //    
+	//	
+	//
+    //}
+
+    //Enable currentl level and disable other levels
     public void SetLevel()
 	{
 
@@ -42,7 +60,8 @@ public class GameManager : MonoBehaviour
 
 		if (LoopInd >= LevelList.Length) { 
 			LoopInd = 0;
-			nextLevel.LoadSceneAsync();
+			doNextLevel = true;
+			FadeOut.GetComponent<Fade>().FadeOut();
 			return; 
 		}
 		else 
@@ -60,7 +79,16 @@ public class GameManager : MonoBehaviour
 		
     }
 
-	public void NextLevel()
+    public void Update() {
+        
+		if (doNextLevel && FadeOut.GetComponent<Fade>().alpha >= FadeOut.GetComponent<Fade>().alphaThreshold) {
+			doNextLevel = false;
+			nextLevel.LoadSceneAsync(); 
+		}
+
+    }
+
+    public void NextLevel()
 	{
 		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
 		{ trigger.Reset(); }
