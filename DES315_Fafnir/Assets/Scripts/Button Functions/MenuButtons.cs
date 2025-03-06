@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.AddressableAssets;
+using System.Linq.Expressions;
 
 public class MenuButtons : MonoBehaviour
 {
@@ -13,39 +13,33 @@ public class MenuButtons : MonoBehaviour
     public static bool swapCondition = false;
 
     // If the menu only appears after a condition has been met
+    [Tooltip("Does this only show up after certain conditions are met?")]
     [SerializeField] private bool conditional = false;
-    [SerializeField] private EventSystem eventSys;
 
-    private void Start() { 
+    private EventSystem eventSys;
+
+    private void Awake() { 
         GetComponent<Canvas>().enabled = !conditional; 
-        //eventSys = FindFirstObjectByType<EventSystem>();
+        eventSys = FindFirstObjectByType<EventSystem>();
         eventSys.enabled = !conditional;
     }
 
-    public static void SwitchToScene(System.String _scene) { 
+    // String for now because AssetReference does not seem to be serialisable as
+    // a parameter in an editor function
+    public static void SwitchToScene(string _scene) { 
         Time.timeScale = 1;
-        SceneManager.LoadScene(_scene); 
+        SceneManager.LoadSceneAsync(_scene);
     }
 
     public void SwitchToControlsScene(bool _condition) {
 
         swapCondition = _condition;
-
-        //if (CompareTag("Keyboard"))
-        //{ conditional = false; }
-        //else if (CompareTag("Controller"))
-        //{ conditional = true; }
-
+        
         Time.timeScale = 1;
-        SceneManager.LoadScene("Controls Menu"); 
+        SceneManager.LoadSceneAsync("Controls Menu"); 
 
     }
 
-    public static void SwitchToScene(System.String _scene, bool _condition) { 
-        Time.timeScale = 1;
-
-        SceneManager.LoadScene(_scene); 
-    }
     
     public void Pause(bool _pause) {
 
@@ -56,6 +50,7 @@ public class MenuButtons : MonoBehaviour
         Time.timeScale = (_pause ? 0 : 1);
 
         // Swaps to the UI action map if the game is paused
+ 
         PlayerInput actions = GetComponentInParent<PlayerInput>();
         if (_pause) 
         { actions.SwitchCurrentActionMap("UI"); }

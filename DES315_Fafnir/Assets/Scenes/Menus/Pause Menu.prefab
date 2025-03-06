@@ -255,7 +255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditional: 1
-  eventSys: {fileID: 1486639245694760200}
 --- !u!1 &1998250100211383542
 GameObject:
   m_ObjectHideFlags: 0

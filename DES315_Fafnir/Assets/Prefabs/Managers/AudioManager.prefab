@@ -54,3 +54,40 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a6563c4d0a6d64c4bbac9914c364a87e, type: 3}
     src: {fileID: 0}
     type: 1
+  - Name: T5-1
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: 9ead94d4fca1aaf4ca0da144299e3f31, type: 3}
+    src: {fileID: 0}
+    type: 1
+  - Name: T5-2
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: 9194a6704b2a42a409c0fb3613901d43, type: 3}
+    src: {fileID: 0}
+    type: 1
+  - Name: T5-3
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: c19efb54c1d62404c88df75352b2dd75, type: 3}
+    src: {fileID: 0}
+    type: 1
+  LoopTrackList:
+  - Name:
+    - T5-1
+    - T5-2
+    - T5-3
+  - Name:
+    - T5-3
+    - T5-2
+    - T5-1
+  - Name:
+    - T5-2
+    - T5-1
+    - T5-3
