@@ -128,6 +128,12 @@ public class Audiomanager : MonoBehaviour
     public void PlayAudio(string name, float vol = 1.0f, float pitch = 0.0f, float pan = 0.5f)
     {
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
+
+        if (aud.src == null) {
+            Debug.Log("Audio Not Found");
+            return;
+        }
+
         if (pitch != 0.0f) { aud.src.pitch = pitch; }
         if (pan != 0.5f) { aud.src.panStereo = pan; }
         if (vol != 0.0f)

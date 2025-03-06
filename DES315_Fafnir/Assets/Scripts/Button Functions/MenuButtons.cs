@@ -5,12 +5,18 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
 using System.Linq.Expressions;
+using UnityEditor.SearchService;
 
 public class MenuButtons : MonoBehaviour
 {
 
     // Generic condition to change when swapping scenes
     public static bool swapCondition = false;
+    private static bool doNextScene = false;
+    private static string nextScene = "";
+
+    [HideInInspector]
+    public static Fade _fade;
 
     // If the menu only appears after a condition has been met
     [Tooltip("Does this only show up after certain conditions are met?")]
@@ -21,25 +27,40 @@ public class MenuButtons : MonoBehaviour
     private void Awake() { 
         GetComponent<Canvas>().enabled = !conditional; 
         eventSys = FindFirstObjectByType<EventSystem>();
+        _fade = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<Fade>();
         eventSys.enabled = !conditional;
     }
 
     // String for now because AssetReference does not seem to be serialisable as
     // a parameter in an editor function
     public static void SwitchToScene(string _scene) { 
-        Time.timeScale = 1;
-        SceneManager.LoadSceneAsync(_scene);
+        
+        _fade.FadeOut();
+        doNextScene = true;
+        nextScene = _scene;
+        //SceneManager.LoadSceneAsync(_scene);
     }
 
     public void SwitchToControlsScene(bool _condition) {
-
-        swapCondition = _condition;
         
-        Time.timeScale = 1;
-        SceneManager.LoadSceneAsync("Controls Menu"); 
+        swapCondition = _condition;
+        _fade.FadeOut();
+        doNextScene = true;
+        nextScene = "Controls Menu";
+        //Time.timeScale = 1;
+        //SceneManager.LoadSceneAsync("Controls Menu"); 
 
     }
 
+    public void Update() {
+        
+		if (doNextScene && _fade.alpha >= 1f) {
+			doNextScene = false;
+            Time.timeScale = 1;
+			SceneManager.LoadSceneAsync(nextScene);
+		}
+
+    }
     
     public void Pause(bool _pause) {
 

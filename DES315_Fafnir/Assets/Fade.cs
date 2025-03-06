@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Fade : MonoBehaviour
 {
 
+    public bool isMenu = false;
     public static float FadeTime = 0.75f;
     private SpriteRenderer _sprite;
     [HideInInspector]
@@ -16,7 +17,7 @@ public class Fade : MonoBehaviour
     public void Start() 
     { 
 
-        if (GameManager._fade != this) { 
+        if ((isMenu ? MenuButtons._fade : GameManager._fade) != this) { 
             Destroy(gameObject); 
             return;
         }
