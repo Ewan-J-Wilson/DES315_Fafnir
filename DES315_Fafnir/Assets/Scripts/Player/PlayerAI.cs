@@ -176,7 +176,7 @@ public class PlayerAI : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 	
-		if (!collision.CompareTag("Player"))
+		if (!collision.IsTouching(GetComponent<BoxCollider2D>()))
 		{ return; }
 
         if (collision.CompareTag("DeathZone"))
@@ -240,24 +240,24 @@ public class PlayerAI : MonoBehaviour
 	public virtual Vector2 ToolPosition()
 	{ return CurrentCom.toolPosition; }
 
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-		if (!CompareTag("Player"))
-		{ return; }
-
-        //if (collision.transform.CompareTag("MovablePlatform")) 
-		//{ transform.parent = collision.transform; }
-		
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-		if (!CompareTag("Player"))
-		{ return; }
-		
-       // if (collision.transform.CompareTag("MovablePlatform")) 
-		//{ transform.parent = null; }
-		
-    }
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+	//	if (!CompareTag("Player"))
+	//	{ return; }
+	//
+    //    //if (collision.transform.CompareTag("MovablePlatform")) 
+	//	//{ transform.parent = collision.transform; }
+	//	
+    //}
+	//
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+	//	if (!CompareTag("Player"))
+	//	{ return; }
+	//	
+    //   // if (collision.transform.CompareTag("MovablePlatform")) 
+	//	//{ transform.parent = null; }
+	//	
+    //}
 
 }

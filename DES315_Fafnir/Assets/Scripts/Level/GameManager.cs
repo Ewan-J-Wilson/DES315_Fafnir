@@ -56,11 +56,6 @@ public class GameManager : MonoBehaviour
     public void SetLevel()
 	{
 
-		// Has to be here so AdvanceLevel code works properly
-		// TODO: Fix AdvanceLevel so that the fadeout animation doesn't look awkward with
-		// the player respawning
-		Player.PlayerDeath();
-
 		if (LoopInd >= LevelList.Length) { 
 			LoopInd = 0;
 			doNextLevel = true;
@@ -69,13 +64,18 @@ public class GameManager : MonoBehaviour
 			return; 
 		}
 		else 
-		{ am.FadeLoopTracks(LoopInd, LevelInd); }
+		{ 
+			Player.PlayerDeath();
+			am.FadeLoopTracks(LoopInd, LevelInd); 
+		}
 
 		for (int i = 0; i < LevelList.Length; i++)
 		{
 			// Changed from LevelList[i].active so the editor shuts up
 			LevelList[i].SetActive(i == LoopInd);
 		}
+
+		
 
     }
 
@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour
 		if (doNextLevel && _fade.alpha >= 1f) {
 			doNextLevel = false;
 			Time.timeScale = 1;
-			//AdvanceLevel.advanced = false;
 			nextLevel.LoadSceneAsync(); 
 		}
 
@@ -95,10 +94,8 @@ public class GameManager : MonoBehaviour
 		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
 		{ trigger.Reset(); }
 
-		if (LoopInd < LevelList.Length) { 
-			LoopInd++;
-		}
-		//_camera.GetComponent<AdvanceLevel>().advanced = false;
+		if (LoopInd < LevelList.Length) 
+		{ LoopInd++; }
 		
 		SetLevel();
 	}
