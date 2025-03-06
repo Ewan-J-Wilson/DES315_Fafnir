@@ -65,7 +65,7 @@ public class PlayerAI : MonoBehaviour
     void Start()
 	{
 
-		DontDestroyOnLoad(gameObject);
+		//DontDestroyOnLoad(gameObject);
 
 		// Unpause the game on start
 		pauseMenu.Pause(false);
@@ -193,7 +193,7 @@ public class PlayerAI : MonoBehaviour
 	public void PlayerDeath()
 	{
 		KillClone();
-        transform.position = FindFirstObjectByType<GameManager>().StartPos;
+        transform.position = GameObject.FindGameObjectWithTag("StartFlag").transform.position;
     }
 
 	

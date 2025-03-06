@@ -17,6 +17,7 @@ TagManager:
   - Cursor Radius
   - FadeOut
   - DeathZone
+  - StartFlag
   layers:
   - Default
   - TransparentFX

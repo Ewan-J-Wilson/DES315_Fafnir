@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 
 //Current state the game is in, used to update different sections of code
 public enum GameState
@@ -14,60 +15,61 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-	private Audiomanager am;
+	private static Audiomanager am;
+	[HideInInspector]
 	public PlayerAI Player;
-	public Vector2 StartPos;
     public static GameState State;			//Current game state
 	public static int LoopInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
     public GameObject[] LevelList;			//List of levels/loops in the scene
 	[SerializeField]
 	private AssetReference nextLevel;
 	public int LevelInd;					//Current stage index
-	private SpriteRenderer FadeOut;
+	[HideInInspector]
+	public static Fade _fade;
 	private bool doNextLevel = false;
+	private Camera _camera;
 
 
     private void Start()
     {
+
 		Player = FindFirstObjectByType<PlayerAI>();
-		am = FindFirstObjectByType<Audiomanager>();
+		if (am == null) 
+		{ am = FindFirstObjectByType<Audiomanager>(); }
         State = GameState.Play;
         SetLevel();
 
-		Camera _camera = FindFirstObjectByType<Camera>();		
-		FadeOut = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<SpriteRenderer>();
-		FadeOut.transform.localScale = new(_camera.orthographicSize * _camera.aspect * 2, _camera.orthographicSize * 2);
-
-		if (FadeOut.enabled)
-		{ FadeOut.GetComponent<Fade>().FadeIn(); }
-		else 
-		{ FadeOut.enabled = false; }
-
+		
     }
 
-    //public void Awake() {
-    //    
-	//	
-	//
-    //}
+	private void Awake() {
+
+		_camera = FindFirstObjectByType<Camera>();		
+		_fade = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<Fade>();
+		// Set the face out size
+		float aspect = CameraScaler.targetAspect.x / CameraScaler.targetAspect.y;
+		_fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
+
+	}
 
     //Enable currentl level and disable other levels
     public void SetLevel()
 	{
 
-		//Debug.Log(LoopInd + "-" + LevelInd);
-		
+		// Has to be here so AdvanceLevel code works properly
+		// TODO: Fix AdvanceLevel so that the fadeout animation doesn't look awkward with
+		// the player respawning
+		Player.PlayerDeath();
 
 		if (LoopInd >= LevelList.Length) { 
 			LoopInd = 0;
 			doNextLevel = true;
-			FadeOut.GetComponent<Fade>().FadeOut();
+			Time.timeScale = 0;
+			_fade.FadeOut();
 			return; 
 		}
 		else 
 		{ am.FadeLoopTracks(LoopInd, LevelInd); }
-
-		
 
 		for (int i = 0; i < LevelList.Length; i++)
 		{
@@ -75,14 +77,14 @@ public class GameManager : MonoBehaviour
 			LevelList[i].SetActive(i == LoopInd);
 		}
 
-		Player.PlayerDeath();
-		
     }
 
     public void Update() {
         
-		if (doNextLevel && FadeOut.GetComponent<Fade>().alpha >= FadeOut.GetComponent<Fade>().alphaThreshold) {
+		if (doNextLevel && _fade.alpha >= 1f) {
 			doNextLevel = false;
+			Time.timeScale = 1;
+			//AdvanceLevel.advanced = false;
 			nextLevel.LoadSceneAsync(); 
 		}
 
@@ -96,7 +98,8 @@ public class GameManager : MonoBehaviour
 		if (LoopInd < LevelList.Length) { 
 			LoopInd++;
 		}
-
+		//_camera.GetComponent<AdvanceLevel>().advanced = false;
+		
 		SetLevel();
 	}
 }
