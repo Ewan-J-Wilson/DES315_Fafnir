@@ -65,6 +65,8 @@ public class PlayerAI : MonoBehaviour
     void Start()
 	{
 
+		//DontDestroyOnLoad(gameObject);
+
 		// Unpause the game on start
 		pauseMenu.Pause(false);
 		PCList = new ActionList[MaxComSize];
@@ -191,7 +193,7 @@ public class PlayerAI : MonoBehaviour
 	public void PlayerDeath()
 	{
 		KillClone();
-        transform.position = FindFirstObjectByType<GameManager>().StartPos;
+        transform.position = GameObject.FindGameObjectWithTag("StartFlag").transform.position;
     }
 
 	
@@ -243,8 +245,8 @@ public class PlayerAI : MonoBehaviour
 		if (!CompareTag("Player"))
 		{ return; }
 
-        if (collision.transform.CompareTag("MovablePlatform")) 
-		{ transform.parent = collision.transform; }
+        //if (collision.transform.CompareTag("MovablePlatform")) 
+		//{ transform.parent = collision.transform; }
 		
     }
 
@@ -253,8 +255,8 @@ public class PlayerAI : MonoBehaviour
 		if (!CompareTag("Player"))
 		{ return; }
 		
-        if (collision.transform.CompareTag("MovablePlatform")) 
-		{ transform.parent = null; }
+       // if (collision.transform.CompareTag("MovablePlatform")) 
+		//{ transform.parent = null; }
 		
     }
 

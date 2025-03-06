@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AddressableAssets;
+using UnityEngine.UI;
 
 //Current state the game is in, used to update different sections of code
 public enum GameState
@@ -14,50 +15,91 @@ public enum GameState
 
 public class GameManager : MonoBehaviour
 {
-	private Audiomanager am;
-	public GameObject Player;
-	public Vector2 StartPos;
+	private static Audiomanager am;
+	[HideInInspector]
+	public PlayerAI Player;
     public static GameState State;			//Current game state
-	public static int LevelInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
+	public static int LoopInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
     public GameObject[] LevelList;			//List of levels/loops in the scene
 	[SerializeField]
 	private AssetReference nextLevel;
-	public int StageInd;					//Current stage index
+	public int LevelInd;					//Current stage index
+	[HideInInspector]
+	public static Fade _fade;
+	private bool doNextLevel = false;
+	private Camera _camera;
 
 
     private void Start()
     {
-		am = FindFirstObjectByType<Audiomanager>();
+
+		Player = FindFirstObjectByType<PlayerAI>();
+		if (am == null) 
+		{ am = FindFirstObjectByType<Audiomanager>(); }
         State = GameState.Play;
         SetLevel();
+
+		
     }
 
-	//Enable currentl level and disable other levels
+	private void Awake() {
+
+		_camera = FindFirstObjectByType<Camera>();		
+		_fade = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<Fade>();
+		// Set the face out size
+		float aspect = CameraScaler.targetAspect.x / CameraScaler.targetAspect.y;
+		_fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
+
+	}
+
+    //Enable currentl level and disable other levels
     public void SetLevel()
 	{
 
-		if (LevelInd >= LevelList.Length) { 
-			LevelInd = 0;
-			nextLevel.LoadSceneAsync();
-			return;
+		// Has to be here so AdvanceLevel code works properly
+		// TODO: Fix AdvanceLevel so that the fadeout animation doesn't look awkward with
+		// the player respawning
+		Player.PlayerDeath();
+
+		if (LoopInd >= LevelList.Length) { 
+			LoopInd = 0;
+			doNextLevel = true;
+			Time.timeScale = 0;
+			_fade.FadeOut();
+			return; 
 		}
+		else 
+		{ am.FadeLoopTracks(LoopInd, LevelInd); }
 
 		for (int i = 0; i < LevelList.Length; i++)
 		{
 			// Changed from LevelList[i].active so the editor shuts up
-			LevelList[i].SetActive(i == LevelInd);
+			LevelList[i].SetActive(i == LoopInd);
 		}
 
-        Player.GetComponent<PlayerAI>().KillClone();
-        Player.transform.position = StartPos;
-		am.FadeLoopTracks(LevelInd, StageInd);
     }
 
-	public void NextLevel()
+    public void Update() {
+        
+		if (doNextLevel && _fade.alpha >= 1f) {
+			doNextLevel = false;
+			Time.timeScale = 1;
+			//AdvanceLevel.advanced = false;
+			nextLevel.LoadSceneAsync(); 
+		}
+
+    }
+
+    public void NextLevel()
 	{
 		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
 		{ trigger.Reset(); }
-		LevelInd++;
+
+		if (LoopInd < LevelList.Length) { 
+			LoopInd++;
+		}
+		//_camera.GetComponent<AdvanceLevel>().advanced = false;
+		
 		SetLevel();
 	}
 }
