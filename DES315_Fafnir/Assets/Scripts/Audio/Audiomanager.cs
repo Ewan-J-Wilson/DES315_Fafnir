@@ -49,7 +49,7 @@ public class Audiomanager : MonoBehaviour
     public static Dictionary<AudioType, float> volumeLevels = 
         new() { 
             { AudioType.MASTER, 1.0f },
-            { AudioType.MUSIC, 1.0f },
+            { AudioType.MUSIC, 0.2f },
             { AudioType.SFX, 1.0f },
         };
     // Start is called before the first frame update
@@ -58,9 +58,11 @@ public class Audiomanager : MonoBehaviour
         if (instance == null) instance = this;
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
             return;
         }
+
+        DontDestroyOnLoad(gameObject);
 
         for (int i = 0; i < tracks.Length; i++)
         {
@@ -126,6 +128,12 @@ public class Audiomanager : MonoBehaviour
     public void PlayAudio(string name, float vol = 1.0f, float pitch = 0.0f, float pan = 0.5f)
     {
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
+
+        if (aud.src == null) {
+            Debug.Log("Audio Not Found");
+            return;
+        }
+
         if (pitch != 0.0f) { aud.src.pitch = pitch; }
         if (pan != 0.5f) { aud.src.panStereo = pan; }
         if (vol != 0.0f)
@@ -147,15 +155,21 @@ public class Audiomanager : MonoBehaviour
     //
     public void FadeLoopTracks(int loopind, int levelind)
     {
-        //PreviousTrack = CurrentTrack;
-        if (loopind > 0) PreviousTrack = FindLooptrack(loopind - 1, levelind);
-        else if (levelind > 0) PreviousTrack = FindLooptrack(loopind, levelind - 1);
+        Debug.Log(levelind + "-" + loopind);
+
+        PreviousTrack = CurrentTrack;
+        //if (loopind > 0) 
+        //{ PreviousTrack = FindLooptrack(loopind - 1, levelind); }
+        //else if (levelind > 0) 
+        //{ PreviousTrack = FindLooptrack(loopind, levelind - 1); }
         CurrentTrack = FindLooptrack(loopind, levelind);
 
-        if (CurrentTrack.Name != null) PlayAudio(CurrentTrack.Name, 0.0f);
+        if (CurrentTrack.Name != null) 
+        { PlayAudio(CurrentTrack.Name, 0.0f); }
 
         Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
     }
     
-    public AudioInstance FindLooptrack(int loopind, int levelind) { return Array.Find(tracks, tracks => tracks.Name == LoopTrackList[levelind].Name[loopind]); }
+    public AudioInstance FindLooptrack(int loopind, int levelind) 
+    { return Array.Find(tracks, tracks => tracks.Name == LoopTrackList[levelind].Name[loopind]); }
 }

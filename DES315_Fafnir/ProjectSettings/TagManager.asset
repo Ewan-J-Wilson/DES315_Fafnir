@@ -13,10 +13,11 @@ TagManager:
   - TrailEnt
   - MovablePlatform
   - AntiClone
-  - DeathZone
   - Cursor
   - Cursor Radius
+  - FadeOut
   - DeathZone
+  - StartFlag
   layers:
   - Default
   - TransparentFX
