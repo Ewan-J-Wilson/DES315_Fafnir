@@ -189,11 +189,11 @@ MonoBehaviour:
   LevelList:
   - {fileID: 61919742}
   nextLevel:
-    m_AssetGUID: b5cce35049e086547bc59fde4f75b2ef
+    m_AssetGUID: fcce91e7a584bdc45b5a0c0f05936309
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  LevelInd: 1
+  LevelInd: 2
 --- !u!4 &90817609
 Transform:
   m_ObjectHideFlags: 0
@@ -664,20 +664,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[3].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[1].Pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[1].Volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[1].Panning
-      value: 0.5
+      propertyPath: sfx.Array.data[4].loop
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[0].Volume

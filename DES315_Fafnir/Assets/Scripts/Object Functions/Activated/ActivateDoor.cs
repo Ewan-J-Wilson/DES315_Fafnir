@@ -11,15 +11,13 @@ public class ActivateDoor : ActivateGeneric
     [SerializeField]
     private Color openColour;
 
-    [SerializeField]
-    protected string DoorSound;
+   
 
     override protected void DoAction()
     {
       SpriteRenderer spriteRen = GetComponent<SpriteRenderer>();
         
        spriteRen.color = isActive ? openColour : closedColour;
-        Audiomanager.instance.PlayAudio(isActive ? DoorSound : null);
          GetComponent<BoxCollider2D>().enabled = !isActive;
     }
 }

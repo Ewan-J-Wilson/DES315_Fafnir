@@ -9,8 +9,8 @@ public class ActivateGeneric : MonoBehaviour {
     [SerializeField] [Range(1,5)]
     protected int threshold = 1;
 
-    //[SerializeField]
-    //protected string ActivateSound;
+    [SerializeField]
+    protected string ActivateSound;
 
     protected bool isHold = false;
     protected bool isActive = false;
@@ -25,14 +25,14 @@ public class ActivateGeneric : MonoBehaviour {
 
         if (thresholdCount >= threshold && !isActive)
         {
-            isActive = true;
+            SetActive(true);
 
             if (!isHold)
             { DoAction(); }
         }
         else if (thresholdCount < threshold && isActive)
         {
-            isActive = false;
+            SetActive(false);
             if (!isHold)
             { DoAction(); }
         }
@@ -51,7 +51,7 @@ public class ActivateGeneric : MonoBehaviour {
     public void SetActive(bool _isActive)
     {    isActive = _isActive;
 
-        //Audiomanager.instance.PlayAudio(_isActive ? ActivateSound : null);
+        Audiomanager.instance.PlayAudio(_isActive ? ActivateSound : null);
     }
 
     protected virtual void DoAction()

@@ -18,9 +18,7 @@ public class TriggerLever : TriggerGeneric {
     [Tooltip("Sprite for when the lever is on and currently deselected")]
     private Sprite onSelectSprite;
 
-    //[SerializeField] private AudioClip LeverOnClick;
-    //[SerializeField] private AudioClip LeverOffClick;
-    //private AudioSource LeverAudioSource;
+    
 
     public void Start() {
 
