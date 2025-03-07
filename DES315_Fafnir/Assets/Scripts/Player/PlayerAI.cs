@@ -81,6 +81,9 @@ public class PlayerAI : MonoBehaviour
 	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
         
+		if (JumpCount == 0 && Rb.velocityY != 0)
+		{ return; }
+
 		if ((CurrentCom.jump = obj.performed) && JumpCount < MaxJump) 
 		{
 
