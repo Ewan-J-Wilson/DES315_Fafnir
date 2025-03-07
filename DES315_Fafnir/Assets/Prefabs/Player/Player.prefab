@@ -563,6 +563,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1018141285836208692}
   - component: {fileID: 4234163050507599151}
+  - component: {fileID: 3156734164833161654}
   m_Layer: 6
   m_Name: DEBUG SPRITE
   m_TagString: Untagged
@@ -639,6 +640,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3156734164833161654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6991362722186721945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629de914a7b36ab4a85fab0785f8eb52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &59179333213811028
 PrefabInstance:
   m_ObjectHideFlags: 0
