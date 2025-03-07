@@ -34,13 +34,17 @@ public class Audiomanager : MonoBehaviour
 {
     private const float FADE_SPEED = 0.5f;
 
-    public AudioMixerGroup AudOut;
+    public AudioMixerGroup MusicOut;
+    public AudioMixerGroup SFXOut;
     public static Audiomanager instance;
     
     //Audio tracks and fade tracks
     public AudioInstance[] tracks;
     private AudioInstance CurrentTrack;         //Music track to fade in
     private AudioInstance PreviousTrack;        //Music track to fade out
+
+    // SFX 
+    public AudioInstance[] sfx;
 
     public LoopTrackInstance[] LoopTrackList;   //List of music tracks to play in a given level loop
     private float TargetFade;                   //target volume to fade to
@@ -72,8 +76,20 @@ public class Audiomanager : MonoBehaviour
             tracks[i].src.pitch = tracks[i].Pitch;
             tracks[i].src.panStereo = tracks[i].Panning;
             tracks[i].src.loop = tracks[i].loop;
-            tracks[i].src.outputAudioMixerGroup = AudOut;
+            tracks[i].src.outputAudioMixerGroup = MusicOut;
         }
+
+        for (int i = 0; i < sfx.Length; i++)
+        {
+            sfx[i].src = gameObject.AddComponent<AudioSource>();
+            sfx[i].src.clip = sfx[i].clip;
+            sfx[i].src.volume = sfx[i].Volume;
+            sfx[i].src.pitch = sfx[i].Pitch;
+            sfx[i].src.panStereo = sfx[i].Panning;
+            sfx[i].src.loop = sfx[i].loop;
+            sfx[i].src.outputAudioMixerGroup = SFXOut;
+        }
+
     }
     private void Start()
     {
@@ -128,6 +144,9 @@ public class Audiomanager : MonoBehaviour
     public void PlayAudio(string name, float vol = 1.0f, float pitch = 0.0f, float pan = 0.5f)
     {
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
+
+        if (aud.src == null)
+        { aud = Array.Find(sfx, sfx => sfx.Name == name); }
 
         if (aud.src == null) {
             Debug.Log("Audio Not Found");

@@ -150,3 +150,4 @@ MonoBehaviour:
   threshold: 1
   closedColour: {r: 0.35686275, g: 0.2509804, b: 0.2509804, a: 1}
   openColour: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
+  DoorSound: DoorOpening

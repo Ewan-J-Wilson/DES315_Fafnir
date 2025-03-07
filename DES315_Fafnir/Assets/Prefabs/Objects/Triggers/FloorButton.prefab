@@ -231,6 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63e4c59aa09aa924c8d3c2ac7b403645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerList: []
-  ButtonTrans: {fileID: 5072271279038742090}
-  PressedPos: {x: 0, y: -0.5, z: 0}
+  triggerList:
+  - {fileID: 0}
+  TriggerOnSound: ButtonOn
+  TriggerOffSound: ButtonOff
+  isActive: 0
+  selected: 0

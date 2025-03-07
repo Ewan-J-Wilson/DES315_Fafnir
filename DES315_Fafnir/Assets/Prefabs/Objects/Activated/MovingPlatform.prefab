@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdCount: 0
   threshold: 1
+  ActivateSound: Platform
   Curve:
     serializedVersion: 2
     m_Curve:
