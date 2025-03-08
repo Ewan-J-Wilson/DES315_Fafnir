@@ -41,13 +41,7 @@ public class ActivateGeneric : MonoBehaviour {
 
        
     }
-
-   
-        
     
-
-
-
     public void SetActive(bool _isActive)
     {    isActive = _isActive;
 
