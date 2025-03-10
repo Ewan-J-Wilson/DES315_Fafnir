@@ -8,6 +8,7 @@ using System.Xml.Linq;
 public class DialogueRead : MonoBehaviour
 {
     
+    public static float ReadSpeed = 0.02f;
     private static string path;
     private StreamReader reader;
     [SerializeField]
@@ -30,7 +31,7 @@ public class DialogueRead : MonoBehaviour
     public void ReadBlock() {
         
         string line = reader.ReadLine();
-        if (!line.Contains(chapter) && !reading)
+        if ((!line.Contains(chapter) && !reading) || line.Contains('#'))
         { 
             ReadBlock(); 
             return;
@@ -47,7 +48,7 @@ public class DialogueRead : MonoBehaviour
             return;
         }
 
-        if (line[^1] != ' ')
+        if (line[^1] != ' ' && line[^1] != ']' && line[^1] != '}')
         { line += ' '; }
         displayLine += line;
         ReadBlock();
@@ -75,7 +76,7 @@ public class DialogueRead : MonoBehaviour
             { 
 
                 textAsset.text += c;
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(ReadSpeed);
                 //continue; 
 
             }
