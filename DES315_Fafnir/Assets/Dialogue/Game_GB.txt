@@ -2,4 +2,8 @@ Test 1
 Test 2
 READ THIS
 Test 3
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 Test 4
+END_DIAG
+Test 5
+Test 6

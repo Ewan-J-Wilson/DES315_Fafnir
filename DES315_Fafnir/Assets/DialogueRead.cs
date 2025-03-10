@@ -11,6 +11,7 @@ public class DialogueRead : MonoBehaviour
     [SerializeField]
     private string chapter;
     private string displayLine = "";
+    private bool reading = false;
 
 
     // Start is called before the first frame update
@@ -27,17 +28,32 @@ public class DialogueRead : MonoBehaviour
     public void ReadBlock() {
         
         string line = reader.ReadLine();
-        if (!line.Contains(chapter))
+        if (!line.Contains(chapter) && !reading)
         { 
             ReadBlock(); 
             return;
         }
+        else if (!reading) { 
+            reading = true;
+            ReadBlock(); 
+            return;
+        }
+        
+        if (line.Contains("END_DIAG")) {
+            reader.Close();
+            StartCoroutine(DisplayLine());
+            return;
+        }
 
-        reader.Close();
+        if (line[^1] != ' ')
+        { line += ' '; }
+        displayLine += line;
+        ReadBlock();
 
-        Debug.Log(line);
-        displayLine = line;
-        StartCoroutine(DisplayLine());
+        //Debug.Log(line);
+        //displayLine = line;
+
+        
 
     }
 
@@ -49,9 +65,11 @@ public class DialogueRead : MonoBehaviour
         foreach (char c in displayLine) {
 
             textAsset.text += c;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
             
         }
+
+        reading = false;
 
     }
 
@@ -60,7 +78,7 @@ public class DialogueRead : MonoBehaviour
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.W)) {
+        if (Input.GetKeyDown(KeyCode.W) && !reading) {
             reader = new(path);
             ReadBlock();
         }
