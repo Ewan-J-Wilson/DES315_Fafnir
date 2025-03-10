@@ -128,6 +128,7 @@ public class DialogueRead : MonoBehaviour
         }
 
         reading = false;
+        displayLine = "";
 
     }
 
