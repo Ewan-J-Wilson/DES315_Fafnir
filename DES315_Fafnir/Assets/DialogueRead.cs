@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using System.IO;
 using TMPro;
+using UnityEngine.UI;
+using System.Xml.Linq;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -62,10 +64,65 @@ public class DialogueRead : MonoBehaviour
         TextMeshProUGUI textAsset = GetComponentInChildren<TextMeshProUGUI>();
         textAsset.text = "";
 
+        bool format = false;
+        bool readIcon = false;
+        string icon = "";
+
         foreach (char c in displayLine) {
 
-            textAsset.text += c;
-            yield return new WaitForSeconds(0.05f);
+            
+            if (!(format || c == '[' || c == '{')) 
+            { 
+
+                textAsset.text += c;
+                yield return new WaitForSeconds(0.05f);
+                //continue; 
+
+            }
+            else {
+
+                if (format && (c == ']' || c == '}')) { 
+
+                    if (c == ']') {
+
+                        string iconPath = "Assets/Graphics/UI/Character/";
+                        iconPath += icon.Split("_")[0] + "/";
+
+                        Image character = GameObject.Find("Char Icon").GetComponent<Image>();
+                        byte[] bytes = File.ReadAllBytes(Path.GetFullPath(iconPath + icon + ".png"));
+                        character.sprite.texture.LoadImage(bytes);
+                        
+
+                    }
+
+                    format = false;
+                    readIcon = false;
+                    // Clear the icon name
+                    icon = "";
+                }
+
+                if (readIcon) {
+
+                    icon += c;
+
+                }
+
+                if (c == '[') {
+
+                    readIcon = true;
+                    format = true;
+
+                }
+
+                if (c == '{')
+                { format = true; }
+
+                
+
+            }
+
+
+            
             
         }
 

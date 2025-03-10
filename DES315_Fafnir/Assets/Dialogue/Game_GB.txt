@@ -1,8 +1,12 @@
 Test 1
 Test 2
 READ THIS
+[DAD_Tired]
 Test 3
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+[DAD_Shock]
+incididunt ut labore et dolore magna aliqua.
+[DAD_Tired]
 Test 4
 END_DIAG
 Test 5
