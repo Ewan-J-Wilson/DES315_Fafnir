@@ -9,7 +9,7 @@ using Unity.VisualScripting;
 public class DialogueRead : MonoBehaviour
 {
     
-    public static float ReadSpeed = 0.05f;
+    public static float ReadSpeed = 0.02f;
     private static string path;
     private StreamReader reader;
     [SerializeField]
@@ -21,8 +21,18 @@ public class DialogueRead : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //path = Application.persistentDataPath + "/Dialogue/Game_GB.txt";
-        path = "Assets/Dialogue/Game_GB.txt";
+        // Create the Dialogue directory if needed
+        //if (!Directory.Exists(Application.persistentDataPath + "/Dialogue"))
+        //{ Directory.CreateDirectory(Application.persistentDataPath + "/Dialogue"); }
+        //
+        //foreach (string file in Directory.GetFiles(Application.streamingAssetsPath)) { 
+        //    
+        //    if (file.Contains(".txt") && !File.Exists(Application.persistentDataPath + "/Dialogue/" + file.Split('/')[^1]))
+        //    { File.Copy(file, Application.persistentDataPath + "/Dialogue/" + file.Split('/')[^1]); }
+        //    
+        //}
+
+        path = Application.streamingAssetsPath + "/Dialogue/Game_GB.txt";
 
         reader = new(path);
         //ReadBlock();
@@ -81,11 +91,11 @@ public class DialogueRead : MonoBehaviour
 
                     if (c == ']') {
 
-                        string iconPath = "Assets/Graphics/UI/Character/";
+                        string iconPath = "/Character Icons/";
                         iconPath += formatRead.Split("_")[0] + "/";
 
                         Image character = GameObject.Find("Char Icon").GetComponent<Image>();
-                        byte[] bytes = File.ReadAllBytes(Path.GetFullPath(iconPath + formatRead + ".png"));
+                        byte[] bytes = File.ReadAllBytes(Application.streamingAssetsPath + iconPath + formatRead + ".png");
                         character.sprite.texture.LoadImage(bytes);
                         
                         
@@ -94,10 +104,12 @@ public class DialogueRead : MonoBehaviour
                     if (c == '}') {
 
                         if (formatRead == "NEXT") { 
-
                             yield return new WaitUntil(ReadNext); 
                             textAsset.text = "";
                         }
+
+                        if (formatRead == "n")
+                        { textAsset.text += "\n"; }
 
                     }
 
