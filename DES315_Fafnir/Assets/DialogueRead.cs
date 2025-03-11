@@ -4,11 +4,12 @@ using System.IO;
 using TMPro;
 using UnityEngine.UI;
 using System.Xml.Linq;
+using Unity.VisualScripting;
 
 public class DialogueRead : MonoBehaviour
 {
     
-    public static float ReadSpeed = 0.02f;
+    public static float ReadSpeed = 0.05f;
     private static string path;
     private StreamReader reader;
     [SerializeField]
@@ -31,7 +32,7 @@ public class DialogueRead : MonoBehaviour
     public void ReadBlock() {
         
         string line = reader.ReadLine();
-        if ((!line.Contains(chapter) && !reading) || line.Contains('#'))
+        if ((!line.Contains(chapter) && !reading) || line.Contains('#') || line.Length == 0)
         { 
             ReadBlock(); 
             return;
@@ -53,11 +54,6 @@ public class DialogueRead : MonoBehaviour
         displayLine += line;
         ReadBlock();
 
-        //Debug.Log(line);
-        //displayLine = line;
-
-        
-
     }
 
     public IEnumerator DisplayLine() {
@@ -66,8 +62,7 @@ public class DialogueRead : MonoBehaviour
         textAsset.text = "";
 
         bool format = false;
-        bool readIcon = false;
-        string icon = "";
+        string formatRead = "";
 
         foreach (char c in displayLine) {
 
@@ -87,44 +82,38 @@ public class DialogueRead : MonoBehaviour
                     if (c == ']') {
 
                         string iconPath = "Assets/Graphics/UI/Character/";
-                        iconPath += icon.Split("_")[0] + "/";
+                        iconPath += formatRead.Split("_")[0] + "/";
 
                         Image character = GameObject.Find("Char Icon").GetComponent<Image>();
-                        byte[] bytes = File.ReadAllBytes(Path.GetFullPath(iconPath + icon + ".png"));
+                        byte[] bytes = File.ReadAllBytes(Path.GetFullPath(iconPath + formatRead + ".png"));
                         character.sprite.texture.LoadImage(bytes);
                         
+                        
+                    }
+
+                    if (c == '}') {
+
+                        if (formatRead == "NEXT") { 
+
+                            yield return new WaitUntil(ReadNext); 
+                            textAsset.text = "";
+                        }
 
                     }
 
+                    formatRead = "";
                     format = false;
-                    readIcon = false;
-                    // Clear the icon name
-                    icon = "";
+                    
                 }
 
-                if (readIcon) {
+                if (format) 
+                { formatRead += c; }
 
-                    icon += c;
-
-                }
-
-                if (c == '[') {
-
-                    readIcon = true;
-                    format = true;
-
-                }
-
-                if (c == '{')
+                if (c == '[' || c == '{') 
                 { format = true; }
-
-                
 
             }
 
-
-            
-            
         }
 
         reading = false;
@@ -132,6 +121,8 @@ public class DialogueRead : MonoBehaviour
 
     }
 
+    private bool ReadNext() 
+    { return Input.GetKeyDown(KeyCode.S); }
 
     // Update is called once per frame
     void Update()
@@ -141,7 +132,6 @@ public class DialogueRead : MonoBehaviour
             reader = new(path);
             ReadBlock();
         }
-
 
     }
 }
