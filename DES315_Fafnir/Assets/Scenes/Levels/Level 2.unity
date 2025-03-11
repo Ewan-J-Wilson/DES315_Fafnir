@@ -188,11 +188,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   LevelList:
   - {fileID: 61919742}
-  nextLevel:
-    m_AssetGUID: b5cce35049e086547bc59fde4f75b2ef
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  nextLevel: Level 3
   LevelInd: 1
 --- !u!4 &90817609
 Transform:
