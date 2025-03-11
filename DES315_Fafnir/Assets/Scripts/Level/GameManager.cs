@@ -1,7 +1,6 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 //Current state the game is in, used to update different sections of code
@@ -23,7 +22,6 @@ public class GameManager : MonoBehaviour
     public GameObject[] LevelList;			//List of levels/loops in the scene
 	[SerializeField]
 	private string nextLevel;
-	//private AssetReference nextLevel;
 	public int LevelInd;					//Current stage index
 	[HideInInspector]
 	public static Fade _fade;
@@ -75,8 +73,6 @@ public class GameManager : MonoBehaviour
 			LevelList[i].SetActive(i == LoopInd);
 		}
 
-		
-
     }
 
     public void Update() {
@@ -85,7 +81,6 @@ public class GameManager : MonoBehaviour
 			doNextLevel = false;
 			Time.timeScale = 1;
 			SceneManager.LoadSceneAsync(nextLevel);
-			//nextLevel.LoadSceneAsync();
 		}
 
     }
