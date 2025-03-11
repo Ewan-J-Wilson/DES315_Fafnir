@@ -21,21 +21,8 @@ public class DialogueRead : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Create the Dialogue directory if needed
-        //if (!Directory.Exists(Application.persistentDataPath + "/Dialogue"))
-        //{ Directory.CreateDirectory(Application.persistentDataPath + "/Dialogue"); }
-        //
-        //foreach (string file in Directory.GetFiles(Application.streamingAssetsPath)) { 
-        //    
-        //    if (file.Contains(".txt") && !File.Exists(Application.persistentDataPath + "/Dialogue/" + file.Split('/')[^1]))
-        //    { File.Copy(file, Application.persistentDataPath + "/Dialogue/" + file.Split('/')[^1]); }
-        //    
-        //}
-
         path = Application.streamingAssetsPath + "/Dialogue/Game_GB.txt";
-
         reader = new(path);
-        //ReadBlock();
     }
 
 
@@ -76,13 +63,11 @@ public class DialogueRead : MonoBehaviour
 
         foreach (char c in displayLine) {
 
-            
             if (!(format || c == '[' || c == '{')) 
             { 
 
                 textAsset.text += c;
                 yield return new WaitForSeconds(ReadSpeed);
-                //continue; 
 
             }
             else {
@@ -97,7 +82,6 @@ public class DialogueRead : MonoBehaviour
                         Image character = GameObject.Find("Char Icon").GetComponent<Image>();
                         byte[] bytes = File.ReadAllBytes(Application.streamingAssetsPath + iconPath + formatRead + ".png");
                         character.sprite.texture.LoadImage(bytes);
-                        
                         
                     }
 
