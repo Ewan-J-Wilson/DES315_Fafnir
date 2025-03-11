@@ -32,7 +32,7 @@ public struct LoopTrackInstance
 
 public class Audiomanager : MonoBehaviour
 {
-    private const float FADE_SPEED = 0.5f;
+    private const float FADE_SPEED = 0.66f;
 
     public AudioMixerGroup MusicOut;
     public AudioMixerGroup SFXOut;
@@ -42,6 +42,7 @@ public class Audiomanager : MonoBehaviour
     public AudioInstance[] tracks;
     private AudioInstance CurrentTrack;         //Music track to fade in
     private AudioInstance PreviousTrack;        //Music track to fade out
+    private AudioInstance NullInst;
 
     // SFX 
     public AudioInstance[] sfx;
@@ -53,7 +54,7 @@ public class Audiomanager : MonoBehaviour
     public static Dictionary<AudioType, float> volumeLevels = 
         new() { 
             { AudioType.MASTER, 1.0f },
-            { AudioType.MUSIC, 0.2f },
+            { AudioType.MUSIC, 0.6f },
             { AudioType.SFX, 1.0f },
         };
     // Start is called before the first frame update
@@ -90,10 +91,12 @@ public class Audiomanager : MonoBehaviour
             sfx[i].src.outputAudioMixerGroup = SFXOut;
         }
 
+
+        NullInst.Name = null;
     }
     private void Start()
     {
-        FadeLoopTracks(0, 0);
+        //FadeLoopTracks(0, 0);
     }
 
     public void Update()
@@ -107,7 +110,7 @@ public class Audiomanager : MonoBehaviour
         {
             if (PreviousTrack.src.volume != 0)
             {
-                PreviousTrack.src.volume -= Time.deltaTime * FADE_SPEED;
+                PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED;
                 if (PreviousTrack.src.volume < 0)
                 {
                     PreviousTrack.src.volume = 0;
@@ -119,7 +122,7 @@ public class Audiomanager : MonoBehaviour
         {
             if (CurrentTrack.src.volume != volumeLevels[CurrentTrack.type])
             {
-                CurrentTrack.src.volume += Time.deltaTime * FADE_SPEED;
+                CurrentTrack.src.volume += Time.unscaledDeltaTime * FADE_SPEED;
                 if (CurrentTrack.src.volume > volumeLevels[CurrentTrack.type])
                 {
                     CurrentTrack.src.volume = volumeLevels[CurrentTrack.type];
@@ -189,6 +192,14 @@ public class Audiomanager : MonoBehaviour
         Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
     }
     
+    public void FadeAllTracks()
+    {
+        if (CurrentTrack.Name == null) return;
+        PreviousTrack = CurrentTrack;
+        CurrentTrack = NullInst;
+        Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
+    }
+
     public AudioInstance FindLooptrack(int loopind, int levelind) 
     { return Array.Find(tracks, tracks => tracks.Name == LoopTrackList[levelind].Name[loopind]); }
 }

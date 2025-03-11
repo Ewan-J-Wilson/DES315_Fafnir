@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,7 +29,6 @@ public class Fade : MonoBehaviour
         _sprite.enabled = true;
         alpha = 0f;
         targetAlpha = 1f;
-
     }
 
     public void FadeIn(Scene scene, LoadSceneMode mode) {
