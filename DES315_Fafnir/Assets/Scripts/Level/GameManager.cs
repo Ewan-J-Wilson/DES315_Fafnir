@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 	[HideInInspector]
 	public static Fade _fade;
 	private bool doNextLevel = false;
-	private Camera _camera;
 
 
     private void Start()
@@ -37,17 +36,15 @@ public class GameManager : MonoBehaviour
 		{ am = FindFirstObjectByType<Audiomanager>(); }
         State = GameState.Play;
         SetLevel();
-
+		
     }
 
-	private void Awake() {
-
-		_camera = FindFirstObjectByType<Camera>();		
+	private void Awake()
+	{ 
+		Camera _camera = FindFirstObjectByType<Camera>();
 		_fade = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<Fade>();
-		// Set the fade out size
-		float aspect = CameraScaler.targetAspect.x / CameraScaler.targetAspect.y;
-		_fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
-
+        float aspect = CameraScaler.targetAspect.x / CameraScaler.targetAspect.y;
+        _fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
 	}
 
     //Enable currentl level and disable other levels
