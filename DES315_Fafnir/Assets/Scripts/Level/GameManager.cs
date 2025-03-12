@@ -1,7 +1,6 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.AddressableAssets;
 using UnityEngine.UI;
 
 //Current state the game is in, used to update different sections of code
@@ -22,7 +21,7 @@ public class GameManager : MonoBehaviour
 	public static int LoopInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
     public GameObject[] LevelList;			//List of levels/loops in the scene
 	[SerializeField]
-	private AssetReference nextLevel;
+	private string nextLevel;
 	public int LevelInd;					//Current stage index
 	[HideInInspector]
 	public static Fade _fade;
@@ -39,14 +38,13 @@ public class GameManager : MonoBehaviour
         State = GameState.Play;
         SetLevel();
 
-		
     }
 
 	private void Awake() {
 
 		_camera = FindFirstObjectByType<Camera>();		
 		_fade = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<Fade>();
-		// Set the face out size
+		// Set the fade out size
 		float aspect = CameraScaler.targetAspect.x / CameraScaler.targetAspect.y;
 		_fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
 
@@ -75,8 +73,6 @@ public class GameManager : MonoBehaviour
 			LevelList[i].SetActive(i == LoopInd);
 		}
 
-		
-
     }
 
     public void Update() {
@@ -84,7 +80,7 @@ public class GameManager : MonoBehaviour
 		if (doNextLevel && _fade.alpha >= 1f) {
 			doNextLevel = false;
 			Time.timeScale = 1;
-			nextLevel.LoadSceneAsync(); 
+			SceneManager.LoadSceneAsync(nextLevel);
 		}
 
     }

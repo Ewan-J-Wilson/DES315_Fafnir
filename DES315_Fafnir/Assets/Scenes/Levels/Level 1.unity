@@ -152,11 +152,7 @@ MonoBehaviour:
   LevelList:
   - {fileID: 1545258625}
   - {fileID: 735136751}
-  nextLevel:
-    m_AssetGUID: fcce91e7a584bdc45b5a0c0f05936309
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  nextLevel: Level 2
   LevelInd: 0
 --- !u!4 &90817609
 Transform:
