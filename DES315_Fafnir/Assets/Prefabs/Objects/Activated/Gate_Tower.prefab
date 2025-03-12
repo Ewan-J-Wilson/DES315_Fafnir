@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4020136948577785646}
   - component: {fileID: 8367080344976607476}
   - component: {fileID: 6737177199344230865}
-  - component: {fileID: 2411877369160922371}
   m_Layer: 0
   m_Name: Gate_Tower
   m_TagString: Untagged
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: -3909821543863091857, guid: b6439f39b67263045b82f3d0d46d4b0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -135,23 +134,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.83, y: 5.20797}
   m_EdgeRadius: 0
---- !u!114 &2411877369160922371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2896269522664993507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55a8cf1b567119f44b3ccfb690071f14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thresholdCount: 0
-  threshold: 2
-  ActivateSound: 
-  closedColour: {r: 0, g: 0, b: 0, a: 0}
-  openColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7056137702230327967
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +145,7 @@ GameObject:
   - component: {fileID: 1089870490648774754}
   - component: {fileID: 6115114024376755504}
   - component: {fileID: 4568918484323933872}
+  - component: {fileID: 1888435182238533522}
   m_Layer: 0
   m_Name: Gate_Placeholder_Closed_01_0
   m_TagString: Untagged
@@ -179,7 +162,7 @@ Transform:
   m_GameObject: {fileID: 7056137702230327967}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.042254925, y: -2.535267, z: 10}
+  m_LocalPosition: {x: 0, y: -2.6, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -227,7 +210,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 5286723364764045043, guid: 39ab4d8b12232e84db3d21dcd3893e15, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -285,3 +268,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.34, y: 2.7}
   m_EdgeRadius: 0
+--- !u!114 &1888435182238533522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7056137702230327967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a8cf1b567119f44b3ccfb690071f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thresholdCount: 0
+  threshold: 1
+  ActivateSound: 
+  closedSprite: {fileID: 5286723364764045043, guid: 39ab4d8b12232e84db3d21dcd3893e15, type: 3}
+  openSprite: {fileID: -2022039706657488932, guid: dbd8d517cc59cc047ae685c36647e7eb, type: 3}
