@@ -8,7 +8,7 @@ public class AMTester : MonoBehaviour
 
     private void Start()
     {
-        am = FindObjectOfType<Audiomanager>();
+        am = FindFirstObjectByType<Audiomanager>();
     }
 
     // Update is called once per frame
