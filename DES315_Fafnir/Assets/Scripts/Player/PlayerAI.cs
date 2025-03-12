@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -67,9 +66,6 @@ public class PlayerAI : MonoBehaviour
 
     void Start()
 	{
-
-		//DontDestroyOnLoad(gameObject);
-
 		// Unpause the game on start
 		pauseMenu.Pause(false);
 		PCList = new ActionList[MaxComSize];

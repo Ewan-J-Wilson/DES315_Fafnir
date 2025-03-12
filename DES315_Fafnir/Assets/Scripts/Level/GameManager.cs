@@ -1,7 +1,5 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 //Current state the game is in, used to update different sections of code
 public enum GameState
