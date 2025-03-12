@@ -3,21 +3,21 @@ using UnityEngine;
 public class ActivateDoor : ActivateGeneric
 {
 
-    [Tooltip("TEMP: Colour for when the door is closed")]
+    [Tooltip("Sprite for when the door is closed")]
     [SerializeField]
-    private Color closedColour;
-    [Tooltip("TEMP: Colour for when the door is open")]
+    private Sprite closedSprite;
 
+    [Tooltip("Sprite for when the door is open")]
     [SerializeField]
-    private Color openColour;
-
-   
+    private Sprite openSprite;
 
     override protected void DoAction()
     {
-      SpriteRenderer spriteRen = GetComponent<SpriteRenderer>();
+        SpriteRenderer spriteRen = GetComponent<SpriteRenderer>();
         
-       spriteRen.color = isActive ? openColour : closedColour;
-         GetComponent<BoxCollider2D>().enabled = !isActive;
+        transform.position = new(transform.parent.position.x - (isActive ? 0.5f : 0f), transform.position.y);
+
+        spriteRen.sprite = isActive ? openSprite : closedSprite;
+        GetComponent<BoxCollider2D>().enabled = !isActive;
     }
 }

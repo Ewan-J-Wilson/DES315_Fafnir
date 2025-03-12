@@ -147,8 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerList: []
-  TriggerOnSound: LeverOn
-  TriggerOffSound: LeverOff
   isActive: 0
   selected: 0
   offSprite: {fileID: -7120334407250035298, guid: 243d9f4353779ac4fb4e39b22db7c8ec, type: 3}

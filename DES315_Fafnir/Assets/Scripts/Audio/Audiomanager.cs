@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -48,7 +47,6 @@ public class Audiomanager : MonoBehaviour
     public AudioInstance[] sfx;
 
     public LoopTrackInstance[] LoopTrackList;   //List of music tracks to play in a given level loop
-    private float TargetFade;                   //target volume to fade to
 
     [HideInInspector] 
     public static Dictionary<AudioType, float> volumeLevels = 
