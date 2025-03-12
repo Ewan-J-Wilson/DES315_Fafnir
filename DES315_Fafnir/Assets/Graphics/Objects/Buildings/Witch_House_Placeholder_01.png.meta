@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Witch_House_Placeholder_01_0: 2573329279163910544
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
