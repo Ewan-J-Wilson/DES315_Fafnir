@@ -38,14 +38,13 @@ public class GameManager : MonoBehaviour
         State = GameState.Play;
         SetLevel();
 
-		
     }
 
 	private void Awake() {
 
 		_camera = FindFirstObjectByType<Camera>();		
 		_fade = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<Fade>();
-		// Set the face out size
+		// Set the fade out size
 		float aspect = CameraScaler.targetAspect.x / CameraScaler.targetAspect.y;
 		_fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
 
@@ -73,8 +72,6 @@ public class GameManager : MonoBehaviour
 			// Changed from LevelList[i].active so the editor shuts up
 			LevelList[i].SetActive(i == LoopInd);
 		}
-
-		
 
     }
 
