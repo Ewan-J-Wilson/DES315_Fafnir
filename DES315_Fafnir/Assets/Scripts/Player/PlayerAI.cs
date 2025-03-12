@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -60,13 +59,13 @@ public class PlayerAI : MonoBehaviour
 	// Pause Menu
 	[SerializeField]
 	private MenuButtons pauseMenu;
+
+	[SerializeField]
+	protected string CloningSound;
 	
 
     void Start()
 	{
-
-		//DontDestroyOnLoad(gameObject);
-
 		// Unpause the game on start
 		pauseMenu.Pause(false);
 		PCList = new ActionList[MaxComSize];
@@ -81,6 +80,9 @@ public class PlayerAI : MonoBehaviour
 	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
         
+		if (JumpCount == 0 && Rb.velocityY != 0)
+		{ return; }
+
 		if ((CurrentCom.jump = obj.performed) && JumpCount < MaxJump) 
 		{
 
@@ -169,6 +171,7 @@ public class PlayerAI : MonoBehaviour
 	{
 		//Debug.Log("Player pos: " + transform.position);
 		CloneNo++;
+		Audiomanager.instance.PlayAudio(CloningSound);
 		Instantiate(Clone, LastPos, Quaternion.identity);   //Otherwise we create a clone at the player's last position
 		transform.position = LastPos;                       //Reset player back to original position before recording
 	}

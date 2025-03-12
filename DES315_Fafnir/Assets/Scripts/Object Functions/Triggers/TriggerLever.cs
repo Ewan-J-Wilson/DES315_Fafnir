@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TriggerLever : TriggerGeneric {
@@ -17,11 +15,15 @@ public class TriggerLever : TriggerGeneric {
     [SerializeField]
     [Tooltip("Sprite for when the lever is on and currently deselected")]
     private Sprite onSelectSprite;
-  
+
+    
 
     public void Start() {
 
         canSelect = true;
+
+    
+        
 
     }
 
@@ -30,8 +32,8 @@ public class TriggerLever : TriggerGeneric {
         GetComponent<SpriteRenderer>().sprite = 
             isActive ? (selected ? onSelectSprite : onSprite) :
                 (selected ? offSelectSprite : offSprite);
-    }
 
+    }
 
     
     protected void OnTriggerEnter2D(Collider2D collision)
