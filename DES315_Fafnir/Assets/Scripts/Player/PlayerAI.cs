@@ -60,6 +60,9 @@ public class PlayerAI : MonoBehaviour
 	// Pause Menu
 	[SerializeField]
 	private MenuButtons pauseMenu;
+
+	[SerializeField]
+	protected string CloningSound;
 	
 
     void Start()
@@ -169,6 +172,7 @@ public class PlayerAI : MonoBehaviour
 	{
 		//Debug.Log("Player pos: " + transform.position);
 		CloneNo++;
+		Audiomanager.instance.PlayAudio(CloningSound);
 		Instantiate(Clone, LastPos, Quaternion.identity);   //Otherwise we create a clone at the player's last position
 		transform.position = LastPos;                       //Reset player back to original position before recording
 	}

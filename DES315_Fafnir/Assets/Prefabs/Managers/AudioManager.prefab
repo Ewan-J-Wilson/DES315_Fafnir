@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3113ede2fa0e60b4dbb5e488ee121548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudOut: {fileID: 24300002, guid: d0eda980d4d284e42a55904063f1063a, type: 2}
+  MusicOut: {fileID: 24300002, guid: d0eda980d4d284e42a55904063f1063a, type: 2}
+  SFXOut: {fileID: 24300002, guid: 49e284e1d76277946bf2d9a7d1b157f6, type: 2}
   tracks:
   - Name: Kick
     Volume: 1
@@ -78,6 +79,63 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: c19efb54c1d62404c88df75352b2dd75, type: 3}
     src: {fileID: 0}
     type: 1
+  sfx:
+  - Name: ButtonOn
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: d07dd15c60f753f47b4b7153022ddbae, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: ButtonOff
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: 557387db7f524e543b6c6d49f4d7a565, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: DoorOpening
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: 8de51989ce516c3488423c3430f60290, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: LeverOn
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: cc68a0c09a87b28498db695e3b0eb008, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: PlatformMove
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: 48e801e644e12b441b7a4102be930e1b, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: CloneSpawn
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: ab56a38cebc80664693baed25fcebc30, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: LeverOff
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: cb8e42c91d05b1c4ab0cc91b01318487, type: 3}
+    src: {fileID: 0}
+    type: 2
   LoopTrackList:
   - Name:
     - T5-1
