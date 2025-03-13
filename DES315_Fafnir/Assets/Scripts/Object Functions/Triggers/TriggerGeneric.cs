@@ -21,13 +21,18 @@ public class TriggerGeneric : MonoBehaviour {
     public void OnTrigger() {
         Audiomanager.instance.PlayAudio(TriggerOnSound);
         foreach (ActivateGeneric toActivate in triggerList)
-        { toActivate.thresholdCount++; }
+        { 
+            toActivate.thresholdCount++; 
+            Debug.Log(toActivate.thresholdCount);
+        }
     }
 
     public void OnExit() {
         Audiomanager.instance.PlayAudio(TriggerOffSound);
-        foreach (ActivateGeneric toActivate in triggerList)
-        { toActivate.thresholdCount--; }
+        foreach (ActivateGeneric toActivate in triggerList) { 
+            if (toActivate.thresholdCount > 0)
+            { toActivate.thresholdCount--; }
+        }
     }
 
     public void Reset() {

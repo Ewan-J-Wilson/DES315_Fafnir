@@ -29,6 +29,7 @@ public class TriggerButton : TriggerGeneric
         // The frame the button is pressed down
         if (ButtonTrans.position == PressedPos && (!trigger && isActive)) { 
             OnTrigger();
+            Debug.Log(gameObject.name + " is Pressed");
             trigger = true;
         }
         // The frame the button is released
