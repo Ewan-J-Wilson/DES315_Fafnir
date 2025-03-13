@@ -52,6 +52,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: a6563c4d0a6d64c4bbac9914c364a87e, type: 3}
     src: {fileID: 0}
     type: 1
@@ -60,6 +61,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 9ead94d4fca1aaf4ca0da144299e3f31, type: 3}
     src: {fileID: 0}
     type: 1
@@ -68,6 +70,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 9194a6704b2a42a409c0fb3613901d43, type: 3}
     src: {fileID: 0}
     type: 1
@@ -76,6 +79,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: c19efb54c1d62404c88df75352b2dd75, type: 3}
     src: {fileID: 0}
     type: 1
@@ -84,6 +88,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 10.24
     clip: {fileID: 8300000, guid: 4282829c9c75c7642917205e81bf55d3, type: 3}
     src: {fileID: 0}
     type: 1
@@ -92,6 +97,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 7ef9ab21e434e384db2f40aecbb0d996, type: 3}
     src: {fileID: 0}
     type: 1
@@ -100,6 +106,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 56b71e4078bb9c74699e55112dc6d6c9, type: 3}
     src: {fileID: 0}
     type: 1

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+
 public enum AudioType
 {
     MASTER,
@@ -18,6 +19,7 @@ public struct AudioInstance
     [Range(0f, 2f)] public float Pitch;         //Pitch of sound
     [Range(0f, 1f)] public float Panning;       //L/R panning
     public bool loop;                           //Loop flag
+    public float LoopPoint;                     //Point in time values to set track position to
     public AudioClip clip;                      //Sound to play
     [HideInInspector] public AudioSource src;   //Source to play from
     public AudioType type;                      //Whether it is Music or SFX
@@ -31,12 +33,16 @@ public struct LoopTrackInstance
 
 public class Audiomanager : MonoBehaviour
 {
+    private const float SAMPLERATE = 48000.0f;
     private const float FADE_SPEED = 0.66f;
 
     public AudioMixerGroup MusicOut;
     public AudioMixerGroup SFXOut;
     public static Audiomanager instance;
-    
+
+    private float CurrentTrackTimer = 0;
+    private float PreviousTrackTimer = 0;
+
     //Audio tracks and fade tracks
     public AudioInstance[] tracks;
     private AudioInstance CurrentTrack;         //Music track to fade in
@@ -74,8 +80,8 @@ public class Audiomanager : MonoBehaviour
             tracks[i].src.volume = tracks[i].Volume;
             tracks[i].src.pitch = tracks[i].Pitch;
             tracks[i].src.panStereo = tracks[i].Panning;
-            tracks[i].src.loop = tracks[i].loop;
-            tracks[i].src.outputAudioMixerGroup = MusicOut;
+            tracks[i].src.loop = (tracks[i].type == AudioType.MUSIC);
+            tracks[i].src.outputAudioMixerGroup = AudOut;
         }
 
         for (int i = 0; i < sfx.Length; i++)
@@ -114,18 +120,47 @@ public class Audiomanager : MonoBehaviour
                     PreviousTrack.src.volume = 0;
                 }
             }
+
+            if (PreviousTrack.src.isPlaying) PreviousTrackTimer += Time.unscaledDeltaTime;
+            float thresh = PreviousTrack.src.clip.samples / SAMPLERATE;
+            if (PreviousTrackTimer > thresh - 0.05f)
+            {
+                PreviousTrackTimer = PreviousTrack.LoopPoint;
+                PreviousTrack.src.time = PreviousTrackTimer;
+            }
+            else
+            {
+                PreviousTrackTimer = (PreviousTrack.src.timeSamples / SAMPLERATE);
+            }
         }
 
         if (CurrentTrack.Name != null)
         {
-            if (CurrentTrack.src.volume != volumeLevels[CurrentTrack.type])
+            if (CurrentTrack.src.volume != volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
             {
                 CurrentTrack.src.volume += Time.unscaledDeltaTime * FADE_SPEED;
-                if (CurrentTrack.src.volume > volumeLevels[CurrentTrack.type])
+                if (CurrentTrack.src.volume > volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
                 {
-                    CurrentTrack.src.volume = volumeLevels[CurrentTrack.type];
+                    CurrentTrack.src.volume = volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER];
                 }
             }
+            else if (CurrentTrack.src.volume >= volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
+            {
+                CurrentTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED;
+            }
+
+            if (CurrentTrack.src.isPlaying) CurrentTrackTimer += Time.unscaledDeltaTime;
+            float thresh = CurrentTrack.src.clip.samples / SAMPLERATE;
+            if (CurrentTrackTimer >= thresh - 0.05f)
+            {
+                CurrentTrackTimer = CurrentTrack.LoopPoint;
+                CurrentTrack.src.time = CurrentTrackTimer;
+            }
+            else
+            {
+                CurrentTrackTimer = (CurrentTrack.src.timeSamples / SAMPLERATE);
+            }
+            Debug.Log("Track seconds: " + CurrentTrack.src.time + "\nCurrentTrackTimer: " + CurrentTrackTimer);
         }
     }
 
@@ -135,7 +170,7 @@ public class Audiomanager : MonoBehaviour
         for (int i = 0; i < instance.tracks.Length; i++) {
 
             if (instance.tracks[i].type == type) { 
-                instance.tracks[i].src.volume = vol;
+                instance.tracks[i].src.volume = volumeLevels[instance.tracks[i].type];
                 if (instance.tracks[i].type != AudioType.MASTER) 
                 {instance.tracks[i].src.volume *= volumeLevels[AudioType.MASTER];}
             }
@@ -183,10 +218,11 @@ public class Audiomanager : MonoBehaviour
         //else if (levelind > 0) 
         //{ PreviousTrack = FindLooptrack(loopind, levelind - 1); }
         CurrentTrack = FindLooptrack(loopind, levelind);
-
         if (CurrentTrack.Name != null) 
         { PlayAudio(CurrentTrack.Name, 0.0f); }
 
+        PreviousTrackTimer = CurrentTrackTimer;
+        CurrentTrackTimer = 0;
         Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
     }
     
