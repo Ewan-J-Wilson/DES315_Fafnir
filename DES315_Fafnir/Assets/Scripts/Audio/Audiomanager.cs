@@ -81,7 +81,7 @@ public class Audiomanager : MonoBehaviour
             tracks[i].src.pitch = tracks[i].Pitch;
             tracks[i].src.panStereo = tracks[i].Panning;
             tracks[i].src.loop = (tracks[i].type == AudioType.MUSIC);
-            tracks[i].src.outputAudioMixerGroup = AudOut;
+            tracks[i].src.outputAudioMixerGroup = MusicOut;
         }
 
         for (int i = 0; i < sfx.Length; i++)
