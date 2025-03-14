@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.Timeline;
-using UnityEngine.UIElements.Experimental;
 
 public class DiagTrigger : MonoBehaviour
 {
 
+    [SerializeField] private string chapter;
     [SerializeField] private SignalAsset signalToSend;
     private SignalEmitter runtimeEmitter;
 
@@ -22,9 +19,8 @@ public class DiagTrigger : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.W) && !DialogueRead.reading) {
-            //reader = new(path);
-            //ReadBlock();
             Debug.Log(runtimeEmitter.asset);
+            SignalManager.chapter = chapter;
             SignalReceiver receiver = FindFirstObjectByType<SignalManager>().GetComponent<SignalReceiver>();
             receiver.OnNotify(default, runtimeEmitter, default);
         }

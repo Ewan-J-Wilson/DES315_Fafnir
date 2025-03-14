@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
 		_fade = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<Fade>();
         float aspect = CameraScaler.targetAspect.x / CameraScaler.targetAspect.y;
         _fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
+
+		SignalManager.currentLevel = LevelInd;
+
 	}
 
     //Enable currentl level and disable other levels
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
 
 		if (LoopInd >= LevelList.Length) { 
 			LoopInd = 0;
+			SignalManager.currentLevel = LevelInd + 1;
 			doNextLevel = true;
 			Time.timeScale = 0;
 			_fade.FadeOut();

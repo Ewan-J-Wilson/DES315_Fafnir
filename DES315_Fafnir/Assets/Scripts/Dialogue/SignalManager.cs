@@ -1,17 +1,11 @@
-using System.Collections;
 using UnityEngine;
-using System.IO;
-using TMPro;
-using UnityEngine.UI;
-using UnityEngine.Timeline;
 
 public class SignalManager : MonoBehaviour
 {
 
-    public static int currentLevel;
-    public static int currentLoop;
+    public static int currentLevel = 0;
     public static SignalManager instance;
-    //public static string chapter;
+    public static string chapter;
     public DialogueRead textBox;
 
     public void Start() {
@@ -24,14 +18,13 @@ public class SignalManager : MonoBehaviour
 
     public static void OnLoopChange() {
     
-        
+        chapter = currentLevel + "-" + GameManager.LoopInd + "_START";
+        instance.ReadDialogue();
     
     }
     
-    public static void OnDiagObject(string _chapter) {
-    
-        Debug.Log("Signal Received at " + _chapter);
-        DialogueRead.chapter = _chapter;
+    public static void OnDialogueObject() {
+        Debug.Log(chapter);
         instance.ReadDialogue();
     
     }

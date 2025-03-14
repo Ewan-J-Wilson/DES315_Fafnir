@@ -3,7 +3,6 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.Timeline;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class DialogueRead : MonoBehaviour
     private static string path;
     private StreamReader reader;
     //[SerializeField]
-    public static string chapter;
+    //public static string chapter;
     private string displayLine = "";
     public static bool reading = false;
 
@@ -36,8 +35,13 @@ public class DialogueRead : MonoBehaviour
 
     public void ReadBlock() {
         
-        string line = reader.ReadLine();
-        if ((!line.Contains(chapter) && !reading) || line.Contains('#') || line.Length == 0)
+        string line;
+        if (!reader.EndOfStream)
+        { line = reader.ReadLine(); }
+        else
+        { return; }
+
+        if ((!line.Contains(SignalManager.chapter) && !reading) || line.Contains('#') || line.Length == 0)
         { 
             ReadBlock(); 
             return;
@@ -136,14 +140,4 @@ public class DialogueRead : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        if (Input.GetKeyDown(KeyCode.W) && !reading) {
-            //reader = new(path);
-            //ReadBlock();
-        }
-
-    }
 }
