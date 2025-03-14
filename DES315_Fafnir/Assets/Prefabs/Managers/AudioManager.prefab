@@ -52,7 +52,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: a6563c4d0a6d64c4bbac9914c364a87e, type: 3}
     src: {fileID: 0}
     type: 1
@@ -61,7 +60,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: 9ead94d4fca1aaf4ca0da144299e3f31, type: 3}
     src: {fileID: 0}
     type: 1
@@ -70,7 +68,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: 9194a6704b2a42a409c0fb3613901d43, type: 3}
     src: {fileID: 0}
     type: 1
@@ -79,7 +76,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: c19efb54c1d62404c88df75352b2dd75, type: 3}
     src: {fileID: 0}
     type: 1
@@ -88,7 +84,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 10.24
     clip: {fileID: 8300000, guid: 4282829c9c75c7642917205e81bf55d3, type: 3}
     src: {fileID: 0}
     type: 1
@@ -97,7 +92,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: 7ef9ab21e434e384db2f40aecbb0d996, type: 3}
     src: {fileID: 0}
     type: 1
@@ -106,7 +100,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: 56b71e4078bb9c74699e55112dc6d6c9, type: 3}
     src: {fileID: 0}
     type: 1
@@ -116,7 +109,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: d07dd15c60f753f47b4b7153022ddbae, type: 3}
     src: {fileID: 0}
     type: 2
@@ -125,7 +117,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: 557387db7f524e543b6c6d49f4d7a565, type: 3}
     src: {fileID: 0}
     type: 2
@@ -134,7 +125,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: 8de51989ce516c3488423c3430f60290, type: 3}
     src: {fileID: 0}
     type: 2
@@ -143,7 +133,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: cc68a0c09a87b28498db695e3b0eb008, type: 3}
     src: {fileID: 0}
     type: 2
@@ -152,7 +141,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: 48e801e644e12b441b7a4102be930e1b, type: 3}
     src: {fileID: 0}
     type: 2
@@ -161,7 +149,6 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: ab56a38cebc80664693baed25fcebc30, type: 3}
     src: {fileID: 0}
     type: 2
@@ -170,8 +157,23 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
     clip: {fileID: 8300000, guid: cb8e42c91d05b1c4ab0cc91b01318487, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: MenuSelect
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: f33ad224953b53e41a9bbae57dbf32d5, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: MenuConfirm
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    clip: {fileID: 8300000, guid: 299375ae290cb9642840cdaee5f40d81, type: 3}
     src: {fileID: 0}
     type: 2
   LoopTrackList:

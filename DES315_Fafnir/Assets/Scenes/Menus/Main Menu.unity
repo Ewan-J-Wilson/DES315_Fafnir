@@ -1638,60 +1638,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.size
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[7].Name
-      value: MenuSelect
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[7].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: f33ad224953b53e41a9bbae57dbf32d5, type: 3}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[7].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[8].Name
-      value: MenuConfirm
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[8].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 299375ae290cb9642840cdaee5f40d81, type: 3}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[8].type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[7].Pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[8].Pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[7].Volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[8].Volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[7].Panning
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
-      propertyPath: sfx.Array.data[8].Panning
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[7].Name
