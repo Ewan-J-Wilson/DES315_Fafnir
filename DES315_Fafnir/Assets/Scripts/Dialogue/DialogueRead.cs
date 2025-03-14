@@ -36,12 +36,12 @@ public class DialogueRead : MonoBehaviour
     public void ReadBlock() {
         
         string line;
-        if (!reader.EndOfStream)
+        if (!reader.EndOfStream) 
         { line = reader.ReadLine(); }
         else
         { return; }
 
-        if ((!line.Contains(SignalManager.chapter) && !reading) || line.Contains('#') || line.Length == 0)
+        if ((!line.Contains(SignalManager.chapter) && !reading) || line.Contains('#') || string.IsNullOrWhiteSpace(line))
         { 
             ReadBlock(); 
             return;

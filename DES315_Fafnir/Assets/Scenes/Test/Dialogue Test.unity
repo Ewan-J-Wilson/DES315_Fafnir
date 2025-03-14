@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chapter: CELESTE_01
-  signalToSend: {fileID: 11400000, guid: e7814923821ce1240ae457722a39ddf7, type: 2}
+  signalToSend: {fileID: 11400000, guid: 38f07f8e1acdce341b06715e4cefe10a, type: 2}
 --- !u!212 &225838489
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -338,8 +338,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
-    - {fileID: 11400000, guid: e7814923821ce1240ae457722a39ddf7, type: 2}
-    - {fileID: 11400000, guid: 80ec6ca8203a1dd44ac51cc49b5f3924, type: 2}
+    - {fileID: 11400000, guid: 38f07f8e1acdce341b06715e4cefe10a, type: 2}
+    - {fileID: 11400000, guid: e1ebe608f580362428caef689d98c46a, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:

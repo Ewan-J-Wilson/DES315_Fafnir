@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Timeline;
 
-public class DiagTrigger : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour
 {
 
     [SerializeField] private string chapter;
