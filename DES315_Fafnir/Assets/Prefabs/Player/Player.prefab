@@ -348,6 +348,7 @@ MonoBehaviour:
     dur: 0
   MoveSpeed: 7.5
   pauseMenu: {fileID: 2588191603609945841}
+  CloningSound: CloneSpawn
 --- !u!50 &1796299224185216547
 Rigidbody2D:
   serializedVersion: 4

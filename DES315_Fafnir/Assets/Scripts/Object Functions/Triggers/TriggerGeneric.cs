@@ -6,6 +6,12 @@ public class TriggerGeneric : MonoBehaviour {
     [Tooltip("List of items that this object triggers")]
     protected ActivateGeneric[] triggerList;
 
+    [SerializeField]
+    protected string TriggerOnSound;
+
+    [SerializeField] 
+    protected string TriggerOffSound;
+
     [HideInInspector]
     public bool isActive = false;
     protected bool canSelect = false;
@@ -13,13 +19,17 @@ public class TriggerGeneric : MonoBehaviour {
     public bool selected = false;
 
     public void OnTrigger() {
+        Audiomanager.instance.PlayAudio(TriggerOnSound);
         foreach (ActivateGeneric toActivate in triggerList)
         { toActivate.thresholdCount++; }
     }
 
     public void OnExit() {
-        foreach (ActivateGeneric toActivate in triggerList)
-        { toActivate.thresholdCount--; }
+        Audiomanager.instance.PlayAudio(TriggerOffSound);
+        foreach (ActivateGeneric toActivate in triggerList) { 
+            if (toActivate.thresholdCount > 0)
+            { toActivate.thresholdCount--; }
+        }
     }
 
     public void Reset() {

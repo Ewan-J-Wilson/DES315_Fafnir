@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/Dialogue Test.unity
     guid: cce41c3b19bd50741a6e3ebffb9c8e80
   - enabled: 1

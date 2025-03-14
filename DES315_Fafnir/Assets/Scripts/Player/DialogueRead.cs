@@ -3,8 +3,6 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
-using System.Xml.Linq;
-using Unity.VisualScripting;
 
 public class DialogueRead : MonoBehaviour
 {

@@ -1,5 +1,4 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,7 +25,7 @@ public class PlayerAI : MonoBehaviour
 	private int CloneNo;                        //Count of currently spawned clones
 	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
-	[SerializeField] [Range(1,5)]
+	[Range(1,5)] // [SerializeField]
 	protected int MaxJump = 1;			//Makes it so double jumping mechanic can't be exploited infinitely 
 	
 
@@ -37,7 +36,7 @@ public class PlayerAI : MonoBehaviour
 	protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
 
 	// Commands
-	//[HideInInspector]
+	[HideInInspector]
 	public ActionList[] PCList;                 //List of commands for a clone to follow, recorded by player actions
 	[HideInInspector] 
 	public ActionList CurrentCom;               //Current command being input by player
@@ -58,16 +57,16 @@ public class PlayerAI : MonoBehaviour
 	protected const float XAccel = 3.33f;		//Constant aceleration
 
 	// Pause Menu
-	[SerializeField]
 	private MenuButtons pauseMenu;
+
+	[SerializeField]
+	protected string CloningSound;
 	
 
     void Start()
 	{
-
-		//DontDestroyOnLoad(gameObject);
-
 		// Unpause the game on start
+		pauseMenu = FindFirstObjectByType<MenuButtons>();
 		pauseMenu.Pause(false);
 		PCList = new ActionList[MaxComSize];
 		CloneNo = 0;                            //Reset clone amount
@@ -75,12 +74,16 @@ public class PlayerAI : MonoBehaviour
 		Array.Resize(ref PCList, 1);            //Resize array to have one element
 		ComInd = 0;                             //Reset command index
 		LastPos = transform.position;           //Grab current position for future clone position
+		
 
 	}
 
 	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
         
+		if (JumpCount == 0 && Rb.velocityY != 0)
+		{ return; }
+
 		if ((CurrentCom.jump = obj.performed) && JumpCount < MaxJump) 
 		{
 
@@ -169,6 +172,7 @@ public class PlayerAI : MonoBehaviour
 	{
 		//Debug.Log("Player pos: " + transform.position);
 		CloneNo++;
+		Audiomanager.instance.PlayAudio(CloningSound);
 		Instantiate(Clone, LastPos, Quaternion.identity);   //Otherwise we create a clone at the player's last position
 		transform.position = LastPos;                       //Reset player back to original position before recording
 	}
