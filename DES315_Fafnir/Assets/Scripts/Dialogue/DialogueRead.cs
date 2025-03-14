@@ -3,6 +3,7 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Timeline;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -10,17 +11,26 @@ public class DialogueRead : MonoBehaviour
     public static float ReadSpeed = 0.02f;
     private static string path;
     private StreamReader reader;
-    [SerializeField]
-    private string chapter;
+    //[SerializeField]
+    public static string chapter;
     private string displayLine = "";
-    private bool reading = false;
+    public static bool reading = false;
+
+    //[SerializeField] private SignalAsset signalToSend;
+    //private SignalEmitter runtimeEmitter;
 
 
     // Start is called before the first frame update
     void Start()
     {
+
+        //chapter = SignalManager.chapter;
         path = Application.streamingAssetsPath + "/Dialogue/Game_GB.txt";
         reader = new(path);
+
+        //runtimeEmitter = ScriptableObject.CreateInstance<SignalEmitter>();
+        //runtimeEmitter.asset = signalToSend;
+
     }
 
 
@@ -50,6 +60,7 @@ public class DialogueRead : MonoBehaviour
         ReadBlock();
 
     }
+
 
     public IEnumerator DisplayLine() {
 
@@ -118,13 +129,20 @@ public class DialogueRead : MonoBehaviour
     private bool ReadNext() 
     { return Input.GetKeyDown(KeyCode.S); }
 
+    public void ReadStart() {
+
+        reader = new(path);
+        ReadBlock();
+
+    }
+
     // Update is called once per frame
     void Update()
     {
         
         if (Input.GetKeyDown(KeyCode.W) && !reading) {
-            reader = new(path);
-            ReadBlock();
+            //reader = new(path);
+            //ReadBlock();
         }
 
     }
