@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 567482006}
   - component: {fileID: 567482007}
   m_Layer: 0
-  m_Name: BG Concept_0
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,7 +691,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -5
-  m_Sprite: {fileID: -1287033069074079911, guid: 2909781ac31bbbf4d8b22173d3fcd869, type: 3}
+  m_Sprite: {fileID: 4128064738326349207, guid: dfaa123ab17ebc1459bb63de3045659f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6899,11 +6899,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.z
