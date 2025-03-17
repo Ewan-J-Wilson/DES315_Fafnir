@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Timeline;
 
 //Current state the game is in, used to update different sections of code
 public enum GameState
@@ -24,11 +25,14 @@ public class GameManager : MonoBehaviour
 	[HideInInspector]
 	public static Fade _fade;
 	private bool doNextLevel = false;
+	// Can't set signalToSend as static due to needing to reference the asset in the inspector
+	[SerializeField] private SignalAsset signalToSend;
+	private SignalEmitter runtimeEmitter;
 
 
     private void Start()
     {
-
+		
 		Player = FindFirstObjectByType<PlayerAI>();
 		if (am == null) 
 		{ am = FindFirstObjectByType<Audiomanager>(); }
@@ -45,6 +49,8 @@ public class GameManager : MonoBehaviour
         _fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
 
 		SignalManager.currentLevel = LevelInd;
+		SignalReceiver receiver = FindFirstObjectByType<SignalManager>().GetComponent<SignalReceiver>();
+        receiver.OnNotify(default, runtimeEmitter, default);
 
 	}
 
