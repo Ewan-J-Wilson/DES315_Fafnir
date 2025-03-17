@@ -3,6 +3,7 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -10,14 +11,8 @@ public class DialogueRead : MonoBehaviour
     public static float ReadSpeed = 0.02f;
     private static string path;
     private StreamReader reader;
-    //[SerializeField]
-    //public static string chapter;
     private string displayLine = "";
     public static bool reading = false;
-
-    //[SerializeField] private SignalAsset signalToSend;
-    //private SignalEmitter runtimeEmitter;
-
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +23,6 @@ public class DialogueRead : MonoBehaviour
 
     }
 
-
     public void ReadBlock() {
         
         string line;
@@ -36,6 +30,8 @@ public class DialogueRead : MonoBehaviour
         { line = reader.ReadLine(); }
         else
         { 
+            PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+		    input.SwitchCurrentActionMap("Player");	
             gameObject.SetActive(false);
             return; 
         }
@@ -128,12 +124,22 @@ public class DialogueRead : MonoBehaviour
         displayLine = "";
 
         yield return new WaitUntil(ReadNext); 
+        PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+		//input.neverAutoSwitchControlSchemes = false;
+		input.SwitchCurrentActionMap("Player");	
         gameObject.SetActive(false);
 
     }
 
-    private bool ReadNext() 
-    { return Input.GetKeyDown(KeyCode.S); }
+  
+
+    private bool ReadNext() { 
+        if (DialogueManager.next) {
+            DialogueManager.next = false;
+            return true;
+        }
+        return false; 
+    }
 
     public void ReadStart() {
 

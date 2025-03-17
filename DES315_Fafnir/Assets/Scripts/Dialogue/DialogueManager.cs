@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance;
     public static string chapter;
     public DialogueRead textBox;
+    public static bool next = false;
+    
 
     public void Start() {
         
@@ -38,8 +41,20 @@ public class DialogueManager : MonoBehaviour
     
     }
 
-    public void ReadDialogue() {
+    public void NextAction(InputAction.CallbackContext obj) {
 
+        if (!obj.performed) {
+            next = false;
+            return; 
+        }
+
+        next = true;
+        return;
+
+    }
+
+    public void ReadDialogue() {
+        
         instance.textBox.gameObject.SetActive(true);
         textBox.ReadStart();
 

@@ -78,6 +78,8 @@ public class PlayerAI : MonoBehaviour
 
 	}
 
+
+
 	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
         

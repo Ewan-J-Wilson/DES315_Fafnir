@@ -337,7 +337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clone: {fileID: 4064460576545659443, guid: 038f10f9afc22b74ea9d7db4625cabb3, type: 3}
-  MaxJump: 1
   TrailPart: {fileID: 6529556881714479319, guid: e4ccb08a8b89df741999ccb2b79a3855, type: 3}
   PCList: []
   CurrentCom:
@@ -347,7 +346,6 @@ MonoBehaviour:
     toolPosition: {x: 0, y: 0}
     dur: 0
   MoveSpeed: 7.5
-  pauseMenu: {fileID: 2588191603609945841}
   CloningSound: CloneSpawn
 --- !u!50 &1796299224185216547
 Rigidbody2D:
@@ -518,7 +516,19 @@ MonoBehaviour:
     m_ActionId: 26764fa8-4531-4e97-ae2a-943992302160
     m_ActionName: 'UI/UI Nav[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6374074287446027814, guid: e49415f5d50f9bb459a2aae83b367eeb, type: 3}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: NextAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 2d019508-9b5f-47a3-993d-ac074ada3aae
     m_ActionName: 'UI/Select[/Keyboard/enter,/Keyboard/e]'
   - m_PersistentCalls:
