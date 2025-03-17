@@ -4,6 +4,8 @@ public class DialogueTrigger : MonoBehaviour
 {
 
     [SerializeField] private string chapter;
+    private bool triggered = false;
+
 
     // Update is called once per frame
     void Update()
@@ -13,4 +15,17 @@ public class DialogueTrigger : MonoBehaviour
             DialogueManager.OnDialogueObject();
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collider) {
+
+        if (collider.CompareTag("Player") && !DialogueRead.reading && !triggered) {
+
+            DialogueManager.chapter = chapter;
+            DialogueManager.OnDialogueObject();
+            triggered = true;
+
+        }
+
+    }
+
 }
