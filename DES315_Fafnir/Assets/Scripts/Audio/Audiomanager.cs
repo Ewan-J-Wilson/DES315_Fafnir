@@ -125,6 +125,23 @@ public class Audiomanager : MonoBehaviour
                     CurrentTrack.src.volume = volumeLevels[CurrentTrack.type];
                 }
             }
+            else if (CurrentTrack.src.volume >= volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
+            {
+                CurrentTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED;
+            }
+
+            if (CurrentTrack.src.isPlaying) CurrentTrackTimer += Time.unscaledDeltaTime;
+            float thresh = CurrentTrack.src.clip.samples / SAMPLERATE;
+            if (CurrentTrackTimer >= thresh - 0.05f)
+            {
+                CurrentTrackTimer = CurrentTrack.LoopPoint;
+                CurrentTrack.src.time = CurrentTrackTimer;
+            }
+            else
+            {
+                CurrentTrackTimer = (CurrentTrack.src.timeSamples / SAMPLERATE);
+            }
+            //Debug.Log("Track seconds: " + CurrentTrack.src.time + "\nCurrentTrackTimer: " + CurrentTrackTimer);
         }
     }
 
@@ -149,7 +166,7 @@ public class Audiomanager : MonoBehaviour
         { aud = Array.Find(sfx, sfx => sfx.Name == name); }
 
         if (aud.src == null) {
-            Debug.Log("Audio Not Found");
+            //Debug.Log("Audio Not Found");
             return;
         }
 
