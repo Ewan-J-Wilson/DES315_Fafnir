@@ -34,6 +34,7 @@ public class MenuButtons : MonoBehaviour
         _fade.FadeOut();
         doNextScene = true;
         nextScene = _scene;
+        Audiomanager.instance.PlayAudio("MenuConfirm");
         //SceneManager.LoadSceneAsync(_scene);
     }
 
@@ -43,6 +44,7 @@ public class MenuButtons : MonoBehaviour
         _fade.FadeOut();
         doNextScene = true;
         nextScene = "Controls Menu";
+        Audiomanager.instance.PlayAudio("MenuConfirm");
         //Time.timeScale = 1;
         //SceneManager.LoadSceneAsync("Controls Menu"); 
 
