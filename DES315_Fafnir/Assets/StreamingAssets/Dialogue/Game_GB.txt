@@ -9,6 +9,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor [
 Test 4
 END_DIAG
 
+0-1_START
+Test 2
+{NEXT}
+lorem ipsum yeah yeah yeah
+END_DIAG
+
+1-0_START
+Loop Test
+END_DIAG
+
+1-1_START
+beep boop
+END_DIAG
+
 CELESTE_01
 
 [CHILD_Happy]

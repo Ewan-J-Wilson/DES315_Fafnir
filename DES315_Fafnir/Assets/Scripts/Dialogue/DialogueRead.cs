@@ -23,12 +23,8 @@ public class DialogueRead : MonoBehaviour
     void Start()
     {
 
-        //chapter = SignalManager.chapter;
         path = Application.streamingAssetsPath + "/Dialogue/Game_GB.txt";
         reader = new(path);
-
-        //runtimeEmitter = ScriptableObject.CreateInstance<SignalEmitter>();
-        //runtimeEmitter.asset = signalToSend;
 
     }
 
@@ -39,9 +35,12 @@ public class DialogueRead : MonoBehaviour
         if (!reader.EndOfStream) 
         { line = reader.ReadLine(); }
         else
-        { return; }
+        { 
+            gameObject.SetActive(false);
+            return; 
+        }
 
-        if ((!line.Contains(SignalManager.chapter) && !reading) || line.Contains('#') || string.IsNullOrWhiteSpace(line))
+        if ((!line.Contains(DialogueManager.chapter) && !reading) || line.Contains('#') || string.IsNullOrWhiteSpace(line))
         { 
             ReadBlock(); 
             return;
@@ -127,6 +126,9 @@ public class DialogueRead : MonoBehaviour
 
         reading = false;
         displayLine = "";
+
+        yield return new WaitUntil(ReadNext); 
+        gameObject.SetActive(false);
 
     }
 

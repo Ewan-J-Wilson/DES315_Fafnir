@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Timeline;
@@ -25,9 +26,6 @@ public class GameManager : MonoBehaviour
 	[HideInInspector]
 	public static Fade _fade;
 	private bool doNextLevel = false;
-	// Can't set signalToSend as static due to needing to reference the asset in the inspector
-	[SerializeField] private SignalAsset signalToSend;
-	private SignalEmitter runtimeEmitter;
 
 
     private void Start()
@@ -48,9 +46,24 @@ public class GameManager : MonoBehaviour
         float aspect = CameraScaler.targetAspect.x / CameraScaler.targetAspect.y;
         _fade.transform.localScale = new(_camera.orthographicSize * aspect * 2, _camera.orthographicSize * 2);
 
-		SignalManager.currentLevel = LevelInd;
-		SignalReceiver receiver = FindFirstObjectByType<SignalManager>().GetComponent<SignalReceiver>();
-        receiver.OnNotify(default, runtimeEmitter, default);
+		DialogueManager.currentLevel = LevelInd;
+		
+
+	}
+
+	private IEnumerator StartDialogue() {
+
+		// Wait for the level transition fade to finish
+		if (LoopInd >= LevelList.Length)
+		{ 
+			yield return new WaitUntil(_fade.IsFading); 
+			yield return new WaitUntil(_fade.IsNotFading);
+		}
+		// Otherwise wait for the loop to load
+		else
+		{ yield return new WaitForSeconds(0.5f); }
+
+		DialogueManager.OnLoopChange();
 
 	}
 
@@ -58,9 +71,11 @@ public class GameManager : MonoBehaviour
     public void SetLevel()
 	{
 
+		StartCoroutine(StartDialogue());
+
 		if (LoopInd >= LevelList.Length) { 
 			LoopInd = 0;
-			SignalManager.currentLevel = LevelInd + 1;
+			DialogueManager.currentLevel = LevelInd + 1;
 			doNextLevel = true;
 			Time.timeScale = 0;
 			_fade.FadeOut();
