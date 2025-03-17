@@ -1,20 +1,29 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SignalManager : MonoBehaviour
+public class DialogueManager : MonoBehaviour
 {
 
     public static int currentLevel = 0;
-    public static SignalManager instance;
+    public static DialogueManager instance;
     public static string chapter;
     public DialogueRead textBox;
 
     public void Start() {
         
-        instance = this;
+        LoadCamera(gameObject.scene, LoadSceneMode.Single);
+        SceneManager.sceneLoaded += LoadCamera;
 
+        instance = this;
+        textBox.gameObject.SetActive(false);
         DontDestroyOnLoad(gameObject);
+        
 
     }
+
+    public void LoadCamera(Scene scene, LoadSceneMode mode)
+    { GetComponent<Canvas>().worldCamera = FindFirstObjectByType<Camera>(); }
+
 
     public static void OnLoopChange() {
     
@@ -31,6 +40,7 @@ public class SignalManager : MonoBehaviour
 
     public void ReadDialogue() {
 
+        instance.textBox.gameObject.SetActive(true);
         textBox.ReadStart();
 
     }
