@@ -202,7 +202,7 @@ MonoBehaviour:
   - {fileID: 61919742}
   - {fileID: 1107180240}
   nextLevel: Level 3
-  LevelInd: 2
+  LevelInd: 1
 --- !u!4 &90817609
 Transform:
   m_ObjectHideFlags: 0
