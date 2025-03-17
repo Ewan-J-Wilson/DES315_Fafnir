@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.7689475, b: 0.6179246, a: 1}
   m_FlipX: 0
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdCount: 0
   threshold: 1
+  ActivateSound: 
   Curve:
     serializedVersion: 2
     m_Curve:
@@ -233,4 +234,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   AngleTarget: 90
-  BridgeSpeed: 1.5
+  platformSpeed: 1.5
