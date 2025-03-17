@@ -14,13 +14,19 @@ public class DialogueManager : MonoBehaviour
 
     public void Start() {
         
+
+        if (instance == null) instance = this;
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
         LoadCamera(gameObject.scene, LoadSceneMode.Single);
         SceneManager.sceneLoaded += LoadCamera;
 
-        instance = this;
         textBox.gameObject.SetActive(false);
-        DontDestroyOnLoad(gameObject);
-        
 
     }
 
