@@ -34,6 +34,7 @@ public class PlayerAI : MonoBehaviour
 	// Trails
 	[Tooltip("Reference to the Trail Particle object")]
 	public GameObject TrailPart;                //Trail particle reference
+	public GameObject Anchor;					//Anchor particle reference
 	private float TrailTimer;                   //Timer to wait for instantiating a trail when the player is recording
 	protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
 
@@ -131,6 +132,8 @@ public class PlayerAI : MonoBehaviour
 		// Enable the recording
 		else
 		{
+			// Create the anchor point
+			Instantiate(Anchor, transform.position, Quaternion.identity);
 			LastPos = transform.position;
 			IsRecording = true;
 		}
