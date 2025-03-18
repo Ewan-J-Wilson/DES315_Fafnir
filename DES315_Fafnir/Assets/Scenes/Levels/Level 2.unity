@@ -7171,12 +7171,20 @@ PrefabInstance:
       value: Gate_Tower
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.z
