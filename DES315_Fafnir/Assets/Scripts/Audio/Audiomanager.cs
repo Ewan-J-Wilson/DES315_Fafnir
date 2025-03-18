@@ -140,7 +140,7 @@ public class Audiomanager : MonoBehaviour
             {
                 CurrentTrackTimer = (CurrentTrack.src.timeSamples / SAMPLERATE);
             }
-            Debug.Log("Track seconds: " + CurrentTrack.src.time + "\nCurrentTrackTimer: " + CurrentTrackTimer);
+            //Debug.Log("Track seconds: " + CurrentTrack.src.time + "\nCurrentTrackTimer: " + CurrentTrackTimer);
         }
     }
 
@@ -162,7 +162,7 @@ public class Audiomanager : MonoBehaviour
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
 
         if (aud.src == null) {
-            Debug.Log("Audio Not Found");
+            //Debug.Log("Audio Not Found");
             return;
         }
 
