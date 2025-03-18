@@ -4,6 +4,7 @@ using System.IO;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -96,9 +97,16 @@ public class DialogueRead : MonoBehaviour
                     if (c == '}') {
 
                         if (formatRead == "NEXT") { 
-                            yield return new WaitUntil(ReadNext); 
+                            if (DialogueManager.autoscroll)
+                            { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
+                            else
+                            { yield return new WaitUntil(ReadNext); }
                             textAsset.text = "";
                         }
+
+
+                        if (formatRead.Contains("t:"))
+                        { yield return new WaitForSeconds(formatRead.Split(":")[1].ConvertTo<float>()); }
 
                         if (formatRead == "n")
                         { textAsset.text += "\n"; }
