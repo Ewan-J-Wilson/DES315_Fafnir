@@ -75,7 +75,8 @@ public class DialogueRead : MonoBehaviour
             { 
 
                 textAsset.text += c;
-                yield return new WaitForSeconds(ReadSpeed);
+                if (!DialogueManager.next)
+                { yield return new WaitForSeconds(ReadSpeed); }
 
             }
             else {
@@ -96,6 +97,9 @@ public class DialogueRead : MonoBehaviour
                     if (c == '}') {
 
                         if (formatRead == "NEXT") { 
+
+                            DialogueManager.next = false;
+
                             if (DialogueManager.autoscroll)
                             { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
                             else
@@ -135,7 +139,11 @@ public class DialogueRead : MonoBehaviour
         reading = false;
         displayLine = "";
 
-        yield return new WaitUntil(ReadNext); 
+        DialogueManager.next = false;
+        if (DialogueManager.autoscroll)
+        { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
+        else
+        { yield return new WaitUntil(ReadNext); }
         DialogueManager.DisablePlayerInput(false);
         gameObject.SetActive(false);
 
