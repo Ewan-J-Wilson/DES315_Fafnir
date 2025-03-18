@@ -61,6 +61,13 @@ public class DialogueManager : MonoBehaviour
 
     }
 
+    public static void DisablePlayerInput(bool _disable) {
+        
+        PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+        input.SwitchCurrentActionMap(_disable ? "UI" : "Player");
+        
+    }
+
     public void ReadDialogue() {
         
         instance.textBox.gameObject.SetActive(true);

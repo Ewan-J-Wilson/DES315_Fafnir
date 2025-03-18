@@ -31,8 +31,7 @@ public class DialogueRead : MonoBehaviour
         { line = reader.ReadLine(); }
         else
         { 
-            PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
-		    input.SwitchCurrentActionMap("Player");	
+            DialogueManager.DisablePlayerInput(false);
             gameObject.SetActive(false);
             return; 
         }
@@ -104,6 +103,11 @@ public class DialogueRead : MonoBehaviour
                             textAsset.text = "";
                         }
 
+                        if (formatRead == "enable")
+                        { DialogueManager.DisablePlayerInput(false); }
+
+                        if (formatRead == "disable")
+                        { DialogueManager.DisablePlayerInput(true); }
 
                         if (formatRead.Contains("t:"))
                         { yield return new WaitForSeconds(formatRead.Split(":")[1].ConvertTo<float>()); }
@@ -132,12 +136,12 @@ public class DialogueRead : MonoBehaviour
         displayLine = "";
 
         yield return new WaitUntil(ReadNext); 
-        PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
-		//input.neverAutoSwitchControlSchemes = false;
-		input.SwitchCurrentActionMap("Player");	
+        DialogueManager.DisablePlayerInput(false);
         gameObject.SetActive(false);
 
     }
+
+   
 
   
 
