@@ -3,6 +3,7 @@ using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -10,24 +11,32 @@ public class DialogueRead : MonoBehaviour
     public static float ReadSpeed = 0.02f;
     private static string path;
     private StreamReader reader;
-    [SerializeField]
-    private string chapter;
     private string displayLine = "";
-    private bool reading = false;
-
+    public static bool reading = false;
 
     // Start is called before the first frame update
     void Start()
     {
+
         path = Application.streamingAssetsPath + "/Dialogue/Game_GB.txt";
         reader = new(path);
-    }
 
+    }
 
     public void ReadBlock() {
         
-        string line = reader.ReadLine();
-        if ((!line.Contains(chapter) && !reading) || line.Contains('#') || line.Length == 0)
+        string line;
+        if (!reader.EndOfStream) 
+        { line = reader.ReadLine(); }
+        else
+        { 
+            PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+		    input.SwitchCurrentActionMap("Player");	
+            gameObject.SetActive(false);
+            return; 
+        }
+
+        if ((!line.Contains(DialogueManager.chapter) && !reading) || line.Contains('#') || string.IsNullOrWhiteSpace(line))
         { 
             ReadBlock(); 
             return;
@@ -50,6 +59,7 @@ public class DialogueRead : MonoBehaviour
         ReadBlock();
 
     }
+
 
     public IEnumerator DisplayLine() {
 
@@ -113,19 +123,29 @@ public class DialogueRead : MonoBehaviour
         reading = false;
         displayLine = "";
 
+        yield return new WaitUntil(ReadNext); 
+        PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+		//input.neverAutoSwitchControlSchemes = false;
+		input.SwitchCurrentActionMap("Player");	
+        gameObject.SetActive(false);
+
     }
 
-    private bool ReadNext() 
-    { return Input.GetKeyDown(KeyCode.S); }
+  
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        if (Input.GetKeyDown(KeyCode.W) && !reading) {
-            reader = new(path);
-            ReadBlock();
+    private bool ReadNext() { 
+        if (DialogueManager.next) {
+            DialogueManager.next = false;
+            return true;
         }
+        return false; 
+    }
+
+    public void ReadStart() {
+
+        reader = new(path);
+        ReadBlock();
 
     }
+
 }

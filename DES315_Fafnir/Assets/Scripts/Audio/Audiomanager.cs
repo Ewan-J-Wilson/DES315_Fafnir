@@ -36,8 +36,7 @@ public class Audiomanager : MonoBehaviour
     private const float SAMPLERATE = 48000.0f;
     private const float FADE_SPEED = 0.66f;
 
-    public AudioMixerGroup MusicOut;
-    public AudioMixerGroup SFXOut;
+    public AudioMixerGroup AudOut;
     public static Audiomanager instance;
 
     private float CurrentTrackTimer = 0;
@@ -48,9 +47,6 @@ public class Audiomanager : MonoBehaviour
     private AudioInstance CurrentTrack;         //Music track to fade in
     private AudioInstance PreviousTrack;        //Music track to fade out
     private AudioInstance NullInst;
-
-    // SFX 
-    public AudioInstance[] sfx;
 
     public LoopTrackInstance[] LoopTrackList;   //List of music tracks to play in a given level loop
 
@@ -80,27 +76,11 @@ public class Audiomanager : MonoBehaviour
             tracks[i].src.volume = tracks[i].Volume;
             tracks[i].src.pitch = tracks[i].Pitch;
             tracks[i].src.panStereo = tracks[i].Panning;
-            tracks[i].src.loop = (tracks[i].type == AudioType.MUSIC);
-            tracks[i].src.outputAudioMixerGroup = MusicOut;
+            tracks[i].src.loop = tracks[i].type == AudioType.MUSIC;
+            tracks[i].src.outputAudioMixerGroup = AudOut;
         }
-
-        for (int i = 0; i < sfx.Length; i++)
-        {
-            sfx[i].src = gameObject.AddComponent<AudioSource>();
-            sfx[i].src.clip = sfx[i].clip;
-            sfx[i].src.volume = sfx[i].Volume;
-            sfx[i].src.pitch = sfx[i].Pitch;
-            sfx[i].src.panStereo = sfx[i].Panning;
-            sfx[i].src.loop = sfx[i].loop;
-            sfx[i].src.outputAudioMixerGroup = SFXOut;
-        }
-
 
         NullInst.Name = null;
-    }
-    private void Start()
-    {
-        //FadeLoopTracks(0, 0);
     }
 
     public void Update()
@@ -180,9 +160,6 @@ public class Audiomanager : MonoBehaviour
     public void PlayAudio(string name, float vol = 1.0f, float pitch = 0.0f, float pan = 0.5f)
     {
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
-
-        if (aud.src == null)
-        { aud = Array.Find(sfx, sfx => sfx.Name == name); }
 
         if (aud.src == null) {
             Debug.Log("Audio Not Found");
