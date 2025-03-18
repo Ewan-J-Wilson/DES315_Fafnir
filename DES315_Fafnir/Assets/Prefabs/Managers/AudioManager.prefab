@@ -44,11 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3113ede2fa0e60b4dbb5e488ee121548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   AudOut: {fileID: 0}
-=======
-  AudOut: {fileID: 24300002, guid: d0eda980d4d284e42a55904063f1063a, type: 2}
->>>>>>> Stashed changes
   tracks:
   - Name: Kick
     Volume: 1
@@ -60,7 +56,7 @@ MonoBehaviour:
     src: {fileID: 0}
     type: 1
   - Name: T5-1
-    Volume: 0.2
+    Volume: 1
     Pitch: 1
     Panning: 0.5
     loop: 0
@@ -69,7 +65,7 @@ MonoBehaviour:
     src: {fileID: 0}
     type: 1
   - Name: T5-2
-    Volume: 0.2
+    Volume: 1
     Pitch: 1
     Panning: 0.5
     loop: 0
@@ -119,11 +115,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-<<<<<<< Updated upstream
     clip: {fileID: 8300000, guid: ab56a38cebc80664693baed25fcebc30, type: 3}
-=======
-    clip: {fileID: 8300000, guid: 01f0c5328733470458b63813bad588ea, type: 3}
->>>>>>> Stashed changes
     src: {fileID: 0}
     type: 2
   - Name: ButtonOff
@@ -159,11 +151,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-<<<<<<< Updated upstream
     clip: {fileID: 8300000, guid: cb8e42c91d05b1c4ab0cc91b01318487, type: 3}
-=======
-    clip: {fileID: 8300000, guid: 7efe355e94ff8874ab3d174ec0116f01, type: 3}
->>>>>>> Stashed changes
     src: {fileID: 0}
     type: 2
   - Name: LeverOn
@@ -172,11 +160,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-<<<<<<< Updated upstream
     clip: {fileID: 8300000, guid: cc68a0c09a87b28498db695e3b0eb008, type: 3}
-=======
-    clip: {fileID: 8300000, guid: 3fe3cf4329551ce448246966033c1251, type: 3}
->>>>>>> Stashed changes
     src: {fileID: 0}
     type: 2
   - Name: Confirm
@@ -203,11 +187,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-<<<<<<< Updated upstream
     clip: {fileID: 8300000, guid: 48e801e644e12b441b7a4102be930e1b, type: 3}
-=======
-    clip: {fileID: 8300000, guid: 3e717b1de3648c84a9c85cf5bef7a6bb, type: 3}
->>>>>>> Stashed changes
     src: {fileID: 0}
     type: 2
   - Name: Splash1
@@ -252,11 +232,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-<<<<<<< Updated upstream
     clip: {fileID: 8300000, guid: b496fd732dc6b03409833cc71fce47cf, type: 3}
-=======
-    clip: {fileID: 8300000, guid: f27d3502f7429024ab856ee2fe61856a, type: 3}
->>>>>>> Stashed changes
     src: {fileID: 0}
     type: 2
   - Name: BigSplash2
@@ -265,11 +241,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-<<<<<<< Updated upstream
     clip: {fileID: 8300000, guid: c3c38cc787e0bc24e889e0b8275f8d06, type: 3}
-=======
-    clip: {fileID: 8300000, guid: 1d8af892bf245ae4db22f0d5012ab569, type: 3}
->>>>>>> Stashed changes
     src: {fileID: 0}
     type: 2
   - Name: BigSplash3
@@ -278,11 +250,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-<<<<<<< Updated upstream
     clip: {fileID: 8300000, guid: 37e1e31e941fe5940ba6be4ec883326b, type: 3}
-=======
-    clip: {fileID: 8300000, guid: d553aee8f8874db4785ea9e0d4d12d82, type: 3}
->>>>>>> Stashed changes
     src: {fileID: 0}
     type: 2
   - Name: BigSplash4
@@ -291,11 +259,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-<<<<<<< Updated upstream
     clip: {fileID: 8300000, guid: 257a2d7b922a0f841bf513bc8287111e, type: 3}
-=======
-    clip: {fileID: 8300000, guid: 9faedf8eeefe2874dade5e84048575fb, type: 3}
->>>>>>> Stashed changes
     src: {fileID: 0}
     type: 2
   - Name: Step1
