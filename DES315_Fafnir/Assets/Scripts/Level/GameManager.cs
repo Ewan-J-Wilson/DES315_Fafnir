@@ -91,10 +91,7 @@ public class GameManager : MonoBehaviour
 		}
 
 		for (int i = 0; i < LevelList.Length; i++)
-		{
-			// Changed from LevelList[i].active so the editor shuts up
-			LevelList[i].SetActive(i == LoopInd);
-		}
+		{ LevelList[i].SetActive(i == LoopInd); }
 
     }
 

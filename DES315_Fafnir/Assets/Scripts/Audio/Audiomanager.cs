@@ -57,7 +57,7 @@ public class Audiomanager : MonoBehaviour
             { AudioType.MUSIC, 0.6f },
             { AudioType.SFX, 1.0f },
         };
-    // Start is called before the first frame update
+
     void Awake()
     {
         if (instance == null) instance = this;
@@ -84,9 +84,7 @@ public class Audiomanager : MonoBehaviour
     }
 
     public void Update()
-    {
-        HandleFade();
-    }
+    { HandleFade(); }
 
     void HandleFade()
     {
@@ -96,9 +94,7 @@ public class Audiomanager : MonoBehaviour
             {
                 PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED;
                 if (PreviousTrack.src.volume < 0)
-                {
-                    PreviousTrack.src.volume = 0;
-                }
+                {  PreviousTrack.src.volume = 0;  }
             }
 
             if (PreviousTrack.src.isPlaying) PreviousTrackTimer += Time.unscaledDeltaTime;
@@ -109,9 +105,7 @@ public class Audiomanager : MonoBehaviour
                 PreviousTrack.src.time = PreviousTrackTimer;
             }
             else
-            {
-                PreviousTrackTimer = (PreviousTrack.src.timeSamples / SAMPLERATE);
-            }
+            { PreviousTrackTimer = (PreviousTrack.src.timeSamples / SAMPLERATE); }
         }
 
         if (CurrentTrack.Name != null)
@@ -120,27 +114,24 @@ public class Audiomanager : MonoBehaviour
             {
                 CurrentTrack.src.volume += Time.unscaledDeltaTime * FADE_SPEED;
                 if (CurrentTrack.src.volume > volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
-                {
-                    CurrentTrack.src.volume = volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER];
-                }
+                { CurrentTrack.src.volume = volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER]; }
             }
             else if (CurrentTrack.src.volume >= volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
-            {
-                CurrentTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED;
-            }
+            { CurrentTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED; }
 
-            if (CurrentTrack.src.isPlaying) CurrentTrackTimer += Time.unscaledDeltaTime;
+            if (CurrentTrack.src.isPlaying) 
+            { CurrentTrackTimer += Time.unscaledDeltaTime; }
+
             float thresh = CurrentTrack.src.clip.samples / SAMPLERATE;
+
             if (CurrentTrackTimer >= thresh - 0.05f)
             {
                 CurrentTrackTimer = CurrentTrack.LoopPoint;
                 CurrentTrack.src.time = CurrentTrackTimer;
             }
             else
-            {
-                CurrentTrackTimer = (CurrentTrack.src.timeSamples / SAMPLERATE);
-            }
-            //Debug.Log("Track seconds: " + CurrentTrack.src.time + "\nCurrentTrackTimer: " + CurrentTrackTimer);
+            { CurrentTrackTimer = (CurrentTrack.src.timeSamples / SAMPLERATE); }
+
         }
     }
 
@@ -166,8 +157,10 @@ public class Audiomanager : MonoBehaviour
             return;
         }
 
-        if (pitch != 0.0f) { aud.src.pitch = pitch; }
-        if (pan != 0.5f) { aud.src.panStereo = pan; }
+        if (pitch != 0.0f) 
+        { aud.src.pitch = pitch; }
+        if (pan != 0.5f) 
+        { aud.src.panStereo = pan; }
         if (vol != 0.0f)
         {
             aud.src.volume = vol * volumeLevels[aud.type];
@@ -187,28 +180,27 @@ public class Audiomanager : MonoBehaviour
     //
     public void FadeLoopTracks(int loopind, int levelind)
     {
-        //Debug.Log(levelind + "-" + loopind);
 
         PreviousTrack = CurrentTrack;
-        //if (loopind > 0) 
-        //{ PreviousTrack = FindLooptrack(loopind - 1, levelind); }
-        //else if (levelind > 0) 
-        //{ PreviousTrack = FindLooptrack(loopind, levelind - 1); }
+
         CurrentTrack = FindLooptrack(loopind, levelind);
         if (CurrentTrack.Name != null) 
         { PlayAudio(CurrentTrack.Name, 0.0f); }
 
         PreviousTrackTimer = CurrentTrackTimer;
         CurrentTrackTimer = 0;
-        //Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
+
     }
     
     public void FadeAllTracks()
     {
-        if (CurrentTrack.Name == null) return;
+
+        if (CurrentTrack.Name == null) 
+        { return; }
+
         PreviousTrack = CurrentTrack;
         CurrentTrack = NullInst;
-        //Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
+
     }
 
     public AudioInstance FindLooptrack(int loopind, int levelind) 

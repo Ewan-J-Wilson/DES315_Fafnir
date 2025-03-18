@@ -18,8 +18,6 @@ public class TriggerLever : TriggerGeneric {
 
     private bool spriteSelected = false;
 
-    
-
     public void Start() {
 
         canSelect = true;
@@ -46,8 +44,6 @@ public class TriggerLever : TriggerGeneric {
                 
                 if (!cursor.GetComponent<Tool_Swing>().interactables.Contains(gameObject)) { 
 
-                    //Debug.LogWarning(collision);
-                    //Debug.LogWarning(cursor.transform.parent);
                     if (collision.transform.parent.CompareTag("Player") 
                        && collision.transform == cursor.transform.parent)
                     { spriteSelected = true; }
@@ -75,7 +71,7 @@ public class TriggerLever : TriggerGeneric {
                     if (collision.transform.parent.CompareTag("Player") 
                         && collision.transform == tool.transform.parent)
                     { spriteSelected = false; }
-                    //Debug.LogWarning(tool.transform.parent);
+
                     tool.interactables.Remove(gameObject); 
 
             }
