@@ -76,15 +76,11 @@ public class Audiomanager : MonoBehaviour
             tracks[i].src.volume = tracks[i].Volume;
             tracks[i].src.pitch = tracks[i].Pitch;
             tracks[i].src.panStereo = tracks[i].Panning;
-            tracks[i].src.loop = tracks[i].type == AudioType.MUSIC ? true : false;
+            tracks[i].src.loop = tracks[i].type == AudioType.MUSIC;
             tracks[i].src.outputAudioMixerGroup = AudOut;
         }
 
         NullInst.Name = null;
-    }
-    private void Start()
-    {
-        //FadeLoopTracks(0, 0);
     }
 
     public void Update()
