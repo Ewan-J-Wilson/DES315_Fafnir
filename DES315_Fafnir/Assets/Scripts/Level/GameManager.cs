@@ -72,9 +72,7 @@ public class GameManager : MonoBehaviour
     //Enable currentl level and disable other levels
     public void SetLevel()
     {
-		PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
-		//input.neverAutoSwitchControlSchemes = true;
-		input.SwitchCurrentActionMap("UI");	
+		DialogueManager.DisablePlayerInput(true);
 
 		StartCoroutine(StartDialogue());
 

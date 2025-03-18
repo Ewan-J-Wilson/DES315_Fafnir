@@ -4,6 +4,7 @@ using System.IO;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -30,8 +31,7 @@ public class DialogueRead : MonoBehaviour
         { line = reader.ReadLine(); }
         else
         { 
-            PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
-		    input.SwitchCurrentActionMap("Player");	
+            DialogueManager.DisablePlayerInput(false);
             gameObject.SetActive(false);
             return; 
         }
@@ -75,7 +75,8 @@ public class DialogueRead : MonoBehaviour
             { 
 
                 textAsset.text += c;
-                yield return new WaitForSeconds(ReadSpeed);
+                if (!DialogueManager.next)
+                { yield return new WaitForSeconds(ReadSpeed); }
 
             }
             else {
@@ -96,9 +97,30 @@ public class DialogueRead : MonoBehaviour
                     if (c == '}') {
 
                         if (formatRead == "NEXT") { 
-                            yield return new WaitUntil(ReadNext); 
+
+                            DialogueManager.next = false;
+
+                            if (DialogueManager.autoscroll)
+                            { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
+                            else
+                            { yield return new WaitUntil(ReadNext); }
                             textAsset.text = "";
                         }
+
+                        if (formatRead == "enable")
+                        { DialogueManager.DisablePlayerInput(false); }
+
+                        if (formatRead == "disable")
+                        { DialogueManager.DisablePlayerInput(true); }
+
+                        if (formatRead == "scroll start")
+                        { DialogueManager.autoscroll = true; }
+
+                        if (formatRead == "scroll stop")
+                        { DialogueManager.autoscroll = false; }
+
+                        if (formatRead.Contains("t:"))
+                        { yield return new WaitForSeconds(formatRead.Split(":")[1].ConvertTo<float>()); }
 
                         if (formatRead == "n")
                         { textAsset.text += "\n"; }
@@ -123,15 +145,18 @@ public class DialogueRead : MonoBehaviour
         reading = false;
         displayLine = "";
 
-        yield return new WaitUntil(ReadNext); 
-        PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
-		//input.neverAutoSwitchControlSchemes = false;
-		input.SwitchCurrentActionMap("Player");	
+        DialogueManager.next = false;
+
+        if (DialogueManager.autoscroll)
+        { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
+        else
+        { yield return new WaitUntil(ReadNext); }
+
+        DialogueManager.DisablePlayerInput(false);
         gameObject.SetActive(false);
 
     }
 
-  
 
     private bool ReadNext() { 
         if (DialogueManager.next) {
