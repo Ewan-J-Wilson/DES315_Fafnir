@@ -44,14 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3113ede2fa0e60b4dbb5e488ee121548, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MusicOut: {fileID: 24300002, guid: d0eda980d4d284e42a55904063f1063a, type: 2}
-  SFXOut: {fileID: 24300002, guid: 49e284e1d76277946bf2d9a7d1b157f6, type: 2}
+  AudOut: {fileID: 0}
   tracks:
   - Name: Kick
     Volume: 1
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: a6563c4d0a6d64c4bbac9914c364a87e, type: 3}
     src: {fileID: 0}
     type: 1
@@ -60,6 +60,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 9ead94d4fca1aaf4ca0da144299e3f31, type: 3}
     src: {fileID: 0}
     type: 1
@@ -68,14 +69,16 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 9194a6704b2a42a409c0fb3613901d43, type: 3}
     src: {fileID: 0}
     type: 1
   - Name: T5-3
-    Volume: 1
+    Volume: 0.2
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: c19efb54c1d62404c88df75352b2dd75, type: 3}
     src: {fileID: 0}
     type: 1
@@ -84,6 +87,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 4282829c9c75c7642917205e81bf55d3, type: 3}
     src: {fileID: 0}
     type: 1
@@ -92,6 +96,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 7ef9ab21e434e384db2f40aecbb0d996, type: 3}
     src: {fileID: 0}
     type: 1
@@ -100,16 +105,17 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 56b71e4078bb9c74699e55112dc6d6c9, type: 3}
     src: {fileID: 0}
     type: 1
-  sfx:
-  - Name: ButtonOn
+  - Name: CloneSpawn
     Volume: 1
     Pitch: 1
     Panning: 0.5
     loop: 0
-    clip: {fileID: 8300000, guid: d07dd15c60f753f47b4b7153022ddbae, type: 3}
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: ab56a38cebc80664693baed25fcebc30, type: 3}
     src: {fileID: 0}
     type: 2
   - Name: ButtonOff
@@ -117,39 +123,26 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 557387db7f524e543b6c6d49f4d7a565, type: 3}
     src: {fileID: 0}
     type: 2
-  - Name: DoorOpen
+  - Name: ButtonOn
     Volume: 1
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: d07dd15c60f753f47b4b7153022ddbae, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: DoorOpening
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: 8de51989ce516c3488423c3430f60290, type: 3}
-    src: {fileID: 0}
-    type: 2
-  - Name: LeverOn
-    Volume: 1
-    Pitch: 1
-    Panning: 0.5
-    loop: 0
-    clip: {fileID: 8300000, guid: cc68a0c09a87b28498db695e3b0eb008, type: 3}
-    src: {fileID: 0}
-    type: 2
-  - Name: PlatformMove
-    Volume: 1
-    Pitch: 1
-    Panning: 0.5
-    loop: 0
-    clip: {fileID: 8300000, guid: 48e801e644e12b441b7a4102be930e1b, type: 3}
-    src: {fileID: 0}
-    type: 2
-  - Name: CloneSpawn
-    Volume: 1
-    Pitch: 1
-    Panning: 0.5
-    loop: 0
-    clip: {fileID: 8300000, guid: ab56a38cebc80664693baed25fcebc30, type: 3}
     src: {fileID: 0}
     type: 2
   - Name: LeverOff
@@ -157,23 +150,134 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: cb8e42c91d05b1c4ab0cc91b01318487, type: 3}
     src: {fileID: 0}
     type: 2
-  - Name: MenuSelect
+  - Name: LeverOn
     Volume: 1
     Pitch: 1
     Panning: 0.5
     loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: cc68a0c09a87b28498db695e3b0eb008, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Confirm
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 299375ae290cb9642840cdaee5f40d81, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Select
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
     clip: {fileID: 8300000, guid: f33ad224953b53e41a9bbae57dbf32d5, type: 3}
     src: {fileID: 0}
     type: 2
-  - Name: MenuConfirm
+  - Name: Platform
     Volume: 1
     Pitch: 1
     Panning: 0.5
     loop: 0
-    clip: {fileID: 8300000, guid: 299375ae290cb9642840cdaee5f40d81, type: 3}
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 48e801e644e12b441b7a4102be930e1b, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Splash1
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 1de6e13d6426c244991f0401551b172d, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Splash2
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: b487296f189f8244bb05da6a4a66248a, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Splash3
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 04a28c29df6d5534398ac1957e6db1fb, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Splash4
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 0b17d710d0cc5124288e445d98446338, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: BigSplash1
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: b496fd732dc6b03409833cc71fce47cf, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: BigSplash2
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: c3c38cc787e0bc24e889e0b8275f8d06, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: BigSplash3
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 37e1e31e941fe5940ba6be4ec883326b, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: BigSplash4
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 257a2d7b922a0f841bf513bc8287111e, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Step1
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: bffc95411b1e8844988ac1dbacc3deb5, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Step2
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 84ddc520fd5dc8f4c960e32a420f56cf, type: 3}
     src: {fileID: 0}
     type: 2
   LoopTrackList:

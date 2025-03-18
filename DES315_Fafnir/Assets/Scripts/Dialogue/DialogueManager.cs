@@ -10,6 +10,8 @@ public class DialogueManager : MonoBehaviour
     public static string chapter;
     public DialogueRead textBox;
     public static bool next = false;
+    public static bool autoscroll = false;
+    public static float autoscrollLength = 3f;
     
 
     public void Start() {
@@ -47,6 +49,13 @@ public class DialogueManager : MonoBehaviour
     
     }
 
+    public static void CodedDialogue(string _chapter) {
+
+        chapter = _chapter;
+        instance.ReadDialogue();
+
+    }
+
     public void NextAction(InputAction.CallbackContext obj) {
 
         if (!obj.performed) {
@@ -57,6 +66,13 @@ public class DialogueManager : MonoBehaviour
         next = true;
         return;
 
+    }
+
+    public static void DisablePlayerInput(bool _disable) {
+        
+        PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
+        input.SwitchCurrentActionMap(_disable ? "UI" : "Player");
+        
     }
 
     public void ReadDialogue() {

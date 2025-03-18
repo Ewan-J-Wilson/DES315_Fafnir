@@ -1,0 +1,75 @@
+Test 1
+Test 2
+READ THIS
+[DAD_Tired]
+Test 3
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor [DAD_Shock]incididunt ut labore et dolore magna aliqua.
+[DAD_Tired]
+Test 4
+END_DIAG
+
+CELESTE_01
+
+[CHILD_Happy]
+This place is wild!
+{NEXT}
+[CHILD_Anger]
+Why would an entire city be abandoned?
+{NEXT}
+[DAD_Neutral]
+I read that some mega-corporation started{n}building it, but then no one wanted to live here.
+{NEXT}
+[DAD_Tired]
+I wonder why...
+{NEXT}
+[CHILD_Anger]
+My money's on a government cover-up.
+{NEXT}
+[DAD_Neutral]
+What a waste, to build all of this for no reason...
+{NEXT}
+[CHILD_Happy]
+At least we get to enjoy the leftovers.
+END_DIAG
+
+INTRO_START
+[DAD_Neutral]
+Panel 1-1
+{NEXT}
+Panel 1-2
+{NEXT}
+Panel 1-3
+{NEXT}
+Panel 2-1
+{NEXT}
+Panel 2-2
+{NEXT}
+Panel 2-3
+{NEXT}
+Panel 3-1
+{NEXT}
+Panel 3-2
+{NEXT}
+Panel 3-3
+{NEXT}
+Panel 4-1
+{NEXT}
+Panel 4-2
+{NEXT}
+Panel 4-3
+{NEXT}
+Panel 5-1
+{NEXT}
+Panel 5-2
+{NEXT}
+Panel 5-3
+{NEXT}
+Panel 6-1
+{NEXT}
+Panel 6-2
+{NEXT}
+Panel 6-3
+END_DIAG
+
+Test 5
+Test 6

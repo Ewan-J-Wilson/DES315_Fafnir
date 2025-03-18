@@ -338,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clone: {fileID: 4064460576545659443, guid: 038f10f9afc22b74ea9d7db4625cabb3, type: 3}
   TrailPart: {fileID: 6529556881714479319, guid: e4ccb08a8b89df741999ccb2b79a3855, type: 3}
+  Anchor: {fileID: 6529556881714479319, guid: e217bf66e57b0334ab3bcbe0df9ed504, type: 3}
   PCList: []
   CurrentCom:
     hAxis: 0
@@ -452,6 +453,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3584626055110413421}
         m_TargetAssemblyTypeName: Tool_Swing, Assembly-CSharp
         m_MethodName: ToolAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6374074287446027814, guid: e49415f5d50f9bb459a2aae83b367eeb, type: 3}
+        m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
+        m_MethodName: NextAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

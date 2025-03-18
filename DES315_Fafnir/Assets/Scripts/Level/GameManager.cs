@@ -72,9 +72,7 @@ public class GameManager : MonoBehaviour
     //Enable currentl level and disable other levels
     public void SetLevel()
     {
-		PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
-		//input.neverAutoSwitchControlSchemes = true;
-		input.SwitchCurrentActionMap("UI");	
+		DialogueManager.DisablePlayerInput(true);
 
 		StartCoroutine(StartDialogue());
 
@@ -93,10 +91,7 @@ public class GameManager : MonoBehaviour
 		}
 
 		for (int i = 0; i < LevelList.Length; i++)
-		{
-			// Changed from LevelList[i].active so the editor shuts up
-			LevelList[i].SetActive(i == LoopInd);
-		}
+		{ LevelList[i].SetActive(i == LoopInd); }
 
     }
 

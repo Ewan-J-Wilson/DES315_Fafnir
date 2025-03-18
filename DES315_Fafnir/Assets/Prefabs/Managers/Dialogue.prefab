@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1021755393382623030}
   - component: {fileID: 8456364019063162735}
   - component: {fileID: 8754813437969895649}
-  - component: {fileID: 8693954056034471330}
+  - component: {fileID: 1976730247425760479}
   m_Layer: 5
   m_Name: Dialogue Box
   m_TagString: Untagged
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &8693954056034471330
+--- !u!114 &1976730247425760479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 448573577696326517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc611b6270fbba4409d2f0373cdc151b, type: 3}
+  m_Script: {fileID: 11500000, guid: 57e94292f73868844983743cce3b8b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1736802217356624062
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f8e6324714dbe4a80360816d00cfb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 8693954056034471330}
+  textBox: {fileID: 1976730247425760479}
 --- !u!1 &4665669417507904883
 GameObject:
   m_ObjectHideFlags: 0

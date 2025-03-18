@@ -1,3 +1,4 @@
+using NUnit;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,6 +33,7 @@ public class PlayerAI : MonoBehaviour
 	// Trails
 	[Tooltip("Reference to the Trail Particle object")]
 	public GameObject TrailPart;                //Trail particle reference
+	public GameObject Anchor;					//Anchor particle reference
 	private float TrailTimer;                   //Timer to wait for instantiating a trail when the player is recording
 	protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
 
@@ -129,6 +131,8 @@ public class PlayerAI : MonoBehaviour
 		// Enable the recording
 		else
 		{
+			// Create the anchor point
+			Instantiate(Anchor, transform.position, Quaternion.identity);
 			LastPos = transform.position;
 			IsRecording = true;
 		}
@@ -198,7 +202,16 @@ public class PlayerAI : MonoBehaviour
 
 	public void PlayerDeath()
 	{
+
+		// Kills active clones
 		KillClone();
+
+        // Disables active cloning
+		ComInd++;
+		Array.Resize(ref PCList, ComInd + 1);
+		IsRecording = false;
+		KillTrail();
+
         transform.position = GameObject.FindGameObjectWithTag("StartFlag").transform.position;
     }
 
@@ -245,25 +258,5 @@ public class PlayerAI : MonoBehaviour
 
 	public virtual Vector2 ToolPosition()
 	{ return CurrentCom.toolPosition; }
-
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-	//	if (!CompareTag("Player"))
-	//	{ return; }
-	//
-    //    //if (collision.transform.CompareTag("MovablePlatform")) 
-	//	//{ transform.parent = collision.transform; }
-	//	
-    //}
-	//
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-	//	if (!CompareTag("Player"))
-	//	{ return; }
-	//	
-    //   // if (collision.transform.CompareTag("MovablePlatform")) 
-	//	//{ transform.parent = null; }
-	//	
-    //}
 
 }
