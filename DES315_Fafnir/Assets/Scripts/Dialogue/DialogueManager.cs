@@ -49,6 +49,13 @@ public class DialogueManager : MonoBehaviour
     
     }
 
+    public static void CodedDialogue(string _chapter) {
+
+        chapter = _chapter;
+        instance.ReadDialogue();
+
+    }
+
     public void NextAction(InputAction.CallbackContext obj) {
 
         if (!obj.performed) {

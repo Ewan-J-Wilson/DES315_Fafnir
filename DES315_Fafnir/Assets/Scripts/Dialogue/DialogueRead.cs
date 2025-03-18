@@ -113,6 +113,12 @@ public class DialogueRead : MonoBehaviour
                         if (formatRead == "disable")
                         { DialogueManager.DisablePlayerInput(true); }
 
+                        if (formatRead == "scroll start")
+                        { DialogueManager.autoscroll = true; }
+
+                        if (formatRead == "scroll stop")
+                        { DialogueManager.autoscroll = false; }
+
                         if (formatRead.Contains("t:"))
                         { yield return new WaitForSeconds(formatRead.Split(":")[1].ConvertTo<float>()); }
 
@@ -140,18 +146,17 @@ public class DialogueRead : MonoBehaviour
         displayLine = "";
 
         DialogueManager.next = false;
+
         if (DialogueManager.autoscroll)
         { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
         else
         { yield return new WaitUntil(ReadNext); }
+
         DialogueManager.DisablePlayerInput(false);
         gameObject.SetActive(false);
 
     }
 
-   
-
-  
 
     private bool ReadNext() { 
         if (DialogueManager.next) {
