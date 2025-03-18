@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - EventSystem
+  - Clickable
+  - Controller
+  - Keyboard
+  - Clone
+  - Tool
+  - TrailEnt
+  - MovablePlatform
+  - AntiClone
+  - Cursor
+  - Cursor Radius
+  - FadeOut
+  - DeathZone
+  - StartFlag
   layers:
   - Default
   - TransparentFX

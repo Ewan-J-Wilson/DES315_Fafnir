@@ -1,3 +1,4 @@
+using NUnit;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -198,7 +199,16 @@ public class PlayerAI : MonoBehaviour
 
 	public void PlayerDeath()
 	{
+
+		// Kills active clones
 		KillClone();
+
+        // Disables active cloning
+		ComInd++;
+		Array.Resize(ref PCList, ComInd + 1);
+		IsRecording = false;
+		KillTrail();
+
         transform.position = GameObject.FindGameObjectWithTag("StartFlag").transform.position;
     }
 
@@ -245,25 +255,5 @@ public class PlayerAI : MonoBehaviour
 
 	public virtual Vector2 ToolPosition()
 	{ return CurrentCom.toolPosition; }
-
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-	//	if (!CompareTag("Player"))
-	//	{ return; }
-	//
-    //    //if (collision.transform.CompareTag("MovablePlatform")) 
-	//	//{ transform.parent = collision.transform; }
-	//	
-    //}
-	//
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-	//	if (!CompareTag("Player"))
-	//	{ return; }
-	//	
-    //   // if (collision.transform.CompareTag("MovablePlatform")) 
-	//	//{ transform.parent = null; }
-	//	
-    //}
 
 }
