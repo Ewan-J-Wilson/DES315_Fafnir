@@ -140,7 +140,7 @@ public class Audiomanager : MonoBehaviour
             {
                 CurrentTrackTimer = (CurrentTrack.src.timeSamples / SAMPLERATE);
             }
-            Debug.Log("Track seconds: " + CurrentTrack.src.time + "\nCurrentTrackTimer: " + CurrentTrackTimer);
+            //Debug.Log("Track seconds: " + CurrentTrack.src.time + "\nCurrentTrackTimer: " + CurrentTrackTimer);
         }
     }
 
@@ -187,7 +187,7 @@ public class Audiomanager : MonoBehaviour
     //
     public void FadeLoopTracks(int loopind, int levelind)
     {
-        Debug.Log(levelind + "-" + loopind);
+        //Debug.Log(levelind + "-" + loopind);
 
         PreviousTrack = CurrentTrack;
         //if (loopind > 0) 
@@ -200,7 +200,7 @@ public class Audiomanager : MonoBehaviour
 
         PreviousTrackTimer = CurrentTrackTimer;
         CurrentTrackTimer = 0;
-        Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
+        //Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
     }
     
     public void FadeAllTracks()
@@ -208,7 +208,7 @@ public class Audiomanager : MonoBehaviour
         if (CurrentTrack.Name == null) return;
         PreviousTrack = CurrentTrack;
         CurrentTrack = NullInst;
-        Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
+        //Debug.Log("CurrentTrack: " + CurrentTrack.Name + "\nPreviousTrack: " + PreviousTrack.Name);
     }
 
     public AudioInstance FindLooptrack(int loopind, int levelind) 
