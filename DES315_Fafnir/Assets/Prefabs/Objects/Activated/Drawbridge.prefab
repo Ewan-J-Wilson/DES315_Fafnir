@@ -59,7 +59,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 71273805687328904, guid: e404070d7bb59cf4bb99baf52a33b8ee, type: 3}
       propertyPath: AngleTarget
-      value: -90
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 3520503178508374329, guid: e404070d7bb59cf4bb99baf52a33b8ee, type: 3}
       propertyPath: m_LocalPosition.x
