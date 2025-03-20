@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2436627156763121750, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_Name
-      value: MovingPlatform (1)
+      value: MovingPlatform2-2b
       objectReference: {fileID: 0}
     - target: {fileID: 2436627156763121750, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_IsActive
@@ -251,8 +251,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 173036187}
-  - {fileID: 419791359}
   - {fileID: 1281479450}
+  - {fileID: 419791359}
   - {fileID: 390355517}
   - {fileID: 1372310876}
   - {fileID: 333090022}
@@ -661,7 +661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_Name
-      value: FloorButton2
+      value: FloorButton2-1b
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_IsActive
@@ -1007,7 +1007,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 992175141542049301, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
       propertyPath: m_Name
-      value: Lever
+      value: Lever2-3
       objectReference: {fileID: 0}
     - target: {fileID: 1228980617957527765, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
       propertyPath: m_LocalScale.x
@@ -1132,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_Name
-      value: FloorButton2
+      value: FloorButton2-2b
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_IsActive
@@ -3770,7 +3770,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2896269522664993507, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_Name
-      value: Gate_Tower (2)
+      value: Gate_Tower2-3c
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3929,7 +3929,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 992175141542049301, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
       propertyPath: m_Name
-      value: Lever
+      value: Lever2-2b
       objectReference: {fileID: 0}
     - target: {fileID: 1228980617957527765, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4050,7 +4050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_Name
-      value: FloorButton
+      value: FloorButton2-3b
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4086,14 +4086,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 364197103}
   - {fileID: 2097265484}
+  - {fileID: 219173716}
+  - {fileID: 1813862854}
   - {fileID: 881462611}
   - {fileID: 76713899}
-  - {fileID: 1734789782}
-  - {fileID: 364197103}
-  - {fileID: 1813862854}
   - {fileID: 495716472}
-  - {fileID: 219173716}
+  - {fileID: 1734789782}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1231414620
@@ -4106,7 +4106,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2896269522664993507, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_Name
-      value: Gate_Tower (3)
+      value: Gate_Tower2-3b
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4224,7 +4224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_Name
-      value: FloorButton1
+      value: FloorButton2-1a
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4251,7 +4251,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 992175141542049301, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
       propertyPath: m_Name
-      value: Lever (1)
+      value: Lever2-2a
       objectReference: {fileID: 0}
     - target: {fileID: 992175141542049301, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
       propertyPath: m_IsActive
@@ -4393,7 +4393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_Name
-      value: FloorButton
+      value: FloorButton2-3a
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4414,7 +4414,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2896269522664993507, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_Name
-      value: Gate_Tower
+      value: Gate_Tower2-2
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4552,7 +4552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2436627156763121750, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_Name
-      value: MovingPlatform
+      value: MovingPlatform2-2a
       objectReference: {fileID: 0}
     - target: {fileID: 3534452461505330983, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9524,7 +9524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_Name
-      value: FloorButton (1)
+      value: FloorButton2-3c
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9560,9 +9560,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1957104082}
-  - {fileID: 1231414621}
   - {fileID: 2022151937}
+  - {fileID: 1231414621}
+  - {fileID: 1957104082}
   - {fileID: 823891913}
   - {fileID: 804979583}
   - {fileID: 1800448369}
@@ -9637,7 +9637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_Name
-      value: FloorButton
+      value: FloorButton2-2a
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9727,7 +9727,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2896269522664993507, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_Name
-      value: Gate_Tower (4)
+      value: Gate_Tower2-3a
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12614,7 +12614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2896269522664993507, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_Name
-      value: Gate_Tower
+      value: Gate_Tower2-1
       objectReference: {fileID: 0}
     - target: {fileID: 4020136948577785646, guid: 0aa69bfe700ffaa488c0cf243f684185, type: 3}
       propertyPath: m_LocalPosition.x

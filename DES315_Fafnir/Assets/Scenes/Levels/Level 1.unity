@@ -415,7 +415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8058259237667217365, guid: 0c6c6d02f9285374da5ec74df9233f13, type: 3}
       propertyPath: m_Name
-      value: FloorButton
+      value: FloorButton1-2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4253,7 +4253,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 992175141542049301, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
       propertyPath: m_Name
-      value: Lever
+      value: Lever1-1
       objectReference: {fileID: 0}
     - target: {fileID: 992175141542049301, guid: 44980da29b6674b46b9d7f16b3c17614, type: 3}
       propertyPath: m_IsActive
