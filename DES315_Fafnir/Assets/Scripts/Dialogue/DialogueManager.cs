@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager instance;
     public static string chapter;
     public DialogueRead textBox;
+    public GameObject icon;
     public static bool next = false;
     public static bool autoscroll = false;
     public static float autoscrollLength = 3f;
@@ -29,6 +31,13 @@ public class DialogueManager : MonoBehaviour
         SceneManager.sceneLoaded += LoadCamera;
 
         textBox.gameObject.SetActive(false);
+        icon.SetActive(false);
+
+    }
+
+    public void Update() {
+
+        icon.SetActive(textBox.isActiveAndEnabled);
 
     }
 

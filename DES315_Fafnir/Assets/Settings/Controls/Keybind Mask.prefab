@@ -755,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8896679067713989063, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
-      value: Z
+      value: Space
       objectReference: {fileID: 0}
     - target: {fileID: 8896679067713989063, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -876,7 +876,7 @@ PrefabInstance:
       objectReference: {fileID: 7300457966386148520}
     - target: {fileID: 4736651121292495153, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
-      value: Tool
+      value: Use
       objectReference: {fileID: 0}
     - target: {fileID: 5024266567257472466, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -978,6 +978,14 @@ PrefabInstance:
       propertyPath: m_BindingId
       value: 18307da3-b10f-4a06-91e9-affe7358ed45
       objectReference: {fileID: 0}
+    - target: {fileID: 6680292650503350826, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: m_ActionLabelString
+      value: Use
+      objectReference: {fileID: 0}
+    - target: {fileID: 6680292650503350826, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
+      propertyPath: m_OverRideActionLabel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6680292650847612332, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1056,7 +1064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8896679067713989063, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
-      value: L
+      value: E
       objectReference: {fileID: 0}
     - target: {fileID: 8896679067713989063, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -1361,7 +1369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8896679067713989063, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
-      value: P
+      value: Q
       objectReference: {fileID: 0}
     - target: {fileID: 8896679067713989063, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_fontColor32.rgba

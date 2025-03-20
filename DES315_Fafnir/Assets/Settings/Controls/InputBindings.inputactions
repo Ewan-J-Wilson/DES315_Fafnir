@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Tool",
+                    "name": "Use",
                     "type": "Button",
                     "id": "28800057-f7a2-4ca7-9085-7d93916fd728",
                     "expectedControlType": "Button",
@@ -220,7 +220,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Tool",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -231,7 +231,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Tool",
+                    "action": "Use",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
