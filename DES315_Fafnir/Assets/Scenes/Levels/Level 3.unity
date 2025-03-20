@@ -215,7 +215,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 407833907902565038, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_Size.x
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 407833907902565038, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_Size.y
@@ -227,11 +227,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407833907902565038, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 10
+      value: 8.296296
       objectReference: {fileID: 0}
     - target: {fileID: 407833907902565038, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.359375
+      value: 0.42592594
       objectReference: {fileID: 0}
     - target: {fileID: 2436627156763121750, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_Name
@@ -247,7 +247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3534452461505330983, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 3534452461505330983, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_LocalPosition.y
@@ -295,7 +295,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383326247073300117, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: Speed
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5383326247073300117, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_Enabled
@@ -303,16 +303,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5383326247073300117, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: TargetPos.x
-      value: 5
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 5383326247073300117, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: TargetPos.y
-      value: -4.5
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 6741221212633780968, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 3292110430061169834, guid: 295475ee79dff4b469b67e6d332773fe, type: 3}
+      objectReference: {fileID: -5765737209843248899, guid: 52da2a70d2e306e4584ff03ec51f722e, type: 3}
     m_RemovedComponents:
     - {fileID: 4028519761518866146, guid: 0aaf72c0a11c73f4b86385c211a1be06, type: 3}
     m_RemovedGameObjects: []
@@ -2976,6 +2976,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
+      propertyPath: LoopTrackList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: LoopTrackList.Array.data[0].Name.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -3006,6 +3010,18 @@ PrefabInstance:
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: 'LoopTrackList.Array.data[2].Name.Array.data[3]'
       value: T5-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
+      propertyPath: 'LoopTrackList.Array.data[3].Name.Array.data[0]'
+      value: T6-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
+      propertyPath: 'LoopTrackList.Array.data[3].Name.Array.data[1]'
+      value: T6-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
+      propertyPath: 'LoopTrackList.Array.data[3].Name.Array.data[2]'
+      value: T6-1
       objectReference: {fileID: 0}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: 'LoopTrackList.Array.data[3].Name.Array.data[3]'
