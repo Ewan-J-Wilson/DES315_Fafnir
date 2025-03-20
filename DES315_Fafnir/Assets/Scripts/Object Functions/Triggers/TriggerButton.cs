@@ -5,10 +5,10 @@ public class TriggerButton : TriggerGeneric
 
     [SerializeField]
     [Tooltip("TEMP: Colour for when the button is off")]
-    private Color offColour;
+    private Sprite offSprite;
     [SerializeField]
     [Tooltip("TEMP: Colour for when the button is on")]
-    private Color onColour;
+    private Sprite onSprite;
 
     private bool trigger = false;
 
@@ -16,7 +16,7 @@ public class TriggerButton : TriggerGeneric
     private void Update()
     {
 
-        GetComponent<SpriteRenderer>().color = isActive ? onColour : offColour;
+        GetComponent<SpriteRenderer>().sprite = isActive ? onSprite : offSprite;
 
         // The frame the button is pressed down
         if (!trigger && isActive) { 
