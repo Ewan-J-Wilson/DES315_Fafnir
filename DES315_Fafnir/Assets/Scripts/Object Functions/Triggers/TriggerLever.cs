@@ -16,22 +16,19 @@ public class TriggerLever : TriggerGeneric {
     [Tooltip("Sprite for when the lever is on and currently deselected")]
     private Sprite onSelectSprite;
 
-    
+    private bool spriteSelected = false;
 
     public void Start() {
 
         canSelect = true;
-
-    
-        
 
     }
 
     private void Update()
     {
         GetComponent<SpriteRenderer>().sprite = 
-            isActive ? (selected ? onSelectSprite : onSprite) :
-                (selected ? offSelectSprite : offSprite);
+            isActive ? (spriteSelected ? onSelectSprite : onSprite) :
+                (spriteSelected ? offSelectSprite : offSprite);
 
     }
 
@@ -44,8 +41,16 @@ public class TriggerLever : TriggerGeneric {
         if (canSelect) {
             foreach (GameObject cursor in GameObject.FindGameObjectsWithTag("Cursor"))
             { 
-                if (!cursor.GetComponent<Tool_Swing>().interactables.Contains(gameObject))
-                { cursor.GetComponent<Tool_Swing>().interactables.Add(gameObject); }
+                
+                if (!cursor.GetComponent<Tool_Swing>().interactables.Contains(gameObject)) { 
+
+                    if (collision.transform.parent.CompareTag("Player") 
+                       && collision.transform == cursor.transform.parent)
+                    { spriteSelected = true; }
+
+                    cursor.GetComponent<Tool_Swing>().interactables.Add(gameObject); 
+                    
+                }
             }
             
         }
@@ -61,10 +66,14 @@ public class TriggerLever : TriggerGeneric {
 
         if (canSelect)
         {
-            GameObject cursor = GameObject.FindGameObjectWithTag("Cursor");
-            if (cursor != null) {
-                if (GameObject.FindGameObjectWithTag("Cursor").TryGetComponent(out Tool_Swing tool)) 
-                { tool.interactables.Remove(gameObject); }
+            if (GameObject.FindGameObjectWithTag("Cursor").TryGetComponent(out Tool_Swing tool)) { 
+                    
+                    if (collision.transform.parent.CompareTag("Player") 
+                        && collision.transform == tool.transform.parent)
+                    { spriteSelected = false; }
+
+                    tool.interactables.Remove(gameObject); 
+
             }
 
             selected = false;

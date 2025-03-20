@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level 3.unity
     guid: b5cce35049e086547bc59fde4f75b2ef
   - enabled: 1
-    path: Assets/Scenes/Levels/CutsceneFinal.unity
+    path: Assets/Scenes/Cutscene/CutsceneFinal.unity
     guid: f8322e5aff46ad34693042bc1d084f18
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 8ec705e3104b4124093bb95b6efbec5e, type: 2}
