@@ -25,15 +25,15 @@ public class DialogueManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        LoadCamera(gameObject.scene, LoadSceneMode.Single);
-        SceneManager.sceneLoaded += LoadCamera;
+        //LoadCamera(gameObject.scene, LoadSceneMode.Single);
+        //SceneManager.sceneLoaded += LoadCamera;
 
         textBox.gameObject.SetActive(false);
-
+        
     }
 
-    public void LoadCamera(Scene scene, LoadSceneMode mode)
-    { GetComponent<Canvas>().worldCamera = FindFirstObjectByType<Camera>(); }
+    //public void LoadCamera(Scene scene, LoadSceneMode mode)
+    //{ GetComponent<Canvas>().worldCamera = FindFirstObjectByType<Camera>(); }
 
 
     public static void OnLoopChange() {
