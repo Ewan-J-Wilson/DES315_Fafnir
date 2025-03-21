@@ -70,9 +70,15 @@ TagManager:
   - name: Puzzle_Elements_Behind
     uniqueID: 847619083
     locked: 0
+  - name: Clone
+    uniqueID: 2079976519
+    locked: 0
   - name: Player
     uniqueID: 2253100717
     locked: 0
   - name: Puzzle_Elements_In_Front
     uniqueID: 2408548977
+    locked: 0
+  - name: UI
+    uniqueID: 1659028653
     locked: 0
