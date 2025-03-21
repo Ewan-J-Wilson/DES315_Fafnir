@@ -1,16 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerButton : TriggerGeneric
 {
 
     [SerializeField]
-    [Tooltip("TEMP: Colour for when the button is off")]
+    [Tooltip("Sprite for when the button is off")]
     private Sprite offSprite;
     [SerializeField]
-    [Tooltip("TEMP: Colour for when the button is on")]
+    [Tooltip("Sprite for when the button is on")]
     private Sprite onSprite;
 
     private bool trigger = false;
+
+    // List of player and clone colliders
+    private List<GameObject> players = new();
 
 
     private void Update()
@@ -34,12 +38,26 @@ public class TriggerButton : TriggerGeneric
     // Detects the player on the button
     private void OnTriggerStay2D(Collider2D collision) { 
         if (collision.CompareTag("Player") || collision.CompareTag("Clone")) 
-        { isActive = true; }
+        { 
+
+            if (!players.Contains(collision.gameObject))
+            { players.Add(collision.gameObject); }
+
+            if (players.Count != 0)
+            { isActive = true; }
+            
+        }
     }
 
     // Detects the player leaving the button
     private void OnTriggerExit2D(Collider2D collision) { 
         if (collision.CompareTag("Player") || collision.CompareTag("Clone")) 
-        { isActive = false; }
+        { 
+            
+            players.Remove(collision.gameObject);
+            if (players.Count == 0)
+            { isActive = false; }
+            
+        }
     }
 }
