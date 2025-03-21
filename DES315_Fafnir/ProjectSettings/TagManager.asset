@@ -55,3 +55,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 853120387
+    locked: 0
+  - name: Background_Tilemap
+    uniqueID: 2983888981
+    locked: 0
+  - name: Buildings
+    uniqueID: 3532569533
+    locked: 0
+  - name: Floor_Tilemap
+    uniqueID: 1995086193
+    locked: 0
+  - name: Puzzle_Elements_Behind
+    uniqueID: 847619083
+    locked: 0
+  - name: Player
+    uniqueID: 2253100717
+    locked: 0
+  - name: Puzzle_Elements_In_Front
+    uniqueID: 2408548977
+    locked: 0
