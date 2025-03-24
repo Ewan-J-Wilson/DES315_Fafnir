@@ -72,13 +72,13 @@ public class GameManager : MonoBehaviour
     //Enable currentl level and disable other levels
     public void SetLevel()
     {
-        if (GameObject.Find("Dialogue"))
-        {
-            DialogueManager.DisablePlayerInput(true);
-            StartCoroutine(StartDialogue());
-        }
 
-        if (LoopInd >= LevelList.Length) { 
+		if (GameObject.Find("Dialogue")) {
+			DialogueManager.DisablePlayerInput(true);
+			StartCoroutine(StartDialogue());
+		}
+
+		if (LoopInd >= LevelList.Length) { 
 			LoopInd = 0;
 			DialogueManager.currentLevel = LevelInd + 1;
 			doNextLevel = true;
