@@ -206,6 +206,10 @@ public class PlayerAI : MonoBehaviour
 		// Kills active clones
 		KillClone();
 
+		// Reset puzzle objects
+		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
+		{ trigger.Reset(); }
+
         // Disables active cloning
 		ComInd++;
 		Array.Resize(ref PCList, ComInd + 1);
