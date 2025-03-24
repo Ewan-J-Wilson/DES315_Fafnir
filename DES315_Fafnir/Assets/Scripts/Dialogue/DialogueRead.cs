@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -169,8 +170,19 @@ public class DialogueRead : MonoBehaviour
                         else if (actionMap == "Player") {
 
                             DialogueManager.input.SwitchCurrentActionMap("Player");
-                            string actionText = DialogueManager.input.currentActionMap.FindAction(action).GetBindingDisplayString();
-                            textAsset.text += "[" + actionText + "]";
+                            List<string> actionText = new();
+                            for (int i = 0; i < DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
+                                
+                                string actionName = DialogueManager.input.currentActionMap.FindAction(action, true).GetBindingDisplayString(i, InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
+                                if (actionName.Contains("/"))
+                                { actionText.Add(actionName); }
+                                
+                            }
+                            
+                            textAsset.text += "[" 
+                                + ((DialogueManager.input.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
+                                + "]";
+
                             DialogueManager.input.SwitchCurrentActionMap("UI");
 
                         }
