@@ -3,7 +3,14 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
 
-    [SerializeField] private string chapter;
+    [Tooltip("Which section of dialogue to trigger")]
+    [SerializeField] 
+    private string chapter;
+
+    [Tooltip("If enabled, the dialogue trigger can only be activated once")] 
+    [SerializeField] 
+    private bool triggerOnce = true;
+
     private bool triggered = false;
 
 
@@ -22,7 +29,8 @@ public class DialogueTrigger : MonoBehaviour
 
             DialogueManager.chapter = chapter;
             DialogueManager.OnDialogueObject();
-            triggered = true;
+            if (triggerOnce)
+            { triggered = true; }
 
         }
 
