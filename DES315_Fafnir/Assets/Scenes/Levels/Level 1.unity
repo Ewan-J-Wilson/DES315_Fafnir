@@ -1180,7 +1180,7 @@ PrefabInstance:
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[7].clip
       value: 
-      objectReference: {fileID: 8300000, guid: ab56a38cebc80664693baed25fcebc30, type: 3}
+      objectReference: {fileID: 8300000, guid: 01f0c5328733470458b63813bad588ea, type: 3}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[7].type
       value: 2
@@ -1228,7 +1228,7 @@ PrefabInstance:
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[11].clip
       value: 
-      objectReference: {fileID: 8300000, guid: cb8e42c91d05b1c4ab0cc91b01318487, type: 3}
+      objectReference: {fileID: 8300000, guid: 7efe355e94ff8874ab3d174ec0116f01, type: 3}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[11].type
       value: 2
@@ -1240,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[12].clip
       value: 
-      objectReference: {fileID: 8300000, guid: cc68a0c09a87b28498db695e3b0eb008, type: 3}
+      objectReference: {fileID: 8300000, guid: 3fe3cf4329551ce448246966033c1251, type: 3}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[12].type
       value: 2
@@ -1276,7 +1276,7 @@ PrefabInstance:
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[15].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 48e801e644e12b441b7a4102be930e1b, type: 3}
+      objectReference: {fileID: 8300000, guid: 3e717b1de3648c84a9c85cf5bef7a6bb, type: 3}
     - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: tracks.Array.data[15].type
       value: 2
