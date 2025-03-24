@@ -174,11 +174,11 @@ public class DialogueRead : MonoBehaviour
                             for (int i = 0; i < DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
                                 
                                 string actionName = DialogueManager.input.currentActionMap.FindAction(action, true).GetBindingDisplayString(i, InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
-                                if (actionName.Contains("/"))
+                                if (actionName.Contains("/") || DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count < 3)
                                 { actionText.Add(actionName); }
                                 
                             }
-                            
+
                             textAsset.text += "[" 
                                 + ((DialogueManager.input.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
                                 + "]";
