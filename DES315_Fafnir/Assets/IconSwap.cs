@@ -1,14 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.U2D;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
-using Unity.VisualScripting;
 using UnityEngine.UI;
-using System;
-using static UnityEngine.InputSystem.InputBinding;
 
 public class IconSwap : MonoBehaviour
 {
@@ -22,7 +14,7 @@ public class IconSwap : MonoBehaviour
     [SerializeField]
     private Sprite keyboard;
 
-    private PlayerInput input;
+    
     private string deviceName = "";
     private string controlSchemeName = "";
 
@@ -36,18 +28,10 @@ public class IconSwap : MonoBehaviour
     [SerializeField]
     private bool canBlink = true;
 
-    public void Start() {
-
-        SceneManager.sceneLoaded += DetectInputScheme;
-        DetectInputScheme(gameObject.scene, LoadSceneMode.Single);
-
-        ChangeIcon();
-
-    }
-
     public void Update() {
 
-        ChangeIcon();
+        if (DialogueManager.input != null)
+        { ChangeIcon(); }
         
         if (!canBlink)
         { return; }
@@ -64,16 +48,16 @@ public class IconSwap : MonoBehaviour
 
     private void ChangeIcon() {
         
-        if (input.currentControlScheme == controlSchemeName && input.devices[0].name == deviceName)
+        if (DialogueManager.input.currentControlScheme == controlSchemeName && DialogueManager.input.devices[0].name == deviceName)
         { return; }
 
-        controlSchemeName = input.currentControlScheme;
-        deviceName = input.devices[0].name;
+        controlSchemeName = DialogueManager.input.currentControlScheme;
+        deviceName = DialogueManager.input.devices[0].name;
 
-        if (input.currentControlScheme == "Keyboard")
+        if (DialogueManager.input.currentControlScheme == "Keyboard")
         { GetComponent<Image>().sprite = keyboard; }
         else {
-            if (InputSystem.IsFirstLayoutBasedOnSecond(input.devices[0].name, "DualShockGamepad"))
+            if (InputSystem.IsFirstLayoutBasedOnSecond(DialogueManager.input.devices[0].name, "DualShockGamepad"))
             { GetComponent<Image>().sprite = ps; }
             else
             { GetComponent<Image>().sprite = xbox; }
@@ -87,17 +71,6 @@ public class IconSwap : MonoBehaviour
 
     }
 
-    public void DetectInputScheme(Scene scene,LoadSceneMode load) {
-
-        if (!GameObject.FindGameObjectWithTag("Player").TryGetComponent(out input)) {
-
-            GetComponent<PlayerInput>().enabled = true;
-            input = GetComponent<PlayerInput>();
-
-        }
-        else
-        { GetComponent<PlayerInput>().enabled = false; }
-
-    }
+    
 
 }

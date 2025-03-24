@@ -126,7 +126,7 @@ namespace UnityEngine.InputSystem.Samples.RebindUI
 
             public Sprite GetSprite(string controlPath)
             {
-                // From the input system, we get the path of the control on device. So we can just
+                // From the Input system, we get the path of the control on device. So we can just
                 // map from that to the sprites we have for gamepads.
                 switch (controlPath)
                 {

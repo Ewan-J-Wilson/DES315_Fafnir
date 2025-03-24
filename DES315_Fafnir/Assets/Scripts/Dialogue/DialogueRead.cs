@@ -1,10 +1,10 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using System.IO;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -14,6 +14,19 @@ public class DialogueRead : MonoBehaviour
     private StreamReader reader;
     private string displayLine = "";
     public static bool reading = false;
+
+    public Dictionary<string, string> buttonReplace = new(){
+
+        { "XButton South", "A" },
+        { "XButton East", "B" },
+        { "XButton North", "Y" },
+        { "XButton West", "X" },
+        { "PSButton South", "X" },
+        { "PSButton East", "○" },
+        { "PSButton North", "△" },
+        { "PSButton West", "□" }
+
+    };
 
     // On Start, get the dialogue file
     void Start()
@@ -131,8 +144,38 @@ public class DialogueRead : MonoBehaviour
 
                     }
 
-                    // Check dialogue settings
-                    FormatToggles(formatRead);
+                    if (formatRead.Contains("Player/") || formatRead.Contains("UI/")) {
+
+                        string actionMap = formatRead.Split("/")[0];
+                        string action = formatRead.Split("/")[1];
+                        //Debug.Log(actionMap + ", " + DialogueManager.input.currentActionMap.name);
+                        if (actionMap == "UI") {
+                            
+                            string actionText = DialogueManager.input.currentActionMap.FindAction(action).GetBindingDisplayString();
+
+                            // Apparently this isn't needed, but testing is needed with PS controller
+                            //if (actionText.Contains("Button ") && DialogueManager.input.currentControlScheme != "Keyboard") {
+                            //
+                            //    bool isPS = InputSystem.IsFirstLayoutBasedOnSecond(DialogueManager.input.devices[0].name, "DualShockGamepad");
+                            //    actionText.Insert(0, isPS ? "PS" : "X");
+                            //
+                            //    actionText = buttonReplace[actionText];
+                            //
+                            //}
+                            textAsset.text += "[" + actionText + "]";
+
+
+                        }
+                        else if (actionMap == "Player") {
+
+                            DialogueManager.input.SwitchCurrentActionMap("Player");
+                            string actionText = DialogueManager.input.currentActionMap.FindAction(action).GetBindingDisplayString();
+                            textAsset.text += "[" + actionText + "]";
+                            DialogueManager.input.SwitchCurrentActionMap("UI");
+
+                        }
+
+                    }
 
                     // Delay the text by the given number of seconds
                     if (formatRead.Contains("t:") && !DialogueManager.next)
@@ -146,6 +189,9 @@ public class DialogueRead : MonoBehaviour
                     // Force a new line
                     if (formatRead == "n")
                     { textAsset.text += "\n"; }
+
+                    // Check dialogue settings
+                    FormatToggles(formatRead);
 
                 }
 

@@ -15,6 +15,7 @@ public class DialogueManager : MonoBehaviour
     public static bool autoscroll = false;
     public static float autoscrollLength = 3f;
     public static bool canSkip = true;
+    public static PlayerInput input;
     
     // On Start
     public void Start() {
@@ -29,6 +30,10 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+
+        // Get the player input
+        SceneManager.sceneLoaded += DetectInputScheme;
+        DetectInputScheme(gameObject.scene, LoadSceneMode.Single);
 
         // Disable the textbox
         textBox.gameObject.SetActive(false);
@@ -80,5 +85,17 @@ public class DialogueManager : MonoBehaviour
         textBox.ReadStart();
     }
 
+    public void DetectInputScheme(Scene scene,LoadSceneMode load) {
+
+        if (!GameObject.FindGameObjectWithTag("Player").TryGetComponent(out input)) {
+
+            GetComponent<PlayerInput>().enabled = true;
+            input = GetComponent<PlayerInput>();
+
+        }
+        else
+        { GetComponent<PlayerInput>().enabled = false; }
+
+    }
 
 }
