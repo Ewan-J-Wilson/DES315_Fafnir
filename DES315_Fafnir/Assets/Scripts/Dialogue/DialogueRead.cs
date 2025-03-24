@@ -15,15 +15,14 @@ public class DialogueRead : MonoBehaviour
     private string displayLine = "";
     public static bool reading = false;
 
-    // Start is called before the first frame update
+    // On Start, get the dialogue file
     void Start()
     {
-
         path = Application.streamingAssetsPath + "/Dialogue/Game_GB.txt";
         reader = new(path);
-
     }
 
+    //  Read the block of text
     public void ReadBlock() {
         
         string line;
@@ -47,14 +46,18 @@ public class DialogueRead : MonoBehaviour
             return;
         }
         
+        // End the block of dialogue
         if (line.Contains("END_DIAG")) {
             reader.Close();
             StartCoroutine(DisplayLine());
             return;
         }
 
+        // Add a space if there is one missing
         if (line[^1] != ' ' && line[^1] != ']' && line[^1] != '}')
         { line += ' '; }
+
+        // Read the next line
         displayLine += line;
         ReadBlock();
 
@@ -63,82 +66,91 @@ public class DialogueRead : MonoBehaviour
 
     public IEnumerator DisplayLine() {
 
+        // Get the text object
         TextMeshProUGUI textAsset = GetComponentInChildren<TextMeshProUGUI>();
         textAsset.text = "";
 
+        // Clear the formatting
         bool format = false;
         string formatRead = "";
 
         foreach (char c in displayLine) {
 
+            // Read the text
             if (!(format || c == '[' || c == '{')) 
             { 
 
                 textAsset.text += c;
-                if (!DialogueManager.next)
+
+                // Skip to the end of the panel
+                if (!DialogueManager.next || !DialogueManager.canSkip)
                 { yield return new WaitForSeconds(ReadSpeed); }
 
             }
-            else {
+            // Start formatting
+            else if (!format && (c == '[' || c == '{'))
+            { format = true; }
+            // Parse the formatting
+            else if (format && (c == ']' || c == '}')) {
 
-                if (format && (c == ']' || c == '}')) { 
+                // Sets the character icon
+                if (c == ']') {
 
-                    if (c == ']') {
+                    string iconPath = "/Character Icons/";
+                    iconPath += formatRead.Split("_")[0] + "/";
 
-                        string iconPath = "/Character Icons/";
-                        iconPath += formatRead.Split("_")[0] + "/";
-
-                        Image character = GameObject.Find("Char Icon").GetComponent<Image>();
-                        byte[] bytes = File.ReadAllBytes(Application.streamingAssetsPath + iconPath + formatRead + ".png");
-                        character.sprite.texture.LoadImage(bytes);
-                        
-                    }
-
-                    if (c == '}') {
-
-                        if (formatRead == "NEXT") { 
-
-                            DialogueManager.next = false;
-
-                            if (DialogueManager.autoscroll)
-                            { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
-                            else
-                            { yield return new WaitUntil(ReadNext); }
-                            textAsset.text = "";
-                        }
-
-                        if (formatRead == "enable")
-                        { DialogueManager.DisablePlayerInput(false); }
-
-                        if (formatRead == "disable")
-                        { DialogueManager.DisablePlayerInput(true); }
-
-                        if (formatRead == "scroll start")
-                        { DialogueManager.autoscroll = true; }
-
-                        if (formatRead == "scroll stop")
-                        { DialogueManager.autoscroll = false; }
-
-                        if (formatRead.Contains("t:"))
-                        { yield return new WaitForSeconds(formatRead.Split(":")[1].ConvertTo<float>()); }
-
-                        if (formatRead == "n")
-                        { textAsset.text += "\n"; }
-
-                    }
-
-                    formatRead = "";
-                    format = false;
+                    Image character = GameObject.Find("Char Icon").GetComponent<Image>();
+                    byte[] bytes = File.ReadAllBytes(Application.streamingAssetsPath + iconPath + formatRead + ".png");
+                    character.sprite.texture.LoadImage(bytes);
                     
                 }
 
-                if (format) 
-                { formatRead += c; }
+                // Parse the text formatting
+                if (c == '}') {
 
-                if (c == '[' || c == '{') 
-                { format = true; }
+                    // Move to the next panel of dialogue
+                    if (formatRead == "NEXT") { 
+
+                        // Prevent accidental dialogue skips
+                        DialogueManager.next = false;
+
+                        // Either wait for autoscroll, or allow the player to skip immediately
+                        if (DialogueManager.autoscroll)
+                        { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
+                        else
+                        { yield return new WaitUntil(ReadNext); }
+
+                        //Clear the textbox
+                        textAsset.text = "";
+
+                    }
+
+                    // Check dialogue settings
+                    FormatToggles(formatRead);
+
+                    // Delay the text by the given number of seconds
+                    if (formatRead.Contains("t:") && !DialogueManager.next)
+                    { 
+                        if (float.TryParse(formatRead.Split(":")[1], out float parsedTime))
+                        { yield return new WaitForSeconds(parsedTime); }
+                        else
+                        { Debug.LogError("Cannot wait for " + formatRead.Split(":")[1] + " seconds"); }
+                    }
+
+                    // Force a new line
+                    if (formatRead == "n")
+                    { textAsset.text += "\n"; }
+
+                }
+
+                // Clear the format parser
+                formatRead = "";
+                format = false;
 
             }
+            // Read the format text
+            else if (format)
+            { formatRead += c; }
 
         }
 
@@ -147,17 +159,19 @@ public class DialogueRead : MonoBehaviour
 
         DialogueManager.next = false;
 
+        // Wait before moving to the next panel of dialogue
         if (DialogueManager.autoscroll)
         { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
         else
         { yield return new WaitUntil(ReadNext); }
 
+        // Re-enable the palyer input and hide the dialogue box
         DialogueManager.DisablePlayerInput(false);
         gameObject.SetActive(false);
 
     }
 
-
+    // Check for the next panel / skip dialogue prompt
     private bool ReadNext() { 
         if (DialogueManager.next) {
             DialogueManager.next = false;
@@ -166,10 +180,32 @@ public class DialogueRead : MonoBehaviour
         return false; 
     }
 
+    // Start reading the text
     public void ReadStart() {
-
         reader = new(path);
         ReadBlock();
+    }
+
+    // Toggles Dialogue settings on or off
+    public void FormatToggles(string formatRead) {
+
+        // Whether to let the player move during dialogue
+        if (formatRead == "input enable")
+        { DialogueManager.DisablePlayerInput(false); }
+        if (formatRead == "input disable")
+        { DialogueManager.DisablePlayerInput(true); }
+
+        // Whether to allow autoscroll
+        if (formatRead == "scroll start")
+        { DialogueManager.autoscroll = true; }
+        if (formatRead == "scroll stop")
+        { DialogueManager.autoscroll = false; }
+
+        // Whether to allow manual skipping through dialogue
+        if (formatRead == "skip enable")
+        { DialogueManager.canSkip = true; }
+        if (formatRead == "skip disable")
+        { DialogueManager.canSkip = false; }
 
     }
 

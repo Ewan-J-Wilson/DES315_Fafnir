@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public static bool next = false;
     public static bool autoscroll = false;
     public static float autoscrollLength = 3f;
+    public static bool canSkip = true;
     
 
     public void Start() {
