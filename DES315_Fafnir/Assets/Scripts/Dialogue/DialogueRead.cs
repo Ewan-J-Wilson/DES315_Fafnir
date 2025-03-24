@@ -24,10 +24,14 @@ public class DialogueRead : MonoBehaviour
 
     //  Read the block of text
     public void ReadBlock() {
-        
+
+        // Initialise the reading string
         string line;
+
+        // If this is not the end of the file, parse the line
         if (!reader.EndOfStream) 
         { line = reader.ReadLine(); }
+        // Other stop reading
         else
         { 
             DialogueManager.DisablePlayerInput(false);
@@ -35,11 +39,13 @@ public class DialogueRead : MonoBehaviour
             return; 
         }
 
+        // Skip lines that are empty, are comments, or are before the start point
         if ((!line.Contains(DialogueManager.chapter) && !reading) || line.Contains('#') || string.IsNullOrWhiteSpace(line))
         { 
             ReadBlock(); 
             return;
         }
+        // Start Reading
         else if (!reading) { 
             reading = true;
             ReadBlock(); 
@@ -63,7 +69,7 @@ public class DialogueRead : MonoBehaviour
 
     }
 
-
+    // Parse the current line
     public IEnumerator DisplayLine() {
 
         // Get the text object

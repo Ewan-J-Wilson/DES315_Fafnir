@@ -17,18 +17,15 @@ public class DialogueTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && !DialogueRead.reading) {
-            DialogueManager.chapter = chapter;
-            DialogueManager.OnDialogueObject();
-        }
+        if (Input.GetKeyDown(KeyCode.W) && !DialogueRead.reading) 
+        { DialogueManager.CodedDialogue(chapter); }
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
 
         if (collider.CompareTag("Player") && !DialogueRead.reading && !triggered) {
 
-            DialogueManager.chapter = chapter;
-            DialogueManager.OnDialogueObject();
+            DialogueManager.CodedDialogue(chapter);
             if (triggerOnce)
             { triggered = true; }
 
