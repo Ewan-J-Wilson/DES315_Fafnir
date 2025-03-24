@@ -149,43 +149,25 @@ public class DialogueRead : MonoBehaviour
 
                         string actionMap = formatRead.Split("/")[0];
                         string action = formatRead.Split("/")[1];
-                        //Debug.Log(actionMap + ", " + DialogueManager.input.currentActionMap.name);
-                        if (actionMap == "UI") {
+
+                        if (actionMap == "Player") 
+                        { DialogueManager.input.SwitchCurrentActionMap("Player"); }
+
+                        List<string> actionText = new();
+                        for (int i = 0; i < DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
                             
-                            string actionText = DialogueManager.input.currentActionMap.FindAction(action).GetBindingDisplayString();
-
-                            // Apparently this isn't needed, but testing is needed with PS controller
-                            //if (actionText.Contains("Button ") && DialogueManager.input.currentControlScheme != "Keyboard") {
-                            //
-                            //    bool isPS = InputSystem.IsFirstLayoutBasedOnSecond(DialogueManager.input.devices[0].name, "DualShockGamepad");
-                            //    actionText.Insert(0, isPS ? "PS" : "X");
-                            //
-                            //    actionText = buttonReplace[actionText];
-                            //
-                            //}
-                            textAsset.text += "[" + actionText + "]";
-
-
+                            string actionName = DialogueManager.input.currentActionMap.FindAction(action, true).GetBindingDisplayString(i);
+                            if (actionName.Contains("/") || DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count < 3)
+                            { actionText.Add(actionName); }
+                            
                         }
-                        else if (actionMap == "Player") {
 
-                            DialogueManager.input.SwitchCurrentActionMap("Player");
-                            List<string> actionText = new();
-                            for (int i = 0; i < DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
-                                
-                                string actionName = DialogueManager.input.currentActionMap.FindAction(action, true).GetBindingDisplayString(i, InputBinding.DisplayStringOptions.DontUseShortDisplayNames);
-                                if (actionName.Contains("/") || DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count < 3)
-                                { actionText.Add(actionName); }
-                                
-                            }
+                        textAsset.text += "[" 
+                            + ((DialogueManager.input.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
+                            + "]";
 
-                            textAsset.text += "[" 
-                                + ((DialogueManager.input.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
-                                + "]";
-
-                            DialogueManager.input.SwitchCurrentActionMap("UI");
-
-                        }
+                        if (actionMap == "Player") 
+                        { DialogueManager.input.SwitchCurrentActionMap("UI"); }
 
                     }
 
