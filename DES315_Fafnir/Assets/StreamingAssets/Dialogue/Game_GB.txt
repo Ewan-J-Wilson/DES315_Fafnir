@@ -2,17 +2,58 @@ Test 1
 Test 2
 READ THIS
 0-0_START
-[DAD_Tired]
-Test 3
-Lorem ipsum dolor sit amet, {Player/Jump} {n}consectetur adipiscing elit, {n}sed do eiusmod tempor [DAD_Shock]incididunt ut labore et 
-{NEXT}dolore magna aliqua.
-[DAD_Tired]
-Test 4
+[CHILD_Happy]
+I'll make this real simple for you, dad. {n}You can move around using {Player/Movement}...
+{NEXT}...then {Player/Jump} to jump real high!
+{NEXT}
+[CHILD_Happy]
+You can also press {Player/Use} to activate certain objects. Try it on that lever there!
+{NEXT}
+[DAD_Shock]
+Press? Lever? What in creation are you talking about, child?
+{NEXT}
+[CHILD_Anger]
+I have powers far beyond your mortal comprehension, father. Just do it. 
 END_DIAG
 
 0-1_START
-Test 2
+[DAD_Shock] 
+I...I did it! But why am I back where I started?
 {NEXT}
+[CHILD_Anger]
+Because it didn't happen like that! 
+{NEXT}
+[DAD_Tired]
+*sigh* Okay, then how did it happen?
+{NEXT}
+[CHILD_Anger]
+That's where the powers the witch gave you come in handy! Duh! 
+{NEXT}
+[Dad_Neutral]
+Ah yes, of course. How do I go about doing that?
+{NEXT}
+[CHILD_Happy]
+I will forgive your transgressions this once, father. {n}After all, what is a stick without a carrot?
+{NEXT}
+[CHILD_Happy]
+You can use {Player/Clone} to create a clone of yourself that will copy your actions.
+{NEXT}
+[CHILD_Happy]
+But be careful! You're only allowed four of them. That's just the way this world works.
+{NEXT}
+[DAD_Neutral]
+Okay, but what if I get stuck? {n}Then you'll have to just go to bed before I finish.
+{NEXT}
+[CHILD_Anger]
+You wouldn't DARE! But...I see your point. Very well. 
+{NEXT}
+[Child_Anger]
+I suppose I'll allow you correct any mistakes you make along the way. {n}Just press {Player/Reset} and you'll restart the level. Happy?
+{NEXT}
+[DAD_Neutral]
+Very. Now let's go get that hat!
+END_DIAG
+
 lorem ipsum yeah yeah yeah
 END_DIAG
 
