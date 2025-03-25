@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cutscene_Intro_01_0: -5172669597977641640
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
