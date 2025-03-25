@@ -214,6 +214,7 @@ public class PlayerAI : MonoBehaviour
 
         // Disables active cloning
 		ComInd++;
+		ClearList = true;
 		Array.Resize(ref PCList, ComInd + 1);
 		IsRecording = false;
 		KillTrail();
@@ -232,7 +233,6 @@ public class PlayerAI : MonoBehaviour
 			LastCom.toolPosition = GetComponentInChildren<Tool_Swing>().transform.localPosition;
 			PCList[ComInd] = LastCom;                       //If a new command is found then we add to the command array
 			ComInd++;
-			ClearList = true;
 			Array.Resize(ref PCList, ComInd + 1);
 			CurrentCom.dur = 0;
 		}
