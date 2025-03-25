@@ -54,7 +54,7 @@ MonoBehaviour:
     LoopPoint: 0
     clip: {fileID: 8300000, guid: a6563c4d0a6d64c4bbac9914c364a87e, type: 3}
     src: {fileID: 0}
-    type: 1
+    type: 2
   - Name: T5-1
     Volume: 1
     Pitch: 1
