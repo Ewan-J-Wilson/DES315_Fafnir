@@ -7,7 +7,7 @@ public class ActivateRotatable : ActivateGeneric {
     public AnimationCurve Curve;        //Used to change speed of bridge over time
     private float AngleBase;            //Starting angle of object
     [Tooltip("The angle (degrees) that this object will move to")]
-    [Range(0,360)]
+    [Range(-180,180)]
     public float AngleTarget = 90;
     private float CurveTime = 0;
     [Tooltip("The speed this object will move")]

@@ -1,39 +1,26 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TriggerButton : TriggerGeneric
 {
-    //private const float PressSpeed = 2f;//Speed at which the button is pressed down
-    //private Transform ButtonTrans;
-    //private Vector3 ButtonPos;          //Original position of button
-    //private Vector3 PressedPos;         //Position for button to go to when fully pressed
-    //private float ButtonTimer;          //Time to wait for button to press down
-    
+
     [SerializeField]
-    [Tooltip("TEMP: Colour for when the button is off")]
-    private Color offColour;
+    [Tooltip("Sprite for when the button is off")]
+    private Sprite offSprite;
     [SerializeField]
-    [Tooltip("TEMP: Colour for when the button is on")]
-    private Color onColour;
+    [Tooltip("Sprite for when the button is on")]
+    private Sprite onSprite;
 
     private bool trigger = false;
 
-    //private void Start()
-    //{
-    //    //ButtonTrans = GetComponentInChildren<Transform>();
-    //    //ButtonPos = transform.position;
-    //    //PressedPos = ButtonPos + new Vector3(0, -0.5f, 0);
-    //}
+    // List of player and clone colliders
+    private List<GameObject> players = new();
+
 
     private void Update()
     {
 
-        GetComponent<SpriteRenderer>().color = isActive ? onColour : offColour;
-
-        //// Updates the button timer 
-        //if (isActive && ButtonTimer != 1f)
-        //{ ButtonTimer = Mathf.Clamp(ButtonTimer += Time.deltaTime * PressSpeed, 0, 1); }
-        //else if (!isActive && ButtonTimer != 0f)
-        //{ ButtonTimer = Mathf.Clamp(ButtonTimer -= Time.deltaTime * PressSpeed, 0, 1); }
+        GetComponent<SpriteRenderer>().sprite = isActive ? onSprite : offSprite;
 
         // The frame the button is pressed down
         if (!trigger && isActive) { 
@@ -48,19 +35,29 @@ public class TriggerButton : TriggerGeneric
 
     }
 
-    // Animates the button being pressed
-    //private void FixedUpdate()
-    //{ ButtonTrans.position = Vector3.MoveTowards(ButtonPos, PressedPos, ButtonTimer); }
-
     // Detects the player on the button
     private void OnTriggerStay2D(Collider2D collision) { 
         if (collision.CompareTag("Player") || collision.CompareTag("Clone")) 
-        { isActive = true; }
+        { 
+
+            if (!players.Contains(collision.gameObject))
+            { players.Add(collision.gameObject); }
+
+            if (players.Count != 0)
+            { isActive = true; }
+            
+        }
     }
 
     // Detects the player leaving the button
     private void OnTriggerExit2D(Collider2D collision) { 
         if (collision.CompareTag("Player") || collision.CompareTag("Clone")) 
-        { isActive = false; }
+        { 
+            
+            players.Remove(collision.gameObject);
+            if (players.Count == 0)
+            { isActive = false; }
+            
+        }
     }
 }
