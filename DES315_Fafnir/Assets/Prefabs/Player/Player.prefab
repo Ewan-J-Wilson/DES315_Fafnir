@@ -215,7 +215,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &2047754376998695390
 MonoBehaviour:
@@ -860,6 +860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 8633643025506588892, guid: 54b45b2c9cf790f48991ddff34ae49e9, type: 3}
   blinkSpeed: 0.33
+  blinkColour: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &59179333213811028
 PrefabInstance:
   m_ObjectHideFlags: 0

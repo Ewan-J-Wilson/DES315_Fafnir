@@ -17,6 +17,9 @@ public class CloneIndicator : MonoBehaviour
     // Blink State
     private bool hasBlinked;
 
+    [SerializeField]
+    private Color blinkColour;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +49,7 @@ public class CloneIndicator : MonoBehaviour
                 if ((blinkTimer += Time.deltaTime) >= blinkSpeed) {
 
                     blinkTimer = 0;
-                    playerSprites[^i].color = (hasBlinked = !hasBlinked) ? Color.clear : Color.white;
+                    playerSprites[^i].color = (hasBlinked = !hasBlinked) ? blinkColour : Color.white;
                    
                 }
 
