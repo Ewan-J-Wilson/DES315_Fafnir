@@ -214,6 +214,7 @@ public class PlayerAI : MonoBehaviour
 
         // Disables active cloning
 		ComInd++;
+		ClearList = true;
 		Array.Resize(ref PCList, ComInd + 1);
 		IsRecording = false;
 		KillTrail();

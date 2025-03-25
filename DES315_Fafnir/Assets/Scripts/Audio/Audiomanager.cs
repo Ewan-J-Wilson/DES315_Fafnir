@@ -69,6 +69,10 @@ public class Audiomanager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
+        volumeLevels[AudioType.MASTER] = PlayerPrefs.GetFloat("Audio: MASTER");
+        volumeLevels[AudioType.MUSIC] = PlayerPrefs.GetFloat("Audio: MUSIC");
+        volumeLevels[AudioType.SFX] = PlayerPrefs.GetFloat("Audio: SFX");
+
         for (int i = 0; i < tracks.Length; i++)
         {
             tracks[i].src = gameObject.AddComponent<AudioSource>();
@@ -90,11 +94,11 @@ public class Audiomanager : MonoBehaviour
     {
         if (PreviousTrack.Name != null)
         {
-            if (PreviousTrack.src.volume != 0)
+            if (PreviousTrack.src.volume > 0)
             {
                 PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED;
-                if (PreviousTrack.src.volume < 0)
-                {  PreviousTrack.src.volume = 0;  }
+                if (PreviousTrack.src.volume <= 0)
+                {  PreviousTrack.src.Stop();  }
             }
 
             if (PreviousTrack.src.isPlaying) PreviousTrackTimer += Time.unscaledDeltaTime;
@@ -169,6 +173,7 @@ public class Audiomanager : MonoBehaviour
         }
         else aud.src.volume = 0.0f;
         aud.src.Play();
+        
     }
 
     //
@@ -197,7 +202,6 @@ public class Audiomanager : MonoBehaviour
 
         if (CurrentTrack.Name == null) 
         { return; }
-
         PreviousTrack = CurrentTrack;
         CurrentTrack = NullInst;
 
