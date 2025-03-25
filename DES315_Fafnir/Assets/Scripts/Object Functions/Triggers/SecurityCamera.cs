@@ -1,7 +1,14 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SecurityCamera : MonoBehaviour
 {
+    [SerializeField]
+    private bool triggerDialogue = false;
+    [SerializeField]
+    private string chapter;
+
+    private bool triggered = false;
 
     private void OnTriggerEnter2D(Collider2D collision) // destroys clones when player enters camera trigger
     {
@@ -9,8 +16,16 @@ public class SecurityCamera : MonoBehaviour
         {
             return;
         }
+
         PlayerAI player = collision.gameObject.GetComponent<PlayerAI>();
+
+        if (triggerDialogue && player.CloneNo > 0 && !triggered) { 
+            DialogueManager.CodedDialogue(chapter); 
+            triggered = true;
+        }
+
         player.KillClone(); // calls function from player script 
+        
     }
 
 }
