@@ -47,7 +47,7 @@ The clone will copy everything you did in that time. {n}That includes stuff like
 But be careful! You're only allowed 4 of them. 
 {NEXT}
 [DAD_Neutral]
-Why only 4?
+Why only 4??
 {NEXT}
 [CHILD_Anger]
 Because! That's just the way it works!
