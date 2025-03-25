@@ -20,6 +20,9 @@ public class CloneAI : PlayerAI
 	protected override void HandleMovement()
 	{
 		
+		if (Rb.velocityY == 0f)
+		{ JumpCount = 0; }
+
 		if (!PCList[ComPos].jump)
         { JumpCheck = true; }
         else if (JumpCount < MaxJump && JumpCheck)
