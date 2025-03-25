@@ -30,26 +30,21 @@ public class CloneIndicator : MonoBehaviour
         if (playerSprites.Count != 4)
         { Debug.LogError("This component does not have the correct number of sprites attached to it"); }
 
-        for (int i = 1; i <= 4; i++) 
-        { playerSprites[^i].enabled = false; }
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         // Loop through each sprite
         for (int i = 1; i <= 4; i++) {
 
-            if (FindFirstObjectByType<Fade>().IsFading()) 
-            { playerSprites[^i].enabled = false; }
-            else if (!playerSprites[^i].enabled)
-            { playerSprites[^i].enabled = true; }
+           
+
+            Debug.Log(player.CloneNo + ", " + i);
 
             if (player.IsRecording && i - 1 == player.CloneNo) {
-                //Debug.LogWarning("Blinking");
+                Debug.LogWarning("Blinking");
                 // Blink
                 if ((blinkTimer += Time.deltaTime) >= blinkSpeed) {
 
