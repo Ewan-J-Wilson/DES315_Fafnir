@@ -860,7 +860,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 8633643025506588892, guid: 54b45b2c9cf790f48991ddff34ae49e9, type: 3}
   blinkSpeed: 0.33
-  blinkColour: {r: 0, g: 0, b: 0, a: 0}
+  blinkColour: {r: 0.7176471, g: 0.5254902, b: 0.6, a: 0.76862746}
 --- !u!1001 &59179333213811028
 PrefabInstance:
   m_ObjectHideFlags: 0
