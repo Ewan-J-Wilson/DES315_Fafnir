@@ -87,14 +87,16 @@ public class DialogueManager : MonoBehaviour
 
     public void DetectInputScheme(Scene scene,LoadSceneMode load) {
 
-        if (!GameObject.FindGameObjectWithTag("Player").TryGetComponent(out input)) {
+        if (GameObject.FindGameObjectWithTag("Player") == null) {
 
             GetComponent<PlayerInput>().enabled = true;
             input = GetComponent<PlayerInput>();
 
         }
-        else
-        { GetComponent<PlayerInput>().enabled = false; }
+        else { 
+            GameObject.FindGameObjectWithTag("Player").TryGetComponent(out input);
+            GetComponent<PlayerInput>().enabled = false; 
+        }
 
     }
 
