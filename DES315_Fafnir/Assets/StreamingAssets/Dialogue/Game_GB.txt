@@ -13,21 +13,21 @@ You can also press {Player/Use} to activate certain objects. Try it on that leve
 Press? Lever? What in creation are you talking about, child?
 {NEXT}
 [CHILD_Anger]
-I have powers far beyond your mortal comprehension, father. Just do it. 
+Don't worry about it, dad! Just do it!
 END_DIAG
 
 0-1_START
 [DAD_Shock] 
-I...I did it! But why am I back where I started?
+The drawbridge again? But we already read this part!
 {NEXT}
 [CHILD_Anger]
-Because it didn't happen like that! 
+Well it was boOoring! It didn't happen like that!
 {NEXT}
 [DAD_Tired]
 *sigh* Okay, then how did it happen?
 {NEXT}
 [CHILD_Anger]
-That's where the powers the witch gave you come in handy! Duh! 
+The magic book! Duh! {n}What's the point if we don't even use our cool new powers?!
 {NEXT}
 [Dad_Neutral]
 Ah yes, of course. How do I go about doing that?
@@ -39,16 +39,25 @@ I will forgive your transgressions this once, father. {n}After all, what is a st
 You can use {Player/Clone} to create a clone of yourself that will copy your actions.
 {NEXT}
 [CHILD_Happy]
-But be careful! You're only allowed four of them. That's just the way this world works.
+This includes stuff like using levers, and that button over there!
+{NEXT}
+[CHILD_Happy]
+But be careful! You're only allowed 4 of them. 
 {NEXT}
 [DAD_Neutral]
-Okay, but what if I get stuck? {n}Then you'll have to just go to bed before I finish.
+Why only 4?
 {NEXT}
 [CHILD_Anger]
-You wouldn't DARE! But...I see your point. Very well. 
+Because! That's just the way it works!
+{NEXT}
+[DAD_Neutral]
+Okay, but what if I get stuck? {n}Then you'll have to just go to bed before I finish, and the witch won't get her hat back.
+{NEXT}
+[CHILD_Anger]
+That's no faaaair! {n}Ugh, fiiiine. 
 {NEXT}
 [Child_Anger]
-I suppose I'll allow you correct any mistakes you make along the way. {n}Just press {Player/Reset} and you'll restart the level. Happy?
+Just press {Player/Reset} and you'll restart the level. Happy?
 {NEXT}
 [DAD_Neutral]
 Very. Now let's go get that hat!
@@ -58,11 +67,60 @@ lorem ipsum yeah yeah yeah
 END_DIAG
 
 1-0_START
-Loop Test
+[CHILD_Happy]
+Yay! You made it past the drawbridge! {n}What's next, dad?
+{NEXT}
+[DAD_Neutral]
+Our brave fisherman continues on his journey and sees... {n}...TWO buttons! {n}And a lever!
+{NEXT}
+[CHILD_Happy]
+*gasp* How's he gonna beat *this* obstacle? 
+{NEXT}
+[DAD_Neutral]
+Hmmm...well, let's see what these switches do first, shall we?
 END_DIAG
 
 1-1_START
-beep boop
+[CHILD_Anger]
+That was too easy! You can do better than that!
+{NEXT}
+[DAD_Tired]
+Child, please. It's getting late. 
+{NEXT}
+[CHILD_Happy]
+Make it so there's a big hole in the ground with another button!
+{NEXT}
+[DAD_Shock]
+A...a hole? But how? It wasn't there before!
+{NEXT}
+[CHILD_Anger]
+Don't worry about it! It's just magic! {n}The fisherman knows what to do!
+END_DIAG
+
+1-2_START
+[CHILD_Anger]
+Nope! Still too easy! Read it again!
+{NEXT}
+[DAD_Tired]
+*yawn* Okay, but after this, we're moving on to the next puzzle.
+{NEXT}
+[CHILD_Tired]
+Yeah, I'm getting sleepy too. 
+{NEXT}
+[DAD_Neutral]
+So you want me to stop here?
+{NEXT}
+[CHILD_Anger]
+Noooo! We haven't even gotten to the dragon yet! {n}I'm awake, promise!
+{NEXT}
+[DAD_Neutral]
+Alright, alright, I'm just teasing. What happens next?
+{NEXT}
+[CHILD_Happy]
+He runs into more buttons and more doors! {n}He's gotta open ALL of them to get past!
+{NEXT}
+[DAD_Neutral]
+Alright then, let's do this!
 END_DIAG
 
 CELESTE_01
