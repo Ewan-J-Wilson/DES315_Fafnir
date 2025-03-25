@@ -36,10 +36,12 @@ Ah yes, of course. How do I go about doing that?
 I will forgive your transgressions this once, father. {n}After all, what is a stick without a carrot?
 {NEXT}
 [CHILD_Happy]
-You can use {Player/Clone} to create a clone of yourself that will copy your actions.
+You can use {Player/Clone} to record your actions...
 {NEXT}
 [CHILD_Happy]
-This includes stuff like using levers, and that button over there!
+...and then press {Player/Clone} again to create a clone of yourself. 
+[CHILD_Happy]
+The clone will copy everything you did in that time. {n}That includes stuff like using levers, and that button over there!
 {NEXT}
 [CHILD_Happy]
 But be careful! You're only allowed 4 of them. 
@@ -61,9 +63,6 @@ Just press {Player/Reset} and you'll restart the level. Happy?
 {NEXT}
 [DAD_Neutral]
 Very. Now let's go get that hat!
-END_DIAG
-
-lorem ipsum yeah yeah yeah
 END_DIAG
 
 1-0_START
@@ -121,6 +120,35 @@ He runs into more buttons and more doors! {n}He's gotta open ALL of them to get 
 {NEXT}
 [DAD_Neutral]
 Alright then, let's do this!
+END_DIAG
+
+2-0_START
+[CHILD_Happy]
+Alright, you made it past those evil platforms! What next? 
+{NEXT}
+[DAD_Neutral]
+Our fisherman's last obstacle is his greatest opponent yet...
+{NEXT}
+[DAD_Shock]
+...A DASTARDLY SAWFISH!
+{NEXT}
+[CHILD_Happy]
+Oh man, this is gonna be good! {n}Are they gonna fight?! {n}Will there be lots of blood?! {n}Is the fisherman gonna cook him up for dinner?!
+{NEXT}
+[DAD_Shock]
+Goodness, noooo, nooo, no! He's just...standing there. {n}And a cloud is raining on him to keep him from drying out.
+{NEXT}
+[CHILD_Tired]
+What...what do you mean?
+{NEXT}
+[DAD_Neutral]
+He, uhhh, just finished his work for the day, as a carpenter. {n}So he's too tired to move. 
+{NEXT}
+[CHILD_Anger]
+What?! BOOOOOOriiiing! {n}This is the last puzzle! He's gotta be trickier than that!
+{NEXT}
+[DAD_Tired]
+You can come up with something, then. {n}*yawn* I'm too tired to think of anything clever. 
 END_DIAG
 
 CELESTE_01
