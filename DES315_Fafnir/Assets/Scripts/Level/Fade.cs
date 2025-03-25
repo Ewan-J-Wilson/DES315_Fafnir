@@ -39,17 +39,10 @@ public class Fade : MonoBehaviour
     }
 
     public bool IsFading()
-    { 
-        if (_sprite != null)
-        { return _sprite.enabled; }
-        return false;
-    }
+    { return _sprite.enabled; }
 
-    public bool IsNotFading() { 
-        if (_sprite != null)
-        { return !_sprite.enabled; }
-        return true; 
-    }
+    public bool IsNotFading()
+    { return !_sprite.enabled; }
 
     public void Update() {
 
