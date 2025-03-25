@@ -211,10 +211,15 @@ Panel 3-2
 Panel 3-3
 {NEXT}
 Panel 4-1
+[DAD_Shock]
+The, out of nowhere, {n}the dragon swooped down and stole her hat!
 {NEXT}
 Panel 4-2
+[DAD_Shock]
+"Noooo! Get back here with my hat!" The witch protested.
 {NEXT}
 Panel 4-3
+"Help me!" The hat cried out {n}as the dragon carried it back to its perch {n}atop the lighthouse.
 {NEXT}
 Panel 5-1
 {NEXT}
@@ -223,6 +228,7 @@ Panel 5-2
 Panel 5-3
 {NEXT}
 Panel 6-1
+
 {NEXT}
 Panel 6-2
 {NEXT}
