@@ -23,7 +23,8 @@ public class PlayerAI : MonoBehaviour
 	// Clones
 	[Tooltip("Reference to the Clone object")]
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
-	private int CloneNo;                        //Count of currently spawned clones
+	[NonSerialized]
+	public int CloneNo;                        //Count of currently spawned clones
 	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
 	[Range(1,5)] // [SerializeField]
@@ -46,7 +47,8 @@ public class PlayerAI : MonoBehaviour
 	private int ComInd;                         //Index into written commands
 	protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
 	public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
-	private bool IsRecording;                   //Flag to enable movement recording with the player
+	[NonSerialized]
+	public bool IsRecording;                   //Flag to enable movement recording with the player
 
 	// Player
 	protected Rigidbody2D Rb;                   //Rigidbody for player physics
