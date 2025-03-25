@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.002696541, z: 0, w: 0.9999964}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 0.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -72,7 +72,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 0.5}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -97,8 +97,8 @@ MonoBehaviour:
   TriggerOffSound: ButtonOff
   isActive: 0
   selected: 0
-  offSprite: {fileID: 8167623969301648927, guid: a7127605437d02a4994f4e450b358972, type: 3}
-  onSprite: {fileID: -2405660822477277776, guid: 59b35db453db26f42a365b53badd5fe5, type: 3}
+  offColour: {r: 0.9921569, g: 0.16078432, b: 0.16078432, a: 1}
+  onColour: {r: 0.3207547, g: 0.03570663, b: 0.03570663, a: 1}
 --- !u!212 &4037470309665027496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -139,11 +139,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 847619083
-  m_SortingLayer: 5
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 8167623969301648927, guid: a7127605437d02a4994f4e450b358972, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: -1
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 0.9245283, g: 0.047098536, b: 0.047098536, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

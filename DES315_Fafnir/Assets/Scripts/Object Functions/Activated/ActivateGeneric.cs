@@ -48,8 +48,6 @@ public class ActivateGeneric : MonoBehaviour {
         Audiomanager.instance.PlayAudio(_isActive ? ActivateSound : null);
     }
 
-    // Default DoAction function
-    // Should never be used
     protected virtual void DoAction()
     { Debug.Log("You're not supposed to be in here"); }
        

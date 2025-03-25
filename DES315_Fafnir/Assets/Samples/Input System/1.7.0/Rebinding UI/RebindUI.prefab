@@ -608,8 +608,6 @@ MonoBehaviour:
   m_BindingText: {fileID: 8896679067713989063}
   m_RebindOverlay: {fileID: 0}
   m_RebindText: {fileID: 0}
-  m_OverRideActionLabel: 0
-  m_ActionLabelString: 
   m_UpdateBindingUIEvent:
     m_PersistentCalls:
       m_Calls: []

@@ -61,17 +61,18 @@ public class Tool_Swing : MonoBehaviour
         {
             float tempDistance = Vector2.Distance(transform.position, interact.transform.position);
 
-            // Get a reference to whether the object is selected or not
             ref bool isSelected = ref interact.GetComponent<TriggerGeneric>().selected;
 
             if (distance >= tempDistance && !isSelected)
             {
 
-                // Deselect all out of range objects
                 foreach (GameObject deselect in interactables)
-                { deselect.GetComponent<TriggerGeneric>().selected = false; }
+                {
+                    
+                    deselect.GetComponent<TriggerGeneric>().selected = false;
+                    
+                }
 
-                // Select the current object
                 isSelected = true;
                 
             }
@@ -98,7 +99,7 @@ public class Tool_Swing : MonoBehaviour
 
             if (GetComponentInParent<PlayerInput>().currentActionMap.name != "Player")
             { return; }
-            
+
             
             if (input.currentControlScheme == "Keyboard") {
 
@@ -130,6 +131,9 @@ public class Tool_Swing : MonoBehaviour
 
     public void SetToolActive()
     {
+        // Set the tool hitbox to be active
+        // Or reset the tool to inactive
+        //TODO:
 
         if (hitTimer <= 0 && cooldownTimer <= 0) {
 
