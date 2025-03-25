@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
-using System;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -17,16 +16,14 @@ public class DialogueRead : MonoBehaviour
     public static bool reading = false;
 
     public Dictionary<string, string> buttonReplace = new(){
-
-        { "XButton South", "A" },
-        { "XButton East", "B" },
-        { "XButton North", "Y" },
-        { "XButton West", "X" },
+        { "XButton South",  "A" },
+        { "XButton East",   "B" },
+        { "XButton North",  "Y" },
+        { "XButton West",   "X" },
         { "PSButton South", "X" },
-        { "PSButton East", "○" },
+        { "PSButton East",  "○" },
         { "PSButton North", "△" },
-        { "PSButton West", "□" }
-
+        { "PSButton West",  "□" }
     };
 
     // On Start, get the dialogue file
@@ -55,7 +52,7 @@ public class DialogueRead : MonoBehaviour
 
         // Skip lines that are empty, are comments, or are before the start point
         if ((!line.Contains(DialogueManager.chapter) && !reading) || line.Contains('#') || string.IsNullOrWhiteSpace(line))
-        { 
+        {
             ReadBlock(); 
             return;
         }
