@@ -151,6 +151,21 @@ What?! BOOOOOOriiiing! {n}This is the last puzzle! He's gotta be trickier than t
 You can come up with something, then. {n}*yawn* I'm too tired to think of anything clever. 
 END_DIAG
 
+CLONE_DESTROY
+[CHILD_Happy]
+BOOM! Your clones are gone!
+{NEXT}
+[DAD_Shock]
+W-what? How?
+{NEXT}
+[CHILD_Happy]
+The fish is being rained on, right? {n}The clones are weak to water!
+{NEXT}
+[DAD_Neutral]
+What a vivid imagination you have, child. {n}I knew you'd come up with something.
+END_DIAG
+
+
 CELESTE_01
 
 [CHILD_Happy]
