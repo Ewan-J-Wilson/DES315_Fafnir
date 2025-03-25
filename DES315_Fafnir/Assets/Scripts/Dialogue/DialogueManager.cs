@@ -1,11 +1,9 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
-
     public static int currentLevel = 0;
     public static DialogueManager instance;
     public static string chapter;
@@ -60,7 +58,6 @@ public class DialogueManager : MonoBehaviour
 
     // Enable/Disable player input
     public static void DisablePlayerInput(bool _disable) {
-        PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
         input.SwitchCurrentActionMap(_disable ? "UI" : "Player");
     }
 
