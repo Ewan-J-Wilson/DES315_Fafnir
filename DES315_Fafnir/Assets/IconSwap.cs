@@ -65,9 +65,9 @@ public class IconSwap : MonoBehaviour
 
         RectTransform rect = GetComponent<RectTransform>();
 
-        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 50, 0);
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 50);
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
+        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 100, 0);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75);
 
     }
 
