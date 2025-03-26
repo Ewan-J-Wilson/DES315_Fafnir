@@ -919,7 +919,7 @@ GameObject:
   - component: {fileID: 874144221}
   - component: {fileID: 874144222}
   m_Layer: 0
-  m_Name: PuzzleSign_Fish
+  m_Name: PuzzleSign_Fish_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 1473750803}
   - component: {fileID: 1473750804}
   m_Layer: 0
-  m_Name: PuzzleSign_Fish
+  m_Name: PuzzleSign_Fish_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
