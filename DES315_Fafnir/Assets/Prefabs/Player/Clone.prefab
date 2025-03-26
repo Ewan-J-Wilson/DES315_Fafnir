@@ -475,8 +475,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clone: {fileID: 0}
+  MaxJump: 1
   TrailPart: {fileID: 0}
-  Anchor: {fileID: 0}
   PCList: []
   CurrentCom:
     hAxis: 0
@@ -485,7 +485,7 @@ MonoBehaviour:
     toolPosition: {x: 0, y: 0}
     dur: 0
   MoveSpeed: 7.5
-  CloningSound: 
+  pauseMenu: {fileID: 0}
 --- !u!1 &5954094594120241476
 GameObject:
   m_ObjectHideFlags: 0
@@ -627,11 +627,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2079976519
-  m_SortingLayer: 6
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9169642733941721999, guid: d3416c426b696ae47912446004668b1e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.76862746}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
