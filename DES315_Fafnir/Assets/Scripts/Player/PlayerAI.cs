@@ -176,11 +176,13 @@ public class PlayerAI : MonoBehaviour
         // L/R input
         Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, XAccel);
 
-		playerAnimator.SetFloat("Velocity", Vel.x);
+		
+		playerAnimator.SetFloat("Velocity", Mathf.Abs(Vel.x));
 
-		playerRenderer.flipX = Vel.x < 0;
-
-
+		if (Vel.x > 0f)
+		{ playerRenderer.flipX = false; }
+		else if (Vel.x < 0f)
+		{ playerRenderer.flipX = true; }
 
 
     }

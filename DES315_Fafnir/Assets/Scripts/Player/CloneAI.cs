@@ -54,8 +54,13 @@ public class CloneAI : PlayerAI
 		ComTimer -= Time.deltaTime;         //Decrement command duration
 
 		Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * PCList[ComPos].hAxis, XAccel);
-		playerRenderer.flipX = Vel.x > 0;
-        playerAnimator.SetFloat("Velocity", Vel.x);
+        playerAnimator.SetFloat("Velocity", Mathf.Abs(Vel.x));
+
+		if (Vel.x > 0f)
+		{ playerRenderer.flipX = false; }
+		else if (Vel.x < 0f)
+		{ playerRenderer.flipX = true; }
+
     }
 
 	//Grab next command and set duration timer
