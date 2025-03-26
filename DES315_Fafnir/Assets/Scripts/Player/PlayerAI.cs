@@ -65,6 +65,9 @@ public class PlayerAI : MonoBehaviour
 
 	[SerializeField]
 	protected string CloningSound;
+
+	// Animator
+	private Animator playerAnimator;
 	
 
     void Start()
@@ -78,7 +81,8 @@ public class PlayerAI : MonoBehaviour
 		Array.Resize(ref PCList, 1);            //Resize array to have one element
 		ComInd = 0;                             //Reset command index
 		LastPos = transform.position;           //Grab current position for future clone position
-		
+
+		playerAnimator = GetComponentInChildren<Animator>();
 
 	}
 
@@ -149,6 +153,7 @@ public class PlayerAI : MonoBehaviour
 
 	protected virtual void HandleMovement()
 	{
+		playerAnimator.SetBool("InAir", Rb.velocityY != 0f);
 		if (Rb.velocityY == 0f)
 		{ JumpCount = 0; }
         
@@ -169,6 +174,8 @@ public class PlayerAI : MonoBehaviour
 
         // L/R input
         Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, XAccel);
+
+		playerAnimator.SetFloat("Velocity", Vel.x);
 
 	}
 
