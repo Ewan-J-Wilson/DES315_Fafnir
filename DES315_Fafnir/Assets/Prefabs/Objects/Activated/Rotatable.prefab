@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7310313961803231807}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 0.8, z: 0}
   m_LocalScale: {x: 8, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0.7689475, b: 0.6179246, a: 1}
   m_FlipX: 0
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 1, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,7 +159,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 8, y: 1}
   m_EdgeRadius: 0
 --- !u!1 &8239058660840501891
 GameObject:
@@ -208,6 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thresholdCount: 0
   threshold: 1
+  ActivateSound: 
   Curve:
     serializedVersion: 2
     m_Curve:
@@ -233,4 +234,4 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   AngleTarget: 90
-  BridgeSpeed: 1.5
+  platformSpeed: 1.5
