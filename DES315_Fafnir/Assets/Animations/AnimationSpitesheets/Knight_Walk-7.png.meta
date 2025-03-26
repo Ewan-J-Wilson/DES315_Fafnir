@@ -195,7 +195,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Knight_Walk-7_0: 355033156012555837
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
