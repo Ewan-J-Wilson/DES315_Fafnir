@@ -67,7 +67,7 @@ public class PlayerAI : MonoBehaviour
 	protected string CloningSound;
 
 	// Animator
-	private Animator playerAnimator;
+	protected Animator playerAnimator;
 	
 
     void Start()
