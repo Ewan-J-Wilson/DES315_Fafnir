@@ -322,7 +322,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 7.144171, y: 19.004974}
+  m_Size: {x: 2.5748537, y: 4.8816357}
   m_EdgeRadius: 0
 --- !u!114 &6960429248404074951
 MonoBehaviour:
@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Clone: {fileID: 4064460576545659443, guid: 038f10f9afc22b74ea9d7db4625cabb3, type: 3}
+  MaxJump: 1
   TrailPart: {fileID: 6529556881714479319, guid: e4ccb08a8b89df741999ccb2b79a3855, type: 3}
   PCList: []
   CurrentCom:
@@ -346,6 +347,7 @@ MonoBehaviour:
     toolPosition: {x: 0, y: 0}
     dur: 0
   MoveSpeed: 7.5
+  pauseMenu: {fileID: 2588191603609945841}
   CloningSound: CloneSpawn
 --- !u!50 &1796299224185216547
 Rigidbody2D:
