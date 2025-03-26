@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 1298593190}
     - target: {fileID: 4736651121292495153, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_text
-      value: Movement
+      value: Move Right
       objectReference: {fileID: 0}
     - target: {fileID: 5024266567257472466, guid: bb462337d92f0b8459f90a04fb9b2ef8, type: 3}
       propertyPath: m_Navigation.m_SelectOnUp
@@ -1209,8 +1209,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 835072189}
   m_HandleRect: {fileID: 835072188}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.7223855
+  m_Value: 1
+  m_Size: 0.722004
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2481,6 +2481,10 @@ PrefabInstance:
       propertyPath: m_RebindOverlay
       value: 
       objectReference: {fileID: 530316290}
+    - target: {fileID: 7590927520666091880, guid: 334e43f73eac9274dbacd0c45b321c48, type: 3}
+      propertyPath: m_OverRideActionLabel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7590927520666091883, guid: 334e43f73eac9274dbacd0c45b321c48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2673,6 +2677,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 1746384446}
+    - target: {fileID: 8383091717287830131, guid: 334e43f73eac9274dbacd0c45b321c48, type: 3}
+      propertyPath: m_text
+      value: Tool
+      objectReference: {fileID: 0}
     - target: {fileID: 8466377435474576358, guid: 334e43f73eac9274dbacd0c45b321c48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4532,7 +4540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5008445123206399596, guid: 334e43f73eac9274dbacd0c45b321c48, type: 3}
       propertyPath: m_text
-      value: Movement
+      value: Move Left
       objectReference: {fileID: 0}
     - target: {fileID: 5027646573161356095, guid: 334e43f73eac9274dbacd0c45b321c48, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4994,6 +5002,10 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnUp
       value: 
       objectReference: {fileID: 1371594627}
+    - target: {fileID: 8383091717287830131, guid: 334e43f73eac9274dbacd0c45b321c48, type: 3}
+      propertyPath: m_text
+      value: Tool
+      objectReference: {fileID: 0}
     - target: {fileID: 8466377435474576358, guid: 334e43f73eac9274dbacd0c45b321c48, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -15,7 +15,9 @@ public class Fade : MonoBehaviour
     public void Start() 
     { 
 
-        if ((isMenu ? MenuButtons._fade : GameManager._fade) != this) { 
+       
+
+        if ((isMenu ? MenuButtons._fade : GameManager._fade) != this && FindFirstObjectByType<IntroHandler>() == null) { 
             Destroy(gameObject); 
             return;
         }
@@ -36,6 +38,19 @@ public class Fade : MonoBehaviour
         alpha = 1f;
         targetAlpha = 0f;
 
+    }
+
+    public bool IsFading()
+    { 
+        if (_sprite != null)
+        { return _sprite.enabled; }
+        return false;
+    }
+
+    public bool IsNotFading() { 
+        if (_sprite != null)
+        { return !_sprite.enabled; }
+        return true; 
     }
 
     public void Update() {

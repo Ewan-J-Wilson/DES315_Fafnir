@@ -1,3 +1,4 @@
+using NUnit;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,7 +23,8 @@ public class PlayerAI : MonoBehaviour
 	// Clones
 	[Tooltip("Reference to the Clone object")]
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
-	private int CloneNo;                        //Count of currently spawned clones
+	[NonSerialized]
+	public int CloneNo;                        //Count of currently spawned clones
 	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
 	[Range(1,5)] // [SerializeField]
@@ -32,6 +34,7 @@ public class PlayerAI : MonoBehaviour
 	// Trails
 	[Tooltip("Reference to the Trail Particle object")]
 	public GameObject TrailPart;                //Trail particle reference
+	public GameObject Anchor;					//Anchor particle reference
 	private float TrailTimer;                   //Timer to wait for instantiating a trail when the player is recording
 	protected const float MaxTrailTime = 0.15f; //Constant threshold for trails
 
@@ -44,7 +47,8 @@ public class PlayerAI : MonoBehaviour
 	private int ComInd;                         //Index into written commands
 	protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
 	public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
-	private bool IsRecording;                   //Flag to enable movement recording with the player
+	[NonSerialized]
+	public bool IsRecording;                   //Flag to enable movement recording with the player
 
 	// Player
 	protected Rigidbody2D Rb;                   //Rigidbody for player physics
@@ -77,6 +81,8 @@ public class PlayerAI : MonoBehaviour
 		
 
 	}
+
+
 
 	// Records the jump action
     public void JumpAction(InputAction.CallbackContext obj) {
@@ -127,6 +133,8 @@ public class PlayerAI : MonoBehaviour
 		// Enable the recording
 		else
 		{
+			// Create the anchor point
+			Instantiate(Anchor, transform.position, Quaternion.identity);
 			LastPos = transform.position;
 			IsRecording = true;
 		}
@@ -196,7 +204,21 @@ public class PlayerAI : MonoBehaviour
 
 	public void PlayerDeath()
 	{
+
+		// Kills active clones
 		KillClone();
+
+		// Reset puzzle objects
+		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
+		{ trigger.Reset(); }
+
+        // Disables active cloning
+		ComInd++;
+		ClearList = true;
+		Array.Resize(ref PCList, ComInd + 1);
+		IsRecording = false;
+		KillTrail();
+
         transform.position = GameObject.FindGameObjectWithTag("StartFlag").transform.position;
     }
 
@@ -243,25 +265,5 @@ public class PlayerAI : MonoBehaviour
 
 	public virtual Vector2 ToolPosition()
 	{ return CurrentCom.toolPosition; }
-
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-	//	if (!CompareTag("Player"))
-	//	{ return; }
-	//
-    //    //if (collision.transform.CompareTag("MovablePlatform")) 
-	//	//{ transform.parent = collision.transform; }
-	//	
-    //}
-	//
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-	//	if (!CompareTag("Player"))
-	//	{ return; }
-	//	
-    //   // if (collision.transform.CompareTag("MovablePlatform")) 
-	//	//{ transform.parent = null; }
-	//	
-    //}
 
 }
