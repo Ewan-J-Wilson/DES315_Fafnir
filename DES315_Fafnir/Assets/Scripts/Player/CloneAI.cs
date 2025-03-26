@@ -15,7 +15,7 @@ public class CloneAI : PlayerAI
 		SetPCList();						//Grab player commands
 		Rb = GetComponent<Rigidbody2D>();
 		EndCom = false;
-
+        playerRenderer = GetComponentInChildren<SpriteRenderer>();
         playerAnimator = GetComponentInChildren<Animator>();
 
     }
@@ -54,6 +54,7 @@ public class CloneAI : PlayerAI
 		ComTimer -= Time.deltaTime;         //Decrement command duration
 
 		Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * PCList[ComPos].hAxis, XAccel);
+		playerRenderer.flipX = Vel.x > 0;
         playerAnimator.SetFloat("Velocity", Vel.x);
     }
 
