@@ -115,7 +115,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-    clip: {fileID: 8300000, guid: ab56a38cebc80664693baed25fcebc30, type: 3}
+    clip: {fileID: 8300000, guid: 01f0c5328733470458b63813bad588ea, type: 3}
     src: {fileID: 0}
     type: 2
   - Name: ButtonOff
@@ -151,7 +151,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-    clip: {fileID: 8300000, guid: cb8e42c91d05b1c4ab0cc91b01318487, type: 3}
+    clip: {fileID: 8300000, guid: 7efe355e94ff8874ab3d174ec0116f01, type: 3}
     src: {fileID: 0}
     type: 2
   - Name: LeverOn
@@ -160,7 +160,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-    clip: {fileID: 8300000, guid: cc68a0c09a87b28498db695e3b0eb008, type: 3}
+    clip: {fileID: 8300000, guid: 3fe3cf4329551ce448246966033c1251, type: 3}
     src: {fileID: 0}
     type: 2
   - Name: Confirm
@@ -187,7 +187,7 @@ MonoBehaviour:
     Panning: 0.5
     loop: 0
     LoopPoint: 0
-    clip: {fileID: 8300000, guid: 48e801e644e12b441b7a4102be930e1b, type: 3}
+    clip: {fileID: 8300000, guid: 3e717b1de3648c84a9c85cf5bef7a6bb, type: 3}
     src: {fileID: 0}
     type: 2
   - Name: Splash1
@@ -280,16 +280,44 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 84ddc520fd5dc8f4c960e32a420f56cf, type: 3}
     src: {fileID: 0}
     type: 2
+  - Name: T8-1
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: e5871e447e4d2b641ace7a612d36d77d, type: 3}
+    src: {fileID: 0}
+    type: 1
+  - Name: T8-2
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 72d50269c5690734ea67a09847b48d94, type: 3}
+    src: {fileID: 0}
+    type: 1
+  - Name: T8-3
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 66f0cf5807f08d94f81fd8646747301c, type: 3}
+    src: {fileID: 0}
+    type: 1
   LoopTrackList:
   - Name:
     - T5-1
     - T5-2
+    - T5-3
     - T5-3
   - Name:
     - T6-1
     - T6-2
     - T6-3
   - Name:
-    - T6-2
-    - T6-3
-    - T6-1
+    - T8-1
+    - T8-2
+    - T8-3
