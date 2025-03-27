@@ -15,12 +15,15 @@ public class CloneAI : PlayerAI
 		SetPCList();						//Grab player commands
 		Rb = GetComponent<Rigidbody2D>();
 		EndCom = false;
-	}
+        playerRenderer = GetComponentInChildren<SpriteRenderer>();
+        playerAnimator = GetComponentInChildren<Animator>();
+
+    }
 
 	protected override void HandleMovement()
 	{
-		
-		if (Rb.velocityY == 0f)
+        playerAnimator.SetBool("InAir", Rb.velocityY != 0f);
+        if (Rb.velocityY == 0f)
 		{ JumpCount = 0; }
 
 		if (!PCList[ComPos].jump)
@@ -44,11 +47,21 @@ public class CloneAI : PlayerAI
 		{
 			ReadCom();
 		}
+		else if (EndCom)
+		{
+            playerAnimator.SetBool("Stop", true);
+        }
 		ComTimer -= Time.deltaTime;         //Decrement command duration
 
 		Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * PCList[ComPos].hAxis, XAccel);
+        playerAnimator.SetFloat("Velocity", Mathf.Abs(Vel.x));
 
-	}
+		if (Vel.x > 0f)
+		{ playerRenderer.flipX = false; }
+		else if (Vel.x < 0f)
+		{ playerRenderer.flipX = true; }
+
+    }
 
 	//Grab next command and set duration timer
 	protected void ReadCom()
@@ -68,6 +81,7 @@ public class CloneAI : PlayerAI
 			PCList[i] = player.GetComponent<PlayerAI>().PCList[i];
 		}
 		ClearList = true;
+		
 	}
 
     public override Vector2 ToolPosition() {

@@ -59,6 +59,7 @@ public class PlayerAI : MonoBehaviour
 	protected float MoveSpeed = 7.5f;     //Constant movement speed
 	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
+	
 
 	// Pause Menu
 	private MenuButtons pauseMenu;
@@ -67,8 +68,8 @@ public class PlayerAI : MonoBehaviour
 	protected string CloningSound;
 
 	// Animator
-	private Animator playerAnimator;
-	
+	protected Animator playerAnimator;
+	protected SpriteRenderer playerRenderer;
 
     void Start()
 	{
@@ -81,7 +82,7 @@ public class PlayerAI : MonoBehaviour
 		Array.Resize(ref PCList, 1);            //Resize array to have one element
 		ComInd = 0;                             //Reset command index
 		LastPos = transform.position;           //Grab current position for future clone position
-
+		playerRenderer = GetComponentInChildren<SpriteRenderer>();
 		playerAnimator = GetComponentInChildren<Animator>();
 
 	}
@@ -175,9 +176,16 @@ public class PlayerAI : MonoBehaviour
         // L/R input
         Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, XAccel);
 
-		playerAnimator.SetFloat("Velocity", Vel.x);
+		
+		playerAnimator.SetFloat("Velocity", Mathf.Abs(Vel.x));
 
-	}
+		if (Vel.x > 0f)
+		{ playerRenderer.flipX = false; }
+		else if (Vel.x < 0f)
+		{ playerRenderer.flipX = true; }
+
+
+    }
 
 	protected void FixedUpdate()
 	{ transform.Translate(Vel * Time.deltaTime); }
