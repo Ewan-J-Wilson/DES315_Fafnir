@@ -9,6 +9,7 @@ public class IntroHandler : MonoBehaviour
     public int PanelInd;
     private SpriteRenderer PreviousPanel;
     private bool doNextScene = false;
+    private bool loadingNext = false;
     
     private void Start()
     {
@@ -32,8 +33,9 @@ public class IntroHandler : MonoBehaviour
             Time.timeScale = 0;
             doNextScene = true;
         }
-        if (fade.alpha >= 1 && doNextScene) {
+        if (fade.alpha >= 1 && doNextScene && !loadingNext) {
 
+            loadingNext = true;
             Time.timeScale = 1;
             GameManager.LoopInd = 0;
             SceneManager.LoadSceneAsync("Level 1"); 

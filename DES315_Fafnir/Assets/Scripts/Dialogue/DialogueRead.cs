@@ -148,23 +148,23 @@ public class DialogueRead : MonoBehaviour
                         string action = formatRead.Split("/")[1];
 
                         if (actionMap == "Player") 
-                        { DialogueManager.input.SwitchCurrentActionMap("Player"); }
+                        { PlayerAI.inputRef.SwitchCurrentActionMap("Player"); }
 
                         List<string> actionText = new();
-                        for (int i = 0; i < DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
+                        for (int i = 0; i < PlayerAI.inputRef.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
                             
-                            string actionName = DialogueManager.input.currentActionMap.FindAction(action, true).GetBindingDisplayString(i);
-                            if (actionName.Contains("/") || DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count < 3)
+                            string actionName = PlayerAI.inputRef.currentActionMap.FindAction(action, true).GetBindingDisplayString(i);
+                            if (actionName.Contains("/") || PlayerAI.inputRef.currentActionMap.FindAction(action, true).bindings.Count < 3)
                             { actionText.Add(actionName); }
                             
                         }
 
                         textAsset.text += "[" 
-                            + ((DialogueManager.input.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
+                            + ((PlayerAI.inputRef.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
                             + "]";
 
                         if (actionMap == "Player") 
-                        { DialogueManager.input.SwitchCurrentActionMap("UI"); }
+                        { PlayerAI.inputRef.SwitchCurrentActionMap("UI"); }
 
                     }
 
