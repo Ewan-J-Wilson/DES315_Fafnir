@@ -151,6 +151,22 @@ What?! BOOOOOOriiiing! {n}This is the last puzzle! He's gotta be trickier than t
 You can come up with something, then. {n}*yawn* I'm too tired to think of anything clever. 
 END_DIAG
 
+2-1_START
+[CHILD_Happy]
+Good thinking, dad! {n}But we can do better than that!
+[DAD_Tired]
+*sigh* How, child? How can we possibly make it better?
+[CHILD_Happy]
+You've come this far! I'm sure you can do it!
+END_DIAG
+
+2-2_START
+[CHILD_Happy]
+Nope, not good enough! {n}Last one before the dragon though, I promise!
+[DAD_Tired]
+Good, cause I'm up past *my* bedtime at this point.
+END_DIAG
+
 CLONE_DESTROY
 [CHILD_Happy]
 BOOM! Your clones are gone!
@@ -164,6 +180,8 @@ The fish is being rained on, right? {n}The clones are weak to water!
 [DAD_Neutral]
 What a vivid imagination you have, child. {n}I knew you'd come up with something.
 END_DIAG
+
+
 
 0-0_HINT
 [CHILD_Anger]
@@ -230,61 +248,75 @@ What a waste, to build all of this for no reason...
 At least we get to enjoy the leftovers.
 END_DIAG
 
-INTRO_0
-[DAD_Neutral]
-The intro dialogue is a work in progress
+INTRO_START
+
+[CHILD_Happy]
+Please, dad, just one more story? 
 {NEXT}
+
+[DAD_Tired]
+Alright then, but just this once. Then it's time to sleep.
+{NEXT}
+END_DIAG
+
 [CHILD_Anger]
-Wait...{t:0.5} really?
+Awww man, sleep? You drive a hard bargain, father. 
 {NEXT}
-[DAD_Tired]
-Yup.
-END_DIAG
 
-INTRO_1
-[DAD_Shock]
-I promise it will be really cool when it's finished
-{NEXT}
-[DAD_Tired]
-But for now we just have blank dialogue panels
-{NEXT}
-Panel 2-3
-END_DIAG
-
-INTRO_2
-Panel 3-1
-{NEXT}
-Panel 3-2
-{NEXT}
-Panel 3-3
-END_DIAG
-
-INTRO_3
 [DAD_Neutral]
-Actually, i've got a small bit of it here
+Don't worry, this is gonna be good. {n}Once upon a time, there {n}was a fisherman who lived in the {n}colourful seaside town of Dragon's Harbour.
 {NEXT}
+
+[DAD_Neutral]
+In Dragon's Harbour, life moved {n}at a slower pace, and everyone {n}got along with each other.
+{NEXT}
+
+[DAD_Neutral]
+The town got its name from the dragon {n}perched atop the lighthouse, who watched over it always.
+{NEXT}
+
+[DAD_Neutral]
+Today, our fisherman was {n}meeting with his old friend and {n}neighbour, The Witch.
+
+[CHILD_Happy]
+He's friends with a witch?! So cool!
+{NEXT}
+
+[DAD_Neutral]
+"Hi, dear! How lovely to see you again," the witch said gleefully. {n}"Likewise, it's a pleasur--"
+{NEXT}
+
 [DAD_Shock]
 The, out of nowhere, {n}the dragon swooped down and stole her hat!
 {NEXT}
 [DAD_Shock]
 "Noooo! Get back here with my hat!" The witch protested.
-END_DIAG
+{NEXT}
 
-INTRO_4
+[DAD_Shock]
+"Help me!" The hat cried out as the dragon carried it {n}back to its perch {n}atop the lighthouse.
+{NEXT}
+
+[DAD_Neutral]
+Without her magic hat, the witch began to age rapidly, and she became old and frail.
+{NEXT}
+
+[CHILD_Happy]
+Wow! She must be nearly...40 years old!
+{NEXT}
+
 [DAD_Tired]
-And now we're back to blank panels
+... Ahem.
 {NEXT}
-Panel 5-2
-{NEXT}
-Panel 5-3
-END_DIAG
 
-INTRO_5
-Panel 6-1
+[DAD_Neutral]
+"Fear not, I'll get your hat back," the fisherman kindly offered. {n}"Oh, thank you, thank you so much!" The witch wept with gratitude.
 {NEXT}
-Panel 6-2
+
+ "That hat is my familiar. {n}It means everything to me. Here, you'll need this." She handed the fisherman one of her magic tomes.
 {NEXT}
-Panel 6-3
+
+"There is a spell in here that will help you {n}against the many obstacles on the way to the dragon. {n}Thank you again, and good luck!"
 END_DIAG
 
 Test 5
