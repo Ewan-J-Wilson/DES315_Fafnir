@@ -331,9 +331,13 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5388493501793229336, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+    - target: {fileID: 3182076841977498956, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5388493501793229336, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5417960216672972773, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
       propertyPath: m_IsActive
