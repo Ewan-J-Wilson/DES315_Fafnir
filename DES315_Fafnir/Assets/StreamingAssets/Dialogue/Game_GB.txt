@@ -206,75 +206,73 @@ At least we get to enjoy the leftovers.
 END_DIAG
 
 INTRO_START
-[DAD_Neutral]
-Panel 1-1
+
 [CHILD_Happy]
 Please, dad, just one more story? 
 {NEXT}
-Panel 1-2
+
 [DAD_Tired]
 Alright then, but just this once. Then it’s time to sleep.
 {NEXT}
-Panel 1-3
+
 [CHILD_Anger]
 Awww man, sleep? You drive a hard bargain, father. 
 {NEXT}
-Panel 2-1
+
 [DAD_Neutral]
 Don't worry, this is gonna be good. {n}Once upon a time, there {n}was a fisherman who lived in the {n}colourful seaside town of Dragon's Harbour.
 {NEXT}
-Panel 2-2
+
 [DAD_Neutral]
 In Dragon's Harbour, life moved {n}at a slower pace, and everyone {n}got along with each other.
 {NEXT}
-Panel 2-3
+
 [DAD_Neutral]
 The town got its name from the dragon {n}perched atop the lighthouse, who watched over it always.
 {NEXT}
-Panel 3-1
+
 [DAD_Neutral]
 Today, our fisherman was {n}meeting with his old friend and {n}neighbour, The Witch.
-{NEXT}
-Panel 3-2
+
 [CHILD_Happy]
 He's friends with a witch?! So cool!
 {NEXT}
-Panel 3-3
+
 [DAD_Neutral]
 "Hi, dear! How lovely to see you again," the witch said gleefully. {n}"Likewise, it's a pleasur--"
 {NEXT}
-Panel 4-1
+
 [DAD_Shock]
 The, out of nowhere, {n}the dragon swooped down and stole her hat!
 {NEXT}
-Panel 4-2
+
 [DAD_Shock]
 "Noooo! Get back here with my hat!" The witch protested.
 {NEXT}
-Panel 4-3
+
 [DAD_Shock]
 "Help me!" The hat cried out as the dragon carried it {n}back to its perch {n}atop the lighthouse.
 {NEXT}
-Panel 5-1
+
 [DAD_Neutral]
 Without her magic hat, the witch began to age rapidly, and she became old and frail.
 {NEXT}
-Panel 5-2
+
 [CHILD_Happy]
 Wow! She must be nearly...40 years old!
 {NEXT}
-Panel 5-3
+
 [DAD_Tired]
 ... Ahem.
 {NEXT}
-Panel 6-1
+
 [DAD_Neutral]
 "Fear not, I'll get your hat back," the fisherman kindly offered. {n}"Oh, thank you, thank you so much!" The witch wept with gratitude.
 {NEXT}
-Panel 6-2
+
  "That hat is my familiar. {n}It means everything to me. Here, you'll need this." She handed the fisherman one of her magic tomes.
 {NEXT}
-Panel 6-3
+
 "There is a spell in here that will help you {n}against the many obstacles on the way to the dragon. {n}Thank you again, and good luck!"
 END_DIAG
 
