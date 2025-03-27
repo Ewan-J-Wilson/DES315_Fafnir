@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 		else
 		{ yield return new WaitForSeconds(0.5f); }
 
-		DialogueManager.OnLoopChange();
+		DialogueManager.LoopTrigger("START");
 
 	}
 

@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class IntroHandler : MonoBehaviour
 {
     public Fade fade;
-    public GameObject DialogueObj;
+    private GameObject DialogueObj;
     public SpriteRenderer[] Panels;    //Panels to show
     public int PanelInd;
     private SpriteRenderer PreviousPanel;
@@ -12,22 +12,30 @@ public class IntroHandler : MonoBehaviour
     
     private void Start()
     {
+        
         PanelInd = -1;
         PreviousPanel = null;
     }
+
      
     // Update is called once per frame
     void Update()
     {
-        if (!DialogueObj.activeSelf && PanelInd <= 5) { SetPanels(); }
+
+        if (DialogueObj == null)
+        { DialogueObj = FindFirstObjectByType<DialogueManager>().gameObject; }
+
+        if (!DialogueRead.reading && PanelInd <= 5) { SetPanels(); }
         else if (PanelInd >= 6 && fade.IsNotFading())
         {
             fade.FadeOut();
+            Time.timeScale = 0;
             doNextScene = true;
         }
         if (fade.alpha >= 1 && doNextScene) {
 
-            //Time.timeScale = 1;
+            Time.timeScale = 1;
+            GameManager.LoopInd = 0;
             SceneManager.LoadSceneAsync("Level 1"); 
         
         }

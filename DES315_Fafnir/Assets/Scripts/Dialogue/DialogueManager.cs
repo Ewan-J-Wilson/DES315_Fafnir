@@ -45,8 +45,8 @@ public class DialogueManager : MonoBehaviour
     { icon.SetActive(textBox.isActiveAndEnabled); }
 
     // Allows for dialogue to be changed when the loop changes
-    public static void OnLoopChange() {
-        chapter = currentLevel + "-" + GameManager.LoopInd + "_START";
+    public static void LoopTrigger(string _type) {
+        chapter = currentLevel + "-" + GameManager.LoopInd + "_" + _type;
         instance.ReadDialogue();
     }
 

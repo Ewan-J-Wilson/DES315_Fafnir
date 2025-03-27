@@ -197,7 +197,7 @@ public class DialogueRead : MonoBehaviour
 
         }
 
-        reading = false;
+        
         displayLine = "";
 
         DialogueManager.next = false;
@@ -208,7 +208,8 @@ public class DialogueRead : MonoBehaviour
         else
         { yield return new WaitUntil(ReadNext); }
 
-        // Re-enable the palyer input and hide the dialogue box
+        reading = false;
+        // Re-enable the player input and hide the dialogue box
         DialogueManager.DisablePlayerInput(false);
         gameObject.SetActive(false);
 
