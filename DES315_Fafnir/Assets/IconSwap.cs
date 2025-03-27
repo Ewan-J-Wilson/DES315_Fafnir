@@ -30,7 +30,7 @@ public class IconSwap : MonoBehaviour
 
     public void Update() {
 
-        if (DialogueManager.input != null)
+        if (PlayerAI.inputRef != null)
         { ChangeIcon(); }
         
         if (!canBlink)
@@ -48,16 +48,16 @@ public class IconSwap : MonoBehaviour
 
     private void ChangeIcon() {
         
-        if (DialogueManager.input.currentControlScheme == controlSchemeName && DialogueManager.input.devices[0].name == deviceName)
+        if (PlayerAI.inputRef.currentControlScheme == controlSchemeName && PlayerAI.inputRef.devices[0].name == deviceName)
         { return; }
 
-        controlSchemeName = DialogueManager.input.currentControlScheme;
-        deviceName = DialogueManager.input.devices[0].name;
+        controlSchemeName = PlayerAI.inputRef.currentControlScheme;
+        deviceName = PlayerAI.inputRef.devices[0].name;
 
-        if (DialogueManager.input.currentControlScheme == "Keyboard")
+        if (PlayerAI.inputRef.currentControlScheme == "Keyboard")
         { GetComponent<Image>().sprite = keyboard; }
         else {
-            if (InputSystem.IsFirstLayoutBasedOnSecond(DialogueManager.input.devices[0].name, "DualShockGamepad"))
+            if (InputSystem.IsFirstLayoutBasedOnSecond(PlayerAI.inputRef.devices[0].name, "DualShockGamepad"))
             { GetComponent<Image>().sprite = ps; }
             else
             { GetComponent<Image>().sprite = xbox; }
