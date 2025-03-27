@@ -23,7 +23,8 @@ public class PlayerAI : MonoBehaviour
 	// Clones
 	[Tooltip("Reference to the Clone object")]
 	[SerializeField] private GameObject Clone;  //Clone gameobject reference
-	private int CloneNo;                        //Count of currently spawned clones
+	[NonSerialized]
+	public int CloneNo;                        //Count of currently spawned clones
 	protected int JumpCount = 0;						//Enables double jumping 
 	protected const int MaxClones = 4;          //Maximum number of clones on screen at once
 	[Range(1,5)] // [SerializeField]
@@ -46,7 +47,8 @@ public class PlayerAI : MonoBehaviour
 	private int ComInd;                         //Index into written commands
 	protected const int MaxComSize = 8192;      //Maximum amount of commands within the PCList
 	public static bool ClearList = false;       //Handshake to ensure the new clone has recieved the command data
-	private bool IsRecording;                   //Flag to enable movement recording with the player
+	[NonSerialized]
+	public bool IsRecording;                   //Flag to enable movement recording with the player
 
 	// Player
 	protected Rigidbody2D Rb;                   //Rigidbody for player physics
@@ -57,13 +59,17 @@ public class PlayerAI : MonoBehaviour
 	protected float MoveSpeed = 7.5f;     //Constant movement speed
 	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
+	
 
 	// Pause Menu
 	private MenuButtons pauseMenu;
 
 	[SerializeField]
 	protected string CloningSound;
-	
+
+	// Animator
+	protected Animator playerAnimator;
+	protected SpriteRenderer playerRenderer;
 
     void Start()
 	{
@@ -76,7 +82,8 @@ public class PlayerAI : MonoBehaviour
 		Array.Resize(ref PCList, 1);            //Resize array to have one element
 		ComInd = 0;                             //Reset command index
 		LastPos = transform.position;           //Grab current position for future clone position
-		
+		playerRenderer = GetComponentInChildren<SpriteRenderer>();
+		playerAnimator = GetComponentInChildren<Animator>();
 
 	}
 
@@ -147,6 +154,7 @@ public class PlayerAI : MonoBehaviour
 
 	protected virtual void HandleMovement()
 	{
+		playerAnimator.SetBool("InAir", Rb.velocityY != 0f);
 		if (Rb.velocityY == 0f)
 		{ JumpCount = 0; }
         
@@ -168,7 +176,16 @@ public class PlayerAI : MonoBehaviour
         // L/R input
         Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, XAccel);
 
-	}
+		
+		playerAnimator.SetFloat("Velocity", Mathf.Abs(Vel.x));
+
+		if (Vel.x > 0f)
+		{ playerRenderer.flipX = false; }
+		else if (Vel.x < 0f)
+		{ playerRenderer.flipX = true; }
+
+
+    }
 
 	protected void FixedUpdate()
 	{ transform.Translate(Vel * Time.deltaTime); }
@@ -212,6 +229,7 @@ public class PlayerAI : MonoBehaviour
 
         // Disables active cloning
 		ComInd++;
+		ClearList = true;
 		Array.Resize(ref PCList, ComInd + 1);
 		IsRecording = false;
 		KillTrail();

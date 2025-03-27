@@ -36,10 +36,12 @@ Ah yes, of course. How do I go about doing that?
 I will forgive your transgressions this once, father. {n}After all, what is a stick without a carrot?
 {NEXT}
 [CHILD_Happy]
-You can use {Player/Clone} to create a clone of yourself that will copy your actions.
+You can use {Player/Clone} to record your actions...
 {NEXT}
 [CHILD_Happy]
-This includes stuff like using levers, and that button over there!
+...and then press {Player/Clone} again to create a clone of yourself. 
+[CHILD_Happy]
+The clone will copy everything you did in that time. {n}That includes stuff like using levers, and that button over there!
 {NEXT}
 [CHILD_Happy]
 But be careful! You're only allowed 4 of them. 
@@ -61,9 +63,6 @@ Just press {Player/Reset} and you'll restart the level. Happy?
 {NEXT}
 [DAD_Neutral]
 Very. Now let's go get that hat!
-END_DIAG
-
-lorem ipsum yeah yeah yeah
 END_DIAG
 
 1-0_START
@@ -123,6 +122,50 @@ He runs into more buttons and more doors! {n}He's gotta open ALL of them to get 
 Alright then, let's do this!
 END_DIAG
 
+2-0_START
+[CHILD_Happy]
+Alright, you made it past those evil platforms! What next? 
+{NEXT}
+[DAD_Neutral]
+Our fisherman's last obstacle is his greatest opponent yet...
+{NEXT}
+[DAD_Shock]
+...A DASTARDLY SAWFISH!
+{NEXT}
+[CHILD_Happy]
+Oh man, this is gonna be good! {n}Are they gonna fight?! {n}Will there be lots of blood?! {n}Is the fisherman gonna cook him up for dinner?!
+{NEXT}
+[DAD_Shock]
+Goodness, noooo, nooo, no! He's just...standing there. {n}And a cloud is raining on him to keep him from drying out.
+{NEXT}
+[CHILD_Tired]
+What...what do you mean?
+{NEXT}
+[DAD_Neutral]
+He, uhhh, just finished his work for the day, as a carpenter. {n}So he's too tired to move. 
+{NEXT}
+[CHILD_Anger]
+What?! BOOOOOOriiiing! {n}This is the last puzzle! He's gotta be trickier than that!
+{NEXT}
+[DAD_Tired]
+You can come up with something, then. {n}*yawn* I'm too tired to think of anything clever. 
+END_DIAG
+
+CLONE_DESTROY
+[CHILD_Happy]
+BOOM! Your clones are gone!
+{NEXT}
+[DAD_Shock]
+W-what? How?
+{NEXT}
+[CHILD_Happy]
+The fish is being rained on, right? {n}The clones are weak to water!
+{NEXT}
+[DAD_Neutral]
+What a vivid imagination you have, child. {n}I knew you'd come up with something.
+END_DIAG
+
+
 CELESTE_01
 
 [CHILD_Happy]
@@ -147,39 +190,54 @@ What a waste, to build all of this for no reason...
 At least we get to enjoy the leftovers.
 END_DIAG
 
-INTRO_START
+INTRO_0
 [DAD_Neutral]
 Panel 1-1
 {NEXT}
 Panel 1-2
 {NEXT}
 Panel 1-3
-{NEXT}
+END_DIAG
+
+INTRO_1
 Panel 2-1
 {NEXT}
 Panel 2-2
 {NEXT}
 Panel 2-3
-{NEXT}
+END_DIAG
+
+INTRO_2
 Panel 3-1
 {NEXT}
 Panel 3-2
 {NEXT}
 Panel 3-3
-{NEXT}
+END_DIAG
+
+INTRO_3
 Panel 4-1
+[DAD_Shock]
+The, out of nowhere, {n}the dragon swooped down and stole her hat!
 {NEXT}
 Panel 4-2
+[DAD_Shock]
+"Noooo! Get back here with my hat!" The witch protested.
 {NEXT}
 Panel 4-3
-{NEXT}
+END_DIAG
+
+INTRO_4
 Panel 5-1
 {NEXT}
 Panel 5-2
 {NEXT}
 Panel 5-3
-{NEXT}
+END_DIAG
+
+INTRO_5
 Panel 6-1
+
 {NEXT}
 Panel 6-2
 {NEXT}

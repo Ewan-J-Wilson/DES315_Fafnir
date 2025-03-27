@@ -50,6 +50,16 @@ public class MenuButtons : MonoBehaviour
 
     }
 
+    public void ShowHint() {
+
+        if (DialogueRead.reading)
+        { return; }
+
+        Pause(false);
+        DialogueManager.LoopTrigger("HINT");
+
+    }
+
     public void Update() {
         
 		if (doNextScene && _fade.alpha >= 1f) {
