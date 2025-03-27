@@ -47,10 +47,7 @@ public class CloneAI : PlayerAI
 		{
 			ReadCom();
 		}
-		else if (EndCom)
-		{
-            playerAnimator.SetBool("Stop", true);
-        }
+
 		ComTimer -= Time.deltaTime;         //Decrement command duration
 
 		Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * PCList[ComPos].hAxis, XAccel);
