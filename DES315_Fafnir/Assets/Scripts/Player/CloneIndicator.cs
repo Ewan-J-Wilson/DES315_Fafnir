@@ -9,7 +9,7 @@ public class CloneIndicator : MonoBehaviour
     [SerializeField]
     private GameObject image;
     private PlayerAI player;
-    private List<Image> playerSprites = new();
+    private readonly List<Image> playerSprites = new();
 
     [SerializeField]
     private float blinkSpeed = 0.33f;
@@ -23,7 +23,7 @@ public class CloneIndicator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GetComponentInParent<PlayerAI>();
+        player = FindFirstObjectByType<PlayerAI>();
         foreach (Image c in GetComponentsInChildren<Image>()) 
         { playerSprites.Add(c); }
 

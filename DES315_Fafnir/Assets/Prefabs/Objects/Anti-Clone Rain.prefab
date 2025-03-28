@@ -47,8 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fa80c140edd0fe4c8704c77c21ebf9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggerDialogue: 0
-  chapter: 
+  triggerDialogue: 1
+  chapter: CLONE_DESTROY
+  onlyFirstTime: 1
 --- !u!61 &6244229300620218687
 BoxCollider2D:
   m_ObjectHideFlags: 0
