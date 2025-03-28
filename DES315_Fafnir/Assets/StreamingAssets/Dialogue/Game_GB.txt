@@ -179,7 +179,6 @@ What a vivid imagination you have, child. {n}I knew you'd come up with something
 END_DIAG
 
 
-
 0-0_HINT
 [CHILD_Anger]
 What do you need a hint for?
@@ -253,7 +252,6 @@ Please, dad, just one more story?
 [DAD_Tired]
 Alright then, but just this once. Then it's time to sleep.
 {NEXT}
-END_DIAG
 [CHILD_Anger]
 Awww man, sleep? You drive a hard bargain, father. 
 END_DIAG
@@ -281,7 +279,7 @@ END_DIAG
 
 INTRO_3
 [DAD_Shock]
-The, out of nowhere, {n}the dragon swooped down and stole her hat!
+Then, out of nowhere, {n}the dragon swooped down and stole her hat!
 {NEXT}
 [DAD_Shock]
 "Noooo! Get back here with my hat!" The witch protested.
