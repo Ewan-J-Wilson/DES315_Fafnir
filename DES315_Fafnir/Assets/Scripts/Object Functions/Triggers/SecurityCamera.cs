@@ -24,6 +24,8 @@ public class SecurityCamera : MonoBehaviour
 
         PlayerAI player = collision.gameObject.GetComponent<PlayerAI>();
 
+        player.KillClone(); // calls function from player script 
+
         if (onlyFirstTime && firstTimeTriggered)
         { return; }
 
@@ -36,8 +38,6 @@ public class SecurityCamera : MonoBehaviour
 
         }
 
-        player.KillClone(); // calls function from player script 
-        
     }
 
 }
