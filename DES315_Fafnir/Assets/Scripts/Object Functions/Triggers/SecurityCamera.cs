@@ -24,12 +24,15 @@ public class SecurityCamera : MonoBehaviour
 
         PlayerAI player = collision.gameObject.GetComponent<PlayerAI>();
 
+        if (player.CloneNo == 0)
+        { return; }
+
         player.KillClone(); // calls function from player script 
 
         if (onlyFirstTime && firstTimeTriggered)
         { return; }
 
-        if (triggerDialogue && player.CloneNo > 0 && !triggered) { 
+        if (triggerDialogue && !triggered) { 
             DialogueManager.CodedDialogue(chapter); 
             triggered = true;
 
