@@ -246,7 +246,7 @@ public class PlayerAI : MonoBehaviour
 	private void HandleCommandInput()
 	{
 		//Check for command change
-		if (CurrentCom.hAxis != LastCom.hAxis 
+		if ((CurrentCom.hAxis != LastCom.hAxis || ComInd == 0 )
 			|| CurrentCom.jump != LastCom.jump 
 			|| CurrentCom.tool != LastCom.tool)
 		{
