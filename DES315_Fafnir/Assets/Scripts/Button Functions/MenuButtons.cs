@@ -34,7 +34,9 @@ public class MenuButtons : MonoBehaviour
         _fade.FadeOut();
         doNextScene = true;
         nextScene = _scene;
-        Audiomanager.instance.PlayAudio("MenuConfirm");
+        if (DialogueManager.instance.textBox.isActiveAndEnabled)
+        { DialogueManager.instance.textBox.EndDialogue(); }
+        Audiomanager.instance.PlayAudio("Select");
         //SceneManager.LoadSceneAsync(_scene);
     }
 
@@ -54,7 +56,6 @@ public class MenuButtons : MonoBehaviour
 
         if (DialogueRead.reading)
         { return; }
-
         Pause(false);
         DialogueManager.LoopTrigger("HINT");
 

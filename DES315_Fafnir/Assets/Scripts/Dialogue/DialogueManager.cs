@@ -46,12 +46,14 @@ public class DialogueManager : MonoBehaviour
     // Allows for dialogue to be changed when the loop changes
     public static void LoopTrigger(string _type) {
         chapter = currentLevel + "-" + GameManager.LoopInd + "_" + _type;
+        DisablePlayerInput(true);
         instance.ReadDialogue();
     }
 
     // Allows for dialogue to be enabled through code
     public static void CodedDialogue(string _chapter) {
         chapter = _chapter;
+        DisablePlayerInput(true);
         instance.ReadDialogue();
     }
 

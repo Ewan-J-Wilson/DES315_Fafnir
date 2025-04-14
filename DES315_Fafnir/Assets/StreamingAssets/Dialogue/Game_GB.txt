@@ -151,8 +151,10 @@ END_DIAG
 2-1_START
 [CHILD_Happy]
 Good thinking, dad! {n}But we can do better than that!
+{NEXT}
 [DAD_Tired]
 *sigh* How, child? How can we possibly make it better?
+{NEXT}
 [CHILD_Happy]
 You've come this far! I'm sure you can do it!
 END_DIAG
@@ -160,11 +162,13 @@ END_DIAG
 2-2_START
 [CHILD_Happy]
 Nope, not good enough! {n}Last one before the dragon though, I promise!
+{NEXT}
 [DAD_Tired]
 Good, cause I'm up past *my* bedtime at this point.
 END_DIAG
 
 CLONE_DESTROY
+{input enable}
 [CHILD_Happy]
 BOOM! Your clones are gone!
 {NEXT}
@@ -270,6 +274,7 @@ END_DIAG
 INTRO_2
 [DAD_Neutral]
 Today, our fisherman was {n}meeting with his old friend and {n}neighbour, The Witch.
+{NEXT}
 [CHILD_Happy]
 He's friends with a witch?! So cool!
 {NEXT}
@@ -296,7 +301,7 @@ Without her magic hat, the witch began to age rapidly, and she became old and fr
 Wow! She must be nearly...40 years old!
 {NEXT}
 [DAD_Tired]
-... Ahem.
+...{t:0.4} Ahem.
 END_DIAG
 
 INTRO_5
