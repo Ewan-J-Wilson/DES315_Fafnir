@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     {
 
 		if (GameObject.Find("Dialogue")) {
-			DialogueManager.DisablePlayerInput(true);
+			//DialogueManager.DisablePlayerInput(true);
 			StartCoroutine(StartDialogue());
 		}
 

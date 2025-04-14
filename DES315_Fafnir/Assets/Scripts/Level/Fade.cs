@@ -15,8 +15,6 @@ public class Fade : MonoBehaviour
     public void Start() 
     { 
 
-       
-
         if ((isMenu ? MenuButtons._fade : GameManager._fade) != this && FindFirstObjectByType<IntroHandler>() == null) { 
             Destroy(gameObject); 
             return;
