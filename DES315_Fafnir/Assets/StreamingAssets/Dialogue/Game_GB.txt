@@ -168,7 +168,7 @@ Good, cause I'm up past *my* bedtime at this point.
 END_DIAG
 
 CLONE_DESTROY
-{enable}
+{input enable}
 [CHILD_Happy]
 BOOM! Your clones are gone!
 {NEXT}
