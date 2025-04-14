@@ -56,7 +56,6 @@ public class MenuButtons : MonoBehaviour
 
         if (DialogueRead.reading)
         { return; }
-
         Pause(false);
         DialogueManager.LoopTrigger("HINT");
 
