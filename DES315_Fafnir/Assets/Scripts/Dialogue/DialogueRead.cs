@@ -215,6 +215,15 @@ public class DialogueRead : MonoBehaviour
 
     }
 
+    public void EndDialogue() {
+
+        reading = false;
+        // Re-enable the player input and hide the dialogue box
+        DialogueManager.DisablePlayerInput(false);
+        gameObject.SetActive(false);
+
+    }
+
     // Check for the next panel / skip dialogue prompt
     private bool ReadNext() { 
         if (DialogueManager.next) {
