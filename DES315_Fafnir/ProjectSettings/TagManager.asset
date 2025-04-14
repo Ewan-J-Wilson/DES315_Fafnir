@@ -18,6 +18,7 @@ TagManager:
   - FadeOut
   - DeathZone
   - StartFlag
+  - Dialogue
   layers:
   - Default
   - TransparentFX
