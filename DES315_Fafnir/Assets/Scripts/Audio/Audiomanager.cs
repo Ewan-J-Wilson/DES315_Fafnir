@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -43,6 +44,7 @@ public class Audiomanager : MonoBehaviour
 
     //Audio tracks and fade tracks
     public AudioInstance[] tracks;
+    public static AudioInstance[] tracksStatic = {};
     public static AudioInstance CurrentTrack;         //Music track to fade in
     public static AudioInstance PreviousTrack;        //Music track to fade out
     public static AudioInstance NullInst;
@@ -82,6 +84,9 @@ public class Audiomanager : MonoBehaviour
             tracks[i].src.loop = tracks[i].type == AudioType.MUSIC;
             tracks[i].src.outputAudioMixerGroup = AudOut;
         }
+
+        if (tracksStatic.Length == 0)
+        { tracksStatic = tracks; }
 
         NullInst.Name = null;
     }
@@ -141,12 +146,12 @@ public class Audiomanager : MonoBehaviour
     public static void ChangeVolume(float vol, AudioType type)
     { 
         volumeLevels[type] = vol; 
-        for (int i = 0; i < instance.tracks.Length; i++) {
+        for (int i = 0; i < tracksStatic.Length; i++) {
 
-            if (instance.tracks[i].type == type) { 
-                instance.tracks[i].src.volume = volumeLevels[instance.tracks[i].type];
-                if (instance.tracks[i].type != AudioType.MASTER) 
-                {instance.tracks[i].src.volume *= volumeLevels[AudioType.MASTER];}
+            if (tracksStatic[i].type == type) { 
+                tracksStatic[i].src.volume = volumeLevels[tracksStatic[i].type];
+                if (tracksStatic[i].type != AudioType.MASTER) 
+                {tracksStatic[i].src.volume *= volumeLevels[AudioType.MASTER];}
             }
         }
     }
@@ -202,8 +207,8 @@ public class Audiomanager : MonoBehaviour
     }
 
     public AudioInstance FindLooptrack(int loopind, int levelind) 
-    { return Array.Find(tracks, tracks => tracks.Name == LoopTrackList[levelind].Name[loopind]); }
+    { return Array.Find(tracksStatic, tracks => tracks.Name == LoopTrackList[levelind].Name[loopind]); }
 
     public AudioInstance FindTrack(string name) 
-    { return Array.Find(tracks, tracks => tracks.Name == name); }
+    { return Array.Find(tracksStatic, tracks => tracks.Name == name); }
 }
