@@ -4,10 +4,10 @@ I'll make this real simple for you, dad. {n}You can move around using {Player/Mo
 {NEXT}...then {Player/Jump} to jump real high!
 {NEXT}
 [CHILD_Happy]
-You can also press {Player/Use} to activate certain objects. Try it on that lever there!
+You can also press {Player/Use} to activate certain objects. {n}Try it on that lever there!
 {NEXT}
 [DAD_Shock]
-Press? Lever? What in creation are you talking about, child?
+Press? Lever? What in creation are you {n}talking about, child?
 {NEXT}
 [CHILD_Anger]
 Don't worry about it, dad! Just do it!
@@ -191,27 +191,27 @@ END_DIAG
 
 0-1_HINT
 [CHILD_Happy]
-You can use the clone to stand on the button
+You can use the clone to stand on the button!
 END_DIAG
 
 1-0_HINT
 [CHILD_Happy]
-You have access to multiple clones
+You have access to multiple clones!
 END_DIAG
 
-1-1 HINT
-[CHILD_Tired]
-Hint in progress.
+1-1_HINT
+[CHILD_Happy]
+Different levers control different platforms!
 END_DIAG
 
 1-2_HINT
-[CHILD_Tired]
-Take it one step at a time
+[CHILD_Happy]
+Take it one step at a time!
 END_DIAG
 
 2-0_HINT
 [CHILD_Happy]
-The clones themselves can pass through the water just fine
+The clones themselves can pass through the water just fine!
 END_DIAG
 
 2-1_HINT
@@ -220,8 +220,8 @@ Perhaps the carpenter sawfish could be helpful?
 END_DIAG
 
 2-2_HINT
-[DAD_Shock]
-Hint in progress.
+[DAD_Tired]
+Keep an eye on the blue icons.
 END_DIAG
 
 CELESTE_01
@@ -298,7 +298,7 @@ INTRO_4
 Without her magic hat, the witch began to age rapidly, and she became old and frail.
 {NEXT}
 [CHILD_Happy]
-Wow! She must be nearly...40 years old!
+So she must be like 40 years old now!
 {NEXT}
 [DAD_Tired]
 ...{t:0.4} Ahem.
