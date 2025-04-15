@@ -5,17 +5,19 @@ using UnityEngine.SceneManagement;
 public class Fade : MonoBehaviour
 {
 
-    public bool isMenu = false;
+    public static Fade instance;
     public static float FadeTime = 0.75f;
-    private SpriteRenderer _sprite;
+    private static SpriteRenderer _sprite;
     [HideInInspector]
-    public float alpha = 1f;
-    private float targetAlpha = 0f;
+    public static float alpha = 1f;
+    private static float targetAlpha = 0f;
     
     public void Start() 
     { 
 
-        if ((isMenu ? MenuButtons._fade : GameManager._fade) != this && FindFirstObjectByType<IntroHandler>() == null) { 
+        if (instance == null)
+        { instance = this; }
+        if (instance != this) { 
             Destroy(gameObject); 
             return;
         }

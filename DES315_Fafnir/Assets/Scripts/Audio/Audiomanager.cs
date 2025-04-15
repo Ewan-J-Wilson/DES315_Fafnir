@@ -43,9 +43,9 @@ public class Audiomanager : MonoBehaviour
 
     //Audio tracks and fade tracks
     public AudioInstance[] tracks;
-    public AudioInstance CurrentTrack;         //Music track to fade in
-    public AudioInstance PreviousTrack;        //Music track to fade out
-    public AudioInstance NullInst;
+    public static AudioInstance CurrentTrack;         //Music track to fade in
+    public static AudioInstance PreviousTrack;        //Music track to fade out
+    public static AudioInstance NullInst;
 
     public LoopTrackInstance[] LoopTrackList;   //List of music tracks to play in a given level loop
 

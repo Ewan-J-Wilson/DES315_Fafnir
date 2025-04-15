@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     public void Update() {
         
-		if (doNextLevel && _fade.alpha >= 1f) {
+		if (doNextLevel && Fade.alpha >= 1f) {
 			doNextLevel = false;
 			Time.timeScale = 1;
 			SceneManager.LoadSceneAsync(nextLevel);

@@ -66,7 +66,7 @@ public class MenuButtons : MonoBehaviour
 
     public void Update() {
         
-		if (doNextScene && _fade.alpha >= 1f) {
+		if (doNextScene && Fade.alpha >= 1f) {
 			doNextScene = false;
             Time.timeScale = 1;
 			SceneManager.LoadSceneAsync(nextScene);
