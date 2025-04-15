@@ -408,6 +408,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2001393719}
+        m_TargetAssemblyTypeName: Audiomanager, Assembly-CSharp
+        m_MethodName: FadeAllTracks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!224 &363970491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -927,6 +939,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967726135}
   m_CullTransparentMesh: 1
+--- !u!1 &1091636561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1091636563}
+  - component: {fileID: 1091636562}
+  m_Layer: 0
+  m_Name: GenericTrackPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &1091636562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091636561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef33e978a909e40448aa55316c4cf784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrackName: T6-2
+--- !u!4 &1091636563
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091636561}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1360900734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1377,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conditional: 0
+--- !u!114 &2001393719 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
+  m_PrefabInstance: {fileID: 2086714717}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3113ede2fa0e60b4dbb5e488ee121548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2035525049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1471,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 2001393719}
+        m_TargetAssemblyTypeName: Audiomanager, Assembly-CSharp
+        m_MethodName: FadeAllTracks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1866310351}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: SwitchToScene
@@ -1715,3 +1795,4 @@ SceneRoots:
   - {fileID: 298882624}
   - {fileID: 2086714717}
   - {fileID: 2137906046}
+  - {fileID: 1091636563}

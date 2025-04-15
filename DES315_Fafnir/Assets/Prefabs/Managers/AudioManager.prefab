@@ -307,11 +307,40 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 66f0cf5807f08d94f81fd8646747301c, type: 3}
     src: {fileID: 0}
     type: 1
+  CurrentTrack:
+    Name: 
+    Volume: 0
+    Pitch: 0
+    Panning: 0
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 0}
+    src: {fileID: 0}
+    type: 0
+  PreviousTrack:
+    Name: 
+    Volume: 0
+    Pitch: 0
+    Panning: 0
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 0}
+    src: {fileID: 0}
+    type: 0
+  NullInst:
+    Name: 
+    Volume: 0
+    Pitch: 0
+    Panning: 0
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 0}
+    src: {fileID: 0}
+    type: 0
   LoopTrackList:
   - Name:
     - T5-1
     - T5-2
-    - T5-3
     - T5-3
   - Name:
     - T6-1

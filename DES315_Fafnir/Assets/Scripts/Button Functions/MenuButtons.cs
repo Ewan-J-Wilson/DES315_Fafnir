@@ -34,8 +34,11 @@ public class MenuButtons : MonoBehaviour
         _fade.FadeOut();
         doNextScene = true;
         nextScene = _scene;
-        if (DialogueManager.instance.textBox.isActiveAndEnabled)
-        { DialogueManager.instance.textBox.EndDialogue(); }
+        if (DialogueManager.instance != null)
+        {
+            if (DialogueManager.instance.textBox.isActiveAndEnabled)
+            { DialogueManager.instance.textBox.EndDialogue(); }
+        }
         Audiomanager.instance.PlayAudio("Select");
         //SceneManager.LoadSceneAsync(_scene);
     }

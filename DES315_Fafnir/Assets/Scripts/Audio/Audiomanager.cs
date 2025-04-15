@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-
 public enum AudioType
 {
     MASTER,
@@ -44,9 +43,9 @@ public class Audiomanager : MonoBehaviour
 
     //Audio tracks and fade tracks
     public AudioInstance[] tracks;
-    private AudioInstance CurrentTrack;         //Music track to fade in
-    private AudioInstance PreviousTrack;        //Music track to fade out
-    private AudioInstance NullInst;
+    public AudioInstance CurrentTrack;         //Music track to fade in
+    public AudioInstance PreviousTrack;        //Music track to fade out
+    public AudioInstance NullInst;
 
     public LoopTrackInstance[] LoopTrackList;   //List of music tracks to play in a given level loop
 
@@ -61,7 +60,7 @@ public class Audiomanager : MonoBehaviour
     void Awake()
     {
         if (instance == null) instance = this;
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
             return;
@@ -92,11 +91,11 @@ public class Audiomanager : MonoBehaviour
 
     void HandleFade()
     {
-        if (PreviousTrack.Name != null)
+        if (PreviousTrack.src != null)
         {
             if (PreviousTrack.src.volume > 0)
             {
-                PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED;
+                PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED * volumeLevels[AudioType.MASTER];
                 if (PreviousTrack.src.volume <= 0)
                 {  PreviousTrack.src.Stop();  }
             }
@@ -116,7 +115,7 @@ public class Audiomanager : MonoBehaviour
         {
             if (CurrentTrack.src.volume != volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
             {
-                CurrentTrack.src.volume += Time.unscaledDeltaTime * FADE_SPEED;
+                CurrentTrack.src.volume += Time.unscaledDeltaTime * FADE_SPEED * volumeLevels[AudioType.MASTER];
                 if (CurrentTrack.src.volume > volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
                 { CurrentTrack.src.volume = volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER]; }
             }
@@ -156,22 +155,21 @@ public class Audiomanager : MonoBehaviour
     {
         AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
 
-        if (aud.src == null) {
-            //Debug.Log("Audio Not Found");
+        if (aud.src == null) 
+        { 
             return;
         }
 
-        if (pitch != 0.0f) 
+        if (pitch != 0.0f)
         { aud.src.pitch = pitch; }
         if (pan != 0.5f) 
         { aud.src.panStereo = pan; }
-        if (vol != 0.0f)
+        if (vol != 0.0f)                                            //Keep volume at 0.0f if we want to fade audio in [I.E. music], otherwise set it to the current master volume * music volume
         {
             aud.src.volume = vol * volumeLevels[aud.type];
             if (aud.type != AudioType.MASTER)
             { aud.src.volume *= volumeLevels[AudioType.MASTER]; }
         }
-        else aud.src.volume = 0.0f;
         aud.src.Play();
         
     }
@@ -185,7 +183,6 @@ public class Audiomanager : MonoBehaviour
     //
     public void FadeLoopTracks(int loopind, int levelind)
     {
-
         PreviousTrack = CurrentTrack;
 
         CurrentTrack = FindLooptrack(loopind, levelind);
@@ -194,19 +191,19 @@ public class Audiomanager : MonoBehaviour
 
         PreviousTrackTimer = CurrentTrackTimer;
         CurrentTrackTimer = 0;
-
     }
     
     public void FadeAllTracks()
     {
-
         if (CurrentTrack.Name == null) 
         { return; }
         PreviousTrack = CurrentTrack;
         CurrentTrack = NullInst;
-
     }
 
     public AudioInstance FindLooptrack(int loopind, int levelind) 
     { return Array.Find(tracks, tracks => tracks.Name == LoopTrackList[levelind].Name[loopind]); }
+
+    public AudioInstance FindTrack(string name) 
+    { return Array.Find(tracks, tracks => tracks.Name == name); }
 }

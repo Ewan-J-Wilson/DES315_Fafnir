@@ -23,7 +23,7 @@ public class VolumeSliders : MonoBehaviour
     { 
         // Change the volume
         Audiomanager.ChangeVolume(value, AudioBus);
-        if (soundTimer >= soundCooldown) { 
+        if (soundTimer >= soundCooldown && AudioBus != AudioType.MUSIC) { 
             Audiomanager.instance.PlayAudio("Kick"); 
             soundTimer = 0f;
         }
