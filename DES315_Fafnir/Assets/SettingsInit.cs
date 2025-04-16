@@ -8,6 +8,11 @@ public class SettingsInit : MonoBehaviour
     void Start()
     {
         
+        // Reset the dialogue that only triggers once
+        SecurityCamera.firstTimeTriggered = false;
+
+        // Initialise All Settings to prevent later issues
+
         if (!PlayerPrefs.HasKey("Audio: MASTER"))
         { PlayerPrefs.SetFloat("Audio: MASTER", 0.5f); }
 
@@ -24,9 +29,4 @@ public class SettingsInit : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

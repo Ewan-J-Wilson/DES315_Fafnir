@@ -15,6 +15,7 @@ public class ChangeTextScale : MonoBehaviour
     void Start()
     {
         
+        // Initialise the Slider
         slider = GetComponent<Slider>();
         slider.value = PlayerPrefs.GetFloat("Text Scale");
         slider.onValueChanged.AddListener(ValueChanged);
@@ -23,9 +24,11 @@ public class ChangeTextScale : MonoBehaviour
     private void ValueChanged(float value)
     { 
 
+        // Save the preference
         PlayerPrefs.SetFloat("Text Scale", value);
         PlayerPrefs.Save();
 
+        // Update the existing text boxes
         if (DialogueManager.instance != null)
         { DialogueManager.instance.SetDialogueSize(); }
         testDialogue.transform.localScale = new Vector3(value * 1.2f, value * 1.2f, 1);

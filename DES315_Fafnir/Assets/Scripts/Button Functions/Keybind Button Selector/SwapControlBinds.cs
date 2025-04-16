@@ -7,15 +7,10 @@ public class SwapControlBinds : MonoBehaviour
     [SerializeField]
     private GameObject[] Panels = { };
 
-    private void Awake() {
-
-        //Debug.Log(GameObject.FindGameObjectWithTag("Keyboard").name);
-        //Debug.Log(GameObject.FindGameObjectWithTag("Controller").name);
-
-    }
 
     private void OnEnable() {
 
+        // Update the active control scheme settings
         foreach (GameObject obj in Panels)
         { 
             if (obj.CompareTag("Keyboard"))
