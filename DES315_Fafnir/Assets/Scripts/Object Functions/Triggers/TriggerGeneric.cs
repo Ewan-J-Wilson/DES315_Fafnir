@@ -18,12 +18,14 @@ public class TriggerGeneric : MonoBehaviour {
     [HideInInspector]
     public bool selected = false;
 
+    // When the object has been activated
     public void OnTrigger() {
         Audiomanager.instance.PlayAudio(TriggerOnSound);
         foreach (ActivateGeneric toActivate in triggerList)
         { toActivate.thresholdCount++; }
     }
 
+    // When the object has been deactivated
     public void OnExit() {
         Audiomanager.instance.PlayAudio(TriggerOffSound);
         foreach (ActivateGeneric toActivate in triggerList) { 
