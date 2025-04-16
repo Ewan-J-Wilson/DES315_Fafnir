@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -13,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     public static bool autoscroll = false;
     public static float autoscrollLength = 3f;
     public static bool canSkip = true;
+    public static float defaultFontSize = 28;
     
     // On Start
     public void Start() {
@@ -80,7 +82,18 @@ public class DialogueManager : MonoBehaviour
     // Read the dialogue and thus display it
     public void ReadDialogue() {
         instance.textBox.gameObject.SetActive(true);
+        SetDialogueSize();
         textBox.ReadStart();
+    }
+
+    public void SetDialogueSize() {
+
+        if (!instance.textBox.gameObject.activeSelf)
+        { return; }
+
+        instance.textBox.gameObject.transform.localScale = new Vector3(PlayerPrefs.GetFloat("Text Scale") * 1.2f, PlayerPrefs.GetFloat("Text Scale") * 1.2f, 1);
+        instance.GetComponentInChildren<TMP_Text>().fontSize = defaultFontSize * PlayerPrefs.GetFloat("Text Scale");
+
     }
 
 
