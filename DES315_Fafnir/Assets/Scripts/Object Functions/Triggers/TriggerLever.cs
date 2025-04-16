@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class TriggerLever : TriggerGeneric {
+public class TriggerLever : TriggerGeneric { // used for levers 
 
+    // four different sprites based on on/off status and whether or not it can be selected
     [SerializeField]
     [Tooltip("Sprite for when the lever is off and deselected")]
     private Sprite offSprite;
@@ -16,9 +17,9 @@ public class TriggerLever : TriggerGeneric {
     [Tooltip("Sprite for when the lever is on and currently deselected")]
     private Sprite onSelectSprite;
 
-    private bool spriteSelected = false;
+    private bool spriteSelected = false; // initial value for whether or not sprite is selected
 
-    public void Start() {
+    public void Start() { // enables selection
 
         canSelect = true;
 
@@ -33,11 +34,12 @@ public class TriggerLever : TriggerGeneric {
     }
 
     
-    protected void OnTriggerEnter2D(Collider2D collision)
+    protected void OnTriggerEnter2D(Collider2D collision) // lever enters cursor radius, thus it can be selected
     {
         if (!collision.CompareTag("Cursor Radius")) 
         { return; }
 
+        // if lever can be selected, it is possible to change its on/off status
         if (canSelect) {
             foreach (GameObject cursor in GameObject.FindGameObjectsWithTag("Cursor"))
             { 
@@ -57,14 +59,14 @@ public class TriggerLever : TriggerGeneric {
 
     }
 
-    protected void OnTriggerExit2D(Collider2D collision)
+    protected void OnTriggerExit2D(Collider2D collision) // lever exits cursor radius, thus cannot be selected
     {
-
-        if (!collision.CompareTag("Cursor Radius"))
+        // if lever cannot be selected, it is impossible to change its on/off status
+        if (!collision.CompareTag("Cursor Radius")) 
         { return; }
 
 
-        if (canSelect)
+        if (canSelect) 
         {
             if (GameObject.FindGameObjectWithTag("Cursor") != null)
             {

@@ -1,3 +1,4 @@
+# Loop 1-1
 0-0_START
 [CHILD_Happy]
 I'll make this real simple for you, dad. {n}You can move around using {Player/Movement}...
@@ -13,6 +14,7 @@ Press? Lever? What in creation are you {n}talking about, child?
 Don't worry about it, dad! Just do it!
 END_DIAG
 
+# Loop 1-2
 0-1_START
 [DAD_Shock] 
 The drawbridge again? But we already read this part!
@@ -62,6 +64,7 @@ Just press {Player/Reset} and you'll restart the level. Happy?
 Very. Now let's go get that hat!
 END_DIAG
 
+# Loop 2-1
 1-0_START
 [CHILD_Happy]
 Yay! You made it past the drawbridge! {n}What's next, dad?
@@ -76,6 +79,7 @@ Our brave fisherman continues on his journey and sees... {n}{t:0.2}...TWO button
 Hmmm...well, let's see what these switches do first, shall we?
 END_DIAG
 
+# Loop 2-2
 1-1_START
 [CHILD_Anger]
 That was too easy! You can do better than that!
@@ -93,6 +97,7 @@ A...a hole? But how? It wasn't there before!
 Don't worry about it! It's just magic! {n}The fisherman knows what to do!
 END_DIAG
 
+# Loop 2-3
 1-2_START
 [CHILD_Anger]
 Nope! Still too easy! Read it again!
@@ -119,6 +124,7 @@ He runs into more buttons and more doors! {n}He's gotta open ALL of them to get 
 Alright then, let's do this!
 END_DIAG
 
+# Loop 3-1
 2-0_START
 [CHILD_Happy]
 Alright, you made it past those evil platforms! What next? 
@@ -148,6 +154,7 @@ What?! BOOOOOOriiiing! {n}This is the last puzzle! He's gotta be trickier than t
 You can come up with something, then. {n}*yawn* I'm too tired to think of anything clever. 
 END_DIAG
 
+# Loop 3-2
 2-1_START
 [CHILD_Happy]
 Good thinking, dad! {n}But we can do better than that!
@@ -159,6 +166,7 @@ Good thinking, dad! {n}But we can do better than that!
 You've come this far! I'm sure you can do it!
 END_DIAG
 
+# Loop 3-3
 2-2_START
 [CHILD_Happy]
 Nope, not good enough! {n}Last one before the dragon though, I promise!
@@ -166,6 +174,9 @@ Nope, not good enough! {n}Last one before the dragon though, I promise!
 [DAD_Tired]
 Good, cause I'm up past *my* bedtime at this point.
 END_DIAG
+
+
+# Dialogue for when the clone is destroyed for the first time
 
 CLONE_DESTROY
 {input enable}
@@ -182,48 +193,56 @@ The fish is being rained on, right? {n}The clones are weak to water!
 What a vivid imagination you have, child. {n}I knew you'd come up with something.
 END_DIAG
 
-
+# Loop 1-1
 0-0_HINT
 [CHILD_Anger]
 What do you need a hint for?
 {n}It's the first level!
 END_DIAG
 
+# Loop 1-2
 0-1_HINT
 [CHILD_Happy]
 You can use the clone to stand on the button!
 END_DIAG
 
+# Loop 2-1
 1-0_HINT
 [CHILD_Happy]
 You have access to multiple clones!
 END_DIAG
 
+# Loop 2-2
 1-1_HINT
 [CHILD_Happy]
 Different levers control different platforms!
 END_DIAG
 
+# Loop 2-3
 1-2_HINT
 [CHILD_Happy]
 Take it one step at a time!
 END_DIAG
 
+# Loop 3-1
 2-0_HINT
 [CHILD_Happy]
 The clones themselves can pass through the water just fine!
 END_DIAG
 
+# Loop 3-2
 2-1_HINT
 [DAD_Neutral]
 Perhaps the carpenter sawfish could be helpful?
 END_DIAG
 
+# Loop 3-3
 2-2_HINT
 [DAD_Tired]
 Keep an eye on the blue icons.
 END_DIAG
 
+# Easter egg dialogue. Taken from the game Celeste, which was published in 2018 by Extremely OK Games
 CELESTE_01
 
 [CHILD_Happy]
@@ -248,7 +267,7 @@ What a waste, to build all of this for no reason...
 At least we get to enjoy the leftovers.
 END_DIAG
 
-
+# Intro panel 1
 INTRO_0
 [CHILD_Happy]
 Please, dad, just one more story? 
@@ -260,6 +279,7 @@ Alright then, but just this once. Then it's time to sleep.
 Awww man, sleep? You drive a hard bargain, father. 
 END_DIAG
 
+# Intro panel 2
 INTRO_1
 [DAD_Neutral]
 Don't worry, this is gonna be good. {n}Once upon a time, there {n}was a fisherman who lived in the {n}colourful seaside town of Dragon's Harbour.
@@ -271,6 +291,7 @@ In Dragon's Harbour, life moved {n}at a slower pace, and everyone {n}got along w
 The town got its name from the dragon {n}perched atop the lighthouse, who watched over it always.
 END_DIAG
 
+# Intro panel 3
 INTRO_2
 [DAD_Neutral]
 Today, our fisherman was {n}meeting with his old friend and {n}neighbour, The Witch.
@@ -282,6 +303,7 @@ He's friends with a witch?! So cool!
 "Hi, dear! How lovely to see you again," the witch said gleefully. {n}"Likewise, it's a pleasur--"
 END_DIAG
 
+# Intro panel 4
 INTRO_3
 [DAD_Shock]
 Then, out of nowhere, {n}the dragon swooped down and stole her hat!
@@ -293,6 +315,7 @@ Then, out of nowhere, {n}the dragon swooped down and stole her hat!
 "Help me!" The hat cried out as the dragon carried it {n}back to its perch {n}atop the lighthouse.
 END_DIAG
 
+# Intro panel 5
 INTRO_4
 [DAD_Neutral]
 Without her magic hat, the witch began to age rapidly, and she became old and frail.
@@ -304,6 +327,7 @@ So she must be like 40 years old now!
 ...{t:0.4} Ahem.
 END_DIAG
 
+# Intro panel 6
 INTRO_5
 [DAD_Neutral]
 "Fear not, I'll get your hat back," the fisherman kindly offered. {n}"Oh, thank you, thank you so much!" The witch wept with gratitude.

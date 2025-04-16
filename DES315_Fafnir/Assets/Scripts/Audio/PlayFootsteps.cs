@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class PlayFootsteps : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Steps1()
+    // used for syncing footsteps with walking animation by attaching the functions to keyframes as events 
+    public void Steps1() // plays on keyframe 6
     {
         Audiomanager.instance.PlayAudio("Steppies1");
     }
 
-    public void Steps2()
+    public void Steps2() // plays on keyframe 12
     {
         Audiomanager.instance.PlayAudio("Steppies2");
     }
