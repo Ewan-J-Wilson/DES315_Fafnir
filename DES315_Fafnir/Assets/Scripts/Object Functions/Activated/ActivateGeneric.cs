@@ -45,7 +45,8 @@ public class ActivateGeneric : MonoBehaviour {
     public void SetActive(bool _isActive)
     {    
         isActive = _isActive;
-        Audiomanager.instance.PlayAudio(_isActive ? ActivateSound : null);
+        if (isActive)
+        { Audiomanager.instance.PlayAudio(ActivateSound); }
     }
 
     // Default DoAction function

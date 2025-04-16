@@ -66,18 +66,21 @@ public class TriggerLever : TriggerGeneric {
 
         if (canSelect)
         {
-            if (GameObject.FindGameObjectWithTag("Cursor").TryGetComponent(out Tool_Swing tool)) { 
-                    
-                    if (collision.transform.parent.CompareTag("Player") 
+            if (GameObject.FindGameObjectWithTag("Cursor") != null)
+            {
+                if (GameObject.FindGameObjectWithTag("Cursor").TryGetComponent(out Tool_Swing tool))
+                {
+
+                    if (collision.transform.parent.CompareTag("Player")
                         && collision.transform == tool.transform.parent)
                     { spriteSelected = false; }
 
-                    tool.interactables.Remove(gameObject); 
+                    tool.interactables.Remove(gameObject);
 
+                }
+
+                selected = false;
             }
-
-            selected = false;
-
         }
 
     }

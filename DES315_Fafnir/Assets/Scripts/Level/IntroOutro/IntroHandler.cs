@@ -33,7 +33,7 @@ public class IntroHandler : MonoBehaviour
             Time.timeScale = 0;
             doNextScene = true;
         }
-        if (fade.alpha >= 1 && doNextScene && !loadingNext) {
+        if (Fade.alpha >= 1 && doNextScene && !loadingNext) {
 
             loadingNext = true;
             Time.timeScale = 1;
