@@ -48,6 +48,12 @@ public class IconSwap : MonoBehaviour
 
     private void ChangeIcon() {
         
+        RectTransform rect = GetComponent<RectTransform>();
+
+        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 60 * PlayerPrefs.GetFloat("Text Scale"), 0);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75 * PlayerPrefs.GetFloat("Text Scale"));
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75 * PlayerPrefs.GetFloat("Text Scale"));
+
         if (PlayerAI.inputRef.currentControlScheme == controlSchemeName && PlayerAI.inputRef.devices[0].name == deviceName)
         { return; }
 
@@ -63,11 +69,10 @@ public class IconSwap : MonoBehaviour
             { GetComponent<Image>().sprite = xbox; }
         }
 
-        RectTransform rect = GetComponent<RectTransform>();
-
-        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 100, 0);
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75);
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75);
+        
+        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 60 * PlayerPrefs.GetFloat("Text Scale"), 0);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75 * PlayerPrefs.GetFloat("Text Scale"));
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75 * PlayerPrefs.GetFloat("Text Scale"));
 
     }
 

@@ -13,8 +13,7 @@ public class VolumeSliders : MonoBehaviour
     { 
         Slider slider = GetComponent<Slider>();
         // Load the audio level from settings
-        slider.value = PlayerPrefs.HasKey("Audio: " + AudioBus.ToString()) ?
-            PlayerPrefs.GetFloat("Audio: " + AudioBus.ToString()) : slider.maxValue;
+        slider.value = PlayerPrefs.GetFloat("Audio: " + AudioBus.ToString());
         // Add the trigger for the slider being changed
         slider.onValueChanged.AddListener(ValueChanged);
     }
