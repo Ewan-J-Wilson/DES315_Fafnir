@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3741771740661534282}
   - component: {fileID: 3198915148095817229}
   - component: {fileID: 5906598130464374572}
+  - component: {fileID: 6183699365387598874}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -113,6 +114,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6183699365387598874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182076841977498956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d36ad928213ad4486bc974fba8bcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5388493501793229336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2146,7 +2159,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8880448816176310261, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
       propertyPath: m_text
-      value: G
+      value: A
       objectReference: {fileID: 0}
     - target: {fileID: 8911591778374394727, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
       propertyPath: m_AnchorMax.y
