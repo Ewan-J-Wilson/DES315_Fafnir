@@ -34,7 +34,7 @@ public struct LoopTrackInstance
 public class Audiomanager : MonoBehaviour
 {
     private const float SAMPLERATE = 48000.0f;
-    private const float FADE_SPEED = 0.66f;
+    private const float FADE_SPEED = 0.33f;
 
     public AudioMixerGroup AudOut;
     public static Audiomanager instance;
@@ -100,10 +100,18 @@ public class Audiomanager : MonoBehaviour
         {
             if (PreviousTrack.src.volume > 0)
             {
-                PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED * volumeLevels[AudioType.MASTER];
+                PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED * (volumeLevels[AudioType.MASTER] + volumeLevels[AudioType.MUSIC]);
                 if (PreviousTrack.src.volume <= 0)
-                {  PreviousTrack.src.Stop();  }
+                {  
+                    PreviousTrack.src.Stop();  
+                    PreviousTrack = NullInst;
+                    
+                }
+
             }
+
+            if (PreviousTrack.Equals(NullInst))
+            { return; }
 
             if (PreviousTrack.src.isPlaying) PreviousTrackTimer += Time.unscaledDeltaTime;
             float thresh = PreviousTrack.src.clip.samples / SAMPLERATE;
@@ -158,7 +166,7 @@ public class Audiomanager : MonoBehaviour
 
     public void PlayAudio(string name, float vol = 1.0f, float pitch = 0.0f, float pan = 0.5f)
     {
-        AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
+        AudioInstance aud = Array.Find(tracksStatic, tracks => tracks.Name == name);
 
         if (aud.src == null) 
         { 
@@ -188,6 +196,7 @@ public class Audiomanager : MonoBehaviour
     //
     public void FadeLoopTracks(int loopind, int levelind)
     {
+
         PreviousTrack = CurrentTrack;
 
         CurrentTrack = FindLooptrack(loopind, levelind);

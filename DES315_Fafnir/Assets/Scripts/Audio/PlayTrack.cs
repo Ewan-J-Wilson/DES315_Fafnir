@@ -18,8 +18,9 @@ public class PlayTrack : MonoBehaviour
 
         if (Audiomanager.CurrentTrack.Name != TrackName)
         {
+            if (Audiomanager.PreviousTrack.Equals(Audiomanager.NullInst))
+            { Audiomanager.PreviousTrack = Audiomanager.CurrentTrack; }
             Audiomanager.instance.PlayAudio(TrackName, 0.0f);
-            Audiomanager.PreviousTrack = Audiomanager.NullInst;
             Audiomanager.CurrentTrack = FindFirstObjectByType<Audiomanager>().FindTrack(TrackName);
         }
 
