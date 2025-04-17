@@ -208,7 +208,7 @@ public class PlayerAI : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 	
-		if (!collision.IsTouching(GetComponent<BoxCollider2D>()))
+		if (!collision.IsTouching(GetComponent<CapsuleCollider2D>()))
 		{ return; }
 
         if (collision.CompareTag("DeathZone"))
