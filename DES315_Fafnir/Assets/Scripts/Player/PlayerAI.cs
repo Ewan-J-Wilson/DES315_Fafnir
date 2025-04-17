@@ -189,6 +189,7 @@ public class PlayerAI : MonoBehaviour
 		else if (Vel.x < 0f)
 		{ playerRenderer.flipX = true; }
 
+		Debug.Log(Rb.velocityY);
 
     }
 
