@@ -15,6 +15,9 @@ public class SecurityCamera : MonoBehaviour
     private bool onlyFirstTime = false;
     public static bool firstTimeTriggered = false;
 
+    [SerializeField]
+    protected string CloneDestroy;
+
     private void OnTriggerEnter2D(Collider2D collision) // destroys clones when player enters camera trigger
     {
         if (!collision.CompareTag("Player")) // ensures that this only occurs when the player is inside the trigger, and not the clones themselves
@@ -28,6 +31,7 @@ public class SecurityCamera : MonoBehaviour
         { return; }
 
         player.KillClone(); // calls function from player script 
+        Audiomanager.instance.PlayAudio(CloneDestroy);
 
         // If this dialogue is not supposed to trigger, break early
         if (onlyFirstTime && firstTimeTriggered)

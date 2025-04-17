@@ -298,6 +298,15 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 3715b470fd1e1584f900173b76d44741, type: 3}
     src: {fileID: 0}
     type: 2
+  - Name: CloneDestroy
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: b44883f25af5f124ca79f62d3eb1689f, type: 3}
+    src: {fileID: 0}
+    type: 2
   - Name: T8-1
     Volume: 1
     Pitch: 1
