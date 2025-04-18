@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SettingsSwap : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class SettingsSwap : MonoBehaviour
         // Change the only active menu to the selected one
         foreach (GameObject _menu in MenuList) 
         { _menu.SetActive(_menu.name == _newMenu); }
+
+        FindFirstObjectByType<EventSystem>().SetSelectedGameObject(GameObject.FindGameObjectWithTag("Back Button"));
+        
 
     }
 

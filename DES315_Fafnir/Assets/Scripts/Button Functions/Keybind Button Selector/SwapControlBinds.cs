@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SwapControlBinds : MonoBehaviour
 {
@@ -18,8 +19,11 @@ public class SwapControlBinds : MonoBehaviour
 
             if (obj.CompareTag("Controller"))
             { obj.SetActive(MenuButtons.swapCondition); }
-            
+
         }
+
+        FindFirstObjectByType<EventSystem>().SetSelectedGameObject(GameObject.FindGameObjectWithTag("Back Button"));
+        //Debug.Log(FindFirstObjectByType<EventSystem>().currentSelectedGameObject);
 
     }
 

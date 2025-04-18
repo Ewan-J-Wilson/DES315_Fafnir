@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5866905303027731759}
   m_Layer: 5
   m_Name: Keyboard Back
-  m_TagString: Keyboard
+  m_TagString: Back Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,17 +102,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2007773025180502560}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6999193885897012095}
-  m_Father: {fileID: 1295781444743741244}
+  m_Father: {fileID: 2296408065337861198}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -219}
+  m_AnchoredPosition: {x: 975, y: 325.59998}
   m_SizeDelta: {x: 180, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2534581979097486702
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 426980463620611382}
   m_Layer: 5
   m_Name: Gamepad Back
-  m_TagString: Controller
+  m_TagString: Back Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,17 +361,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3375438447154056857}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 995371344141775511}
-  m_Father: {fileID: 1295781444743741244}
+  m_Father: {fileID: 753172823628026185}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -219}
+  m_AnchoredPosition: {x: 975, y: 325.59998}
   m_SizeDelta: {x: 180, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1502702182342826792
@@ -468,6 +468,38 @@ MonoBehaviour:
           m_StringArgument: Settings Menu
           m_BoolArgument: 0
         m_CallState: 1
+--- !u!1 &3562327349569582881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2296408065337861198}
+  m_Layer: 0
+  m_Name: Keyboard
+  m_TagString: Keyboard
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2296408065337861198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562327349569582881}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -975, y: -544.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 202441027847804532}
+  m_Father: {fileID: 1295781444743741244}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3886037305748438893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1048,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions: {fileID: -944628639613478452, guid: 0b8cbaf8bd089bb43973fe75b05c9cf8, type: 3}
+--- !u!1 &5859828956315494407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753172823628026185}
+  m_Layer: 0
+  m_Name: Gamepad
+  m_TagString: Controller
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &753172823628026185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5859828956315494407}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -975, y: -544.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4472750288274927773}
+  m_Father: {fileID: 1295781444743741244}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6156978383797094354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,8 +1251,8 @@ RectTransform:
   m_Children:
   - {fileID: 1398608573540639769}
   - {fileID: 3520326363788744683}
-  - {fileID: 202441027847804532}
-  - {fileID: 4472750288274927773}
+  - {fileID: 2296408065337861198}
+  - {fileID: 753172823628026185}
   - {fileID: 6711804007296004741}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1288,6 +1352,8 @@ MonoBehaviour:
   Panels:
   - {fileID: 1242166823311980271}
   - {fileID: 1990404970402322177}
+  - {fileID: 3562327349569582881}
+  - {fileID: 5859828956315494407}
 --- !u!1 &9133989865168115285
 GameObject:
   m_ObjectHideFlags: 0

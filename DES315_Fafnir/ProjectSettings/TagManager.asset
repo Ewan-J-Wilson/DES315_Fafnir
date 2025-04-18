@@ -19,6 +19,7 @@ TagManager:
   - DeathZone
   - StartFlag
   - Dialogue
+  - Back Button
   layers:
   - Default
   - TransparentFX
