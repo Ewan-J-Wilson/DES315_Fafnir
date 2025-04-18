@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef33e978a909e40448aa55316c4cf784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackName: T8-1
+  TrackName: T6-2
 --- !u!1 &627460803
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,6 +1192,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 457490852723199026, guid: 23fc9f54172141244a3dbfbc82db59f6, type: 3}
+      propertyPath: FadeTracks
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3169408833395334340, guid: 23fc9f54172141244a3dbfbc82db59f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

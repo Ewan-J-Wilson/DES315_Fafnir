@@ -8,10 +8,8 @@ public class PlayTrack : MonoBehaviour
     public string TrackName;
 
     private void Awake()
-    {
-        
+    {        
         SceneManager.sceneLoaded += PlayMusic;
-
     }
 
     private void PlayMusic(Scene arg0, LoadSceneMode arg1) {
@@ -27,9 +25,7 @@ public class PlayTrack : MonoBehaviour
     }
 
     private void OnDestroy() {
-
         SceneManager.sceneLoaded -= PlayMusic;
-
     }
 
 }

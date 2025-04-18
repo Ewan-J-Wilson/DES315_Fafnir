@@ -78,7 +78,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
+    LoopPoint: 7.68
     clip: {fileID: 8300000, guid: c19efb54c1d62404c88df75352b2dd75, type: 3}
     src: {fileID: 0}
     type: 1
@@ -87,7 +87,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
+    LoopPoint: 10.239
     clip: {fileID: 8300000, guid: 4282829c9c75c7642917205e81bf55d3, type: 3}
     src: {fileID: 0}
     type: 1
@@ -105,7 +105,7 @@ MonoBehaviour:
     Pitch: 1
     Panning: 0.5
     loop: 0
-    LoopPoint: 0
+    LoopPoint: 15.36
     clip: {fileID: 8300000, guid: 56b71e4078bb9c74699e55112dc6d6c9, type: 3}
     src: {fileID: 0}
     type: 1
@@ -332,6 +332,15 @@ MonoBehaviour:
     loop: 0
     LoopPoint: 0
     clip: {fileID: 8300000, guid: 66f0cf5807f08d94f81fd8646747301c, type: 3}
+    src: {fileID: 0}
+    type: 1
+  - Name: Title
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: df4f68353e6b4884c900d7f716353e22, type: 3}
     src: {fileID: 0}
     type: 1
   LoopTrackList:

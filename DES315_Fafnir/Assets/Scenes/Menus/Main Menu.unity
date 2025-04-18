@@ -981,7 +981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef33e978a909e40448aa55316c4cf784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TrackName: T6-2
+  TrackName: Title
 --- !u!4 &1091636563
 Transform:
   m_ObjectHideFlags: 0
@@ -1728,6 +1728,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1522746034431552082, guid: 2e387243661dd87488707253dc17212b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1783381844883715363, guid: 2e387243661dd87488707253dc17212b, type: 3}
+      propertyPath: tracks.Array.data[5].LoopPoint
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8541062993435068100, guid: 2e387243661dd87488707253dc17212b, type: 3}

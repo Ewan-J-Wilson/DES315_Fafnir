@@ -11,6 +11,8 @@ public class Fade : MonoBehaviour
     [HideInInspector]
     public static float alpha = 1f;
     private static float targetAlpha = 0f;
+    [Tooltip("Only set this if no other object in the scene uses the FadeAllTracks() function")]
+    public bool FadeTracks;
     
     public void Start() 
     { 
@@ -28,7 +30,7 @@ public class Fade : MonoBehaviour
 
     // Fade to black
     public void FadeOut() {
-
+        if (FadeTracks) FindFirstObjectByType<Audiomanager>().FadeAllTracks();
         _sprite.enabled = true;
         alpha = 0f;
         targetAlpha = 1f;
