@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class SettingsSwap : MonoBehaviour
@@ -15,29 +13,21 @@ public class SettingsSwap : MonoBehaviour
     void Start()
     {
         
+        // Initialise the menus
         swapMenu(primaryMenu);
 
     }
 
     public void swapMenu(string _newMenu) {
 
-        foreach (GameObject _menu in MenuList) {
-
-            _menu.SetActive(_menu.name == _newMenu);
-
-        }
+        // Change the only active menu to the selected one
+        foreach (GameObject _menu in MenuList) 
+        { _menu.SetActive(_menu.name == _newMenu); }
 
     }
 
-    public void SetControlStyle(bool _b) {
+    // Update which controls menu to go to
+    public void SetControlStyle(bool _b) 
+    { MenuButtons.swapCondition = _b; }
 
-        MenuButtons.swapCondition = _b;
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

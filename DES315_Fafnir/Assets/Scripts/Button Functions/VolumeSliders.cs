@@ -6,8 +6,6 @@ public class VolumeSliders : MonoBehaviour
 
     [Tooltip("Which bus this slider affects")]
     [SerializeField] AudioType AudioBus;
-    private const float soundCooldown = 0.3f;
-    private float soundTimer = 0f;
 
     public void Start()  
     { 
@@ -22,18 +20,9 @@ public class VolumeSliders : MonoBehaviour
     { 
         // Change the volume
         Audiomanager.ChangeVolume(value, AudioBus);
-        if (soundTimer >= soundCooldown && AudioBus != AudioType.MUSIC) { 
-            Audiomanager.instance.PlayAudio("Kick"); 
-            soundTimer = 0f;
-        }
         // Save the new value
         PlayerPrefs.SetFloat("Audio: " + AudioBus.ToString(), value);
         PlayerPrefs.Save();
-    }
-
-    private void Update() { 
-        if (soundTimer <= soundCooldown)
-        { soundTimer += Time.deltaTime; }
     }
 
 }

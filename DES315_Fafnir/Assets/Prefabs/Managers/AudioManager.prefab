@@ -263,7 +263,7 @@ MonoBehaviour:
     src: {fileID: 0}
     type: 2
   - Name: Step1
-    Volume: 1
+    Volume: 0.25
     Pitch: 1
     Panning: 0.5
     loop: 0
@@ -272,12 +272,39 @@ MonoBehaviour:
     src: {fileID: 0}
     type: 2
   - Name: Step2
-    Volume: 1
+    Volume: 0.25
     Pitch: 1
     Panning: 0.5
     loop: 0
     LoopPoint: 0
     clip: {fileID: 8300000, guid: 84ddc520fd5dc8f4c960e32a420f56cf, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Armor1
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: b135181e25271b746bd9cdd533f2d743, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Armor2
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 3715b470fd1e1584f900173b76d44741, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: CloneDestroy
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: b44883f25af5f124ca79f62d3eb1689f, type: 3}
     src: {fileID: 0}
     type: 2
   - Name: T8-1
@@ -307,36 +334,6 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 66f0cf5807f08d94f81fd8646747301c, type: 3}
     src: {fileID: 0}
     type: 1
-  CurrentTrack:
-    Name: 
-    Volume: 0
-    Pitch: 0
-    Panning: 0
-    loop: 0
-    LoopPoint: 0
-    clip: {fileID: 0}
-    src: {fileID: 0}
-    type: 0
-  PreviousTrack:
-    Name: 
-    Volume: 0
-    Pitch: 0
-    Panning: 0
-    loop: 0
-    LoopPoint: 0
-    clip: {fileID: 0}
-    src: {fileID: 0}
-    type: 0
-  NullInst:
-    Name: 
-    Volume: 0
-    Pitch: 0
-    Panning: 0
-    loop: 0
-    LoopPoint: 0
-    clip: {fileID: 0}
-    src: {fileID: 0}
-    type: 0
   LoopTrackList:
   - Name:
     - T5-1

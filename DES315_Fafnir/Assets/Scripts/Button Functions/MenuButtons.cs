@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
 
-    // Generic condition to change when swapping scenes
+    // Condition to show which controls settings menu to swap to
     public static bool swapCondition = false;
+
     private static bool doNextScene = false;
     private static string nextScene = "";
 
@@ -27,8 +28,7 @@ public class MenuButtons : MonoBehaviour
         eventSys.enabled = !conditional;
     }
 
-    // String for now because AssetReference does not seem to be serialisable as
-    // a parameter in an editor function
+    // Loads a new scene
     public static void SwitchToScene(string _scene) { 
         
         _fade.FadeOut();
@@ -40,22 +40,25 @@ public class MenuButtons : MonoBehaviour
             { DialogueManager.instance.textBox.EndDialogue(); }
         }
         Audiomanager.instance.PlayAudio("Select");
-        //SceneManager.LoadSceneAsync(_scene);
     }
 
+    /*
+     Now defunct function due to the controls settings now being a prefab
+    */
     public void SwitchToControlsScene(bool _condition) {
         
         swapCondition = _condition;
         _fade.FadeOut();
         doNextScene = true;
         nextScene = "Controls Menu";
-        Audiomanager.instance.PlayAudio("MenuConfirm");
-        //Time.timeScale = 1;
-        //SceneManager.LoadSceneAsync("Controls Menu"); 
+        Audiomanager.instance.PlayAudio("Select");
 
     }
 
+    // Show the relevant level hint
     public void ShowHint() {
+
+        Audiomanager.instance.PlayAudio("Select");
 
         if (DialogueRead.reading)
         { return; }
@@ -66,6 +69,7 @@ public class MenuButtons : MonoBehaviour
 
     public void Update() {
         
+        // If the fade to black has finished, load the next level
 		if (doNextScene && Fade.alpha >= 1f) {
 			doNextScene = false;
             Time.timeScale = 1;

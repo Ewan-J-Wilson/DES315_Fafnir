@@ -70,11 +70,10 @@ public class GameManager : MonoBehaviour
     public void SetLevel()
     {
 
-		if (GameObject.Find("Dialogue")) {
-			//DialogueManager.DisablePlayerInput(true);
-			StartCoroutine(StartDialogue());
-		}
+		if (GameObject.Find("Dialogue")) 
+		{ StartCoroutine(StartDialogue()); }
 
+		// Move to the next level
 		if (LoopInd >= LevelList.Length) { 
 			LoopInd = 0;
 			DialogueManager.currentLevel = LevelInd + 1;
@@ -83,6 +82,7 @@ public class GameManager : MonoBehaviour
 			_fade.FadeOut();
 			return; 
 		}
+		// Otherwise player for the next loop
 		else 
 		{ 
 			Player.PlayerDeath();
@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
 
     public void Update() {
         
+		// If the fade out has finished, move to the next level
 		if (doNextLevel && Fade.alpha >= 1f) {
 			doNextLevel = false;
 			Time.timeScale = 1;
@@ -107,9 +108,11 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
 	{
 
+		// Reset loop objects
 		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
 		{ trigger.Reset(); }
 
+		// Initialise next loop/level
 		if (LoopInd < LevelList.Length) 
 		{ LoopInd++; }
 		

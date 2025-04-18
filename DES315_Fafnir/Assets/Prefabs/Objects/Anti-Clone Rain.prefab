@@ -50,6 +50,7 @@ MonoBehaviour:
   triggerDialogue: 1
   chapter: CLONE_DESTROY
   onlyFirstTime: 1
+  CloneDestroy: CloneDestroy
 --- !u!61 &6244229300620218687
 BoxCollider2D:
   m_ObjectHideFlags: 0

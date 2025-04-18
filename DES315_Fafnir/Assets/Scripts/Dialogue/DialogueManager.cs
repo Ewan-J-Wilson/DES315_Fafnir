@@ -30,10 +30,6 @@ public class DialogueManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        // Get the player input
-        //SceneManager.sceneLoaded += DetectInputScheme;
-        //DetectInputScheme(gameObject.scene, LoadSceneMode.Single);
-
         // Disable the textbox
         textBox.gameObject.SetActive(false);
         icon.SetActive(false);
@@ -86,6 +82,7 @@ public class DialogueManager : MonoBehaviour
         textBox.ReadStart();
     }
 
+    // Update the size of the dialogue box and the font
     public void SetDialogueSize() {
 
         if (!instance.textBox.gameObject.activeSelf)

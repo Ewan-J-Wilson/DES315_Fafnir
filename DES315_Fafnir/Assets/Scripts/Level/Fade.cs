@@ -26,6 +26,7 @@ public class Fade : MonoBehaviour
         SceneManager.sceneLoaded += FadeIn;
     }
 
+    // Fade to black
     public void FadeOut() {
 
         _sprite.enabled = true;
@@ -33,6 +34,7 @@ public class Fade : MonoBehaviour
         targetAlpha = 1f;
     }
 
+    // Fade into the scene
     public void FadeIn(Scene scene, LoadSceneMode mode) {
 
         alpha = 1f;
@@ -53,6 +55,7 @@ public class Fade : MonoBehaviour
         return true; 
     }
 
+    // Update the alpha value of the fade box
     public void Update() {
 
         if (!_sprite.enabled)

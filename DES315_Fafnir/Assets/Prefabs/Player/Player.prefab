@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3741771740661534282}
   - component: {fileID: 3198915148095817229}
   - component: {fileID: 5906598130464374572}
-  - component: {fileID: 6183699365387598874}
+  - component: {fileID: 5462012039639312660}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -114,7 +114,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6183699365387598874
+--- !u!114 &5462012039639312660
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,9 +123,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3182076841977498956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10d36ad928213ad4486bc974fba8bcd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 65be8b8777fdb2943b4cdf2b3c122b53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Step1: Step1
+  Step2: Step2
+  Armor1: Armor1
+  Armor2: Armor2
 --- !u!1 &5388493501793229336
 GameObject:
   m_ObjectHideFlags: 0

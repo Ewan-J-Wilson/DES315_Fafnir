@@ -48,18 +48,22 @@ public class IconSwap : MonoBehaviour
 
     private void ChangeIcon() {
         
+        // Update the icon size
         RectTransform rect = GetComponent<RectTransform>();
 
         rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 60 * PlayerPrefs.GetFloat("Text Scale"), 0);
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75 * PlayerPrefs.GetFloat("Text Scale"));
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75 * PlayerPrefs.GetFloat("Text Scale"));
 
+        // Break early if the icon hasn't changed to save performance
         if (PlayerAI.inputRef.currentControlScheme == controlSchemeName && PlayerAI.inputRef.devices[0].name == deviceName)
         { return; }
 
+        // Get the control scheme
         controlSchemeName = PlayerAI.inputRef.currentControlScheme;
         deviceName = PlayerAI.inputRef.devices[0].name;
 
+        // Update the icon sprite based on the control scheme
         if (PlayerAI.inputRef.currentControlScheme == "Keyboard")
         { GetComponent<Image>().sprite = keyboard; }
         else {
@@ -69,7 +73,7 @@ public class IconSwap : MonoBehaviour
             { GetComponent<Image>().sprite = xbox; }
         }
 
-        
+        // Re-update the icon if it changed
         rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 60 * PlayerPrefs.GetFloat("Text Scale"), 0);
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75 * PlayerPrefs.GetFloat("Text Scale"));
         rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75 * PlayerPrefs.GetFloat("Text Scale"));

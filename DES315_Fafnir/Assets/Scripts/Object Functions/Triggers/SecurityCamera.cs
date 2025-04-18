@@ -13,7 +13,10 @@ public class SecurityCamera : MonoBehaviour
     [Tooltip("Used for dialogue that only triggers once in the entire game")]
     [SerializeField]
     private bool onlyFirstTime = false;
-    private static bool firstTimeTriggered = false;
+    public static bool firstTimeTriggered = false;
+
+    [SerializeField]
+    protected string CloneDestroy;
 
     private void OnTriggerEnter2D(Collider2D collision) // destroys clones when player enters camera trigger
     {
@@ -28,12 +31,17 @@ public class SecurityCamera : MonoBehaviour
         { return; }
 
         player.KillClone(); // calls function from player script 
+        Audiomanager.instance.PlayAudio(CloneDestroy);
 
+        // If this dialogue is not supposed to trigger, break early
         if (onlyFirstTime && firstTimeTriggered)
         { return; }
 
+        // Start the dialogue
         if (triggerDialogue && !triggered) { 
             DialogueManager.CodedDialogue(chapter); 
+
+            // Flag the dialogue as played
             triggered = true;
 
             if (onlyFirstTime)
