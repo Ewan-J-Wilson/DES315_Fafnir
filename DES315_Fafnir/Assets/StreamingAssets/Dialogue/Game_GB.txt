@@ -203,13 +203,13 @@ END_DIAG
 # Loop 1-2
 0-1_HINT
 [CHILD_Happy]
-You can use the clone to stand on the button!
+Clones can interact with objects too!
 END_DIAG
 
 # Loop 2-1
 1-0_HINT
 [CHILD_Happy]
-You have access to multiple clones!
+Keep an eye on the blue icons!
 END_DIAG
 
 # Loop 2-2
@@ -232,14 +232,14 @@ END_DIAG
 
 # Loop 3-2
 2-1_HINT
-[DAD_Neutral]
-Perhaps the carpenter sawfish could be helpful?
+[CHILD_Tired]
+Maybe you could use the sawfish to your advantage?
 END_DIAG
 
 # Loop 3-3
 2-2_HINT
-[DAD_Tired]
-Keep an eye on the blue icons.
+[CHILD_Tired]
+Pay attention to where you start cloning.
 END_DIAG
 
 # Easter egg dialogue. Taken from the game Celeste, which was published in 2018 by Extremely OK Games
