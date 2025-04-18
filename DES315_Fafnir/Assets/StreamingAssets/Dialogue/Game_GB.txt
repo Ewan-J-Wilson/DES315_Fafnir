@@ -179,7 +179,7 @@ END_DIAG
 # Dialogue for when the clone is destroyed for the first time
 
 CLONE_DESTROY
-{input enable}
+{input disable}
 [CHILD_Happy]
 BOOM! Your clones are gone!
 {NEXT}
