@@ -366,6 +366,7 @@ What books *have* you been reading, child? {n}This isn't that kind of story.
 {NEXT}
 [DAD_Neutral]
 The fisherman was taken aback. "What do you mean? You stole it! It doesn't belong to you!"
+{NEXT}
 [DAD_Shock]
 "It doesn't belong to anyone!" The dragon scoffed. "Qah is a creature. And it's lonely. Just like me."
 {NEXT}
@@ -383,6 +384,7 @@ That's a story for another time, child. Moving on.
 {NEXT}
 [DAD_Neutral]
 "Look, I'm just here to bring the hat back to the witch. I don't wish to harm it, or you."
+{NEXT}
 [DAD_Neutral]
 "But can't you see how happy I am? Why would you take that away from me?" The dragon gazed at the fisherman with sad eyes.
 {NEXT}
@@ -394,10 +396,13 @@ The dragon pondered for a moment, then relented. {n}"I see. I cannot argue with 
 {NEXT}
 [DAD_Neutral]
 "...on one condition." The dragon asserted.
+{NEXT}
 [DAD_Neutral]
 "And what's that?"
+{NEXT}
 [DAD_Neutral]
 "I get to play with Qah on the weekends!"
+{NEXT}
 [DAD_Neutral]
 "...It's a deal!" The fisherman took the hat and bid the dragon farewell.
 END_DIAG
