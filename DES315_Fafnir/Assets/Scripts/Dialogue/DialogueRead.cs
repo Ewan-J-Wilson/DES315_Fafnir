@@ -15,17 +15,6 @@ public class DialogueRead : MonoBehaviour
     private string displayLine = "";
     public static bool reading = false;
 
-    public Dictionary<string, string> buttonReplace = new(){
-        { "XButton South",  "A" },
-        { "XButton East",   "B" },
-        { "XButton North",  "Y" },
-        { "XButton West",   "X" },
-        { "PSButton South", "X" },
-        { "PSButton East",  "○" },
-        { "PSButton North", "△" },
-        { "PSButton West",  "□" }
-    };
-
     // On Start, get the dialogue file
     void Start()
     {
@@ -242,9 +231,8 @@ public class DialogueRead : MonoBehaviour
     // Toggles Dialogue settings on or off
     public void FormatToggles(string formatRead) {
 
-        // Whether to let the player move during dialogue
-        if (formatRead == "input enable")
-        { DialogueManager.DisablePlayerInput(false); }
+        // Disable Player Input if needed
+        // no Enable due to it conflicting with the gamepad jump button
         if (formatRead == "input disable")
         { DialogueManager.DisablePlayerInput(true); }
 
