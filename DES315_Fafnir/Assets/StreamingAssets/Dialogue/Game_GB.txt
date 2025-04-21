@@ -248,10 +248,6 @@ END_DIAG
 Good job! All that's left is to enter the lighthouse!
 END_DIAG
 
-OUTRO
-[CHILD_Anger]
-test
-END_DIAG
 
 # Easter egg dialogue. Taken from the game Celeste, which was published in 2018 by Extremely OK Games
 CELESTE_01
@@ -346,4 +342,62 @@ INTRO_5
 "That hat is my familiar. {n}It means everything to me. Here, you'll need this." She handed the fisherman one of her magic tomes.
 {NEXT}
 "There is a spell in here that will help you {n}against the many obstacles on the way to the dragon. {n}Thank you again, and good luck!"
+END_DIAG
+
+# Outro dialogue
+OUTRO
+[CHILD_Happy]
+Ooooh, here we go! I bet the fisherman is gonna cut its head off!
+{NEXT}
+[DAD_Tired]
+What books *have* you been reading, child? {n}This isn't that kind of story.
+{NEXT}
+[DAD_Neutral]
+"You up there!" The fisherman called up to the dragon. {n}"Why have you stolen the witch's hat?"
+{NEXT}
+[DAD_Neutral]
+"You mean *my* hat?" The dragon teased playfully, making a point {n}to stick his tongue out at the fisherman.
+{NEXT}
+[DAD_Shock]
+"You're supposed to protect our town, not menace it!" The fisherman {n}called back. "Return the hat at once!"
+{NEXT}
+[DAD_Neutral]
+"But why?" The dragon tilted its head. {n}"The hat is my friend!"
+{NEXT}
+[DAD_Neutral]
+The fisherman was taken aback. "What do you mean? You stole it! It doesn't belong to you!"
+[DAD_Shock]
+"It doesn't belong to anyone!" The dragon scoffed. "Qah is a creature. And it's lonely. Just like me."
+{NEXT}
+[DAD_Neutral]
+"Qah?" The fisherman asked.
+{NEXT}
+[DAD_Neutral]
+"Yeah. Short for Lah'Klov'Qah. Your human tongue {n}would butcher the pronounciation of its proper name. {n}Not that you bothered to give it one."
+{NEXT}
+[CHILD_Happy]
+Whoa! When did you learn Draconic, dad?
+{NEXT}
+[DAD_Neutral]
+That's a story for another time, child. Moving on.
+{NEXT}
+[DAD_Neutral]
+"Look, I'm just here to bring the hat back to the witch. I don't wish to harm it, or you."
+[DAD_Neutral]
+"But can't you see how happy I am? Why would you take that away from me?" The dragon gazed at the fisherman with sad eyes.
+{NEXT}
+[DAD_Neutral]
+"Because you took it from The Witch. The hat is her friend, too."
+{NEXT}
+[DAD_Neutral]
+The dragon pondered for a moment, then relented. {n}"I see. I cannot argue with that, human. You may take it back..."
+{NEXT}
+[DAD_Neutral]
+"...on one condition." The dragon asserted.
+[DAD_Neutral]
+"And what's that?"
+[DAD_Neutral]
+"I get to play with Qah on the weekends!"
+[DAD_Neutral]
+"...It's a deal!" The fisherman took the hat and bid the dragon farewell.
 END_DIAG
