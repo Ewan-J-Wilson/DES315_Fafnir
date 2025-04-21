@@ -360,7 +360,7 @@ MonoBehaviour:
   - {fileID: 934615082}
   - {fileID: 598224456}
   - {fileID: 1186419325}
-  nextLevel: CutsceneFinal
+  nextLevel: Outro
   LevelInd: 2
 --- !u!4 &90817609
 Transform:
