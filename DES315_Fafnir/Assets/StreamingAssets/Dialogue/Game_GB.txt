@@ -242,6 +242,17 @@ END_DIAG
 Pay attention to where you start cloning.
 END_DIAG
 
+# OUTRO
+3-0_HINT
+[CHILD_Happy]
+Good job! All that's left is to enter the lighthouse!
+END_DIAG
+
+OUTRO
+[CHILD_Anger]
+test
+END_DIAG
+
 # Easter egg dialogue. Taken from the game Celeste, which was published in 2018 by Extremely OK Games
 CELESTE_01
 
