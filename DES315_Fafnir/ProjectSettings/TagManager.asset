@@ -18,6 +18,8 @@ TagManager:
   - FadeOut
   - DeathZone
   - StartFlag
+  - Dialogue
+  - Back Button
   layers:
   - Default
   - TransparentFX

@@ -60,6 +60,7 @@ public class PlayerAI : MonoBehaviour
 	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
 	
+	public static PlayerInput inputRef;
 
 	// Pause Menu
 	private MenuButtons pauseMenu;
@@ -75,7 +76,8 @@ public class PlayerAI : MonoBehaviour
 	{
 		// Unpause the game on start
 		pauseMenu = FindFirstObjectByType<MenuButtons>();
-		pauseMenu.Pause(false);
+		if (pauseMenu != null)
+		{ pauseMenu.Pause(false); }
 		PCList = new ActionList[MaxComSize];
 		CloneNo = 0;                            //Reset clone amount
 		Rb = GetComponent<Rigidbody2D>();
@@ -84,6 +86,7 @@ public class PlayerAI : MonoBehaviour
 		LastPos = transform.position;           //Grab current position for future clone position
 		playerRenderer = GetComponentInChildren<SpriteRenderer>();
 		playerAnimator = GetComponentInChildren<Animator>();
+		inputRef = GetComponent<PlayerInput>();
 
 	}
 
@@ -149,6 +152,8 @@ public class PlayerAI : MonoBehaviour
 
     protected void Update()
 	{
+		if (playerRenderer == null)
+		{ return; }
 		HandleMovement();
 	}
 
@@ -184,6 +189,7 @@ public class PlayerAI : MonoBehaviour
 		else if (Vel.x < 0f)
 		{ playerRenderer.flipX = true; }
 
+		//Debug.Log(Rb.velocityY);
 
     }
 
@@ -203,7 +209,7 @@ public class PlayerAI : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 	
-		if (!collision.IsTouching(GetComponent<BoxCollider2D>()))
+		if (!collision.IsTouching(GetComponent<CapsuleCollider2D>()))
 		{ return; }
 
         if (collision.CompareTag("DeathZone"))
@@ -241,7 +247,7 @@ public class PlayerAI : MonoBehaviour
 	private void HandleCommandInput()
 	{
 		//Check for command change
-		if (CurrentCom.hAxis != LastCom.hAxis 
+		if ((CurrentCom.hAxis != LastCom.hAxis || ComInd == 0 )
 			|| CurrentCom.jump != LastCom.jump 
 			|| CurrentCom.tool != LastCom.tool)
 		{

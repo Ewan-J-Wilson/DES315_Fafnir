@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
-
 
 public enum AudioType
 {
@@ -34,7 +34,7 @@ public struct LoopTrackInstance
 public class Audiomanager : MonoBehaviour
 {
     private const float SAMPLERATE = 48000.0f;
-    private const float FADE_SPEED = 0.66f;
+    private const float FADE_SPEED = 0.33f;
 
     public AudioMixerGroup AudOut;
     public static Audiomanager instance;
@@ -44,9 +44,10 @@ public class Audiomanager : MonoBehaviour
 
     //Audio tracks and fade tracks
     public AudioInstance[] tracks;
-    private AudioInstance CurrentTrack;         //Music track to fade in
-    private AudioInstance PreviousTrack;        //Music track to fade out
-    private AudioInstance NullInst;
+    public static AudioInstance[] tracksStatic = {};
+    public static AudioInstance CurrentTrack;         //Music track to fade in
+    public static AudioInstance PreviousTrack;        //Music track to fade out
+    public static AudioInstance NullInst;
 
     public LoopTrackInstance[] LoopTrackList;   //List of music tracks to play in a given level loop
 
@@ -61,7 +62,7 @@ public class Audiomanager : MonoBehaviour
     void Awake()
     {
         if (instance == null) instance = this;
-        else
+        else if (instance != this)
         {
             Destroy(gameObject);
             return;
@@ -73,6 +74,7 @@ public class Audiomanager : MonoBehaviour
         volumeLevels[AudioType.MUSIC] = PlayerPrefs.GetFloat("Audio: MUSIC");
         volumeLevels[AudioType.SFX] = PlayerPrefs.GetFloat("Audio: SFX");
 
+        // Initialise tracks
         for (int i = 0; i < tracks.Length; i++)
         {
             tracks[i].src = gameObject.AddComponent<AudioSource>();
@@ -84,6 +86,9 @@ public class Audiomanager : MonoBehaviour
             tracks[i].src.outputAudioMixerGroup = AudOut;
         }
 
+        if (tracksStatic.Length == 0)
+        { tracksStatic = tracks; }
+
         NullInst.Name = null;
     }
 
@@ -92,14 +97,26 @@ public class Audiomanager : MonoBehaviour
 
     void HandleFade()
     {
-        if (PreviousTrack.Name != null)
+        if (PreviousTrack.src != null)
         {
+
+            // Fade out the previous track
             if (PreviousTrack.src.volume > 0)
             {
-                PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED;
+                PreviousTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED * (volumeLevels[AudioType.MASTER] + volumeLevels[AudioType.MUSIC]);
                 if (PreviousTrack.src.volume <= 0)
-                {  PreviousTrack.src.Stop();  }
+                {  
+                    PreviousTrack.src.Stop();  
+                    PreviousTrack = NullInst;
+                    
+                }
+
             }
+
+            if (PreviousTrack.Equals(NullInst))
+            { return; }
+
+            // Loop handling
 
             if (PreviousTrack.src.isPlaying) PreviousTrackTimer += Time.unscaledDeltaTime;
             float thresh = PreviousTrack.src.clip.samples / SAMPLERATE;
@@ -112,16 +129,22 @@ public class Audiomanager : MonoBehaviour
             { PreviousTrackTimer = (PreviousTrack.src.timeSamples / SAMPLERATE); }
         }
 
+        
         if (CurrentTrack.Name != null)
         {
+
+            // Fade in the new track
             if (CurrentTrack.src.volume != volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
             {
-                CurrentTrack.src.volume += Time.unscaledDeltaTime * FADE_SPEED;
+                CurrentTrack.src.volume += Time.unscaledDeltaTime * FADE_SPEED * volumeLevels[AudioType.MASTER];
                 if (CurrentTrack.src.volume > volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
                 { CurrentTrack.src.volume = volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER]; }
             }
             else if (CurrentTrack.src.volume >= volumeLevels[CurrentTrack.type] * volumeLevels[AudioType.MASTER])
             { CurrentTrack.src.volume -= Time.unscaledDeltaTime * FADE_SPEED; }
+
+
+            // Loop Handling
 
             if (CurrentTrack.src.isPlaying) 
             { CurrentTrackTimer += Time.unscaledDeltaTime; }
@@ -141,37 +164,37 @@ public class Audiomanager : MonoBehaviour
 
     public static void ChangeVolume(float vol, AudioType type)
     { 
+        // Updates the volume of all music and sfx tracks
         volumeLevels[type] = vol; 
-        for (int i = 0; i < instance.tracks.Length; i++) {
+        for (int i = 0; i < tracksStatic.Length; i++) {
 
-            if (instance.tracks[i].type == type) { 
-                instance.tracks[i].src.volume = volumeLevels[instance.tracks[i].type];
-                if (instance.tracks[i].type != AudioType.MASTER) 
-                {instance.tracks[i].src.volume *= volumeLevels[AudioType.MASTER];}
+            if (tracksStatic[i].type == type) { 
+                tracksStatic[i].src.volume = volumeLevels[tracksStatic[i].type];
+                if (tracksStatic[i].type != AudioType.MASTER) 
+                {tracksStatic[i].src.volume *= volumeLevels[AudioType.MASTER];}
             }
         }
     }
 
     public void PlayAudio(string name, float vol = 1.0f, float pitch = 0.0f, float pan = 0.5f)
     {
-        AudioInstance aud = Array.Find(tracks, tracks => tracks.Name == name);
+        AudioInstance aud = Array.Find(tracksStatic, tracks => tracks.Name == name);
 
-        if (aud.src == null) {
-            //Debug.Log("Audio Not Found");
-            return;
-        }
+        // If the audio source is missing, break early
+        if (aud.src == null) 
+        { return; }
 
-        if (pitch != 0.0f) 
+        // Initialise and play the audio
+        if (pitch != 0.0f)
         { aud.src.pitch = pitch; }
         if (pan != 0.5f) 
         { aud.src.panStereo = pan; }
-        if (vol != 0.0f)
+        if (vol != 0.0f)                                            //Keep volume at 0.0f if we want to fade audio in [I.E. music], otherwise set it to the current master volume * music volume
         {
             aud.src.volume = vol * volumeLevels[aud.type];
             if (aud.type != AudioType.MASTER)
             { aud.src.volume *= volumeLevels[AudioType.MASTER]; }
         }
-        else aud.src.volume = 0.0f;
         aud.src.Play();
         
     }
@@ -185,7 +208,7 @@ public class Audiomanager : MonoBehaviour
     //
     public void FadeLoopTracks(int loopind, int levelind)
     {
-
+        // Initialise music fade out between loops
         PreviousTrack = CurrentTrack;
 
         CurrentTrack = FindLooptrack(loopind, levelind);
@@ -194,19 +217,21 @@ public class Audiomanager : MonoBehaviour
 
         PreviousTrackTimer = CurrentTrackTimer;
         CurrentTrackTimer = 0;
-
     }
     
     public void FadeAllTracks()
     {
 
+        // Initialise fade out
         if (CurrentTrack.Name == null) 
         { return; }
         PreviousTrack = CurrentTrack;
         CurrentTrack = NullInst;
-
     }
 
     public AudioInstance FindLooptrack(int loopind, int levelind) 
-    { return Array.Find(tracks, tracks => tracks.Name == LoopTrackList[levelind].Name[loopind]); }
+    { return Array.Find(tracksStatic, tracks => tracks.Name == LoopTrackList[levelind].Name[loopind]); }
+
+    public AudioInstance FindTrack(string name) 
+    { return Array.Find(tracksStatic, tracks => tracks.Name == name); }
 }

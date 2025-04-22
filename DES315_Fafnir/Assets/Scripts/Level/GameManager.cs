@@ -1,9 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.Timeline;
-using UnityEngine.Windows;
 
 //Current state the game is in, used to update different sections of code
 public enum GameState
@@ -20,7 +17,7 @@ public class GameManager : MonoBehaviour
 	[HideInInspector]
 	public PlayerAI Player;
     public static GameState State;			//Current game state
-	public static int LoopInd = 0;         //Current level/loop the player is on [one level is defined as a single loop]
+	public static int LoopInd = 0;			//Current level/loop the player is on [one level is defined as a single loop]
     public GameObject[] LevelList;			//List of levels/loops in the scene
 	[SerializeField]
 	private string nextLevel;
@@ -65,7 +62,7 @@ public class GameManager : MonoBehaviour
 		else
 		{ yield return new WaitForSeconds(0.5f); }
 
-		DialogueManager.OnLoopChange();
+		DialogueManager.LoopTrigger("START");
 
 	}
 
@@ -73,11 +70,10 @@ public class GameManager : MonoBehaviour
     public void SetLevel()
     {
 
-		if (GameObject.Find("Dialogue")) {
-			DialogueManager.DisablePlayerInput(true);
-			StartCoroutine(StartDialogue());
-		}
+		if (GameObject.Find("Dialogue")) 
+		{ StartCoroutine(StartDialogue()); }
 
+		// Move to the next level
 		if (LoopInd >= LevelList.Length) { 
 			LoopInd = 0;
 			DialogueManager.currentLevel = LevelInd + 1;
@@ -86,6 +82,7 @@ public class GameManager : MonoBehaviour
 			_fade.FadeOut();
 			return; 
 		}
+		// Otherwise player for the next loop
 		else 
 		{ 
 			Player.PlayerDeath();
@@ -99,7 +96,8 @@ public class GameManager : MonoBehaviour
 
     public void Update() {
         
-		if (doNextLevel && _fade.alpha >= 1f) {
+		// If the fade out has finished, move to the next level
+		if (doNextLevel && Fade.alpha >= 1f) {
 			doNextLevel = false;
 			Time.timeScale = 1;
 			SceneManager.LoadSceneAsync(nextLevel);
@@ -110,9 +108,11 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
 	{
 
+		// Reset loop objects
 		foreach (TriggerGeneric trigger in FindObjectsByType<TriggerGeneric>(FindObjectsSortMode.None))
 		{ trigger.Reset(); }
 
+		// Initialise next loop/level
 		if (LoopInd < LevelList.Length) 
 		{ LoopInd++; }
 		

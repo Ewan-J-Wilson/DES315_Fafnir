@@ -10,6 +10,14 @@ public class SecurityCamera : MonoBehaviour
 
     private bool triggered = false;
 
+    [Tooltip("Used for dialogue that only triggers once in the entire game")]
+    [SerializeField]
+    private bool onlyFirstTime = false;
+    public static bool firstTimeTriggered = false;
+
+    [SerializeField]
+    protected string CloneDestroy;
+
     private void OnTriggerEnter2D(Collider2D collision) // destroys clones when player enters camera trigger
     {
         if (!collision.CompareTag("Player")) // ensures that this only occurs when the player is inside the trigger, and not the clones themselves
@@ -19,13 +27,28 @@ public class SecurityCamera : MonoBehaviour
 
         PlayerAI player = collision.gameObject.GetComponent<PlayerAI>();
 
-        if (triggerDialogue && player.CloneNo > 0 && !triggered) { 
-            DialogueManager.CodedDialogue(chapter); 
-            triggered = true;
-        }
+        if (player.CloneNo == 0)
+        { return; }
 
         player.KillClone(); // calls function from player script 
-        
+        Audiomanager.instance.PlayAudio(CloneDestroy);
+
+        // If this dialogue is not supposed to trigger, break early
+        if (onlyFirstTime && firstTimeTriggered)
+        { return; }
+
+        // Start the dialogue
+        if (triggerDialogue && !triggered) { 
+            DialogueManager.CodedDialogue(chapter); 
+
+            // Flag the dialogue as played
+            triggered = true;
+
+            if (onlyFirstTime)
+            { firstTimeTriggered = true; }
+
+        }
+
     }
 
 }

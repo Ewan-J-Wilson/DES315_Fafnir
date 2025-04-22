@@ -1,17 +1,29 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SwapControlBinds : MonoBehaviour
 {
-    private void Awake() {
 
-        //Debug.Log(GameObject.FindGameObjectWithTag("Keyboard").name);
-        //Debug.Log(GameObject.FindGameObjectWithTag("Controller").name);
+    [SerializeField]
+    private GameObject[] Panels = { };
 
-        foreach (GameObject keyboard in GameObject.FindGameObjectsWithTag("Keyboard"))
-        { keyboard.SetActive(!MenuButtons.swapCondition); }
 
-        foreach (GameObject gamepad in GameObject.FindGameObjectsWithTag("Controller"))
-        { gamepad.SetActive(MenuButtons.swapCondition); }
+    private void OnEnable() {
+
+        // Update the active control scheme settings
+        foreach (GameObject obj in Panels)
+        { 
+            if (obj.CompareTag("Keyboard"))
+            { obj.SetActive(!MenuButtons.swapCondition); }
+
+            if (obj.CompareTag("Controller"))
+            { obj.SetActive(MenuButtons.swapCondition); }
+
+        }
+
+        FindFirstObjectByType<EventSystem>().SetSelectedGameObject(GameObject.FindGameObjectWithTag("Back Button"));
+        //Debug.Log(FindFirstObjectByType<EventSystem>().currentSelectedGameObject);
 
     }
 
