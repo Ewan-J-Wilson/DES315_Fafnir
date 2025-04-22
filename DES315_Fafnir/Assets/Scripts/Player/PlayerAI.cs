@@ -186,13 +186,16 @@ public class PlayerAI : MonoBehaviour
 		
 		playerAnimator.SetFloat("Velocity", Mathf.Abs(Vel.x));
 
-		if (Vel.x > 0f)
-		{ playerRenderer.flipX = false; }
+
+        if (Vel.x > 0f)
+		{ playerAnimator.SetFloat("Blend", 0f); }
 		else if (Vel.x < 0f)
-		{ playerRenderer.flipX = true; }
+		{ playerAnimator.SetFloat("Blend", 1f); }
 
-		Debug.Log(Rb.velocityY);
+		Debug.Log(playerAnimator.GetBool("IsFacingLeft"));
 
+		//Debug.Log(Rb.velocityY);
+		
     }
 
 	protected void FixedUpdate()
