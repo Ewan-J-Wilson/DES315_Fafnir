@@ -51,7 +51,7 @@ public class PlayerAI : MonoBehaviour
 	public bool IsRecording;                   //Flag to enable movement recording with the player
 
 	// Player
-	protected Rigidbody2D Rb;                   //Rigidbody for player physics
+	public Rigidbody2D Rb;                   //Rigidbody for player physics
 	protected Vector2 Vel;                      //Movement vector
 	protected Vector3 LastPos;                  //Last position the player was at prior to clone creation
 	[Tooltip("The Speed the Player moves at")]
@@ -103,6 +103,7 @@ public class PlayerAI : MonoBehaviour
 
 			JumpCount++;
             Rb.velocityY = JumpForce;
+
 			
 		}
 
@@ -159,7 +160,8 @@ public class PlayerAI : MonoBehaviour
 
 	protected virtual void HandleMovement()
 	{
-		playerAnimator.SetBool("InAir", Rb.velocityY != 0f);
+		if (!playerAnimator.GetBool("InAir"))
+		{ playerAnimator.SetBool("InAir", Rb.velocityY != 0f); }
 		if (Rb.velocityY == 0f)
 		{ JumpCount = 0; }
         
@@ -189,7 +191,7 @@ public class PlayerAI : MonoBehaviour
 		else if (Vel.x < 0f)
 		{ playerRenderer.flipX = true; }
 
-		//Debug.Log(Rb.velocityY);
+		Debug.Log(Rb.velocityY);
 
     }
 

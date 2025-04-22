@@ -84,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -459,7 +459,19 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      R_Walk_Clone_0: 3410199112689800508
+      R_Walk_Clone_1: 6874073844916020720
+      R_Walk_Clone_10: 2794949966943986033
+      R_Walk_Clone_11: -4707665557959452245
+      R_Walk_Clone_2: 8912499178244108252
+      R_Walk_Clone_3: 5892373409802193869
+      R_Walk_Clone_4: -1329269095977488871
+      R_Walk_Clone_5: 3424750423026347855
+      R_Walk_Clone_6: -9014854121310463601
+      R_Walk_Clone_7: 3686721422787855408
+      R_Walk_Clone_8: 6895320508502700037
+      R_Walk_Clone_9: -352143991206224115
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

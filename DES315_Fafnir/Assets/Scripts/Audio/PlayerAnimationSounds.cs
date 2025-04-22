@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +18,9 @@ public class PlayerAnimationSounds : MonoBehaviour
 
     [SerializeField] 
     protected string Armor2;
-    
+
+   
+
     public void PlaySteps1() // plays on keyframe 6
     {
         Audiomanager.instance.PlayAudio(Step1, 0.25f, 1.0f, 0.5f);
@@ -29,4 +32,25 @@ public class PlayerAnimationSounds : MonoBehaviour
         Audiomanager.instance.PlayAudio(Step2, 0.25f, 1.0f, 0.5f);
         Audiomanager.instance.PlayAudio(Armor2);
     }
+
+    public void MaxHeightEvent()
+    { StartCoroutine(WaitForLanding()); }
+
+    public IEnumerator WaitForLanding()
+    {
+
+        Animator anim = GetComponent<Animator>();
+        anim.speed = 0f;
+
+        yield return new WaitUntil(Land);
+        anim.speed = 1f;
+
+    }
+
+    public bool Land()
+    { return FindFirstObjectByType<PlayerAI>().Rb.velocityY == 0f; }
+
+    public void Swap()
+    { GetComponent<Animator>().SetBool("InAir", false); }
+
 }

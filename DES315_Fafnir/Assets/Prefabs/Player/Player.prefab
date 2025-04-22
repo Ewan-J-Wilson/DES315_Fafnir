@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: -2041866579
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 30394ee11ed373c49b6e38c6a8367ee1, type: 3}
+  m_Sprite: {fileID: -4186638618636048624, guid: 2388156ca1112584f86fc227fd5129ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -391,6 +391,7 @@ MonoBehaviour:
     tool: 0
     toolPosition: {x: 0, y: 0}
     dur: 0
+  Rb: {fileID: 0}
   MoveSpeed: 7.5
   CloningSound: CloneSpawn
 --- !u!50 &1796299224185216547
