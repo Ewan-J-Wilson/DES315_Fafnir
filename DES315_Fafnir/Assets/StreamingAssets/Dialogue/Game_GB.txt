@@ -306,8 +306,8 @@ Today, our fisherman was {n}meeting with his old friend and {n}neighbour, The Wi
 [CHILD_Happy]
 He's friends with a witch?! So cool!
 {NEXT}
-[DAD_Neutral]
-"Hi, dear! How lovely to see you again," the witch said gleefully. {n}"Likewise, it's a pleasur--"
+[WITCH_Happy]
+Hi, dear! How lovely to see you again. 
 END_DIAG
 
 # Intro panel 4
@@ -315,8 +315,8 @@ INTRO_3
 [DAD_Shock]
 Then, out of nowhere, {n}the dragon swooped down and stole her hat!
 {NEXT}
-[DAD_Shock]
-"Noooo! Get back here with my hat!" The witch protested.
+[WITCH_Cry]
+Noooo! Get back here with my hat!
 {NEXT}
 [DAD_Shock]
 "Help me!" The hat cried out as the dragon carried it {n}back to its perch {n}atop the lighthouse.
@@ -339,9 +339,11 @@ INTRO_5
 [DAD_Neutral]
 "Fear not, I'll get your hat back," the fisherman kindly offered. {n}"Oh, thank you, thank you so much!" The witch wept with gratitude.
 {NEXT}
-"That hat is my familiar. {n}It means everything to me. Here, you'll need this." She handed the fisherman one of her magic tomes.
+[WITCH_Sad]
+That hat is my familiar. {n}It means everything to me. Here, you'll need this magic tome.
 {NEXT}
-"There is a spell in here that will help you {n}against the many obstacles on the way to the dragon. {n}Thank you again, and good luck!"
+[WITCH_Sad]
+There is a spell in here that will help you {n}against the many obstacles on the way to the dragon. Thank you again, and good luck!
 END_DIAG
 
 # Outro dialogue
