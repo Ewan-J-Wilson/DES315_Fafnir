@@ -438,6 +438,7 @@ MonoBehaviour:
     tool: 0
     toolPosition: {x: 0, y: 0}
     dur: 0
+  Rb: {fileID: 0}
   MoveSpeed: 7.5
   CloningSound: 
 --- !u!70 &6270751211948189230
@@ -557,6 +558,7 @@ GameObject:
   - component: {fileID: 2886413968836041870}
   - component: {fileID: 183348200764642627}
   - component: {fileID: 7839049967039862459}
+  - component: {fileID: 5447673339486174504}
   m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
@@ -655,3 +657,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5447673339486174504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8676656009448351387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be8b8777fdb2943b4cdf2b3c122b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Step1: 
+  Step2: 
+  Armor1: 
+  Armor2: 

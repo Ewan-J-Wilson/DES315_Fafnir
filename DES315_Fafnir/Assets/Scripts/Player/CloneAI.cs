@@ -54,9 +54,9 @@ public class CloneAI : PlayerAI
         playerAnimator.SetFloat("Velocity", Mathf.Abs(Vel.x));
 
 		if (Vel.x > 0f)
-		{ playerRenderer.flipX = false; }
+		{ playerAnimator.SetFloat("Blend", 0f); }
 		else if (Vel.x < 0f)
-		{ playerRenderer.flipX = true; }
+		{ playerAnimator.SetFloat("Blend", 1f); }
 
     }
 
