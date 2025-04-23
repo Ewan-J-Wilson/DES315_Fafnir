@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -140.61002}
+  m_AnchoredPosition: {x: -5, y: -100}
   m_SizeDelta: {x: 740, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1965679294790411184
@@ -1623,7 +1623,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -274.00003}
+  m_AnchoredPosition: {x: -5, y: -300}
   m_SizeDelta: {x: 720, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9184224192493911026
@@ -2583,7 +2583,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: -209.00003}
+  m_AnchoredPosition: {x: -5, y: -200}
   m_SizeDelta: {x: 740, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3365278635530817972
@@ -2870,8 +2870,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.580017, y: 104.47}
-  m_SizeDelta: {x: -1078.37, y: -858.86}
+  m_AnchoredPosition: {x: -5.580017, y: 75}
+  m_SizeDelta: {x: -1078.37, y: -850}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &661028368479303064
 CanvasRenderer:
