@@ -82,6 +82,14 @@ public class DialogueManager : MonoBehaviour
         textBox.ReadStart();
     }
 
+    public static void ForceQuitDialogue() {
+
+        instance.textBox.displayLine = "";
+        DialogueRead.reading = false;
+        instance.textBox.gameObject.SetActive(false);
+
+    }
+
     // Update the size of the dialogue box and the font
     public void SetDialogueSize() {
 

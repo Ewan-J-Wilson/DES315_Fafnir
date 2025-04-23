@@ -37,7 +37,7 @@ public class MenuButtons : MonoBehaviour
         if (DialogueManager.instance != null)
         {
             if (DialogueManager.instance.textBox.isActiveAndEnabled)
-            { DialogueManager.instance.textBox.EndDialogue(); }
+            { DialogueManager.ForceQuitDialogue(); }
         }
         Audiomanager.instance.PlayAudio("Select");
     }
