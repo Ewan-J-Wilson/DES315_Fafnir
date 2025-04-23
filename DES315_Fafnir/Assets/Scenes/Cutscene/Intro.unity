@@ -323,6 +323,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -81.0189
       objectReference: {fileID: 0}
+    - target: {fileID: 1691909166720201164, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1761449757601885624, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -331,6 +335,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2195809544370917046, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 627460805}
     - target: {fileID: 3182076841977498956, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -753,6 +761,7 @@ MonoBehaviour:
   - {fileID: 124470776}
   - {fileID: 65093184}
   PanelInd: 0
+  skipCooldown: 1.5
 --- !u!1 &731710321
 GameObject:
   m_ObjectHideFlags: 0

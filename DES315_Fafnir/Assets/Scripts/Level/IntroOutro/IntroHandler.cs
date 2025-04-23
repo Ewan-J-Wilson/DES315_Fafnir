@@ -1,4 +1,6 @@
+using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class IntroHandler : MonoBehaviour
@@ -10,6 +12,10 @@ public class IntroHandler : MonoBehaviour
     private SpriteRenderer PreviousPanel;
     private bool doNextScene = false;
     private bool loadingNext = false;
+    private bool skipHeld = true;
+    [SerializeField]
+    private float skipCooldown = 1f;
+    private float skipTimer = 0f;
     
     private void Start()
     {
@@ -19,9 +25,29 @@ public class IntroHandler : MonoBehaviour
     }
 
      
+    public void SkipAction(InputAction.CallbackContext obj) {
+
+        if (obj.performed)
+        { skipHeld = true; }
+
+        if (obj.canceled) {
+            skipHeld = false;
+            skipTimer = 0f;
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
+
+        if (skipHeld) {
+            skipTimer += Time.deltaTime;
+            if (skipTimer >= skipCooldown) { 
+                PanelInd = 7; 
+                DialogueManager.ForceQuitDialogue();
+            }
+        }
 
         if (DialogueObj == null)
         { DialogueObj = FindFirstObjectByType<DialogueManager>().gameObject; }
