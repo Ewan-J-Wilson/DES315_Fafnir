@@ -20,7 +20,7 @@ public class ActivateMoveable : ActivateGeneric
     }
 
     // Update is called once per frame
-    public override void Update()
+    public override void Update() // updates platform's position with the passage of time 
     {
         ThresholdTracker();
 

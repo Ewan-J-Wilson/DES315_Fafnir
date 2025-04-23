@@ -1,11 +1,10 @@
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
-
     public static int currentLevel = 0;
     public static DialogueManager instance;
     public static string chapter;
@@ -15,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     public static bool autoscroll = false;
     public static float autoscrollLength = 3f;
     public static bool canSkip = true;
-    public static PlayerInput input;
+    public static float defaultFontSize = 28;
     
     // On Start
     public void Start() {
@@ -31,10 +30,6 @@ public class DialogueManager : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
 
-        // Get the player input
-        SceneManager.sceneLoaded += DetectInputScheme;
-        DetectInputScheme(gameObject.scene, LoadSceneMode.Single);
-
         // Disable the textbox
         textBox.gameObject.SetActive(false);
         icon.SetActive(false);
@@ -47,21 +42,22 @@ public class DialogueManager : MonoBehaviour
     { icon.SetActive(textBox.isActiveAndEnabled); }
 
     // Allows for dialogue to be changed when the loop changes
-    public static void OnLoopChange() {
-        chapter = currentLevel + "-" + GameManager.LoopInd + "_START";
+    public static void LoopTrigger(string _type) {
+        chapter = currentLevel + "-" + GameManager.LoopInd + "_" + _type;
+        DisablePlayerInput(true);
         instance.ReadDialogue();
     }
 
     // Allows for dialogue to be enabled through code
     public static void CodedDialogue(string _chapter) {
         chapter = _chapter;
+        DisablePlayerInput(true);
         instance.ReadDialogue();
     }
 
     // Enable/Disable player input
     public static void DisablePlayerInput(bool _disable) {
-        PlayerInput input = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>();
-        input.SwitchCurrentActionMap(_disable ? "UI" : "Player");
+        PlayerAI.inputRef.SwitchCurrentActionMap(_disable ? "UI" : "Player");
     }
 
     // If the Next Action button is pressed
@@ -82,22 +78,20 @@ public class DialogueManager : MonoBehaviour
     // Read the dialogue and thus display it
     public void ReadDialogue() {
         instance.textBox.gameObject.SetActive(true);
+        SetDialogueSize();
         textBox.ReadStart();
     }
 
-    public void DetectInputScheme(Scene scene,LoadSceneMode load) {
+    // Update the size of the dialogue box and the font
+    public void SetDialogueSize() {
 
-        if (GameObject.FindGameObjectWithTag("Player") == null) {
+        if (!instance.textBox.gameObject.activeSelf)
+        { return; }
 
-            GetComponent<PlayerInput>().enabled = true;
-            input = GetComponent<PlayerInput>();
-
-        }
-        else { 
-            GameObject.FindGameObjectWithTag("Player").TryGetComponent(out input);
-            GetComponent<PlayerInput>().enabled = false; 
-        }
+        instance.textBox.gameObject.transform.localScale = new Vector3(PlayerPrefs.GetFloat("Text Scale") * 1.2f, PlayerPrefs.GetFloat("Text Scale") * 1.2f, 1);
+        instance.GetComponentInChildren<TMP_Text>().fontSize = defaultFontSize * PlayerPrefs.GetFloat("Text Scale");
 
     }
+
 
 }

@@ -5,17 +5,21 @@ using UnityEngine.SceneManagement;
 public class Fade : MonoBehaviour
 {
 
-    public bool isMenu = false;
+    public static Fade instance;
     public static float FadeTime = 0.75f;
-    private SpriteRenderer _sprite;
+    private static SpriteRenderer _sprite;
     [HideInInspector]
-    public float alpha = 1f;
-    private float targetAlpha = 0f;
+    public static float alpha = 1f;
+    private static float targetAlpha = 0f;
+    [Tooltip("Only set this if no other object in the scene uses the FadeAllTracks() function")]
+    public bool FadeTracks;
     
     public void Start() 
     { 
 
-        if ((isMenu ? MenuButtons._fade : GameManager._fade) != this) { 
+        if (instance == null)
+        { instance = this; }
+        if (instance != this) { 
             Destroy(gameObject); 
             return;
         }
@@ -24,13 +28,15 @@ public class Fade : MonoBehaviour
         SceneManager.sceneLoaded += FadeIn;
     }
 
+    // Fade to black
     public void FadeOut() {
-
+        if (FadeTracks) FindFirstObjectByType<Audiomanager>().FadeAllTracks();
         _sprite.enabled = true;
         alpha = 0f;
         targetAlpha = 1f;
     }
 
+    // Fade into the scene
     public void FadeIn(Scene scene, LoadSceneMode mode) {
 
         alpha = 1f;
@@ -51,6 +57,7 @@ public class Fade : MonoBehaviour
         return true; 
     }
 
+    // Update the alpha value of the fade box
     public void Update() {
 
         if (!_sprite.enabled)

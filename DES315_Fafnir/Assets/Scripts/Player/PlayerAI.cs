@@ -59,26 +59,34 @@ public class PlayerAI : MonoBehaviour
 	protected float MoveSpeed = 7.5f;     //Constant movement speed
 	protected const float JumpForce = 25.0f;    //Constant jump force
 	protected const float XAccel = 3.33f;		//Constant aceleration
+	
+	public static PlayerInput inputRef;
 
 	// Pause Menu
 	private MenuButtons pauseMenu;
 
 	[SerializeField]
 	protected string CloningSound;
-	
+
+	// Animator
+	protected Animator playerAnimator;
+	protected SpriteRenderer playerRenderer;
 
     void Start()
 	{
 		// Unpause the game on start
 		pauseMenu = FindFirstObjectByType<MenuButtons>();
-		pauseMenu.Pause(false);
+		if (pauseMenu != null)
+		{ pauseMenu.Pause(false); }
 		PCList = new ActionList[MaxComSize];
 		CloneNo = 0;                            //Reset clone amount
 		Rb = GetComponent<Rigidbody2D>();
 		Array.Resize(ref PCList, 1);            //Resize array to have one element
 		ComInd = 0;                             //Reset command index
 		LastPos = transform.position;           //Grab current position for future clone position
-		
+		playerRenderer = GetComponentInChildren<SpriteRenderer>();
+		playerAnimator = GetComponentInChildren<Animator>();
+		inputRef = GetComponent<PlayerInput>();
 
 	}
 
@@ -144,11 +152,14 @@ public class PlayerAI : MonoBehaviour
 
     protected void Update()
 	{
+		if (playerRenderer == null)
+		{ return; }
 		HandleMovement();
 	}
 
 	protected virtual void HandleMovement()
 	{
+		playerAnimator.SetBool("InAir", Rb.velocityY != 0f);
 		if (Rb.velocityY == 0f)
 		{ JumpCount = 0; }
         
@@ -170,7 +181,17 @@ public class PlayerAI : MonoBehaviour
         // L/R input
         Vel.x = Mathf.MoveTowards(Vel.x, MoveSpeed * CurrentCom.hAxis, XAccel);
 
-	}
+		
+		playerAnimator.SetFloat("Velocity", Mathf.Abs(Vel.x));
+
+		if (Vel.x > 0f)
+		{ playerRenderer.flipX = false; }
+		else if (Vel.x < 0f)
+		{ playerRenderer.flipX = true; }
+
+		//Debug.Log(Rb.velocityY);
+
+    }
 
 	protected void FixedUpdate()
 	{ transform.Translate(Vel * Time.deltaTime); }
@@ -188,7 +209,7 @@ public class PlayerAI : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 	
-		if (!collision.IsTouching(GetComponent<BoxCollider2D>()))
+		if (!collision.IsTouching(GetComponent<CapsuleCollider2D>()))
 		{ return; }
 
         if (collision.CompareTag("DeathZone"))
@@ -226,7 +247,7 @@ public class PlayerAI : MonoBehaviour
 	private void HandleCommandInput()
 	{
 		//Check for command change
-		if (CurrentCom.hAxis != LastCom.hAxis 
+		if ((CurrentCom.hAxis != LastCom.hAxis || ComInd == 0 )
 			|| CurrentCom.jump != LastCom.jump 
 			|| CurrentCom.tool != LastCom.tool)
 		{

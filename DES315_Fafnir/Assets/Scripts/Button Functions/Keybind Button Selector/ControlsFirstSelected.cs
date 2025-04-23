@@ -10,7 +10,7 @@ public class ControlsFirstSelected : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        GetComponent<EventSystem>().firstSelectedGameObject = 
+        FindFirstObjectByType<EventSystem>().firstSelectedGameObject = 
             MenuButtons.swapCondition ?
             gamepadFirstSelected :
             keyboardFirstSelected;

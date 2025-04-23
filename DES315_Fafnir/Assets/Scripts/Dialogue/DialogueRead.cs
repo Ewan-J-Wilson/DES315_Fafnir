@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
-using System;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -15,19 +14,6 @@ public class DialogueRead : MonoBehaviour
     private StreamReader reader;
     private string displayLine = "";
     public static bool reading = false;
-
-    public Dictionary<string, string> buttonReplace = new(){
-
-        { "XButton South", "A" },
-        { "XButton East", "B" },
-        { "XButton North", "Y" },
-        { "XButton West", "X" },
-        { "PSButton South", "X" },
-        { "PSButton East", "○" },
-        { "PSButton North", "△" },
-        { "PSButton West", "□" }
-
-    };
 
     // On Start, get the dialogue file
     void Start()
@@ -55,7 +41,7 @@ public class DialogueRead : MonoBehaviour
 
         // Skip lines that are empty, are comments, or are before the start point
         if ((!line.Contains(DialogueManager.chapter) && !reading) || line.Contains('#') || string.IsNullOrWhiteSpace(line))
-        { 
+        {
             ReadBlock(); 
             return;
         }
@@ -151,23 +137,23 @@ public class DialogueRead : MonoBehaviour
                         string action = formatRead.Split("/")[1];
 
                         if (actionMap == "Player") 
-                        { DialogueManager.input.SwitchCurrentActionMap("Player"); }
+                        { PlayerAI.inputRef.SwitchCurrentActionMap("Player"); }
 
                         List<string> actionText = new();
-                        for (int i = 0; i < DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
+                        for (int i = 0; i < PlayerAI.inputRef.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
                             
-                            string actionName = DialogueManager.input.currentActionMap.FindAction(action, true).GetBindingDisplayString(i);
-                            if (actionName.Contains("/") || DialogueManager.input.currentActionMap.FindAction(action, true).bindings.Count < 3)
+                            string actionName = PlayerAI.inputRef.currentActionMap.FindAction(action, true).GetBindingDisplayString(i);
+                            if (actionName.Contains("/") || PlayerAI.inputRef.currentActionMap.FindAction(action, true).bindings.Count < 3)
                             { actionText.Add(actionName); }
                             
                         }
 
                         textAsset.text += "[" 
-                            + ((DialogueManager.input.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
+                            + ((PlayerAI.inputRef.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
                             + "]";
 
                         if (actionMap == "Player") 
-                        { DialogueManager.input.SwitchCurrentActionMap("UI"); }
+                        { PlayerAI.inputRef.SwitchCurrentActionMap("UI"); }
 
                     }
 
@@ -200,7 +186,7 @@ public class DialogueRead : MonoBehaviour
 
         }
 
-        reading = false;
+        
         displayLine = "";
 
         DialogueManager.next = false;
@@ -211,7 +197,17 @@ public class DialogueRead : MonoBehaviour
         else
         { yield return new WaitUntil(ReadNext); }
 
-        // Re-enable the palyer input and hide the dialogue box
+        reading = false;
+        // Re-enable the player input and hide the dialogue box
+        DialogueManager.DisablePlayerInput(false);
+        gameObject.SetActive(false);
+
+    }
+
+    public void EndDialogue() {
+
+        reading = false;
+        // Re-enable the player input and hide the dialogue box
         DialogueManager.DisablePlayerInput(false);
         gameObject.SetActive(false);
 
@@ -235,9 +231,8 @@ public class DialogueRead : MonoBehaviour
     // Toggles Dialogue settings on or off
     public void FormatToggles(string formatRead) {
 
-        // Whether to let the player move during dialogue
-        if (formatRead == "input enable")
-        { DialogueManager.DisablePlayerInput(false); }
+        // Disable Player Input if needed
+        // no Enable due to it conflicting with the gamepad jump button
         if (formatRead == "input disable")
         { DialogueManager.DisablePlayerInput(true); }
 
