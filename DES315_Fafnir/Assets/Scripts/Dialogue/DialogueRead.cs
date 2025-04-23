@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 using System.IO;
 using TMPro;
@@ -12,8 +12,9 @@ public class DialogueRead : MonoBehaviour
     public static float ReadSpeed = 0.02f;
     private static string path;
     private StreamReader reader;
-    private string displayLine = "";
+    public string displayLine = "";
     public static bool reading = false;
+    public static bool earlyBreak = false;
 
     // On Start, get the dialogue file
     void Start()
