@@ -1334,6 +1334,7 @@ GameObject:
   - component: {fileID: 481624829}
   - component: {fileID: 481624831}
   - component: {fileID: 481624830}
+  - component: {fileID: 481624832}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -1432,6 +1433,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &481624832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481624828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65be8b8777fdb2943b4cdf2b3c122b53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Step1: 
+  Step2: 
+  Armor1: 
+  Armor2: 
 --- !u!1 &576001430 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4862307127334381758, guid: 5739e96a30ebb6647bb0d736f17e9353, type: 3}
