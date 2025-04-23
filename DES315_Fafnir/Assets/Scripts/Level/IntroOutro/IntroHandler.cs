@@ -12,7 +12,7 @@ public class IntroHandler : MonoBehaviour
     private SpriteRenderer PreviousPanel;
     private bool doNextScene = false;
     private bool loadingNext = false;
-    private bool skipHeld = true;
+    private bool skipHeld = false;
     [SerializeField]
     private float skipCooldown = 1f;
     private float skipTimer = 0f;
