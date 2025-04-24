@@ -397,7 +397,7 @@
                 {
                     "name": "Skip",
                     "type": "Button",
-                    "id": "0fe5fc85-80de-4067-afe7-f30d5bb136f5",
+                    "id": "891ea440-f3f6-4583-9b78-da20661683bf",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -726,7 +726,7 @@
                 },
                 {
                     "name": "",
-                    "id": "3e1fa301-5b40-4afb-8f04-8923b9ec19dd",
+                    "id": "57f10906-4491-4ea9-b099-ce0eea856ecc",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
@@ -737,7 +737,7 @@
                 },
                 {
                     "name": "",
-                    "id": "aa03a073-a0d5-4824-964c-d60a3716f32b",
+                    "id": "12e7a7f8-e7f1-4fad-988d-e711295088e2",
                     "path": "<Keyboard>/t",
                     "interactions": "",
                     "processors": "",

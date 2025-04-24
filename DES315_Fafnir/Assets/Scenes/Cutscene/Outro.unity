@@ -3357,7 +3357,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   LevelList:
   - {fileID: 1625500344}
-  nextLevel: Main Menu
+  nextLevel: Credits
   LevelInd: 3
 --- !u!1001 &954492091
 PrefabInstance:
