@@ -20,6 +20,7 @@ TagManager:
   - StartFlag
   - Dialogue
   - Back Button
+  - Pause
   layers:
   - Default
   - TransparentFX

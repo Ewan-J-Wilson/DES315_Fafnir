@@ -15,12 +15,7 @@ public class ToMenu : MonoBehaviour
         
             readingText = DialogueRead.reading;
             if (!readingText)
-            {
-
-                FindFirstObjectByType<GameManager>().NextLevel();
-                //FindFirstObjectByType<Fade>().FadeOut(); 
-            
-            }
+            { FindFirstObjectByType<GameManager>().NextLevel(); }
 
         
         }

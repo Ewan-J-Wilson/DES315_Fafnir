@@ -378,9 +378,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2538101400715474853}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
-        m_MethodName: Pause
+        m_MethodName: SwapMenu
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

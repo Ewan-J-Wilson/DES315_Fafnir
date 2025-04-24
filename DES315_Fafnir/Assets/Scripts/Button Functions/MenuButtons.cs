@@ -16,16 +16,17 @@ public class MenuButtons : MonoBehaviour
     public static Fade _fade;
 
     // If the menu only appears after a condition has been met
-    [Tooltip("Does this only show up after certain conditions are met?")]
-    [SerializeField] private bool conditional = false;
+    //[Tooltip("Does this only show up after certain conditions are met?")]
+    //[SerializeField] private bool conditional = false;
 
     private EventSystem eventSys;
 
     private void Awake() { 
-        GetComponent<Canvas>().enabled = !conditional; 
+        //if (name != Pause)
+        //GetComponent<Canvas>().enabled = !conditional; 
         eventSys = FindFirstObjectByType<EventSystem>();
         _fade = GameObject.FindGameObjectWithTag("FadeOut").GetComponent<Fade>();
-        eventSys.enabled = !conditional;
+        //eventSys.enabled = !conditional;
     }
 
     // Loads a new scene
@@ -81,7 +82,8 @@ public class MenuButtons : MonoBehaviour
     public void Pause(bool _pause) {
 
         // Enable the pause
-        GetComponent<Canvas>().enabled = _pause;
+        //GetComponent<Canvas>().enabled = _pause;
+        FindFirstObjectByType<SettingsSwap>().SwapMenu(_pause ? "Pause Menu" : "NULL");
         eventSys.enabled = _pause;
         // Stops Time
         Time.timeScale = (_pause ? 0 : 1);

@@ -15,10 +15,7 @@ public class SetCamera : MonoBehaviour
 
 
     private void LoadCamera(Scene arg0,LoadSceneMode arg1) 
-    { GetComponent<Canvas>().worldCamera = FindFirstObjectByType<Camera>();
-        //GetComponent<Canvas>().sortingLayerName = "UI";
-        
-        }
+    { GetComponent<Canvas>().worldCamera = FindFirstObjectByType<Camera>(); }
 
 
     // Why does this stay on destruction in the first place ;-;

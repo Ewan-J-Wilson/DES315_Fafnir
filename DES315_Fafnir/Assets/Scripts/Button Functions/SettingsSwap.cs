@@ -10,16 +10,11 @@ public class SettingsSwap : MonoBehaviour
     [SerializeField]
     private string primaryMenu;
 
-    // Start is called before the first frame update
+    // Initialise the menus
     void Start()
-    {
-        
-        // Initialise the menus
-        swapMenu(primaryMenu);
+    { SwapMenu(primaryMenu); }
 
-    }
-
-    public void swapMenu(string _newMenu) {
+    public void SwapMenu(string _newMenu) {
 
         // Change the only active menu to the selected one
         foreach (GameObject _menu in MenuList) 
