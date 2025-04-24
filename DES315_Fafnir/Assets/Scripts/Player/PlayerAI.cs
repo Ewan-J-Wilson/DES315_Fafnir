@@ -161,7 +161,7 @@ public class PlayerAI : MonoBehaviour
 	protected virtual void HandleMovement()
 	{
 		if (!playerAnimator.GetBool("InAir"))
-		{ playerAnimator.SetBool("InAir", Rb.velocityY != 0f); }
+		{ playerAnimator.SetBool("InAir", Rb.velocityY > 0.1f || Rb.velocityY < -0.1f); }
 		if (Rb.velocityY == 0f)
 		{ JumpCount = 0; }
         
@@ -192,7 +192,7 @@ public class PlayerAI : MonoBehaviour
 		else if (Vel.x < 0f)
 		{ playerAnimator.SetFloat("Blend", 1f); }
 
-		Debug.Log(playerAnimator.GetBool("IsFacingLeft"));
+		//Debug.Log(playerAnimator.GetBool("IsFacingLeft"));
 
 		//Debug.Log(Rb.velocityY);
 		

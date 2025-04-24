@@ -22,7 +22,7 @@ public class CloneAI : PlayerAI
 
 	protected override void HandleMovement()
 	{
-        playerAnimator.SetBool("InAir", Rb.velocityY != 0f);
+        playerAnimator.SetBool("InAir", Rb.velocityY > 0.1f || Rb.velocityY < -0.1f);
         if (Rb.velocityY == 0f)
 		{ JumpCount = 0; }
 
@@ -57,6 +57,8 @@ public class CloneAI : PlayerAI
 		{ playerAnimator.SetFloat("Blend", 0f); }
 		else if (Vel.x < 0f)
 		{ playerAnimator.SetFloat("Blend", 1f); }
+
+		Debug.Log(playerAnimator.GetBool("InAir"));
 
     }
 
