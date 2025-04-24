@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Clone Trail_0: -5016674286647446469
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
