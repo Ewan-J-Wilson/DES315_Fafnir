@@ -357,25 +357,25 @@ What books *have* you been reading, child? {n}This isn't that kind of story.
 [DAD_Neutral]
 "You up there!" The fisherman called up to the dragon. {n}"Why have you stolen the witch's hat?"
 {NEXT}
-[DAD_Neutral]
+[DRAGON_Squint]
 "You mean *my* hat?" The dragon teased playfully, making a point {n}to stick his tongue out at the fisherman.
 {NEXT}
 [DAD_Shock]
 "You're supposed to protect our town, not menace it!" The fisherman {n}called back. "Return the hat at once!"
 {NEXT}
-[DAD_Neutral]
+[DRAGON_Squint]
 "But why?" The dragon tilted its head. {n}"The hat is my friend!"
 {NEXT}
 [DAD_Neutral]
 The fisherman was taken aback. "What do you mean? You stole it! It doesn't belong to you!"
 {NEXT}
-[DAD_Shock]
+[DRAGON_Hat]
 "It doesn't belong to anyone!" The dragon scoffed. "Qah is a creature. And it's lonely. Just like me."
 {NEXT}
 [DAD_Neutral]
 "Qah?" The fisherman asked.
 {NEXT}
-[DAD_Neutral]
+[DRAGON_Hat]
 "Yeah. Short for Lah'Klov'Qah. Your human tongue {n}would butcher the pronounciation of its proper name. {n}Not that you bothered to give it one."
 {NEXT}
 [CHILD_Happy]
@@ -384,25 +384,24 @@ Whoa! When did you learn Draconic, dad?
 [DAD_Neutral]
 That's a story for another time, child. Moving on.
 {NEXT}
-[DAD_Neutral]
 "Look, I'm just here to bring the hat back to the witch. I don't wish to harm it, or you."
 {NEXT}
-[DAD_Neutral]
+[DRAGON_Hat]
 "But can't you see how happy I am? Why would you take that away from me?" The dragon gazed at the fisherman with sad eyes.
 {NEXT}
 [DAD_Neutral]
 "Because you took it from The Witch. The hat is her friend, too."
 {NEXT}
-[DAD_Neutral]
+[DRAGON_Hat]
 The dragon pondered for a moment, then relented. {n}"I see. I cannot argue with that, human. You may take it back..."
 {NEXT}
-[DAD_Neutral]
+[DRAGON_Squint]
 "...on one condition." The dragon asserted.
 {NEXT}
 [DAD_Neutral]
 "And what's that?"
 {NEXT}
-[DAD_Neutral]
+[DRAGON_Hat]
 "I get to play with Qah on the weekends!"
 {NEXT}
 [DAD_Neutral]
