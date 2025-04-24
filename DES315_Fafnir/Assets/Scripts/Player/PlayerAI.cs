@@ -121,11 +121,11 @@ public class PlayerAI : MonoBehaviour
 		if (!obj.started)
 		{ return; }
 
-		if (IsRecording)  {
+		//Break out of function if the clone limit has been reached
+		if (CloneNo >= MaxClones)
+		{ return; }
 
-			//Break out of function if the clone limit has been reached
-			if (CloneNo >= MaxClones)
-			{ return; }
+		if (IsRecording)  {
 
 			//Load in last command into stream
 			PCList[ComInd] = LastCom;
