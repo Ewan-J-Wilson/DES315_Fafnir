@@ -37,10 +37,7 @@ public class CreditsScroll : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    { 
-        distance = Mathf.Abs(transform.position.y); 
-        Debug.Log(distance);
-        }
+    { distance = Mathf.Abs(transform.position.y); }
     
 
     // Update is called once per frame
@@ -52,17 +49,19 @@ public class CreditsScroll : MonoBehaviour
 
         if ((startTimer += Time.deltaTime) < startWait) 
         { return; }
-        Debug.Log(transform.position.y);
+
+        //Debug.Log(transform.position.y);
+
         transform.position += new Vector3(0, Time.deltaTime * speed * (increaseSpeed ? 4 : 1), 0);
         if (transform.position.y >= distance && !doLoad) { 
             doLoad = true;
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
             FindFirstObjectByType<Fade>().FadeOut();
         }
 
         if (doLoad && Fade.alpha >= 1) {
             doLoad = false;
-            Time.timeScale = 1;
+            //Time.timeScale = 1;
             SceneManager.LoadSceneAsync("Main Menu");
         }
 
