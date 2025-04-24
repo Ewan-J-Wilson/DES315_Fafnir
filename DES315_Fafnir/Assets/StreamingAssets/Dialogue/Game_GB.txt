@@ -361,7 +361,7 @@ What books *have* you been reading, child? {n}This isn't that kind of story.
 "You mean *my* hat?" The dragon teased playfully, making a point {n}to stick his tongue out at the fisherman.
 {NEXT}
 [DAD_Shock]
-"You're supposed to protect our town, not menace it!" The fisherman {n}called back. "Return the hat at once!"
+"You're supposed to protect our town, not menace it!" {n}The fisherman called back. "Return the hat at once!"
 {NEXT}
 [DRAGON_Squint]
 "But why?" The dragon tilted its head. {n}"The hat is my friend!"
