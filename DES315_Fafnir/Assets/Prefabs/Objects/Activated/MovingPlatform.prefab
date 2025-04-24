@@ -76,7 +76,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   TargetPos: {x: -5, y: 4}
-  Speed: 1
+  Speed: 0.6
 --- !u!212 &6741221212633780968
 SpriteRenderer:
   m_ObjectHideFlags: 0
