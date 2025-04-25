@@ -307,6 +307,24 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b44883f25af5f124ca79f62d3eb1689f, type: 3}
     src: {fileID: 0}
     type: 2
+  - Name: Jump
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 95b2f336bc2d723469bcfcb7502fb1a0, type: 3}
+    src: {fileID: 0}
+    type: 2
+  - Name: Land
+    Volume: 1
+    Pitch: 1
+    Panning: 0.5
+    loop: 0
+    LoopPoint: 0
+    clip: {fileID: 8300000, guid: 4d08fcb78904e554f912069084b42e47, type: 3}
+    src: {fileID: 0}
+    type: 2
   - Name: T8-1
     Volume: 1
     Pitch: 1

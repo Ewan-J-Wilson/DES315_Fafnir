@@ -130,6 +130,8 @@ MonoBehaviour:
   Step2: Step2
   Armor1: Armor1
   Armor2: Armor2
+  Jump: Jump
+  LandSound: Land
 --- !u!1 &5388493501793229336
 GameObject:
   m_ObjectHideFlags: 0

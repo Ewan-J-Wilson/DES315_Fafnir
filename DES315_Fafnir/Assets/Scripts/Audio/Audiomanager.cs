@@ -196,6 +196,8 @@ public class Audiomanager : MonoBehaviour
             { aud.src.volume *= volumeLevels[AudioType.MASTER]; }
         }
         aud.src.Play();
+
+        Debug.Log("Track name: " + aud.Name);
         
     }
 
