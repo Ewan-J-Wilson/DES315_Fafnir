@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &231669427 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 988833630307922282, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
+  m_PrefabInstance: {fileID: 2485742944366732981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87bce74d8f9e04641844df9a85ca3e32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &363908746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -852,6 +863,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 3114748135125542970, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5.580078
+      objectReference: {fileID: 0}
     - target: {fileID: 3459283821741018357, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1407,6 +1422,18 @@ PrefabInstance:
     - target: {fileID: 7460965633431529071, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587326024136145143, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 231669427}
+    - target: {fileID: 7587326024136145143, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SwitchToScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587326024136145143, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenuButtons, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7594007946567047419, guid: d9be2f0543cbbc04cb8bff5d95be3bed, type: 3}
       propertyPath: m_AnchorMax.y
