@@ -29,7 +29,8 @@ public class IconSwap : MonoBehaviour
     private bool canBlink = true;
 
     [SerializeField]
-    private float IconSize = 75f;
+    private bool scale = true;
+
 
     public void Update() {
 
@@ -54,10 +55,9 @@ public class IconSwap : MonoBehaviour
         // Update the icon size
         RectTransform rect = GetComponent<RectTransform>();
 
-        if (IconSize < 2000)
-        { rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 60 * PlayerPrefs.GetFloat("Text Scale"), 0); }
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, IconSize * (IconSize < 2000 ? PlayerPrefs.GetFloat("Text Scale") : 1));
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, IconSize * (IconSize < 2000 ? PlayerPrefs.GetFloat("Text Scale") : 1));
+        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 60 * (scale ? PlayerPrefs.GetFloat("Text Scale") : 1), 0);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75 * (scale ? PlayerPrefs.GetFloat("Text Scale") : 1));
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75 * (scale ? PlayerPrefs.GetFloat("Text Scale") : 1));
 
         // Break early if the icon hasn't changed to save performance
         if (PlayerAI.inputRef.currentControlScheme == controlSchemeName && PlayerAI.inputRef.devices[0].name == deviceName)
@@ -78,10 +78,9 @@ public class IconSwap : MonoBehaviour
         }
 
         // Re-update the icon if it changed
-        if (IconSize < 2000)
-        { rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 60 * PlayerPrefs.GetFloat("Text Scale"), 0); }
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, IconSize * (IconSize < 2000 ? PlayerPrefs.GetFloat("Text Scale") : 1));
-        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, IconSize * (IconSize < 2000 ? PlayerPrefs.GetFloat("Text Scale") : 1));
+        rect.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, 60 * (scale ? PlayerPrefs.GetFloat("Text Scale") : 1), 0);
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 75 * (scale ? PlayerPrefs.GetFloat("Text Scale") : 1));
+        rect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 75 * (scale ? PlayerPrefs.GetFloat("Text Scale") : 1));
 
     }
 
