@@ -7,7 +7,7 @@ public class Fade : MonoBehaviour
 
     public static Fade instance;
     public static float FadeTime = 0.75f;
-    private static SpriteRenderer _sprite;
+    static SpriteRenderer _sprite;
     [HideInInspector]
     public static float alpha = 1f;
     private static float targetAlpha = 0f;
@@ -26,6 +26,7 @@ public class Fade : MonoBehaviour
         DontDestroyOnLoad(gameObject); 
         _sprite = GetComponent<SpriteRenderer>();
         SceneManager.sceneLoaded += FadeIn;
+        //FadeIn(gameObject.scene, LoadSceneMode.Single);
     }
 
     // Fade to black
@@ -39,6 +40,7 @@ public class Fade : MonoBehaviour
     // Fade into the scene
     public void FadeIn(Scene scene, LoadSceneMode mode) {
 
+        _sprite.enabled = true;
         alpha = 1f;
         targetAlpha = 0f;
 
@@ -63,7 +65,7 @@ public class Fade : MonoBehaviour
         if (!_sprite.enabled)
         { return; }
 
-        alpha = Mathf.MoveTowards(alpha, targetAlpha, Time.unscaledDeltaTime / FadeTime);
+        alpha = Mathf.MoveTowards(alpha, targetAlpha, (Time.timeScale == 1 ? Time.deltaTime : Time.unscaledDeltaTime) / FadeTime);
         
         _sprite.color = new(_sprite.color.r, _sprite.color.b, _sprite.color.g, alpha);
 
