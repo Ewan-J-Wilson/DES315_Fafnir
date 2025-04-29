@@ -2,14 +2,15 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class IntroHandler : MonoBehaviour
 {
     public Fade fade;
     private GameObject DialogueObj;
-    public SpriteRenderer[] Panels;    //Panels to show
+    public RawImage[] Panels;    //Panels to show
     public int PanelInd;
-    private SpriteRenderer PreviousPanel;
+    private RawImage PreviousPanel;
     private bool doNextScene = false;
     private bool loadingNext = false;
     private bool skipHeld = false;
