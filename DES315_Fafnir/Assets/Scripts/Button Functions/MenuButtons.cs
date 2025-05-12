@@ -81,6 +81,7 @@ public class MenuButtons : MonoBehaviour
     
     public void Pause(bool _pause) {
 
+
         // Enable the pause
         //GetComponent<Canvas>().enabled = _pause;
         FindFirstObjectByType<SettingsSwap>().SwapMenu(_pause ? "Pause Menu" : "NULL");
@@ -89,7 +90,10 @@ public class MenuButtons : MonoBehaviour
         Time.timeScale = (_pause ? 0 : 1);
 
         // Swaps to the UI action map if the game is paused
- 
+
+        if (DialogueRead.reading)
+        { return; }
+
         PlayerInput actions = GetComponentInParent<PlayerInput>();
         if (_pause) 
         { actions.SwitchCurrentActionMap("UI"); }
