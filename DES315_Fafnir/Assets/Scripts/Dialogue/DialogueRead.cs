@@ -81,14 +81,15 @@ public class DialogueRead : MonoBehaviour
         bool format = false;
         string formatRead = "";
 
-        textAsset.pageToDisplay = 1;
+        //textAsset.pageToDisplay = 1;
 
         foreach (char c in displayLine) {
 
-            if (textAsset.isTextOverflowing) {
-                yield return new WaitUntil(ReadNext);
-                textAsset.text = "";
-            }
+            //WIP
+            //if (textAsset.isTextOverflowing) {
+            //    yield return new WaitUntil(ReadNext);
+            //    textAsset.text = "";
+            //}
 
             // Read the text
             if (!(format || c == '[' || c == '{')) 
