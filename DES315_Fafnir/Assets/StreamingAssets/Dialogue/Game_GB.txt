@@ -13,7 +13,7 @@ Press? Lever? What in creation are you {n}talking about, child?
 [CHILD_Anger]
 Don't worry about it, dad! Just do it!
 {NEXT}
-If on the off chance you get stuck, you can get a hint by pressing {Player/Unpause}.
+If on the off chance you get stuck, you can get a hint by pressing {UI/Unpause}.
 END_DIAG
 
 # Loop 1-2
