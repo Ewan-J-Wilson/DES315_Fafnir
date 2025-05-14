@@ -81,13 +81,22 @@ public class DialogueRead : MonoBehaviour
         bool format = false;
         string formatRead = "";
 
+        //textAsset.pageToDisplay = 1;
+
         foreach (char c in displayLine) {
+
+            //WIP
+            //if (textAsset.isTextOverflowing) {
+            //    yield return new WaitUntil(ReadNext);
+            //    textAsset.text = "";
+            //}
 
             // Read the text
             if (!(format || c == '[' || c == '{')) 
             { 
 
                 textAsset.text += c;
+                
 
                 // Skip to the end of the panel
                 if (!DialogueManager.next || !DialogueManager.canSkip)

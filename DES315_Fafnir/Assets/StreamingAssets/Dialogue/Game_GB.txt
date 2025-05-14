@@ -278,10 +278,8 @@ END_DIAG
 INTRO_0
 [CHILD_Happy]
 Please, dad, just one more story? 
-{NEXT}
 [DAD_Tired]
 Alright then, but just this once. Then it's time to sleep.
-{NEXT}
 [CHILD_Anger]
 Awww man, sleep? You drive a hard bargain, father. 
 END_DIAG
@@ -290,10 +288,8 @@ END_DIAG
 INTRO_1
 [DAD_Neutral]
 Don't worry, this is gonna be good. {n}Once upon a time, there {n}was a fisherman who lived in the {n}colourful seaside town of Dragon's Harbour.
-{NEXT}
 [DAD_Neutral]
 In Dragon's Harbour, life moved {n}at a slower pace, and everyone {n}got along with each other.
-{NEXT}
 [DAD_Neutral]
 The town got its name from the dragon {n}perched atop the lighthouse, who watched over it always.
 END_DIAG
