@@ -291,11 +291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 429465825773502812, guid: a89b118c06cb3034fa938b279aa77335, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -154.9
+      value: -55
       objectReference: {fileID: 0}
     - target: {fileID: 429465825773502812, guid: a89b118c06cb3034fa938b279aa77335, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 44.92803
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 429465825773502812, guid: a89b118c06cb3034fa938b279aa77335, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -321,6 +321,10 @@ PrefabInstance:
       propertyPath: xbox
       value: 
       objectReference: {fileID: -6032220462055368914, guid: 9fcc5686a84dde8409250e1309e51f25, type: 3}
+    - target: {fileID: 5104537860484213657, guid: a89b118c06cb3034fa938b279aa77335, type: 3}
+      propertyPath: scale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5104537860484213657, guid: a89b118c06cb3034fa938b279aa77335, type: 3}
       propertyPath: canBlink
       value: 0
@@ -1044,8 +1048,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60.13, y: -0.76}
-  m_SizeDelta: {x: 301.06, y: 85.6639}
+  m_AnchoredPosition: {x: -0.000021935, y: 0.00001353}
+  m_SizeDelta: {x: 571.16, y: 85.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000728337
 MonoBehaviour:
@@ -1067,7 +1071,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: To Skip
+  m_text: Hold     To Skip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1511,10 +1515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1662,8 +1666,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 554, y: 447.82}
-  m_SizeDelta: {x: -1499.35, y: -964.2}
+  m_AnchoredPosition: {x: 605, y: 430}
+  m_SizeDelta: {x: -1310, y: -960}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1949863765
 MonoBehaviour:
