@@ -30,7 +30,7 @@ Well it was boOoring! It didn't happen like that!
 [CHILD_Anger]
 The magic book! Duh! {n}What's the point if we don't even use our cool new powers?!
 {NEXT}
-[Dad_Neutral]
+[DAD_Neutral]
 Ah yes, of course. How do I go about doing that?
 {NEXT}
 [CHILD_Happy]
