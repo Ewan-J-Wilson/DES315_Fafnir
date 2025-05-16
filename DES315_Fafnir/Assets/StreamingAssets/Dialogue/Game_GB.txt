@@ -59,7 +59,7 @@ Okay, but what if I get stuck? {n}Then you'll have to just go to bed before I fi
 [CHILD_Anger]
 That's no faaaair! {n}Ugh,{t:0.2} fiiiine. 
 {NEXT}
-[Child_Anger]
+[CHILD_Anger]
 Just press {Player/Reset} and you'll restart the level. Happy?
 {NEXT}
 [DAD_Neutral]
