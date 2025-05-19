@@ -12,6 +12,8 @@ Press? Lever? What in creation are you {n}talking about, child?
 {NEXT}
 [CHILD_Anger]
 Don't worry about it, dad! Just do it!
+{NEXT}
+If on the off chance you get stuck, you can get a hint by pressing {UI/Unpause}.
 END_DIAG
 
 # Loop 1-2
@@ -28,7 +30,7 @@ Well it was boOoring! It didn't happen like that!
 [CHILD_Anger]
 The magic book! Duh! {n}What's the point if we don't even use our cool new powers?!
 {NEXT}
-[Dad_Neutral]
+[DAD_Neutral]
 Ah yes, of course. How do I go about doing that?
 {NEXT}
 [CHILD_Happy]
@@ -57,7 +59,7 @@ Okay, but what if I get stuck? {n}Then you'll have to just go to bed before I fi
 [CHILD_Anger]
 That's no faaaair! {n}Ugh,{t:0.2} fiiiine. 
 {NEXT}
-[Child_Anger]
+[CHILD_Anger]
 Just press {Player/Reset} and you'll restart the level. Happy?
 {NEXT}
 [DAD_Neutral]
@@ -278,8 +280,10 @@ END_DIAG
 INTRO_0
 [CHILD_Happy]
 Please, dad, just one more story? 
+{NEXT}
 [DAD_Tired]
 Alright then, but just this once. Then it's time to sleep.
+{NEXT}
 [CHILD_Anger]
 Awww man, sleep? You drive a hard bargain, father. 
 END_DIAG
@@ -288,8 +292,10 @@ END_DIAG
 INTRO_1
 [DAD_Neutral]
 Don't worry, this is gonna be good. {n}Once upon a time, there {n}was a fisherman who lived in the {n}colourful seaside town of Dragon's Harbour.
+{NEXT}
 [DAD_Neutral]
 In Dragon's Harbour, life moved {n}at a slower pace, and everyone {n}got along with each other.
+{NEXT}
 [DAD_Neutral]
 The town got its name from the dragon {n}perched atop the lighthouse, who watched over it always.
 END_DIAG
