@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.TextCore.Text;
 
 public class DialogueRead : MonoBehaviour
 {
@@ -60,9 +62,7 @@ public class DialogueRead : MonoBehaviour
             return;
         }
 
-        // Add a space if there is one missing
-        if (line[^1] != ' ' && line[^1] != ']' && line[^1] != '}')
-        { line += ' '; }
+        FormatLine(ref line);
 
         // Read the next line
         displayLine += line;
@@ -70,7 +70,97 @@ public class DialogueRead : MonoBehaviour
 
     }
 
+    public void FormatLine(ref string line) {
+
+        // Add a space if there is one missing
+        if (line[^1] != ' ' && line[^1] != ']' && line[^1] != '}')
+        { line += ' '; }
+
+
+        // Clear the formatting
+        bool format = false;
+        string formatRead = "";
+
+        int startInd = 0;
+
+        //textAsset.pageToDisplay = 1;
+        int lineInd = 0;
+        foreach (char c in line) {
+
+            // Start formatting
+            if (!format && (c == '{'))
+            { 
+                format = true; 
+                startInd = lineInd;
+            }
+            // Parse the formatting
+            else if (format && (c == '}')) {
+
+                if (formatRead.Contains("Player/") || formatRead.Contains("UI/")) {
+
+                    string actionMap = formatRead.Split("/")[0];
+                    string action = formatRead.Split("/")[1];
+
+                    if (actionMap == "Player") 
+                    { PlayerAI.inputRef.SwitchCurrentActionMap("Player"); }
+
+                    List<string> actionText = new();
+                    for (int i = 0; i < PlayerAI.inputRef.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
+                        
+                        string actionName = PlayerAI.inputRef.currentActionMap.FindAction(action, true).GetBindingDisplayString(i);
+                        if (actionName.Contains("/") || PlayerAI.inputRef.currentActionMap.FindAction(action, true).bindings.Count < 3)
+                        { actionText.Add(actionName); }
+                    }
+                    
+                    line.Remove(startInd, lineInd - startInd);
+                    line.Insert(startInd, "[" 
+                        + ((PlayerAI.inputRef.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
+                        + "]");
+
+                    if (actionMap == "Player") 
+                    { PlayerAI.inputRef.SwitchCurrentActionMap("UI"); }
+
+                }
+
+                
+
+                // Force a new line
+                if (formatRead == "n")
+                {  line.Remove(startInd, lineInd - startInd);
+                    line.Insert(startInd, "\n"); }
+
+                // Check dialogue settings
+                FormatToggles(formatRead);
+
+                // Clear the format parser
+                formatRead = "";
+                format = false;
+
+            }
+            // Read the format text
+            else if (format)
+            { formatRead += c; }
+
+            lineInd++;
+
+        }
+
+
+    }
+
     // Parse the current line
+
+    /*
+     
+    WIP
+    ===============
+    here is:
+    - {t:x}
+    - {NEXT}
+    - [CHARACTER_Expression]
+    
+    */
+
     public IEnumerator DisplayLine() {
 
         // Get the text object
@@ -141,31 +231,7 @@ public class DialogueRead : MonoBehaviour
 
                     }
 
-                    if (formatRead.Contains("Player/") || formatRead.Contains("UI/")) {
-
-                        string actionMap = formatRead.Split("/")[0];
-                        string action = formatRead.Split("/")[1];
-
-                        if (actionMap == "Player") 
-                        { PlayerAI.inputRef.SwitchCurrentActionMap("Player"); }
-
-                        List<string> actionText = new();
-                        for (int i = 0; i < PlayerAI.inputRef.currentActionMap.FindAction(action, true).bindings.Count; i++) { 
-                            
-                            string actionName = PlayerAI.inputRef.currentActionMap.FindAction(action, true).GetBindingDisplayString(i);
-                            if (actionName.Contains("/") || PlayerAI.inputRef.currentActionMap.FindAction(action, true).bindings.Count < 3)
-                            { actionText.Add(actionName); }
-                            
-                        }
-
-                        textAsset.text += "[" 
-                            + ((PlayerAI.inputRef.currentControlScheme == "Keyboard") ? actionText[0] : actionText[1]) 
-                            + "]";
-
-                        if (actionMap == "Player") 
-                        { PlayerAI.inputRef.SwitchCurrentActionMap("UI"); }
-
-                    }
+                   
 
                     // Delay the text by the given number of seconds
                     if (formatRead.Contains("t:") && !DialogueManager.next)
@@ -175,13 +241,6 @@ public class DialogueRead : MonoBehaviour
                         else
                         { Debug.LogError("Cannot wait for " + formatRead.Split(":")[1] + " seconds"); }
                     }
-
-                    // Force a new line
-                    if (formatRead == "n")
-                    { textAsset.text += "\n"; }
-
-                    // Check dialogue settings
-                    FormatToggles(formatRead);
 
                 }
 
