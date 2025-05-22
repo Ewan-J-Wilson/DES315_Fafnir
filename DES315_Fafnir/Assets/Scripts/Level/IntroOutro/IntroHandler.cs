@@ -53,7 +53,7 @@ public class IntroHandler : MonoBehaviour
         if (DialogueObj == null)
         { DialogueObj = FindFirstObjectByType<DialogueManager>().gameObject; }
 
-        if (!DialogueRead.reading && PanelInd <= 5) { SetPanels(); }
+        if (!DialogueParser.isReading && PanelInd <= 5) { SetPanels(); }
         else if (PanelInd >= 6 && fade.IsNotFading())
         {
             fade.FadeOut();

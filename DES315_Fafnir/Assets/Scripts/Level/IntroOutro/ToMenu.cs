@@ -11,9 +11,9 @@ public class ToMenu : MonoBehaviour
     void Update()
     {
         
-        if (readingText != DialogueRead.reading) {
+        if (readingText != DialogueParser.isReading) {
         
-            readingText = DialogueRead.reading;
+            readingText = DialogueParser.isReading;
             if (!readingText)
             { FindFirstObjectByType<GameManager>().NextLevel(); }
 

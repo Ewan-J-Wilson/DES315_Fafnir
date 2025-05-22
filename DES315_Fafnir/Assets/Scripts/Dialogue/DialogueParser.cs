@@ -6,7 +6,6 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System;
-using UnityEngine.UIElements.Experimental;
 
 public class DialogueParser : MonoBehaviour {
 
@@ -14,6 +13,7 @@ public class DialogueParser : MonoBehaviour {
     private static string path;
     private StreamReader reader;
     public string processedBlock;
+    [HideInInspector]
     public List<string> boxOutput;
     public static bool isReading;
     public static bool earlyBreak = false;
@@ -88,7 +88,9 @@ public class DialogueParser : MonoBehaviour {
                 FormatToggles(formatRead);
 
                 if (formatRead == "NEXT")
-                { pageInd++; }
+                { 
+                    boxOutput.Add("");
+                    pageInd++; }
 
                 if (formatRead == "n")
                 { boxOutput[pageInd] += "\n"; }
@@ -143,11 +145,11 @@ public class DialogueParser : MonoBehaviour {
         TextMeshProUGUI textAsset = GetComponentInChildren<TextMeshProUGUI>();
         textAsset.text = "";
 
-        int pageInd = 0;
+        bool format = false;
+        string formatRead = "";
 
         /*
         TODO:
-        - Parse Text
         - Check for out of bounds text
         */
 
@@ -163,6 +165,107 @@ public class DialogueParser : MonoBehaviour {
         //
         //}
 
+        bool isHTML = false;
+        string HTMLTag = "";
+
+        for (int i = 0; i < boxOutput.Count; i++) {
+
+            foreach (char c in boxOutput[i]) {
+
+                if (!(format || c == '[' || c == '{')) {
+
+                    
+                    // Skip HTML tags
+                    if (c == '<') 
+                    { isHTML = true; }
+
+                    if (!isHTML)
+                    { textAsset.text += c; }
+                    else
+                    { HTMLTag += c; }
+                    
+                    if (c == '>') { 
+                        textAsset.text += HTMLTag;
+                        isHTML = false; 
+                        HTMLTag = "";
+                    }
+
+                    // Skip to the end of the panel
+                    if (!DialogueManager.next || !DialogueManager.canSkip && !isHTML)
+                    { yield return new WaitForSeconds(ReadSpeed); }
+
+                }
+                // Start formatting
+                else if (!format && (c == '[' || c == '{'))
+                { format = true; }
+                // Parse the formatting
+                else if (format && (c == ']' || c == '}')) {
+
+                    // Sets the character icon
+                    if (c == ']' && formatRead.Contains('_')) {
+
+                        string iconPath = "/Character Icons/";
+                        iconPath += formatRead.Split("_")[0] + "/";
+
+                        Image character = GameObject.Find("Char Icon").GetComponent<Image>();
+                        byte[] bytes = File.ReadAllBytes(Application.streamingAssetsPath + iconPath + formatRead + ".png");
+                        character.sprite.texture.LoadImage(bytes);
+                        
+                    }
+                    else if (c == ']')
+                    { 
+                        string undo = "[" + formatRead + "]";
+                        foreach (char x in undo) {
+
+                            textAsset.text += x;
+
+                            // Skip to the end of the panel
+                            if (!DialogueManager.next || !DialogueManager.canSkip && !isHTML)
+                            { yield return new WaitForSeconds(ReadSpeed); }
+
+                        }
+
+                    }
+
+                    if (c == '}') {
+
+                        // Delay the text by the given number of seconds
+                        if (formatRead.Contains("t:") && !DialogueManager.next)
+                        { 
+                            if (float.TryParse(formatRead.Split(":")[1], out float parsedTime))
+                            { yield return new WaitForSeconds(parsedTime); }
+                            else
+                            { Debug.LogError("Cannot wait for " + formatRead.Split(":")[1] + " seconds"); }
+                        }
+
+                    }
+
+                    // Clear the format parser
+                    formatRead = "";
+                    format = false;
+
+                }
+                else if (format)
+                { formatRead += c; }
+
+            }
+
+            DialogueManager.next = false;
+
+            if (i < boxOutput.Count - 1) {
+
+                // Wait before moving to the next panel of dialogue
+                if (DialogueManager.autoscroll)
+                { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
+                else
+                { yield return new WaitUntil(ReadNext); }
+
+                textAsset.text = "";
+
+            }
+
+        }
+
         boxOutput.Clear();
 
         DialogueManager.next = false;
@@ -172,6 +275,12 @@ public class DialogueParser : MonoBehaviour {
         { yield return new WaitForSeconds(DialogueManager.autoscrollLength); }
         else
         { yield return new WaitUntil(ReadNext); }
+
+        EndDialogue();
+
+    }
+
+    public void EndDialogue() {
 
         isReading = false;
         // Re-enable the player input and hide the dialogue box
@@ -186,6 +295,13 @@ public class DialogueParser : MonoBehaviour {
             return true;
         }
         return false; 
+    }
+
+    // Start reading the text
+    public void ReadStart() {
+        reader = new(path);
+        boxOutput.Add("");
+        ProcessChapter();
     }
 
     public void FormatToggles(string formatRead) {
