@@ -18,12 +18,12 @@ public class IconSwap : MonoBehaviour
     private string deviceName = "";
     private string controlSchemeName = "";
 
-    private float blinkTimer = 0;
+    //private float blinkTimer = 0;
 
-    [SerializeField]
-    private float blinkSpeed = 0.75f;
-    // Blink State
-    private bool hasBlinked;
+    //[SerializeField]
+    //private float blinkSpeed = 0.75f;
+    //// Blink State
+    //private bool hasBlinked;
 
     [SerializeField]
     private bool canBlink = true;
@@ -41,12 +41,12 @@ public class IconSwap : MonoBehaviour
         { return; }
 
         // Blink
-        if ((blinkTimer += Time.deltaTime) >= blinkSpeed) {
-
-            blinkTimer = 0;
-            GetComponent<Image>().color = (hasBlinked = !hasBlinked) ? Color.clear : Color.white;
-           
-        }
+        //if ((blinkTimer += Time.deltaTime) >= blinkSpeed) {
+        //
+        //    blinkTimer = 0;
+        //    GetComponent<Image>().color = (hasBlinked = !hasBlinked) ? Color.clear : Color.white;
+        //   
+        //}
 
     }
 
