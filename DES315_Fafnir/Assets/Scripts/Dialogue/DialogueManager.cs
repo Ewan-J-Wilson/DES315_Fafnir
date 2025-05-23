@@ -14,7 +14,7 @@ public class DialogueManager : MonoBehaviour
     public static bool autoscroll = false;
     public static float autoscrollLength = 3f;
     public static bool canSkip = true;
-    public static float defaultFontSize = 28;
+    public static float defaultFontSize = 35;
     
     // On Start
     public void Start() {
@@ -96,7 +96,7 @@ public class DialogueManager : MonoBehaviour
         if (!instance.textBox.gameObject.activeSelf)
         { return; }
 
-        instance.textBox.gameObject.transform.localScale = new Vector3(PlayerPrefs.GetFloat("Text Scale") * 1.2f, PlayerPrefs.GetFloat("Text Scale") * 1.2f, 1);
+        //instance.textBox.gameObject.transform.localScale = new Vector3(PlayerPrefs.GetFloat("Text Scale") * 1.2f, PlayerPrefs.GetFloat("Text Scale") * 1.2f, 1);
         instance.GetComponentInChildren<TMP_Text>().fontSize = defaultFontSize * PlayerPrefs.GetFloat("Text Scale");
 
     }

@@ -31,9 +31,16 @@ public class ChangeTextScale : MonoBehaviour
         // Update the existing text boxes
         if (DialogueManager.instance != null)
         { DialogueManager.instance.SetDialogueSize(); }
-        testDialogue.transform.localScale = new Vector3(value * 1.2f, value * 1.2f, 1);
-        testDialogue.GetComponentInChildren<TMP_Text>().fontSize = DialogueManager.defaultFontSize * value;
+        //testDialogue.transform.localScale = new Vector3(value * 1.2f, value * 1.2f, 1);
+        
 
 
     }
+
+    void Update() {
+
+        testDialogue.GetComponentInChildren<TMP_Text>().fontSize = DialogueManager.defaultFontSize * PlayerPrefs.GetFloat("Text Scale");
+
+    }
+
 }

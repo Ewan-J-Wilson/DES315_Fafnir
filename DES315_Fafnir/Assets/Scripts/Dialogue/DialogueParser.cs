@@ -6,12 +6,14 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class DialogueParser : MonoBehaviour {
 
     public static float ReadSpeed = 0.02f;
     private static string path;
     private StreamReader reader;
+    [HideInInspector]
     public string processedBlock;
     [HideInInspector]
     public List<string> boxOutput;
@@ -152,16 +154,39 @@ public class DialogueParser : MonoBehaviour {
         TODO:
         - Check for out of bounds text
         */
-
+        // COMPLETELY NON-FUNCTIONAL
         //for (int i = 0; i < boxOutput.Count; i++) {
         //
-        //    textAsset.text = boxOutput[pageInd];
+        //    textAsset.text = boxOutput[i];
         //    if (textAsset.isTextOverflowing && boxOutput.Count > 1) {
         //
-        //        boxOutput.Add(boxOutput[^1]);
         //        
+        //        //Search for ". ", "! ", "? ", ") "
+        //        Dictionary<string, int> punctuation = new();
+        //        punctuation[". "] = boxOutput[i].LastIndexOf(". ");
+        //        punctuation["! "] = boxOutput[i].LastIndexOf("! ");
+        //        punctuation["? "] = boxOutput[i].LastIndexOf("? ");
+        //        punctuation[") "] = boxOutput[i].LastIndexOf(") ");
+        //
+        //        int splitInd = Math.Min(Math.Min(punctuation[". "], punctuation["! "]), Math.Min(punctuation["? "], punctuation[") "]));
+        //
+        //        if (splitInd < 10) 
+        //        { Debug.LogError("The text here appears to be too long, consider the wording and breaks."); }
+        //        else {
+        //
+        //            boxOutput[i].Split(boxOutput[i][splitInd], boxOutput[i].Length - splitInd);
+        //            boxOutput.Insert(i+1, boxOutput[i].Substring(splitInd,1));
+        //            boxOutput[i] = boxOutput[i].Substring(splitInd,0);
+        //
+        //        }
+        //
+        //        textAsset.text = boxOutput[i];
+        //        if (textAsset.isTextOverflowing)
+        //        { Debug.LogError("The text here appears to be too long, consider the wording and breaks."); }
         //
         //    }
+        //
+        //    textAsset.text = "";
         //
         //}
 
