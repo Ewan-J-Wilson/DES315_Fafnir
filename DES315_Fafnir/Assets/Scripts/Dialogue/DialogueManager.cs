@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour
     public static int currentLevel = 0;
     public static DialogueManager instance;
     public static string chapter;
-    public DialogueRead textBox;
+    public DialogueParser textBox;
     public GameObject icon;
     public static bool next = false;
     public static bool autoscroll = false;
@@ -84,8 +84,8 @@ public class DialogueManager : MonoBehaviour
 
     public static void ForceQuitDialogue() {
 
-        instance.textBox.displayLine = "";
-        DialogueRead.reading = false;
+        instance.textBox.boxOutput.Clear();
+        DialogueParser.isReading = false;
         instance.textBox.gameObject.SetActive(false);
 
     }

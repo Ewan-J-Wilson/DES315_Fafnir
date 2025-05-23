@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1021755393382623030}
   - component: {fileID: 8456364019063162735}
   - component: {fileID: 8754813437969895649}
-  - component: {fileID: 1976730247425760479}
+  - component: {fileID: 5634815234719901059}
   m_Layer: 5
   m_Name: Dialogue Box
   m_TagString: Untagged
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &1976730247425760479
+--- !u!114 &5634815234719901059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,10 +114,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 448573577696326517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57e94292f73868844983743cce3b8b2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 97f3db8f24e2ee64fb538f73680992d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayLine: 
+  processedBlock: 
+  boxOutput: []
 --- !u!1 &1736802217356624062
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +149,7 @@ RectTransform:
   m_GameObject: {fileID: 1736802217356624062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5796875, y: 0.5796875, z: 0.5796875}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8646062314562710796}
@@ -235,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f8e6324714dbe4a80360816d00cfb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textBox: {fileID: 1976730247425760479}
+  textBox: {fileID: 5634815234719901059}
   icon: {fileID: 755889379413589298}
 --- !u!114 &7026791312655901545
 MonoBehaviour:
@@ -476,7 +477,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 30}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

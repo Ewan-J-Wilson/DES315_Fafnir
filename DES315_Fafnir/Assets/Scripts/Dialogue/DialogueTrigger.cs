@@ -17,13 +17,13 @@ public class DialogueTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && !DialogueRead.reading) 
+        if (Input.GetKeyDown(KeyCode.W) && !DialogueParser.isReading) 
         { DialogueManager.CodedDialogue(chapter); }
     }
 
     private void OnTriggerEnter2D(Collider2D collider) { 
 
-        if (collider.CompareTag("Player") && !DialogueRead.reading && !triggered) {
+        if (collider.CompareTag("Player") && !DialogueParser.isReading && !triggered) {
 
             DialogueManager.CodedDialogue(chapter); 
             if (triggerOnce)

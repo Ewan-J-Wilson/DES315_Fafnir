@@ -61,7 +61,7 @@ public class MenuButtons : MonoBehaviour
 
         Audiomanager.instance.PlayAudio("Select");
 
-        if (DialogueRead.reading)
+        if (DialogueParser.isReading)
         { return; }
         Pause(false);
         DialogueManager.LoopTrigger("HINT");
@@ -91,7 +91,7 @@ public class MenuButtons : MonoBehaviour
 
         // Swaps to the UI action map if the game is paused
 
-        if (DialogueRead.reading)
+        if (DialogueParser.isReading)
         { return; }
 
         PlayerInput actions = GetComponentInParent<PlayerInput>();
