@@ -32,13 +32,13 @@ public class PlayerAnimationSounds : MonoBehaviour // sounds that are attached a
     public void PlaySteps1() // plays on keyframe 6 of walking animation
     {
         Audiomanager.instance.PlayAudio(Step1, 0.25f);
-        Audiomanager.instance.PlayAudio(Armor1);
+        
     }
 
     public void PlaySteps2() // plays on keyframe 12 of walking animation
     {
         Audiomanager.instance.PlayAudio(Step2, 0.25f);
-        Audiomanager.instance.PlayAudio(Armor2);
+        
     }
 
     public void JumpSound() // plays on keyframe 1 of jumping animation
