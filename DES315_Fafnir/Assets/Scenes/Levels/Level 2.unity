@@ -15271,6 +15271,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2610011085730027841, guid: d40fa747832937a419cfff1076784691, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4279680679298611953, guid: d40fa747832937a419cfff1076784691, type: 3}
       propertyPath: m_Name
       value: Clone Indicator

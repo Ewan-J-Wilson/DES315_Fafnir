@@ -12,8 +12,6 @@ Press? Lever? What in creation are you {n}talking about, child?
 {NEXT}
 [CHILD_Anger]
 Don't worry about it, dad! Just do it!
-{NEXT}
-If on the off chance you get stuck, you can get a hint by pressing {UI/Unpause}.
 END_DIAG
 
 # Loop 1-2
@@ -34,12 +32,8 @@ The magic book! Duh! {n}What's the point if we don't even use our cool new power
 Ah yes, of course. How do I go about doing that?
 {NEXT}
 [CHILD_Happy]
-I will forgive your transgressions this once, father. {n}After all, what is a stick without a carrot?
-{NEXT}
-[CHILD_Happy]
 You can use {Player/Clone} to record your actions...
-{NEXT}
-[CHILD_Happy]
+{n}
 ...and then press {Player/Clone} again to create a clone of yourself. 
 [CHILD_Happy]
 The clone will copy everything you did in that time. {n}That includes stuff like using levers, and that button over there!
@@ -52,18 +46,6 @@ Why only 4?
 {NEXT}
 [CHILD_Anger]
 Because! That's just the way it works!
-{NEXT}
-[DAD_Neutral]
-Okay, but what if I get stuck? {n}Then you'll have to just go to bed before I finish, and the witch won't get her hat back.
-{NEXT}
-[CHILD_Anger]
-That's no faaaair! {n}Ugh,{t:0.2} fiiiine. 
-{NEXT}
-[CHILD_Anger]
-Just press {Player/Reset} and you'll restart the level. Happy?
-{NEXT}
-[DAD_Neutral]
-Very. Now let's go get that hat!
 END_DIAG
 
 # Loop 2-1
@@ -75,7 +57,7 @@ Yay! You made it past the drawbridge! {n}What's next, dad?
 Our brave fisherman continues on his journey and sees... {n}{t:0.2}...TWO buttons! {n}And a lever!
 {NEXT}
 [CHILD_Happy]
-*gasp* How's he gonna beat *this* obstacle? 
+*gasp* How's he gonna beat <b>this</b> obstacle? 
 {NEXT}
 [DAD_Neutral]
 Hmmm...well, let's see what these switches do first, shall we?
@@ -174,7 +156,7 @@ END_DIAG
 Nope, not good enough! {n}Last one before the dragon though, I promise!
 {NEXT}
 [DAD_Tired]
-Good, cause I'm up past *my* bedtime at this point.
+Good, cause I'm up past <b>my</b> bedtime at this point.
 END_DIAG
 
 
@@ -354,7 +336,7 @@ OUTRO
 Ooooh, here we go! I bet the fisherman is gonna cut its head off!
 {NEXT}
 [DAD_Tired]
-What books *have* you been reading, child? {n}This isn't that kind of story.
+What books <b>have<b> you been reading, child? {n}This isn't that kind of story.
 {NEXT}
 [DAD_Neutral]
 "You up there!" The fisherman called up to the dragon. {n}"Why have you stolen the witch's hat?"
