@@ -579,6 +579,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -81.0189
       objectReference: {fileID: 0}
+    - target: {fileID: 9048876593047137712, guid: 0e12386b36d1d1f4985180c00370e029, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1480,7 +1484,7 @@ GameObject:
   - component: {fileID: 1449422837}
   - component: {fileID: 1449422836}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Skip Text Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
