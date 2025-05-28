@@ -18,7 +18,7 @@ public class PlayerAnimationSounds : MonoBehaviour // sounds that are attached a
     protected string Jump;
 
     [SerializeField]
-    protected string LandSound;
+    protected string Landing;
 
    
 
@@ -36,8 +36,18 @@ public class PlayerAnimationSounds : MonoBehaviour // sounds that are attached a
 
     public void JumpSound() // plays on keyframe 1 of jumping animation
     {
-        Audiomanager.instance.PlayAudio(Jump);
+        if (GetComponent<Animator>().GetBool("InAir") == true)
+        {
+            Audiomanager.instance.PlayAudio(Jump);
+        }
 
+    }
+    public void LandSound()
+    {
+        if (GetComponent<Animator>().GetBool("InAir") == false)
+        {
+            Audiomanager.instance.PlayAudio(Landing);
+        }
     }
 
 
@@ -51,7 +61,7 @@ public class PlayerAnimationSounds : MonoBehaviour // sounds that are attached a
         anim.speed = 0f;
 
         yield return new WaitUntil(Land);
-        Audiomanager.instance.PlayAudio(LandSound);
+      
         anim.speed = 1f;
 
     }
