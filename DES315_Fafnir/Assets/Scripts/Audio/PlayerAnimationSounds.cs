@@ -13,13 +13,6 @@ public class PlayerAnimationSounds : MonoBehaviour // sounds that are attached a
     [SerializeField]
     protected string Step2;
 
-    // armor
-    [SerializeField]
-    protected string Armor1;
-
-    [SerializeField] 
-    protected string Armor2;
-
     // jump/land
     [SerializeField]
     protected string Jump;
