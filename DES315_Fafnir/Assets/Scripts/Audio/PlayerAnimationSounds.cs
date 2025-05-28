@@ -20,19 +20,18 @@ public class PlayerAnimationSounds : MonoBehaviour // sounds that are attached a
     [SerializeField]
     protected string Landing;
 
-   
+
 
     public void PlaySteps1() // plays on keyframe 6 of walking animation
-    {
-        Audiomanager.instance.PlayAudio(Step1, 0.25f);
+    { Audiomanager.instance.PlayAudio(Step1, 0.25f); }
         
-    }
+    
 
     public void PlaySteps2() // plays on keyframe 12 of walking animation
-    {
-        Audiomanager.instance.PlayAudio(Step2, 0.25f);
-        
-    }
+    { Audiomanager.instance.PlayAudio(Step2, 0.25f); }
+
+
+
 
     public void JumpSound() // plays on keyframe 1 of jumping animation
     {
@@ -43,12 +42,7 @@ public class PlayerAnimationSounds : MonoBehaviour // sounds that are attached a
 
     }
     public void LandSound()
-    {
-        if (GetComponent<Animator>().GetBool("InAir") == false)
-        {
-            Audiomanager.instance.PlayAudio(Landing);
-        }
-    }
+    { Audiomanager.instance.PlayAudio(Landing); }
 
 
     public void MaxHeightEvent() // when player reaches peak of jumping 
